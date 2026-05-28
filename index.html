@@ -30,6 +30,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/reveal.css" />
   <link rel="stylesheet" href="css/research-cinema.css" />
+  <link rel="stylesheet" href="css/research-telemetry-bg.css?v=3" />
   <style>
     .hero-bg {
       filter: grayscale(100%) contrast(1.08);
@@ -193,7 +194,7 @@
 
         <div class="space-y-6 border-t border-zinc-800 pt-10 text-base leading-relaxed text-zinc-400 sm:space-y-7 sm:border-t-0 sm:pt-0 lg:col-span-7 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-2 xl:pl-16">
           <p class="reveal-item text-lg font-semibold leading-snug text-zinc-300 sm:text-xl">
-            Modern fitness has a fundamental flaw: <br>Simplicity doesn't sell.
+            Fitness isn't complicated. <br>It's just marketed that way. 
           </p>
           <p class="reveal-item">
             To keep you clicking, buying, and guessing, social media gurus and online fitness articles manufacture complexity. They chase engagement by overcomplicating basic health, leaving you frustrated and confused about what it actually takes to be fit.
@@ -214,10 +215,18 @@
     <!-- ========== 4. THE WHY — RESEARCH GRID ========== -->
     <section
       id="why"
-      class="relative border-t border-zinc-800 bg-zinc-950 py-28 sm:py-36"
+      class="relative border-t border-zinc-800 py-28 sm:py-36"
       aria-labelledby="why-heading"
     >
-      <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+      <!-- Premium telemetry background — flows on the right, fades left for readability -->
+      <div class="research-telemetry-bg" data-research-telemetry-bg aria-hidden="true">
+        <canvas></canvas>
+        <div class="research-telemetry-fade"></div>
+        <div class="research-telemetry-vignette"></div>
+        <div class="research-telemetry-grain"></div>
+      </div>
+
+      <div class="research-section-content mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <div data-reveal-stagger class="mb-12 max-w-2xl border-l-2 border-cobalt pl-6 sm:mb-16 lg:mb-20">
           <span class="reveal-item font-display text-xs font-medium uppercase tracking-[0.3em] text-zinc-500">
             The Why
@@ -226,7 +235,7 @@
             What the research actually says
           </h2>
           <p class="reveal-item mt-4 text-zinc-400">
-            Hover or tap a card for context. Six findings—each tied to published evidence.
+            Hover or tap a card for context. 
           </p>
         </div>
 
@@ -619,6 +628,7 @@
   </script>
 
   <script src="js/scroll-reveal.js"></script>
+  <script src="js/research-telemetry-bg.js?v=4"></script>
   <script src="js/research-cinema.js"></script>
 </body>
 </html>
