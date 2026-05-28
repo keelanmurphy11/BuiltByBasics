@@ -236,149 +236,166 @@
           id="research-grid"
         >
           <article
-            class="group research-card reveal-item relative flex flex-col justify-between overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-8 md:p-10 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full h-[280px] md:h-[300px] cursor-pointer origin-center z-0"
+            class="group research-card reveal-item relative flex flex-col overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-5 sm:p-6 md:p-8 transition-[transform,opacity,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full min-h-[200px] h-[220px] sm:h-[240px] md:h-[300px] cursor-pointer origin-center z-0 will-change-[transform,opacity]"
             data-research-card
             tabindex="0"
             aria-expanded="false"
           >
-            <div class="card-header-wrapper space-y-4 transition-all duration-500">
-              <p class="text-[0.65rem] font-display font-medium uppercase tracking-[0.3em] text-cobalt-light">Cardiovascular</p>
-              <p class="font-display text-5xl font-black leading-none text-white md:text-6xl">504%</p>
-              <p class="text-base text-zinc-300 md:text-lg">Lower mortality risk from elite cardiovascular fitness</p>
-            </div>
-            <div class="research-card-detail opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none mt-0" style="max-height: 0; opacity: 0;" aria-hidden="true">
+            <div class="card-inner flex h-full min-h-0 w-full flex-col items-center justify-center text-center">
+              <div class="card-collapsed flex w-full max-w-full flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4">
+              <p class="card-category max-w-full truncate font-display font-medium uppercase tracking-[0.28em] text-cobalt-light text-[0.6rem] sm:text-[0.65rem]">Cardiovascular</p>
+              <p class="card-stat font-display font-black leading-none text-white">504%</p>
+              <p class="card-headline max-w-full px-1 leading-snug text-zinc-300 line-clamp-3">Lower mortality risk from elite cardiovascular fitness</p>
+              </div>
+            <div class="research-card-detail mt-0 md:mt-4 w-full max-w-full opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-[max-height,opacity] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none text-center" style="max-height: 0; opacity: 0;" aria-hidden="true">
               <p>Higher VO₂ max and cardiorespiratory fitness is strongly associated with lower all-cause mortality across large cohorts—often outperforming traditional risk markers like smoking status and diabetes as a longevity predictor.</p>
               <a href="https://check-upcenter.com/wp-content/uploads/2025/04/mandsager_2018_oi_180168.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs uppercase tracking-[0.18em] text-zinc-300 hover:text-cobalt-light hover:underline pointer-events-auto">View Study →</a>
             </div>
-            <p class="mt-4 block text-[0.65rem] uppercase tracking-widest text-zinc-500 md:hidden">Tap to reveal detail •</p>
+            </div>
+            <p class="mt-2 block text-[0.6rem] uppercase tracking-widest text-zinc-500 max-md:block md:hidden">Tap for detail •</p>
           </article>
 
           <article
-            class="group research-card reveal-item relative flex flex-col justify-between overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-8 md:p-10 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full h-[280px] md:h-[300px] cursor-pointer origin-center z-0"
+            class="group research-card reveal-item relative flex flex-col overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-5 sm:p-6 md:p-8 transition-[transform,opacity,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full min-h-[200px] h-[220px] sm:h-[240px] md:h-[300px] cursor-pointer origin-center z-0 will-change-[transform,opacity]"
             data-research-card
             tabindex="0"
             aria-expanded="false"
           >
-            <div class="card-header-wrapper space-y-4 transition-all duration-500">
-              <p class="text-[0.65rem] font-display font-medium uppercase tracking-[0.3em] text-cobalt-light">Body Composition</p>
-              <p class="font-display text-5xl font-black leading-none text-white md:text-6xl">292%</p>
-              <p class="text-base text-zinc-300 md:text-lg">Lower sudden cardiac death risk by targeting visceral fat</p>
-            </div>
-            <div class="research-card-detail opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none mt-0" style="max-height: 0; opacity: 0;" aria-hidden="true">
+            <div class="card-inner flex h-full min-h-0 w-full flex-col items-center justify-center text-center">
+              <div class="card-collapsed flex w-full max-w-full flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4">
+              <p class="card-category max-w-full truncate font-display font-medium uppercase tracking-[0.28em] text-cobalt-light text-[0.6rem] sm:text-[0.65rem]">Body Composition</p>
+              <p class="card-stat font-display font-black leading-none text-white">292%</p>
+              <p class="card-headline max-w-full px-1 leading-snug text-zinc-300 line-clamp-3">Lower sudden cardiac death risk by targeting visceral fat</p>
+              </div>
+            <div class="research-card-detail mt-0 md:mt-4 w-full max-w-full opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-[max-height,opacity] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none text-center" style="max-height: 0; opacity: 0;" aria-hidden="true">
               <p>Total weight matters less than where you store fat. Reducing hidden visceral fat around internal organs is associated with a dramatically lower sudden cardiac death risk compared with scale weight alone.</p>
               <a href="https://pubmed.ncbi.nlm.nih.gov/41632015/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs uppercase tracking-[0.18em] text-zinc-300 hover:text-cobalt-light hover:underline pointer-events-auto">View Study →</a>
             </div>
-            <p class="mt-4 block text-[0.65rem] uppercase tracking-widest text-zinc-500 md:hidden">Tap to reveal detail •</p>
+            </div>
+            <p class="mt-2 block text-[0.6rem] uppercase tracking-widest text-zinc-500 max-md:block md:hidden">Tap for detail •</p>
           </article>
 
           <article
-            class="group research-card reveal-item relative flex flex-col justify-between overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-8 md:p-10 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full h-[280px] md:h-[300px] cursor-pointer origin-center z-0"
+            class="group research-card reveal-item relative flex flex-col overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-5 sm:p-6 md:p-8 transition-[transform,opacity,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full min-h-[200px] h-[220px] sm:h-[240px] md:h-[300px] cursor-pointer origin-center z-0 will-change-[transform,opacity]"
             data-research-card
             tabindex="0"
             aria-expanded="false"
           >
-            <div class="card-header-wrapper space-y-4 transition-all duration-500">
-              <p class="text-[0.65rem] font-display font-medium uppercase tracking-[0.3em] text-cobalt-light">Muscular</p>
-              <p class="font-display text-5xl font-black leading-none text-white md:text-6xl">33%</p>
-              <p class="text-base text-zinc-300 md:text-lg">Mortality reduction from functional strength</p>
-            </div>
-            <div class="research-card-detail opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none mt-0" style="max-height: 0; opacity: 0;" aria-hidden="true">
+            <div class="card-inner flex h-full min-h-0 w-full flex-col items-center justify-center text-center">
+              <div class="card-collapsed flex w-full max-w-full flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4">
+              <p class="card-category max-w-full truncate font-display font-medium uppercase tracking-[0.28em] text-cobalt-light text-[0.6rem] sm:text-[0.65rem]">Muscular</p>
+              <p class="card-stat font-display font-black leading-none text-white">33%</p>
+              <p class="card-headline max-w-full px-1 leading-snug text-zinc-300 line-clamp-3">Mortality reduction from functional strength</p>
+              </div>
+            <div class="research-card-detail mt-0 md:mt-4 w-full max-w-full opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-[max-height,opacity] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none text-center" style="max-height: 0; opacity: 0;" aria-hidden="true">
               <p>Maintaining functional strength through resistance training is associated with meaningfully lower all-cause mortality risk—helping preserve independence, mobility, and overall capacity as you age.</p>
               <a href="https://pubmed.ncbi.nlm.nih.gov/41686437/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs uppercase tracking-[0.18em] text-zinc-300 hover:text-cobalt-light hover:underline pointer-events-auto">View Study →</a>
             </div>
-            <p class="mt-4 block text-[0.65rem] uppercase tracking-widest text-zinc-500 md:hidden">Tap to reveal detail •</p>
+            </div>
+            <p class="mt-2 block text-[0.6rem] uppercase tracking-widest text-zinc-500 max-md:block md:hidden">Tap for detail •</p>
           </article>
 
           <article
-            class="group research-card reveal-item relative flex flex-col justify-between overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-8 md:p-10 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full h-[280px] md:h-[300px] cursor-pointer origin-center z-0"
+            class="group research-card reveal-item relative flex flex-col overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-5 sm:p-6 md:p-8 transition-[transform,opacity,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full min-h-[200px] h-[220px] sm:h-[240px] md:h-[300px] cursor-pointer origin-center z-0 will-change-[transform,opacity]"
             data-research-card
             tabindex="0"
             aria-expanded="false"
           >
-            <div class="card-header-wrapper space-y-4 transition-all duration-500">
-              <p class="text-[0.65rem] font-display font-medium uppercase tracking-[0.3em] text-cobalt-light">Aging</p>
-              <p class="font-display text-5xl font-black leading-none text-white md:text-6xl">8%</p>
-              <p class="text-base text-zinc-300 md:text-lg">Muscle mass lost per decade after thirty</p>
-            </div>
-            <div class="research-card-detail opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none mt-0" style="max-height: 0; opacity: 0;" aria-hidden="true">
+            <div class="card-inner flex h-full min-h-0 w-full flex-col items-center justify-center text-center">
+              <div class="card-collapsed flex w-full max-w-full flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4">
+              <p class="card-category max-w-full truncate font-display font-medium uppercase tracking-[0.28em] text-cobalt-light text-[0.6rem] sm:text-[0.65rem]">Aging</p>
+              <p class="card-stat font-display font-black leading-none text-white">8%</p>
+              <p class="card-headline max-w-full px-1 leading-snug text-zinc-300 line-clamp-3">Muscle mass lost per decade after thirty</p>
+              </div>
+            <div class="research-card-detail mt-0 md:mt-4 w-full max-w-full opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-[max-height,opacity] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none text-center" style="max-height: 0; opacity: 0;" aria-hidden="true">
               <p>After 30, age-related muscle loss can progress decade by decade and compounds into frailty. Progressive resistance training is one of the most reliable ways to slow this decline and protect function.</p>
               <a href="https://pubmed.ncbi.nlm.nih.gov/41686437/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs uppercase tracking-[0.18em] text-zinc-300 hover:text-cobalt-light hover:underline pointer-events-auto">View Study →</a>
             </div>
-            <p class="mt-4 block text-[0.65rem] uppercase tracking-widest text-zinc-500 md:hidden">Tap to reveal detail •</p>
+            </div>
+            <p class="mt-2 block text-[0.6rem] uppercase tracking-widest text-zinc-500 max-md:block md:hidden">Tap for detail •</p>
           </article>
 
           <article
-            class="group research-card reveal-item relative flex flex-col justify-between overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-8 md:p-10 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full h-[280px] md:h-[300px] cursor-pointer origin-center z-0"
+            class="group research-card reveal-item relative flex flex-col overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-5 sm:p-6 md:p-8 transition-[transform,opacity,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full min-h-[200px] h-[220px] sm:h-[240px] md:h-[300px] cursor-pointer origin-center z-0 will-change-[transform,opacity]"
             data-research-card
             tabindex="0"
             aria-expanded="false"
           >
-            <div class="card-header-wrapper space-y-4 transition-all duration-500">
-              <p class="text-[0.65rem] font-display font-medium uppercase tracking-[0.3em] text-cobalt-light">Brain Health</p>
-              <p class="font-display text-5xl font-black leading-none text-white md:text-6xl">41–45%</p>
-              <p class="text-base text-zinc-300 md:text-lg">Dementia risk reduction from consistent training</p>
-            </div>
-            <div class="research-card-detail opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none mt-0" style="max-height: 0; opacity: 0;" aria-hidden="true">
+            <div class="card-inner flex h-full min-h-0 w-full flex-col items-center justify-center text-center">
+              <div class="card-collapsed flex w-full max-w-full flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4">
+              <p class="card-category max-w-full truncate font-display font-medium uppercase tracking-[0.28em] text-cobalt-light text-[0.6rem] sm:text-[0.65rem]">Brain Health</p>
+              <p class="card-stat font-display font-black leading-none text-white">41–45%</p>
+              <p class="card-headline max-w-full px-1 leading-snug text-zinc-300 line-clamp-3">Dementia risk reduction from consistent training</p>
+              </div>
+            <div class="research-card-detail mt-0 md:mt-4 w-full max-w-full opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-[max-height,opacity] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none text-center" style="max-height: 0; opacity: 0;" aria-hidden="true">
               <p>Mid- and late-life physical activity is associated with substantially lower dementia risk and better mental health. Consistent training supports brain structure and memory systems over time.</p>
               <a href="https://www.bu.edu/sph/news/articles/2025/mid-and-late-life-physical-activity-may-reduce-dementia-risk-by-up-to-45/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs uppercase tracking-[0.18em] text-zinc-300 hover:text-cobalt-light hover:underline pointer-events-auto">View Study →</a>
             </div>
-            <p class="mt-4 block text-[0.65rem] uppercase tracking-widest text-zinc-500 md:hidden">Tap to reveal detail •</p>
+            </div>
+            <p class="mt-2 block text-[0.6rem] uppercase tracking-widest text-zinc-500 max-md:block md:hidden">Tap for detail •</p>
           </article>
 
           <article
-            class="group research-card reveal-item relative flex flex-col justify-between overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-8 md:p-10 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full h-[280px] md:h-[300px] cursor-pointer origin-center z-0"
+            class="group research-card reveal-item relative flex flex-col overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-5 sm:p-6 md:p-8 transition-[transform,opacity,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full min-h-[200px] h-[220px] sm:h-[240px] md:h-[300px] cursor-pointer origin-center z-0 will-change-[transform,opacity]"
             data-research-card
             tabindex="0"
             aria-expanded="false"
           >
-            <div class="card-header-wrapper space-y-4 transition-all duration-500">
-              <p class="text-[0.65rem] font-display font-medium uppercase tracking-[0.3em] text-cobalt-light">Metabolic</p>
-              <p class="font-display text-5xl font-black leading-none text-white md:text-6xl">1.6×</p>
-              <p class="text-base text-zinc-300 md:text-lg">Higher all-cause mortality from insulin resistance</p>
-            </div>
-            <div class="research-card-detail opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none mt-0" style="max-height: 0; opacity: 0;" aria-hidden="true">
+            <div class="card-inner flex h-full min-h-0 w-full flex-col items-center justify-center text-center">
+              <div class="card-collapsed flex w-full max-w-full flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4">
+              <p class="card-category max-w-full truncate font-display font-medium uppercase tracking-[0.28em] text-cobalt-light text-[0.6rem] sm:text-[0.65rem]">Metabolic</p>
+              <p class="card-stat font-display font-black leading-none text-white">1.6×</p>
+              <p class="card-headline max-w-full px-1 leading-snug text-zinc-300 line-clamp-3">Higher all-cause mortality from insulin resistance</p>
+              </div>
+            <div class="research-card-detail mt-0 md:mt-4 w-full max-w-full opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-[max-height,opacity] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none text-center" style="max-height: 0; opacity: 0;" aria-hidden="true">
               <p>In a U.S. nondiabetic cohort, higher insulin resistance (HOMA‑IR) was associated with higher all-cause mortality; the top quartile showed roughly ~1.6× (up to ~2.5×) higher risk versus the lowest quartile depending on subgroup.</p>
               <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2875420/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs uppercase tracking-[0.18em] text-zinc-300 hover:text-cobalt-light hover:underline pointer-events-auto">View Study →</a>
             </div>
-            <p class="mt-4 block text-[0.65rem] uppercase tracking-widest text-zinc-500 md:hidden">Tap to reveal detail •</p>
+            </div>
+            <p class="mt-2 block text-[0.6rem] uppercase tracking-widest text-zinc-500 max-md:block md:hidden">Tap for detail •</p>
           </article>
 
           <article
-            class="group research-card reveal-item relative flex flex-col justify-between overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-8 md:p-10 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full h-[280px] md:h-[300px] cursor-pointer origin-center z-0"
+            class="group research-card reveal-item relative flex flex-col overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-5 sm:p-6 md:p-8 transition-[transform,opacity,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full min-h-[200px] h-[220px] sm:h-[240px] md:h-[300px] cursor-pointer origin-center z-0 will-change-[transform,opacity]"
             data-research-card
             tabindex="0"
             aria-expanded="false"
           >
-            <div class="card-header-wrapper space-y-4 transition-all duration-500">
-              <p class="text-[0.65rem] font-display font-medium uppercase tracking-[0.3em] text-cobalt-light">Sleep</p>
-              <p class="font-display text-5xl font-black leading-none text-white md:text-6xl">38%</p>
-              <p class="text-base text-zinc-300 md:text-lg">Better sleep quality from resistance training</p>
-            </div>
-            <div class="research-card-detail opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none mt-0" style="max-height: 0; opacity: 0;" aria-hidden="true">
+            <div class="card-inner flex h-full min-h-0 w-full flex-col items-center justify-center text-center">
+              <div class="card-collapsed flex w-full max-w-full flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4">
+              <p class="card-category max-w-full truncate font-display font-medium uppercase tracking-[0.28em] text-cobalt-light text-[0.6rem] sm:text-[0.65rem]">Sleep</p>
+              <p class="card-stat font-display font-black leading-none text-white">38%</p>
+              <p class="card-headline max-w-full px-1 leading-snug text-zinc-300 line-clamp-3">Better sleep quality from resistance training</p>
+              </div>
+            <div class="research-card-detail mt-0 md:mt-4 w-full max-w-full opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-[max-height,opacity] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none text-center" style="max-height: 0; opacity: 0;" aria-hidden="true">
               <p>A pilot resistance-training intervention in older adults reported a ~38% improvement in subjective sleep quality (PSQI), alongside meaningful strength gains—suggesting strength work can directly improve sleep.</p>
               <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3887339/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs uppercase tracking-[0.18em] text-zinc-300 hover:text-cobalt-light hover:underline pointer-events-auto">View Study →</a>
             </div>
-            <p class="mt-4 block text-[0.65rem] uppercase tracking-widest text-zinc-500 md:hidden">Tap to reveal detail •</p>
+            </div>
+            <p class="mt-2 block text-[0.6rem] uppercase tracking-widest text-zinc-500 max-md:block md:hidden">Tap for detail •</p>
           </article>
 
           <article
-            class="group research-card reveal-item relative flex flex-col justify-between overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-8 md:p-10 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full h-[280px] md:h-[300px] cursor-pointer origin-center z-0"
+            class="group research-card reveal-item relative flex flex-col overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/40 p-5 sm:p-6 md:p-8 transition-[transform,opacity,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] w-full min-h-[200px] h-[220px] sm:h-[240px] md:h-[300px] cursor-pointer origin-center z-0 will-change-[transform,opacity]"
             data-research-card
             tabindex="0"
             aria-expanded="false"
           >
-            <div class="card-header-wrapper space-y-4 transition-all duration-500">
-              <p class="text-[0.65rem] font-display font-medium uppercase tracking-[0.3em] text-cobalt-light">Longevity</p>
-              <p class="font-display text-5xl font-black leading-none text-white md:text-6xl">+4–6 yrs</p>
-              <p class="text-base text-zinc-300 md:text-lg">Extra years of life from higher midlife fitness</p>
-            </div>
-            <div class="research-card-detail opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none mt-0" style="max-height: 0; opacity: 0;" aria-hidden="true">
+            <div class="card-inner flex h-full min-h-0 w-full flex-col items-center justify-center text-center">
+              <div class="card-collapsed flex w-full max-w-full flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4">
+              <p class="card-category max-w-full truncate font-display font-medium uppercase tracking-[0.28em] text-cobalt-light text-[0.6rem] sm:text-[0.65rem]">Longevity</p>
+              <p class="card-stat font-display font-black leading-none text-white">+4–6 yrs</p>
+              <p class="card-headline max-w-full px-1 leading-snug text-zinc-300 line-clamp-3">Extra years of life from higher midlife fitness</p>
+              </div>
+            <div class="research-card-detail mt-0 md:mt-4 w-full max-w-full opacity-0 max-h-0 overflow-hidden text-sm text-zinc-400 transition-[max-height,opacity] duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] space-y-4 pointer-events-none text-center" style="max-height: 0; opacity: 0;" aria-hidden="true">
               <p>In a 46-year follow-up, men with higher midlife cardiorespiratory fitness were estimated to live ~4.9–6.4 years longer than those below normal fitness, reinforcing CRF as a powerful longevity lever.</p>
               <a href="https://www.jacc.org/doi/10.1016/j.jacc.2018.06.045" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs uppercase tracking-[0.18em] text-zinc-300 hover:text-cobalt-light hover:underline pointer-events-auto">View Study →</a>
             </div>
-            <p class="mt-4 block text-[0.65rem] uppercase tracking-widest text-zinc-500 md:hidden">Tap to reveal detail •</p>
+            </div>
+            <p class="mt-2 block text-[0.6rem] uppercase tracking-widest text-zinc-500 max-md:block md:hidden">Tap for detail •</p>
           </article>
         </div>
+
       </div>
     </section>
 
@@ -551,6 +568,30 @@
     </section>
 
   </main>
+
+  <!-- Research card mobile mini-tab (≤768px) -->
+  <div
+    id="research-mobile-modal"
+    class="research-mobile-modal"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="research-mobile-modal-title"
+  >
+    <div class="research-mobile-backdrop" data-modal-backdrop aria-hidden="true"></div>
+    <div class="research-mobile-panel">
+      <button
+        type="button"
+        class="research-mobile-close"
+        aria-label="Close detail"
+      >
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+      <div class="research-mobile-content" id="research-mobile-modal-title"></div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="border-t border-zinc-800 bg-zinc-950 py-10">

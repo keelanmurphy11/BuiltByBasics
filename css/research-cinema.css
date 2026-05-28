@@ -1,23 +1,7 @@
-/* Cinema Focus — research grid interactions */
+/* Research fact cards — cinema focus + mobile mini-tab */
 
 #why {
-  overflow: hidden;
-}
-
-#why::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(9, 9, 11, 0.34);
-  opacity: 0;
-  transition: opacity 500ms cubic-bezier(0.25, 1, 0.5, 1);
-  transition-delay: 0ms;
-  pointer-events: none;
-  z-index: 1;
-}
-
-#why.has-card-active::before {
-  opacity: 1;
+  overflow: visible;
 }
 
 #research-grid,
@@ -26,88 +10,261 @@
   z-index: 2;
 }
 
+/* —— Card base —— */
 .research-card {
   opacity: 1;
-  filter: none;
-  transform: scale(1) translateY(0);
+  transform: scale(1) translateZ(0);
   z-index: 0;
+  transition-property: transform, opacity, box-shadow, border-color;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
   transition-delay: 0ms !important;
+  will-change: transform, opacity;
 }
 
+.research-card .card-inner,
 .research-card .research-card-detail,
-.research-card .card-header-wrapper {
+.research-card .card-collapsed {
   transition-delay: 0ms !important;
 }
 
-/* Dim every card in one beat when any card is active/open */
-#research-grid.has-active .research-card {
-  opacity: 0.3;
-  transform: scale(0.98);
-  filter: blur(0.5px);
+.card-inner {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
 }
 
-#research-grid.has-active .research-card.is-active,
-.research-card.is-open {
-  opacity: 1;
-  transform: scale(1.04) translateY(-0.25rem);
-  filter: none;
-  z-index: 20;
-  height: auto;
-  min-height: 280px;
-  overflow: visible;
-  border-color: rgb(63, 63, 70);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+.card-category {
+  letter-spacing: 0.28em;
 }
 
-@media (min-width: 768px) {
-  #research-grid.has-active .research-card.is-active,
-  .research-card.is-open {
-    min-height: 300px;
-  }
+.card-stat {
+  font-size: clamp(1.35rem, 6.5vw, 3.75rem);
 }
 
-.research-card.is-active .research-card-detail.is-expanded,
-.research-card.is-open .research-card-detail.is-expanded {
-  pointer-events: auto;
+.card-headline {
+  font-size: clamp(0.65rem, 2.35vw, 1.125rem);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
-@media (min-width: 1024px) {
-  #research-grid.has-active .research-card.is-active,
-  .research-card.is-open {
-    grid-column: span 2;
-    min-height: min(72vh, 38rem);
-  }
-}
-
-@media (min-width: 1280px) {
-  #research-grid.has-active .research-card.is-active,
-  .research-card.is-open {
-    grid-column: span 3;
-    min-height: min(78vh, 42rem);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #why::before,
-  .research-card,
-  .research-card-detail,
-  .card-header-wrapper {
-    transition-duration: 160ms !important;
-  }
-
-  #research-grid.has-active .research-card,
-  #research-grid.has-active .research-card.is-active,
-  .research-card.is-open {
-    transform: none !important;
-    filter: none !important;
+/* Desktop: hide inline detail on mobile */
+@media (max-width: 768px) {
+  .research-card .research-card-detail {
+    display: none !important;
   }
 
   #research-grid.has-active .research-card {
-    opacity: 0.35;
+    opacity: 0.4;
+    transform: scale(0.98) translateZ(0);
   }
 
-  #research-grid.has-active .research-card.is-active,
-  .research-card.is-open {
+  #research-grid.has-active .research-card.is-modal-selected {
     opacity: 1;
+    transform: scale(1) translateZ(0);
+  }
+}
+
+/* Desktop inline expansion + fade (non-active only) */
+@media (min-width: 769px) {
+  #why.has-card-active::before {
+    opacity: 1;
+  }
+
+  #why::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(9, 9, 11, 0.32);
+    opacity: 0;
+    transition: opacity 500ms cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  #research-grid.has-active .research-card:not(.is-active) {
+    opacity: 0.35;
+    transform: scale(0.98) translateZ(0);
+  }
+
+  #research-grid.has-active .research-card.is-active {
+    opacity: 1;
+    transform: scale(1.02) translateY(-0.25rem) translateZ(0);
+    z-index: 20;
+    height: auto;
+    min-height: 300px;
+    overflow: visible;
+    border-color: rgb(63, 63, 70);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+  }
+
+  .research-card.is-active .card-inner {
+    justify-content: center;
+    gap: 1rem;
+    padding-block: 0.5rem;
+  }
+
+  .research-card.is-active .research-card-detail.is-expanded {
+    pointer-events: auto;
+  }
+
+  .research-card-detail {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .research-card-detail p {
+    font-size: clamp(0.8125rem, 1.1vw, 0.9375rem);
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (min-width: 769px) {
+  .research-mobile-modal {
+    display: none !important;
+  }
+}
+
+/* —— Mobile mini-tab modal —— */
+.research-mobile-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 500ms cubic-bezier(0.25, 1, 0.5, 1),
+    visibility 500ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.research-mobile-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.research-mobile-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 9, 11, 0.78);
+  opacity: 0;
+  transition: opacity 500ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.research-mobile-modal.is-open .research-mobile-backdrop {
+  opacity: 1;
+}
+
+.research-mobile-panel {
+  position: relative;
+  z-index: 1;
+  width: min(90vw, 22rem);
+  max-height: min(85vh, 32rem);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(63, 63, 70);
+  background: rgb(24, 24, 27);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.72);
+  transform: scale(0.94) translateZ(0);
+  opacity: 0;
+  transition: transform 500ms cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 500ms cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, opacity;
+}
+
+.research-mobile-modal.is-open .research-mobile-panel {
+  transform: scale(1) translateZ(0);
+  opacity: 1;
+}
+
+.research-mobile-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  display: flex;
+  height: 2.25rem;
+  width: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgb(63, 63, 70);
+  background: rgba(9, 9, 11, 0.85);
+  color: rgb(212, 212, 216);
+  transition: color 200ms ease, border-color 200ms ease, background-color 200ms ease;
+}
+
+.research-mobile-close:hover {
+  border-color: rgb(59, 130, 246);
+  color: rgb(255, 255, 255);
+  background: rgba(37, 99, 235, 0.15);
+}
+
+.research-mobile-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 2.75rem 1.25rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+}
+
+.research-mobile-content .card-category {
+  font-size: 0.6rem;
+}
+
+.research-mobile-content .card-stat {
+  font-size: clamp(2rem, 12vw, 3rem);
+}
+
+.research-mobile-content .card-headline {
+  font-size: clamp(0.875rem, 4vw, 1.0625rem);
+  -webkit-line-clamp: unset;
+  display: block;
+  overflow: visible;
+}
+
+.research-mobile-content .research-mobile-detail {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgb(161, 161, 170);
+  overflow-wrap: anywhere;
+}
+
+body.research-modal-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .research-card,
+  .research-card-detail,
+  .research-mobile-modal,
+  .research-mobile-panel,
+  .research-mobile-backdrop,
+  #why::before {
+    transition-duration: 160ms !important;
+  }
+
+  #research-grid.has-active .research-card:not(.is-active),
+  #research-grid.has-active .research-card.is-active {
+    transform: none !important;
+  }
+
+  .research-mobile-panel {
+    transform: none !important;
   }
 }
