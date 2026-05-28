@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basics of Training — KM Training</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cobalt: { DEFAULT: '#2563eb', light: '#3b82f6', dark: '#1d4ed8', glow: '#60a5fa' },
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+            body: ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reveal.css" />
+  <style>
+    .nav-scrolled {
+      background-color: rgba(9, 9, 11, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgb(39, 39, 42);
+    }
+    .callout { border-left: 4px solid #2563eb; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white font-body antialiased selection:bg-cobalt selection:text-white">
+
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-md transition-all duration-300">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8 lg:px-10">
+      <a href="index.html" class="font-display text-sm font-semibold uppercase tracking-[0.2em] text-white sm:text-base">KM<span class="text-cobalt-light">.</span></a>
+      <div class="flex items-center gap-3 sm:gap-8 lg:gap-10">
+        <a href="basics.html" class="font-display text-[0.6rem] font-medium uppercase tracking-widest text-white sm:text-[0.7rem]">Basics of Training</a>
+        <a href="library.html" class="font-display text-[0.6rem] font-medium uppercase tracking-widest text-zinc-400 transition-colors hover:text-white sm:text-[0.7rem]">Library</a>
+        <a href="coaching.html" class="rounded-full bg-cobalt px-5 py-2.5 font-display text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-cobalt/25 transition-all hover:bg-cobalt-light sm:px-7 sm:py-3 sm:text-sm">Coaching</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-24">
+    <!-- Page hero -->
+    <section class="border-b border-zinc-800 py-20 sm:py-28">
+      <div data-reveal-stagger class="mx-auto max-w-4xl px-5 sm:px-8 lg:px-10">
+        <p class="reveal-item font-display text-xs font-medium uppercase tracking-[0.35em] text-cobalt-light">Core Curriculum</p>
+        <h1 class="reveal-item mt-4 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">Basics of Training</h1>
+        <p class="reveal-item mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
+          The essential frameworks for cardio, strength, fat loss, and nutrition—stripped of jargon, built for real life.
+        </p>
+        <nav class="reveal-item mt-10 flex flex-wrap gap-3 border-t border-zinc-800 pt-8">
+          <a href="#cardio" class="rounded-full border border-zinc-800 px-4 py-2 font-display text-xs uppercase tracking-wider text-zinc-400 transition-colors hover:border-cobalt hover:text-white">Cardio</a>
+          <a href="#strength" class="rounded-full border border-zinc-800 px-4 py-2 font-display text-xs uppercase tracking-wider text-zinc-400 transition-colors hover:border-cobalt hover:text-white">Strength</a>
+          <a href="#fat-loss" class="rounded-full border border-zinc-800 px-4 py-2 font-display text-xs uppercase tracking-wider text-zinc-400 transition-colors hover:border-cobalt hover:text-white">Fat Loss</a>
+          <a href="#nutrition" class="rounded-full border border-zinc-800 px-4 py-2 font-display text-xs uppercase tracking-wider text-zinc-400 transition-colors hover:border-cobalt hover:text-white">Nutrition</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 1: CARDIO ========== -->
+    <section id="cardio" class="border-b border-zinc-800 py-20 sm:py-28">
+      <div data-reveal-stagger class="mx-auto max-w-4xl px-5 sm:px-8 lg:px-10">
+        <span class="reveal-item font-display text-xs uppercase tracking-[0.3em] text-zinc-500">01</span>
+        <h2 class="reveal-item mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">Cardiorespiratory Fitness</h2>
+        <p class="reveal-item mt-2 font-display text-sm uppercase tracking-widest text-zinc-600">VO₂ Max &amp; Why It Matters</p>
+
+        <div class="reveal-item prose-custom mt-10 space-y-6 text-base leading-relaxed text-zinc-300 sm:text-lg">
+          <p>VO₂ max is the main measure of cardiorespiratory fitness. Simply put, your VO₂ max score indicates how good your body is at utilizing oxygen during exercise.</p>
+          <p>So why is VO₂ max so important? Higher VO₂ max scores are associated with overall health improvements and reduced all-cause mortality. Studies have found VO₂ max to be more predictive of longevity than factors like smoking, diabetes, and coronary artery disease.</p>
+          <p>Measuring your VO₂ max is not necessary. The main takeaway is the positive effects that improved cardiovascular fitness can have on your lifespan. If interested, estimating VO₂ max can be done with simple tests or a smartwatch/fitness tracker.</p>
+        </div>
+
+        <div class="reveal-item callout mt-12 rounded-sm border border-zinc-700 bg-zinc-900 p-8 sm:p-10">
+          <h3 class="font-display text-sm font-semibold uppercase tracking-widest text-cobalt-light">Essential Principles</h3>
+          <ul class="mt-6 space-y-4">
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span>Cardiorespiratory fitness is one of the strongest predictors of lifespan—prioritize it.</li>
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span>Find movement you enjoy; consistency beats the perfect protocol.</li>
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span>Most sessions at easy–moderate intensity (conversation pace); add some higher-intensity work weekly.</li>
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span>Ignore fad zone jargon unless you have a specific performance goal.</li>
+          </ul>
+        </div>
+
+        <h3 class="reveal-item mt-14 font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">Improving Cardiorespiratory Fitness</h3>
+        <div class="reveal-item mt-4 rounded-sm border border-zinc-800 bg-zinc-900/50 px-6 py-5 text-sm text-zinc-400">
+          <strong class="text-zinc-200">Please Note:</strong> If you have any cardiac issues, consult a healthcare professional before engaging in rigorous physical activity.
+        </div>
+        <ul class="reveal-item mt-8 space-y-4">
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span><span><strong class="text-white">Find what you enjoy:</strong> Dancing, hiking, tennis, spin—anything that elevates heart rate for a sustained period works.</span></li>
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span><span><strong class="text-white">Make it entertaining:</strong> Podcasts, music, TV on the treadmill, or a training partner for accountability and enjoyment.</span></li>
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span><span><strong class="text-white">Don't get bogged down in jargon:</strong> Terms like "fat burning zone" or "zone 3 cardio" have limited practical use for most people.</span></li>
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span><span><strong class="text-white">The ideal intensity mix:</strong> Spend most time at easy–moderate intensity; include some higher-intensity sessions to challenge your cardiorespiratory system.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 2: STRENGTH ========== -->
+    <section id="strength" class="border-b border-zinc-800 py-20 sm:py-28">
+      <div data-reveal-stagger class="mx-auto max-w-4xl px-5 sm:px-8 lg:px-10">
+        <span class="reveal-item font-display text-xs uppercase tracking-[0.3em] text-zinc-500">02</span>
+        <h2 class="reveal-item mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">Strength Training &amp; Muscle Mass</h2>
+
+        <div class="reveal-item prose-custom mt-10 space-y-6 text-base leading-relaxed text-zinc-300 sm:text-lg">
+          <p>Studies show a significant correlation between muscle mass, strength, and mortality. Whether direct cause or knock-on effect, the outcome is clear: improved muscle mass and strength help you stay physically active as you age, reducing mortality risk and improving quality of life.</p>
+          <p>Strength training prevents osteoporosis, and increased muscle mass aids weight management by raising your BMR—the calories your body burns at rest each day.</p>
+        </div>
+
+        <div class="reveal-item callout mt-12 rounded-sm border border-zinc-700 bg-zinc-900 p-8 sm:p-10">
+          <h3 class="font-display text-sm font-semibold uppercase tracking-widest text-cobalt-light">Essential Principles</h3>
+          <ul class="mt-6 space-y-4">
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span>Train each muscle group <strong class="text-white">twice per week</strong> (two full-body sessions is enough).</li>
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span>Train within <strong class="text-white">3 reps of failure</strong> on every set—intensity drives adaptation.</li>
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span>Apply <strong class="text-white">progressive overload</strong> each block: more reps, sets, or weight.</li>
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span>Use solid technique; <strong class="text-white">8–12 reps × 2–3 sets</strong> is a reliable default.</li>
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span>Rest at least one minute between sets; at least one full day before training the same muscles again.</li>
+          </ul>
+        </div>
+
+        <h3 class="reveal-item mt-14 font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">Who Should Be Strength Training?</h3>
+        <p class="reveal-item mt-4 text-lg font-medium text-white">Everyone.</p>
+        <ul class="reveal-item mt-6 space-y-4 text-zinc-300">
+          <li class="check-item flex gap-3"><span class="check-icon"></span><span><strong class="text-white">Age-related decline:</strong> Muscle loss can begin as early as thirty—approximately 3–8% per decade after 30.</span></li>
+          <li class="check-item flex gap-3"><span class="check-icon"></span><span><strong class="text-white">The risk of inaction:</strong> Unaddressed loss leads to difficulty with daily tasks, fragility, falls, and loss of independence.</span></li>
+          <li class="check-item flex gap-3"><span class="check-icon"></span><span><strong class="text-white">It's never too late:</strong> You can slow decline, build a base now, or improve strength and function at any age.</span></li>
+          <li class="check-item flex gap-3"><span class="check-icon"></span><span><strong class="text-white">Cardiovascular support:</strong> Muscle preserves your ability to train your heart and lungs—the biggest lifespan indicators.</span></li>
+        </ul>
+
+        <h3 class="reveal-item mt-14 font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">How to Strength Train</h3>
+        <p class="reveal-item mt-4 text-zinc-300">Weight training is simple when you focus on five core principles: <strong class="text-white">Frequency, Intensity, Progressive Overload, Technique, and Rest.</strong></p>
+
+        <div class="reveal-item mt-10 space-y-12">
+          <div>
+            <h4 class="font-display text-lg font-semibold text-cobalt-light">1. Frequency</h4>
+            <ul class="mt-4 space-y-3">
+              <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Train each muscle group twice a week—two 45–60 minute full-body sessions with compound movements is plenty.</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-display text-lg font-semibold text-cobalt-light">2. Intensity</h4>
+            <ul class="mt-4 space-y-3">
+              <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Push close to failure—the point where you could not do another rep with good form.</li>
+              <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Occasionally take a set to absolute failure to calibrate effort; otherwise stay within 3 reps of failure.</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-display text-lg font-semibold text-cobalt-light">3. Progressive Overload</h4>
+            <ul class="mt-4 space-y-3">
+              <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Add reps, sets, or weight over time so intensity stays high as you adapt.</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-display text-lg font-semibold text-cobalt-light">4. Technique</h4>
+            <ul class="mt-4 space-y-3">
+              <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Lift explosively, lower under control (at least one second on the eccentric).</li>
+              <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Rep count matters less than proximity to failure; 8–12 reps × 2–3 sets is a practical default.</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-display text-lg font-semibold text-cobalt-light">5. Rest</h4>
+            <ul class="mt-4 space-y-3">
+              <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Rest at least one minute between sets; one full day before retraining the same muscles.</li>
+              <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Prioritize sleep and protein in recovery. Soreness is not required for growth.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="reveal-item mt-14 font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">How to Make Strength Training Enjoyable</h3>
+        <ul class="reveal-item mt-6 space-y-4">
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Music, progress tracking (e.g. RepCount), gym-only podcasts or shows.</li>
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>A gym buddy for fun and accountability; reward yourself after sessions (e.g. coffee shop ritual).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 3: FAT LOSS ========== -->
+    <section id="fat-loss" class="border-b border-zinc-800 py-20 sm:py-28">
+      <div data-reveal-stagger class="mx-auto max-w-4xl px-5 sm:px-8 lg:px-10">
+        <span class="reveal-item font-display text-xs uppercase tracking-[0.3em] text-zinc-500">03</span>
+        <h2 class="reveal-item mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">Fat Loss Dynamics</h2>
+
+        <div class="reveal-item prose-custom mt-10 space-y-6 text-base leading-relaxed text-zinc-300 sm:text-lg">
+          <p>Fat loss is not a moral project—it is physics plus patience. You need a sustained calorie deficit: you consume slightly fewer calories than you burn over time. The mistake most people make is chasing speed; aggressive deficits destroy adherence, muscle, and energy.</p>
+          <p>Sustainable fat loss looks like a gentle downward trend on the scale and in how clothes fit—not a dramatic drop in week one followed by a rebound. Track trends over weeks, not single days. Daily weight fluctuates with water, salt, sleep, and stress.</p>
+        </div>
+
+        <div class="reveal-item callout mt-12 rounded-sm border border-zinc-700 bg-zinc-900 p-8 sm:p-10">
+          <h3 class="font-display text-sm font-semibold uppercase tracking-widest text-cobalt-light">Essential Principles</h3>
+          <ul class="mt-6 space-y-4">
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span>Create a <strong class="text-white">gentle calorie deficit</strong>—small enough to sustain for months.</li>
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span>Aim for <strong class="text-white">slow trends</strong> (roughly 0.25–0.75% body weight per week for many people).</li>
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span>Keep <strong class="text-white">protein high</strong> and keep lifting—muscle is the asset you are protecting.</li>
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span>Use data (scale trend, photos, measurements)—not guilt or miracle weeks.</li>
+          </ul>
+        </div>
+
+        <h3 class="reveal-item mt-14 font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">Building Your Deficit</h3>
+        <ul class="reveal-item mt-6 space-y-4">
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span><span><strong class="text-white">Start with food:</strong> Reduce portions slightly, swap calorie-dense extras, or structure meals—don't slash everything at once.</span></li>
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span><span><strong class="text-white">Add movement if needed:</strong> Extra steps or cardio can help, but diet does most of the work; don't out-train a poor deficit.</span></li>
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span><span><strong class="text-white">Diet breaks &amp; maintenance:</strong> Planned higher-calorie weeks can improve adherence and hormones on long cuts—consultancy clients get this mapped to their calendar.</span></li>
+        </ul>
+
+        <h3 class="reveal-item mt-14 font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">What to Ignore</h3>
+        <ul class="reveal-item mt-6 space-y-4">
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Detox teas, crash diets, and "metabolism hacks" without evidence.</li>
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Daily weigh-ins as pass/fail—look at rolling averages.</li>
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Cutting carbs or fats entirely—unnecessary for most people (see Nutrition).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== SECTION 4: NUTRITION ========== -->
+    <section id="nutrition" class="py-20 sm:py-28">
+      <div data-reveal-stagger class="mx-auto max-w-4xl px-5 sm:px-8 lg:px-10">
+        <span class="reveal-item font-display text-xs uppercase tracking-[0.3em] text-zinc-500">04</span>
+        <h2 class="reveal-item mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">Nutrition</h2>
+        <p class="reveal-item mt-2 font-display text-sm uppercase tracking-widest text-zinc-600">Simple Rules That Scale</p>
+
+        <div class="reveal-item prose-custom mt-10 space-y-6 text-base leading-relaxed text-zinc-300 sm:text-lg">
+          <p>Nutrition culture thrives on fear and extremes. The basics are boring—and that is why they work. You do not need a branded diet; you need a handful of habits you can repeat for years.</p>
+        </div>
+
+        <div class="reveal-item callout mt-12 rounded-sm border border-zinc-700 bg-zinc-900 p-8 sm:p-10">
+          <h3 class="font-display text-sm font-semibold uppercase tracking-widest text-cobalt-light">Essential Principles</h3>
+          <ul class="mt-6 space-y-4">
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span><strong class="text-white">Prioritize protein</strong> at every meal—anchor for muscle, satiety, and recovery.</li>
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span><strong class="text-white">Keep it simple</strong>—whole foods most of the time; flexibility the rest.</li>
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span><strong class="text-white">Carbs are not the enemy</strong>—they fuel training and daily life; match intake to activity.</li>
+            <li class="check-item flex gap-3 text-sm text-zinc-300 sm:text-base"><span class="check-icon"></span><strong class="text-white">Enjoy your food</strong>—adherence beats perfection; social meals are part of a real life.</li>
+          </ul>
+        </div>
+
+        <h3 class="reveal-item mt-14 font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">Protein First</h3>
+        <ul class="reveal-item mt-6 space-y-4">
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Target a consistent daily protein intake aligned with your goals (often ~1.6–2.2 g per kg body weight for active people—adjust with a professional if needed).</li>
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Distribute across meals; lean meats, fish, eggs, dairy, legumes, and quality powders all count.</li>
+        </ul>
+
+        <h3 class="reveal-item mt-14 font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">Carbs, Fats &amp; Flexibility</h3>
+        <ul class="reveal-item mt-6 space-y-4">
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Carbohydrates support hard training and cognitive work—reduce them when in a deficit if calories require it, not because they are "bad."</li>
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Dietary fats are essential for hormones and health—include nuts, olive oil, avocados, and fatty fish.</li>
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Ignore fad eliminations unless you have a medical reason; consistency and total calories drive fat loss.</li>
+        </ul>
+
+        <h3 class="reveal-item mt-14 font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">Enjoyment &amp; Adherence</h3>
+        <ul class="reveal-item mt-6 space-y-4">
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Plan meals you actually want to eat; rigid meal plans fail when life gets busy.</li>
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Restaurant and social eating are normal—bank slightly lighter meals elsewhere or order protein-forward options.</li>
+          <li class="check-item flex gap-3 text-zinc-300"><span class="check-icon"></span>Food is fuel and pleasure; neither extreme serves long-term health.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="border-t border-zinc-800 bg-zinc-900/30 py-16">
+      <div data-reveal-stagger class="mx-auto max-w-4xl px-5 text-center sm:px-8 lg:px-10">
+        <p class="reveal-item text-zinc-400">Want bespoke implementation for your schedule and metrics?</p>
+        <a href="coaching.html" class="reveal-item mt-6 inline-block rounded-sm bg-cobalt px-10 py-4 font-display text-sm font-bold uppercase tracking-[0.15em] text-white transition-colors hover:bg-cobalt-light">Apply for Personal Consultancy</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-zinc-800 bg-zinc-950 py-10">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 text-center sm:flex-row sm:px-8 sm:text-left lg:px-10">
+      <p class="font-display text-xs uppercase tracking-widest text-zinc-600">KM Training © 2026</p>
+      <p class="text-xs text-zinc-600">Education free. Consultancy bespoke.</p>
+    </div>
+  </footer>
+
+  <style>
+    .check-icon {
+      flex-shrink: 0;
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-top: 0.15rem;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%232563eb'%3E%3Cpath fill-rule='evenodd' d='M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z' clip-rule='evenodd'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+  </style>
+  <script>
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('nav-scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
+  <script src="js/scroll-reveal.js"></script>
+</body>
+</html>

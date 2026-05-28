@@ -1,0 +1,113 @@
+/* Cinema Focus — research grid interactions */
+
+#why {
+  overflow: hidden;
+}
+
+#why::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 9, 11, 0.34);
+  opacity: 0;
+  transition: opacity 500ms cubic-bezier(0.25, 1, 0.5, 1);
+  transition-delay: 0ms;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#why.has-card-active::before {
+  opacity: 1;
+}
+
+#research-grid,
+#research-grid .research-card {
+  position: relative;
+  z-index: 2;
+}
+
+.research-card {
+  opacity: 1;
+  filter: none;
+  transform: scale(1) translateY(0);
+  z-index: 0;
+  transition-delay: 0ms !important;
+}
+
+.research-card .research-card-detail,
+.research-card .card-header-wrapper {
+  transition-delay: 0ms !important;
+}
+
+/* Dim every card in one beat when any card is active/open */
+#research-grid.has-active .research-card {
+  opacity: 0.3;
+  transform: scale(0.98);
+  filter: blur(0.5px);
+}
+
+#research-grid.has-active .research-card.is-active,
+.research-card.is-open {
+  opacity: 1;
+  transform: scale(1.04) translateY(-0.25rem);
+  filter: none;
+  z-index: 20;
+  height: auto;
+  min-height: 280px;
+  overflow: visible;
+  border-color: rgb(63, 63, 70);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+}
+
+@media (min-width: 768px) {
+  #research-grid.has-active .research-card.is-active,
+  .research-card.is-open {
+    min-height: 300px;
+  }
+}
+
+.research-card.is-active .research-card-detail.is-expanded,
+.research-card.is-open .research-card-detail.is-expanded {
+  pointer-events: auto;
+}
+
+@media (min-width: 1024px) {
+  #research-grid.has-active .research-card.is-active,
+  .research-card.is-open {
+    grid-column: span 2;
+    min-height: min(72vh, 38rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  #research-grid.has-active .research-card.is-active,
+  .research-card.is-open {
+    grid-column: span 3;
+    min-height: min(78vh, 42rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #why::before,
+  .research-card,
+  .research-card-detail,
+  .card-header-wrapper {
+    transition-duration: 160ms !important;
+  }
+
+  #research-grid.has-active .research-card,
+  #research-grid.has-active .research-card.is-active,
+  .research-card.is-open {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  #research-grid.has-active .research-card {
+    opacity: 0.35;
+  }
+
+  #research-grid.has-active .research-card.is-active,
+  .research-card.is-open {
+    opacity: 1;
+  }
+}
