@@ -13,6 +13,11 @@
   transform: translate3d(0, 0, 0);
 }
 
+.card-hover.reveal-item:not(.is-visible) {
+  opacity: 0;
+  transform: translate3d(0, 3rem, 0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal-item {
     opacity: 1;
