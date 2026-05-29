@@ -130,6 +130,17 @@
     .philosophy-manifesto.is-visible::after {
       width: min(12rem, 40%);
     }
+    @media (min-width: 1024px) {
+      .philosophy-manifesto::after {
+        bottom: -1.25rem;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.72), transparent);
+        box-shadow: 0 0 28px rgba(37, 99, 235, 0.28);
+      }
+      .philosophy-manifesto.is-visible::after {
+        width: min(16rem, 52%);
+      }
+    }
     .philosophy-flow-line {
       height: 1px;
       background: rgb(39 39 42 / 0.4);
@@ -290,15 +301,14 @@
             <!-- Supporting copy — top-aligned with label, centered in right band -->
             <div class="lg:col-start-8 lg:col-span-5 lg:flex lg:justify-center lg:pt-0">
               <div class="reveal-item w-full max-w-sm space-y-5 text-[0.9375rem] leading-[1.8] tracking-normal text-zinc-400 sm:max-w-md sm:space-y-6 sm:text-base sm:leading-[1.85] lg:max-w-[18rem] lg:tracking-wide">
-                <p>Social media fitness thrives on confusion.</p>
+                <p>The online fitness industry thrives on confusion.</p>
                 <p>
                   The more complicated fitness feels,<br class="hidden sm:inline" />
                   the longer people keep searching,<br class="hidden sm:inline" />
-                  buying, and consuming.
+                  consuming, and buying.
                 </p>
                 <p>
-                  Real progress comes from mastering<br class="hidden sm:inline" />
-                  simple things consistently.
+                  Real progress comes from practicing simple methods consistently.
                 </p>
               </div>
             </div>
@@ -317,8 +327,11 @@
           data-reveal-stagger
           class="border-y border-zinc-800/40 px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24"
         >
-          <p class="reveal-item philosophy-manifesto mx-auto max-w-3xl text-center font-display text-xl font-medium leading-snug tracking-tight text-white sm:text-2xl md:text-3xl lg:max-w-4xl lg:text-[2rem] lg:leading-snug">
-            This platform strips away noise and gives you the fundamentals that actually matter.
+          <p class="reveal-item mx-auto max-w-3xl text-center font-display text-xl font-medium leading-snug tracking-tight text-white sm:text-2xl md:text-3xl lg:max-w-4xl lg:text-[2rem] lg:leading-snug">
+            Let's strip away all the bullshit <br> 
+          </p>
+          <p class="reveal-item philosophy-manifesto mx-auto max-w-3xl text-center font-display text-xl font-medium leading-snug tracking-tight text-white sm:text-2xl md:text-3xl lg:max-w-4xl lg:text-[2.5rem] lg:leading-snug">
+            Simple Methods, Real Results
           </p>
         </div>
       </div>
@@ -333,16 +346,16 @@
           </div>
 
           <div
-            class="grid gap-12 lg:grid-cols-3 lg:gap-0"
+            class="grid gap-9 lg:grid-cols-3 lg:gap-0"
             role="list"
           >
 
           <!-- 01 Foundation -->
           <article
-            class="reveal-item pipeline-step relative border-b border-zinc-800/40 pb-16 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-10 xl:pr-14"
+            class="reveal-item pipeline-step relative border-b border-zinc-800/40 pb-12 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-10 xl:pr-14"
             role="listitem"
           >
-            <span class="font-display text-4xl font-bold leading-none text-cobalt/50 sm:text-5xl" aria-hidden="true">01</span>
+            <span class="font-display text-4xl font-bold leading-none text-cobalt/70 sm:text-5xl" aria-hidden="true">01</span>
             <h3 class="mt-4 font-display text-xl font-semibold uppercase tracking-wide text-white sm:text-2xl">Foundation</h3>
             <p class="mt-6 max-w-xs text-base leading-relaxed text-white sm:text-lg lg:mt-8">
               Nail the basics of strength training, cardiorespiratory training, and nutrition.
@@ -358,10 +371,10 @@
 
           <!-- 02 Consistency -->
           <article
-            class="reveal-item pipeline-step relative border-b border-zinc-800/40 pb-16 lg:border-b-0 lg:border-r lg:px-10 lg:pb-0 xl:px-14"
+            class="reveal-item pipeline-step relative border-b border-zinc-800/40 pb-12 lg:border-b-0 lg:border-r lg:px-10 lg:pb-0 xl:px-14"
             role="listitem"
           >
-            <span class="font-display text-4xl font-bold leading-none text-cobalt/50 sm:text-5xl" aria-hidden="true">02</span>
+            <span class="font-display text-4xl font-bold leading-none text-cobalt/70 sm:text-5xl" aria-hidden="true">02</span>
             <h3 class="mt-4 font-display text-xl font-semibold uppercase tracking-wide text-white sm:text-2xl">Consistency</h3>
             <p class="mt-6 max-w-xs text-base leading-relaxed text-white sm:text-lg lg:mt-8">
               Small changes compound over time to achieve massive results.
@@ -380,7 +393,7 @@
             class="reveal-item pipeline-step relative pb-0 lg:pl-10 xl:pl-14"
             role="listitem"
           >
-            <span class="font-display text-4xl font-bold leading-none text-cobalt/50 sm:text-5xl" aria-hidden="true">03</span>
+            <span class="font-display text-4xl font-bold leading-none text-cobalt/70 sm:text-5xl" aria-hidden="true">03</span>
             <h3 class="mt-4 font-display text-xl font-semibold uppercase tracking-wide text-white sm:text-2xl">Progression</h3>
             <p class="mt-6 max-w-xs text-base leading-relaxed text-white sm:text-lg lg:mt-8">
               Dive deeper. Learn more. Expand your training horizons.
