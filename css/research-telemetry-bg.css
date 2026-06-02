@@ -69,10 +69,13 @@
 }
 
 #why .research-card {
+  background: transparent;
+}
+
+#why .research-card .card-face {
   background:
-    linear-gradient(145deg, rgba(24, 24, 27, 0.72), rgba(9, 9, 11, 0.54)),
-    rgba(24, 24, 27, 0.5);
-  backdrop-filter: blur(10px);
+    linear-gradient(145deg, rgba(24, 24, 27, 0.88), rgba(9, 9, 11, 0.72)),
+    rgba(24, 24, 27, 0.65);
 }
 
 @media (max-width: 768px) {

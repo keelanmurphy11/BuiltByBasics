@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,14 +22,11 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/logo.css" />
+  <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/reveal.css" />
   <style>
-    .nav-scrolled {
-      background-color: rgba(9, 9, 11, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgb(39, 39, 42);
-    }
     .form-select option {
       background-color: rgb(24, 24, 27);
       color: white;
@@ -43,15 +40,18 @@
     }
   </style>
 </head>
-<body class="bg-zinc-950 text-white font-body antialiased selection:bg-cobalt selection:text-white">
+<body class="font-body antialiased">
 
-  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-md transition-all duration-300">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8 lg:px-10">
-      <a href="index.html" class="font-display text-sm font-semibold uppercase tracking-[0.2em] text-white sm:text-base">KM<span class="text-cobalt-light">.</span></a>
-      <div class="flex items-center gap-3 sm:gap-8 lg:gap-10">
-        <a href="basics.html" class="font-display text-[0.6rem] font-medium uppercase tracking-widest text-zinc-400 transition-colors hover:text-white sm:text-[0.7rem]">Basics of Training</a>
-        <a href="library.html" class="font-display text-[0.6rem] font-medium uppercase tracking-widest text-zinc-400 transition-colors hover:text-white sm:text-[0.7rem]">Library</a>
-        <a href="coaching.html" class="rounded-full bg-cobalt px-5 py-2.5 font-display text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-cobalt/25 transition-all hover:bg-cobalt-light sm:px-7 sm:py-3 sm:text-sm">Coaching</a>
+  <header id="site-header" class="site-header">
+    <nav class="site-header__nav">
+      <a href="index.html" class="logo" aria-label="KM Training home">
+        <span class="logo-main">KM</span>
+        <span class="logo-sub">Training</span>
+      </a>
+      <div class="site-header__links">
+        <a href="basics.html" class="site-nav__link">Basics of Training</a>
+        <a href="library.html" class="site-nav__link">Library</a>
+        <a href="coaching.html" class="site-nav__cta">Coaching</a>
       </div>
     </nav>
   </header>
@@ -302,10 +302,10 @@
     </section>
   </main>
 
-  <footer class="border-t border-zinc-800 bg-zinc-950 py-10">
-    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 text-center sm:flex-row sm:px-8 sm:text-left lg:px-10">
-      <p class="font-display text-xs uppercase tracking-widest text-zinc-600">KM Training © 2026</p>
-      <p class="text-xs text-zinc-600">Education free. Consultancy bespoke.</p>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__text">KM Training © 2026</p>
+      <p class="site-footer__text site-footer__text--plain">Education free. Consultancy bespoke.</p>
     </div>
   </footer>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,126 +22,117 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/logo.css" />
+  <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/reveal.css" />
-  <style>
-    .nav-scrolled {
-      background-color: rgba(9, 9, 11, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgb(39, 39, 42);
-    }
-    .card-locked { opacity: 0.55; }
-    .card-locked:hover { opacity: 0.7; }
-  </style>
+  <link rel="stylesheet" href="css/library.css" />
 </head>
-<body class="bg-zinc-950 text-white font-body antialiased selection:bg-cobalt selection:text-white">
+<body class="library-page font-body antialiased">
 
-  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 border-b border-zinc-800 bg-zinc-950/90 backdrop-blur-md transition-all duration-300">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8 lg:px-10">
-      <a href="index.html" class="font-display text-sm font-semibold uppercase tracking-[0.2em] text-white sm:text-base">KM<span class="text-cobalt-light">.</span></a>
-      <div class="flex items-center gap-3 sm:gap-8 lg:gap-10">
-        <a href="basics.html" class="font-display text-[0.6rem] font-medium uppercase tracking-widest text-zinc-400 transition-colors hover:text-white sm:text-[0.7rem]">Basics of Training</a>
-        <a href="library.html" class="font-display text-[0.6rem] font-medium uppercase tracking-widest text-white sm:text-[0.7rem]">Library</a>
-        <a href="coaching.html" class="rounded-full bg-cobalt px-5 py-2.5 font-display text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-cobalt/25 transition-all hover:bg-cobalt-light sm:px-7 sm:py-3 sm:text-sm">Coaching</a>
+  <header id="site-header" class="site-header">
+    <nav class="site-header__nav">
+      <a href="index.html" class="logo" aria-label="KM Training home">
+        <span class="logo-main">KM</span>
+        <span class="logo-sub">Training</span>
+      </a>
+      <div class="site-header__links">
+        <a href="basics.html" class="site-nav__link">Basics of Training</a>
+        <a href="library.html" class="site-nav__link site-nav__link--active">Library</a>
+        <a href="coaching.html" class="site-nav__cta">Coaching</a>
       </div>
     </nav>
   </header>
 
   <main class="pt-24">
-    <section class="border-b border-zinc-800 py-20 sm:py-28">
+    <section class="library-hero">
       <div data-reveal-stagger class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-        <h1 class="reveal-item font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">The Knowledge Archive</h1>
-        <p class="reveal-item mt-5 max-w-2xl text-lg text-zinc-400 sm:text-xl">
+        <h1 class="reveal-item library-hero__title">The Knowledge Archive</h1>
+        <p class="reveal-item library-hero__intro">
           Everything you need to master your health, for free.
         </p>
       </div>
     </section>
 
-    <section class="py-16 sm:py-24">
+    <section class="library-grid-section">
       <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <div data-reveal-stagger class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
 
-          <!-- Featured: Basics of Training -->
-          <article class="group relative overflow-hidden border border-zinc-800 bg-zinc-900 sm:col-span-2 lg:col-span-3 lg:grid lg:grid-cols-2">
-            <div class="reveal-item relative aspect-[16/10] overflow-hidden lg:aspect-auto lg:min-h-[320px]">
+          <article class="library-featured group reveal-item sm:col-span-2 lg:col-span-3">
+            <div class="library-featured__media">
               <img
                 src="content/images/IMG_9597.jpg"
                 alt="Basics of Training"
-                class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
               />
-              <div class="absolute inset-0 bg-gradient-to-r from-zinc-950/90 via-zinc-950/50 to-transparent lg:from-zinc-950/80"></div>
+              <div class="library-featured__overlay"></div>
             </div>
-            <div class="flex flex-col justify-center border-t border-zinc-800 p-8 sm:p-10 lg:border-l lg:border-t-0">
-              <span class="reveal-item font-display text-xs uppercase tracking-[0.3em] text-cobalt-light">Featured</span>
-              <h2 class="reveal-item mt-3 font-display text-2xl font-semibold sm:text-3xl">Basics of Training</h2>
-              <p class="reveal-item mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
+            <div class="library-featured__body">
+              <span class="library-featured__label">Featured</span>
+              <h2 class="library-featured__title">Basics of Training</h2>
+              <p class="library-featured__summary">
                 The core curriculum—cardio, strength, fat loss, and nutrition. No gatekeeping. Start here.
               </p>
-              <a
-                href="basics.html"
-                class="reveal-item mt-8 inline-flex w-fit items-center gap-2 rounded-sm bg-cobalt px-8 py-3.5 font-display text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-cobalt-light"
-              >
+              <a href="basics.html" class="library-featured__link">
                 Explore
-                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
               </a>
             </div>
           </article>
 
-          <!-- Coming Soon cards -->
-          <article class="reveal-item card-locked relative flex flex-col border border-zinc-800 bg-zinc-950 p-8">
-            <div class="flex items-start justify-between">
-              <span class="font-display text-[0.65rem] uppercase tracking-widest text-zinc-600">Coming Soon</span>
-              <svg class="h-5 w-5 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <article class="reveal-item library-card library-card--locked">
+            <div class="library-card__header">
+              <span class="library-card__badge">Coming Soon</span>
+              <svg class="library-card__lock" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>
               </svg>
             </div>
-            <h3 class="mt-6 font-display text-lg font-semibold uppercase tracking-wide text-zinc-400">Podcasts</h3>
-            <p class="mt-3 flex-1 text-sm text-zinc-600">Long-form conversations on training, longevity, and lifestyle design.</p>
+            <h3 class="library-card__title">Podcasts</h3>
+            <p class="library-card__summary">Long-form conversations on training, longevity, and lifestyle design.</p>
           </article>
 
-          <article class="reveal-item card-locked relative flex flex-col border border-zinc-800 bg-zinc-950 p-8">
-            <div class="flex items-start justify-between">
-              <span class="font-display text-[0.65rem] uppercase tracking-widest text-zinc-600">Coming Soon</span>
-              <svg class="h-5 w-5 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+          <article class="reveal-item library-card library-card--locked">
+            <div class="library-card__header">
+              <span class="library-card__badge">Coming Soon</span>
+              <svg class="library-card__lock" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
             </div>
-            <h3 class="mt-6 font-display text-lg font-semibold uppercase tracking-wide text-zinc-400">Guest Interviews</h3>
-            <p class="mt-3 flex-1 text-sm text-zinc-600">Expert voices across medicine, sport, and behaviour change.</p>
+            <h3 class="library-card__title">Guest Interviews</h3>
+            <p class="library-card__summary">Expert voices across medicine, sport, and behaviour change.</p>
           </article>
 
-          <article class="reveal-item card-locked relative flex flex-col border border-zinc-800 bg-zinc-950 p-8">
-            <div class="flex items-start justify-between">
-              <span class="font-display text-[0.65rem] uppercase tracking-widest text-zinc-600">Coming Soon</span>
-              <svg class="h-5 w-5 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+          <article class="reveal-item library-card library-card--locked">
+            <div class="library-card__header">
+              <span class="library-card__badge">Coming Soon</span>
+              <svg class="library-card__lock" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
             </div>
-            <h3 class="mt-6 font-display text-lg font-semibold uppercase tracking-wide text-zinc-400">Supplement Science</h3>
-            <p class="mt-3 flex-1 text-sm text-zinc-600">Evidence-led breakdowns—what works, what doesn't, and why.</p>
+            <h3 class="library-card__title">Supplement Science</h3>
+            <p class="library-card__summary">Evidence-led breakdowns—what works, what doesn't, and why.</p>
           </article>
 
-          <article class="reveal-item card-locked relative flex flex-col border border-zinc-800 bg-zinc-950 p-8">
-            <div class="flex items-start justify-between">
-              <span class="font-display text-[0.65rem] uppercase tracking-widest text-zinc-600">Member Exclusive</span>
-              <svg class="h-5 w-5 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+          <article class="reveal-item library-card library-card--locked">
+            <div class="library-card__header">
+              <span class="library-card__badge">Member Exclusive</span>
+              <svg class="library-card__lock" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
             </div>
-            <h3 class="mt-6 font-display text-lg font-semibold uppercase tracking-wide text-zinc-400">Case Studies</h3>
-            <p class="mt-3 flex-1 text-sm text-zinc-600">Real consultancy outcomes—schedules, metrics, and lifestyle integration.</p>
+            <h3 class="library-card__title">Case Studies</h3>
+            <p class="library-card__summary">Real consultancy outcomes—schedules, metrics, and lifestyle integration.</p>
           </article>
 
-          <article class="reveal-item card-locked relative flex flex-col border border-zinc-800 bg-zinc-950 p-8">
-            <div class="flex items-start justify-between">
-              <span class="font-display text-[0.65rem] uppercase tracking-widest text-zinc-600">Coming Soon</span>
-              <svg class="h-5 w-5 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+          <article class="reveal-item library-card library-card--locked">
+            <div class="library-card__header">
+              <span class="library-card__badge">Coming Soon</span>
+              <svg class="library-card__lock" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
             </div>
-            <h3 class="mt-6 font-display text-lg font-semibold uppercase tracking-wide text-zinc-400">Recovery &amp; Sleep</h3>
-            <p class="mt-3 flex-1 text-sm text-zinc-600">Practical guides on sleep hygiene, stress, and recovery metrics.</p>
+            <h3 class="library-card__title">Recovery &amp; Sleep</h3>
+            <p class="library-card__summary">Practical guides on sleep hygiene, stress, and recovery metrics.</p>
           </article>
 
-          <article class="reveal-item card-locked relative flex flex-col border border-zinc-800 bg-zinc-950 p-8">
-            <div class="flex items-start justify-between">
-              <span class="font-display text-[0.65rem] uppercase tracking-widest text-zinc-600">Coming Soon</span>
-              <svg class="h-5 w-5 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+          <article class="reveal-item library-card library-card--locked">
+            <div class="library-card__header">
+              <span class="library-card__badge">Coming Soon</span>
+              <svg class="library-card__lock" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
             </div>
-            <h3 class="mt-6 font-display text-lg font-semibold uppercase tracking-wide text-zinc-400">Mobility &amp; Injury</h3>
-            <p class="mt-3 flex-1 text-sm text-zinc-600">Movement prep and return-to-training frameworks.</p>
+            <h3 class="library-card__title">Mobility &amp; Injury</h3>
+            <p class="library-card__summary">Movement prep and return-to-training frameworks.</p>
           </article>
 
         </div>
@@ -149,10 +140,10 @@
     </section>
   </main>
 
-  <footer class="border-t border-zinc-800 bg-zinc-950 py-10">
-    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 text-center sm:flex-row sm:px-8 sm:text-left lg:px-10">
-      <p class="font-display text-xs uppercase tracking-widest text-zinc-600">KM Training © 2026</p>
-      <p class="text-xs text-zinc-600">Education free. Consultancy bespoke.</p>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__text">KM Training © 2026</p>
+      <p class="site-footer__text site-footer__text--plain">Education free. Consultancy bespoke.</p>
     </div>
   </footer>
 

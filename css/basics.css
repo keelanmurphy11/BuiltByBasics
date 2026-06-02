@@ -1,0 +1,751 @@
+/* Basics of Training — full light layout */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.basics-page {
+  --basics-header-offset: 72px;
+  --basics-subnav-height: 52px;
+  --basics-light-bg: var(--page-bg, #f9f9f9);
+  --basics-light-bg-alt: var(--page-bg-alt, #ffffff);
+  --basics-text: var(--page-text, #18181b);
+  --basics-text-strong: var(--page-text-strong, #09090b);
+  --basics-text-muted: var(--page-text-muted, #a1a1aa);
+  --basics-text-subtle: var(--page-text-subtle, #71717a);
+  --basics-border: var(--page-border, #e4e4e7);
+  --basics-callout-bg: #eff6ff;
+  --basics-callout-remember-bg: #f4f4f5;
+}
+
+/* ── Hero zone (light) ── */
+
+.basics-hero {
+  border-bottom: 1px solid var(--basics-border);
+  background-color: var(--basics-light-bg);
+}
+
+.basics-hero__eyebrow {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #3b82f6;
+}
+
+.basics-hero__title {
+  margin-top: 1rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--basics-text-strong);
+}
+
+.basics-hero__intro {
+  margin-top: 1.5rem;
+  max-width: 42rem;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--basics-text-subtle);
+}
+
+/* ── Dashboard pillar grid ── */
+
+.basics-dashboard {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--basics-border);
+}
+
+.basics-pillar-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--basics-border);
+  border-radius: 2px;
+  background-color: var(--basics-light-bg-alt);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.basics-pillar-card:hover {
+  border-color: rgb(37 99 235);
+  background-color: #fafbff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1);
+}
+
+.basics-pillar-card:focus-visible {
+  outline: 2px solid rgb(37 99 235);
+  outline-offset: 2px;
+}
+
+.basics-pillar-card--wide {
+  grid-column: span 2;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  padding: 1.25rem 1.75rem;
+}
+
+.basics-pillar-card--wide .basics-pillar-card__body {
+  flex: 1;
+  min-width: min(100%, 20rem);
+}
+
+.basics-pillar-card__number {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--basics-text-muted);
+}
+
+.basics-pillar-card__title {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--basics-text-strong);
+  line-height: 1.3;
+}
+
+.basics-pillar-card__summary {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--basics-text-subtle);
+}
+
+.basics-pillar-card__cta {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(37 99 235);
+  transition: color 0.2s ease;
+}
+
+.basics-pillar-card:hover .basics-pillar-card__cta {
+  color: rgb(59 130 246);
+}
+
+.basics-pillar-card--wide .basics-pillar-card__cta {
+  margin-top: 0;
+  padding-top: 0;
+  margin-left: auto;
+}
+
+@media (max-width: 767px) {
+  .basics-dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .basics-pillar-card--wide {
+    grid-column: auto;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .basics-pillar-card--wide .basics-pillar-card__cta {
+    margin-left: 0;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+}
+
+/* ── Sub-navigation ── */
+
+.basics-subnav-wrap {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.basics-subnav-placeholder {
+  display: none;
+  height: var(--basics-subnav-height);
+}
+
+.basics-subnav-placeholder.is-active {
+  display: block;
+}
+
+.basics-subnav {
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--basics-border);
+  border-bottom: 1px solid var(--basics-border);
+  background-color: var(--basics-light-bg-alt);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.basics-subnav::-webkit-scrollbar {
+  display: none;
+}
+
+.basics-subnav--fixed {
+  position: fixed;
+  top: var(--basics-header-offset);
+  left: 0;
+  right: 0;
+  margin-top: 0;
+  padding-left: max(1.25rem, calc((100vw - 56rem) / 2 + 1.25rem));
+  padding-right: max(1.25rem, calc((100vw - 56rem) / 2 + 1.25rem));
+  border-top: none;
+  background-color: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+}
+
+.basics-subnav__link {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--basics-text-subtle);
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.basics-subnav__link:hover {
+  color: var(--basics-text);
+}
+
+.basics-subnav__link.is-active {
+  color: rgb(37 99 235);
+  border-bottom-color: rgb(37 99 235);
+}
+
+.basics-subnav__sep {
+  flex-shrink: 0;
+  color: var(--basics-border);
+  font-size: 0.625rem;
+  user-select: none;
+}
+
+/* ── Content zone ── */
+
+.basics-content-zone {
+  position: relative;
+  background-color: var(--basics-light-bg);
+  color: var(--basics-text);
+}
+
+/* ── Content sections ── */
+
+.basics-section {
+  scroll-margin-top: calc(var(--basics-header-offset) + var(--basics-subnav-height) + 1rem);
+  border-bottom: 1px solid var(--basics-border);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 640px) {
+  .basics-section {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.basics-section--base {
+  background-color: var(--basics-light-bg);
+}
+
+.basics-section--alt {
+  background-color: var(--basics-light-bg-alt);
+}
+
+.basics-section__inner {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 56rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .basics-section__inner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .basics-section__inner {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* ── Content typography ── */
+
+.basics-content-zone .basics-section-number {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--basics-text-muted);
+}
+
+.basics-content-zone .basics-section-title {
+  margin-top: 0.75rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--basics-text-strong);
+}
+
+.basics-content-zone .basics-section-kicker {
+  margin-top: 0.5rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--basics-text-subtle);
+}
+
+.basics-content-zone .basics-heading {
+  margin-top: 3rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--basics-text-strong);
+}
+
+.basics-content-zone .basics-prose {
+  margin-top: 1.5rem;
+}
+
+.basics-content-zone .basics-prose p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--basics-text);
+}
+
+@media (min-width: 640px) {
+  .basics-content-zone .basics-prose p {
+    font-size: 1.0625rem;
+  }
+}
+
+.basics-content-zone .basics-prose p + p {
+  margin-top: 1.5rem;
+}
+
+.basics-content-zone strong {
+  font-weight: 600;
+  color: var(--basics-text-strong);
+}
+
+.basics-content-zone .basics-check-list {
+  margin-top: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.basics-content-zone .basics-check-list > li + li {
+  margin-top: 1rem;
+}
+
+.basics-content-zone .check-item {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--basics-text);
+}
+
+.basics-content-zone .basics-note {
+  margin-top: 1rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--basics-border);
+  border-radius: 2px;
+  background-color: var(--basics-light-bg-alt);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--basics-text-subtle);
+}
+
+.basics-content-zone .basics-placeholder-list {
+  margin-top: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.basics-content-zone .basics-placeholder-list > li {
+  display: flex;
+  gap: 0.75rem;
+  min-height: 1.75rem;
+  color: var(--basics-text-muted);
+}
+
+/* ── Callout boxes (light) ── */
+
+.basics-content-zone .basics-callout {
+  margin-top: 2.5rem;
+  padding: 1.75rem 2rem;
+  border: 1px solid var(--basics-border);
+  border-left: 4px solid rgb(37 99 235);
+  border-radius: 2px;
+  background-color: var(--basics-callout-bg);
+}
+
+@media (min-width: 640px) {
+  .basics-content-zone .basics-callout {
+    padding: 2rem 2.5rem;
+  }
+}
+
+.basics-content-zone .basics-callout__label {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(37 99 235);
+}
+
+.basics-content-zone .basics-callout__body {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--basics-text);
+}
+
+.basics-content-zone .basics-callout__body p + p {
+  margin-top: 1rem;
+}
+
+.basics-content-zone .basics-callout--highlight {
+  border-left-color: rgb(37 99 235);
+  background-color: var(--basics-callout-bg);
+}
+
+.basics-content-zone .basics-callout--remember {
+  border-left-color: rgb(113 113 122);
+  background-color: var(--basics-callout-remember-bg);
+}
+
+.basics-content-zone .basics-callout--remember .basics-callout__label {
+  color: var(--basics-text-strong);
+}
+
+.basics-content-zone .basics-principles {
+  margin-top: 3rem;
+  padding: 2rem 2.5rem;
+  border: 1px solid var(--basics-border);
+  border-left: 4px solid rgb(37 99 235);
+  border-radius: 2px;
+  background-color: var(--basics-callout-bg);
+}
+
+.basics-content-zone .basics-principles__title {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(37 99 235);
+}
+
+.basics-content-zone .basics-principles .basics-check-list {
+  margin-top: 1.5rem;
+}
+
+/* ── Strength pillar vertical list ── */
+
+.basics-pillar-list {
+  margin-top: 2rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: pillar;
+}
+
+.basics-pillar-list__item {
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--basics-border);
+}
+
+.basics-pillar-list__item:first-child {
+  padding-top: 0.5rem;
+}
+
+.basics-pillar-list__item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.basics-pillar-list__title {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 1.1875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: rgb(37 99 235);
+}
+
+.basics-pillar-list__body {
+  margin-top: 0.875rem;
+  max-width: 65ch;
+}
+
+.basics-pillar-list__body p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--basics-text);
+}
+
+.basics-pillar-list__body p + p {
+  margin-top: 0.875rem;
+}
+
+/* ── Coaching CTA band ── */
+
+.basics-cta {
+  border-top: 1px solid var(--basics-border);
+  background-color: var(--basics-light-bg-alt);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.basics-cta__inner {
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .basics-cta__inner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.basics-cta__text {
+  color: var(--basics-text-subtle);
+}
+
+.basics-cta__button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  border-radius: 2px;
+  background-color: #2563eb;
+  padding: 1rem 2.5rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffffff;
+  transition: background-color 0.2s ease;
+}
+
+.basics-cta__button:hover {
+  background-color: #3b82f6;
+}
+
+/* ── Check icons ── */
+
+.check-icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.15rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%232563eb'%3E%3Cpath fill-rule='evenodd' d='M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z' clip-rule='evenodd'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* ── Cardio: longevity risk charts ── */
+
+.basics-longevity-graph,
+.basics-fitness-gap {
+  margin-top: 2.5rem;
+  padding: 1.75rem 1.5rem;
+  border: 1px solid var(--basics-border);
+  border-radius: 2px;
+  background-color: var(--basics-light-bg);
+}
+
+@media (min-width: 640px) {
+  .basics-longevity-graph,
+  .basics-fitness-gap {
+    padding: 2rem 2.25rem;
+  }
+}
+
+.basics-longevity-graph__title,
+.basics-fitness-gap__title {
+  margin: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--basics-text-strong);
+}
+
+.basics-longevity-graph__subtitle,
+.basics-fitness-gap__subtitle {
+  margin-top: 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--basics-text-subtle);
+}
+
+.basics-longevity-graph__axis,
+.basics-fitness-gap__compare {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.basics-longevity-graph__row,
+.basics-fitness-gap__pair {
+  display: grid;
+  grid-template-columns: minmax(7rem, 9.5rem) 1fr minmax(5.5rem, auto);
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+@media (max-width: 479px) {
+  .basics-longevity-graph__row,
+  .basics-fitness-gap__pair {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .basics-longevity-graph__risk,
+  .basics-fitness-gap__risk {
+    justify-self: start;
+  }
+}
+
+.basics-longevity-graph__label,
+.basics-fitness-gap__tier {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--basics-text-strong);
+}
+
+.basics-longevity-graph__row--danger .basics-longevity-graph__label {
+  font-weight: 600;
+}
+
+.basics-longevity-graph__bar-wrap,
+.basics-fitness-gap__bar-wrap {
+  min-width: 0;
+  height: 1.375rem;
+  border-radius: 2px;
+  background-color: var(--basics-border);
+  overflow: hidden;
+}
+
+.basics-longevity-graph__bar,
+.basics-fitness-gap__bar {
+  height: 100%;
+  min-width: 4px;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.basics-longevity-graph__bar--elite,
+.basics-fitness-gap__bar--above {
+  background: linear-gradient(90deg, rgb(37 99 235), rgb(59 130 246));
+}
+
+.basics-longevity-graph__bar--high {
+  background: linear-gradient(90deg, rgb(29 78 216), rgb(37 99 235));
+}
+
+.basics-longevity-graph__bar--above {
+  background: linear-gradient(90deg, rgb(37 99 235), rgb(96 165 250));
+}
+
+.basics-longevity-graph__bar--below,
+.basics-fitness-gap__bar--below {
+  background: linear-gradient(90deg, rgb(217 119 6), rgb(245 158 11));
+}
+
+.basics-longevity-graph__bar--low {
+  background: linear-gradient(90deg, rgb(185 28 28), rgb(239 68 68));
+}
+
+.basics-longevity-graph__row--danger .basics-longevity-graph__bar-wrap {
+  box-shadow: 0 0 0 1px rgba(185, 28, 28, 0.25);
+}
+
+.basics-longevity-graph__risk,
+.basics-fitness-gap__risk {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-align: right;
+  color: var(--basics-text-subtle);
+}
+
+.basics-longevity-graph__risk--danger {
+  font-weight: 700;
+  color: rgb(185 28 28);
+}
+
+.basics-fitness-gap {
+  margin-top: 2rem;
+  border-left: 4px solid rgb(37 99 235);
+  background-color: var(--basics-callout-bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .basics-pillar-card {
+    transition: none;
+  }
+
+  .basics-pillar-card:hover {
+    transform: none;
+  }
+
+  .basics-longevity-graph__bar,
+  .basics-fitness-gap__bar {
+    transition: none;
+  }
+}

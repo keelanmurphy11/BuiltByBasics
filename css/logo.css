@@ -1,0 +1,86 @@
+/* KM Training — pure CSS logo component */
+
+.logo {
+  --logo-scale: clamp(0.8125rem, 1.6vw, 1rem);
+  --logo-main-tracking: 0.035em;
+  --logo-sub-tracking: 0.06em;
+  --logo-dot-gap: 0.34em;
+  --logo-dot-size: 0.28em;
+  --logo-dot-offset-y: 0.14em;
+  --logo-dot-color: #3b82f6;
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: fit-content;
+  line-height: 1;
+  font-size: var(--logo-scale);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.logo-main {
+  position: relative;
+  display: inline-block;
+  align-self: flex-start;
+  padding-right: var(--logo-dot-gap);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: var(--logo-main-tracking);
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  font-synthesis: none;
+}
+
+.logo-main::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: var(--logo-dot-offset-y);
+  width: var(--logo-dot-size);
+  height: var(--logo-dot-size);
+  background-color: var(--logo-dot-color);
+  border-radius: 50%;
+}
+
+.logo-sub {
+  display: block;
+  width: calc(100% - var(--logo-dot-gap));
+  margin-top: 0.1em;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.36em;
+  letter-spacing: var(--logo-sub-tracking);
+  text-transform: uppercase;
+  text-align: justify;
+  text-align-last: justify;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+.logo-sub::after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+
+.logo--lg {
+  --logo-scale: clamp(1.75rem, 5vw, 3.5rem);
+}
+
+.logo:hover {
+  color: #ffffff;
+}
+
+.logo--dark,
+[data-theme="light"] .logo {
+  color: #09090b;
+}
+
+.logo--dark:hover,
+[data-theme="light"] .logo:hover {
+  color: #09090b;
+}

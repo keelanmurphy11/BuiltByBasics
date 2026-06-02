@@ -1,10 +1,9 @@
 (function () {
   'use strict';
 
-  const section = document.getElementById('why');
   const grid = document.getElementById('research-grid');
   const modal = document.getElementById('research-mobile-modal');
-  if (!grid || !section || !modal) return;
+  if (!grid || !modal) return;
 
   const cards = Array.from(grid.querySelectorAll('[data-research-card]'));
   if (!cards.length) return;
@@ -12,111 +11,28 @@
   const modalContent = modal.querySelector('.research-mobile-content');
   const modalCloseBtn = modal.querySelector('.research-mobile-close');
   const modalBackdrop = modal.querySelector('.research-mobile-backdrop');
-  const mobileQuery = window.matchMedia('(max-width: 768px)');
   const finePointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
 
-  let currentDesktopActive = null;
   let mobileOpen = false;
+  let currentModalCard = null;
 
-  function isMobileView() {
-    return mobileQuery.matches;
+  function usesModalInteraction() {
+    return !finePointerQuery.matches;
   }
 
   function setAria(card, expanded) {
     card.setAttribute('aria-expanded', expanded ? 'true' : 'false');
   }
 
-  function measureDetail(detail) {
-    detail.style.maxHeight = 'none';
-    const height = detail.scrollHeight;
-    detail.style.maxHeight = '0px';
-    return height;
-  }
-
-  function collapseDetail(detail) {
-    if (!detail) return;
-    detail.classList.remove('is-expanded');
-    detail.style.opacity = '0';
-    detail.style.maxHeight = '0px';
-    detail.setAttribute('aria-hidden', 'true');
-  }
-
-  function expandDetail(detail) {
-    if (!detail) return;
-    const height = measureDetail(detail);
-    detail.classList.add('is-expanded');
-    detail.setAttribute('aria-hidden', 'false');
-    detail.style.opacity = '1';
-    detail.offsetHeight;
-    detail.style.maxHeight = height + 'px';
-  }
-
-  function setDetailState(card, expanded) {
-    if (isMobileView()) return;
-    const detail = card.querySelector('.research-card-detail');
-    if (!detail) return;
-    if (expanded) expandDetail(detail);
-    else collapseDetail(detail);
-  }
-
-  function markSectionActive(active) {
-    grid.classList.toggle('has-active', active);
-    section.classList.toggle('has-card-active', active && !isMobileView());
-  }
-
-  function clearDesktop() {
-    currentDesktopActive = null;
-    markSectionActive(false);
-    cards.forEach((card) => {
-      card.classList.remove('is-active', 'is-open', 'is-modal-selected');
-      setDetailState(card, false);
-      setAria(card, false);
-    });
-  }
-
   function closeMobileModal() {
     if (!mobileOpen) return;
     mobileOpen = false;
+    currentModalCard = null;
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('research-modal-open');
-    markSectionActive(false);
-    cards.forEach((card) => {
-      card.classList.remove('is-modal-selected');
-      setAria(card, false);
-    });
+    cards.forEach((card) => setAria(card, false));
     modalContent.innerHTML = '';
-  }
-
-  function clearAll() {
-    closeMobileModal();
-    clearDesktop();
-  }
-
-  function activateDesktop(card) {
-    markSectionActive(true);
-    cards.forEach((c) => {
-      const isTarget = c === card;
-      c.classList.toggle('is-active', isTarget);
-      c.classList.remove('is-open', 'is-modal-selected');
-      setDetailState(c, isTarget);
-      setAria(c, isTarget);
-    });
-  }
-
-  function setDesktopActive(card) {
-    if (currentDesktopActive === card) return;
-    currentDesktopActive = card;
-    activateDesktop(card);
-  }
-
-  function toggleDesktop(card) {
-    if (card.classList.contains('is-active')) {
-      clearDesktop();
-      return;
-    }
-    currentDesktopActive = card;
-    activateDesktop(card);
   }
 
   function openMobileModal(card) {
@@ -137,31 +53,24 @@
     ].join('');
 
     mobileOpen = true;
+    currentModalCard = card;
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('research-modal-open');
-    markSectionActive(true);
-
-    cards.forEach((c) => {
-      const selected = c === card;
-      c.classList.toggle('is-modal-selected', selected);
-      setAria(c, selected);
-    });
+    setAria(card, true);
 
     modalCloseBtn.focus();
   }
 
   function onCardActivate(card) {
-    if (isMobileView()) {
-      if (mobileOpen && card.classList.contains('is-modal-selected')) {
-        closeMobileModal();
-      } else {
-        closeMobileModal();
-        openMobileModal(card);
-      }
-      return;
+    if (!usesModalInteraction()) return;
+
+    if (mobileOpen && currentModalCard === card) {
+      closeMobileModal();
+    } else {
+      closeMobileModal();
+      openMobileModal(card);
     }
-    toggleDesktop(card);
   }
 
   function isStudyLink(target) {
@@ -171,52 +80,36 @@
   cards.forEach((card) => {
     card.addEventListener('click', (e) => {
       if (isStudyLink(e.target)) return;
+      if (!usesModalInteraction()) return;
       e.preventDefault();
       onCardActivate(card);
     });
 
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        e.preventDefault();
-        clearAll();
-        card.blur();
+        if (mobileOpen) {
+          e.preventDefault();
+          closeMobileModal();
+          card.blur();
+        } else if (!usesModalInteraction() && document.activeElement === card) {
+          e.preventDefault();
+          card.blur();
+        }
         return;
       }
       if (e.key === 'Enter' || e.key === ' ') {
         if (isStudyLink(e.target)) return;
+        if (!usesModalInteraction()) return;
         e.preventDefault();
         onCardActivate(card);
       }
     });
+
+    card.addEventListener('mouseleave', () => {
+      if (usesModalInteraction()) return;
+      card.blur();
+    });
   });
-
-  function onDesktopHover() {
-    cards.forEach((card) => {
-      card.addEventListener('focusin', () => {
-        if (isMobileView() || !finePointerQuery.matches) return;
-        setDesktopActive(card);
-      });
-
-      card.addEventListener('focusout', (e) => {
-        if (isMobileView() || !finePointerQuery.matches) return;
-        if (card.contains(e.relatedTarget)) return;
-        if (card.matches(':hover')) return;
-        if (!grid.querySelector('[data-research-card]:hover')) clearDesktop();
-      });
-    });
-
-    grid.addEventListener('mousemove', (e) => {
-      if (isMobileView() || !finePointerQuery.matches) return;
-      const card = e.target.closest('[data-research-card]');
-      if (card) setDesktopActive(card);
-      else clearDesktop();
-    });
-
-    grid.addEventListener('mouseleave', () => {
-      if (isMobileView() || !finePointerQuery.matches) return;
-      clearDesktop();
-    });
-  }
 
   modalCloseBtn.addEventListener('click', closeMobileModal);
   modalBackdrop.addEventListener('click', closeMobileModal);
@@ -226,20 +119,8 @@
   });
 
   window.addEventListener('resize', () => {
-    if (!isMobileView() && mobileOpen) closeMobileModal();
-    if (isMobileView()) clearDesktop();
-
-    const active = grid.querySelector('.research-card.is-active');
-    if (!active || isMobileView()) return;
-    const detail = active.querySelector('.research-card-detail.is-expanded');
-    if (detail) {
-      const height = measureDetail(detail);
-      detail.style.maxHeight = height + 'px';
-    }
+    if (!usesModalInteraction() && mobileOpen) closeMobileModal();
   });
 
-  mobileQuery.addEventListener('change', () => clearAll());
-  finePointerQuery.addEventListener('change', () => clearAll());
-
-  onDesktopHover();
+  finePointerQuery.addEventListener('change', closeMobileModal);
 })();
