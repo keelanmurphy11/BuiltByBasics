@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="css/logo.css" />
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/reveal.css" />
+  <link rel="stylesheet" href="css/coaching-comparison.css" />
   <style>
     .form-select option {
       background-color: rgb(24, 24, 27);
@@ -66,7 +67,7 @@
           <span class="text-zinc-400">a Personal Trainer.</span>
         </h1>
         <p class="reveal-item mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-zinc-400">
-          Let's be entirely transparent: you do not need to hire a coach, and you do not need a personal trainer to get into the best shape of your life. Everything you need to build a healthy, vibrant, and strong body is available right here on this website—completely free. Apply the principles in our <a href="basics.html" class="text-cobalt-light hover:underline">Basics of Training</a> and <a href="library.html" class="text-cobalt-light hover:underline">Library</a> consistently, and you will achieve incredible results on your own.
+          Let's be clear: you do not need to hire a coach, and you do not need a personal trainer to get into the best shape of your life. Everything you need to build a healthy, vibrant, and strong body is available right here on this website—completely free. Apply the principles in our <a href="basics.html" class="text-cobalt-light hover:underline">Basics of Training</a> and <a href="library.html" class="text-cobalt-light hover:underline">Library</a> consistently, and you will achieve incredible results on your own.
         </p>
         <p class="reveal-item mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-500">
           If you want to fast-track that process, cut through the guesswork, and build a system tailored to the unique constraints of your career and lifestyle, we offer a completely different approach: <strong class="font-medium text-zinc-300">Fitness Consultancy</strong>—not traditional personal training.
@@ -87,12 +88,16 @@
           </p>
         </div>
 
-        <div data-reveal-stagger class="mx-auto mt-16 max-w-5xl space-y-px border border-zinc-800 bg-zinc-800">
+        <p class="reveal-item mx-auto mt-16 max-w-5xl text-center font-display text-xs uppercase tracking-[0.2em] text-zinc-500 sm:hidden">
+          Compare each approach — Traditional PT first, then KM Consultancy
+        </p>
+
+        <div data-reveal-stagger class="consultancy-compare mx-auto mt-4 max-w-5xl space-y-px border border-zinc-800 bg-zinc-800 sm:mt-16">
           <div class="reveal-item hidden bg-zinc-900 px-6 py-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:px-8 lg:px-10">
             <p class="font-display text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">Traditional Personal Training</p>
             <p class="font-display text-xs font-semibold uppercase tracking-[0.25em] text-cobalt-light">The KM Consultancy Approach</p>
           </div>
-          <div class="reveal-item grid gap-px bg-zinc-800 sm:grid-cols-2">
+          <div class="consultancy-compare__row reveal-item grid gap-px bg-zinc-800 sm:grid-cols-2">
             <div class="bg-zinc-950 px-6 py-6 sm:px-8 lg:px-10">
               <p class="font-display text-xs uppercase tracking-[0.2em] text-zinc-600 sm:hidden">Traditional PT</p>
               <p class="mt-1 font-display text-sm font-semibold text-zinc-300 sm:mt-0">Weekly Contracts</p>
@@ -104,33 +109,39 @@
               <p class="mt-2 text-sm leading-relaxed text-zinc-400">Book sessions only when you need direction.</p>
             </div>
           </div>
-          <div class="reveal-item grid gap-px bg-zinc-800 sm:grid-cols-2">
+          <div class="consultancy-compare__row reveal-item grid gap-px bg-zinc-800 sm:grid-cols-2">
             <div class="bg-zinc-950 px-6 py-6 sm:px-8 lg:px-10">
-              <p class="font-display text-sm font-semibold text-zinc-300">Blind Execution</p>
+              <p class="font-display text-xs uppercase tracking-[0.2em] text-zinc-600 sm:hidden">Traditional PT</p>
+              <p class="mt-1 font-display text-sm font-semibold text-zinc-300 sm:mt-0">Blind Execution</p>
               <p class="mt-2 text-sm leading-relaxed text-zinc-500">You follow instructions without learning the &ldquo;why.&rdquo;</p>
             </div>
             <div class="bg-zinc-900 px-6 py-6 sm:px-8 lg:px-10">
-              <p class="font-display text-sm font-semibold text-zinc-200">Education-First</p>
+              <p class="font-display text-xs uppercase tracking-[0.2em] text-cobalt-light/80 sm:hidden">KM Consultancy</p>
+              <p class="mt-1 font-display text-sm font-semibold text-zinc-200 sm:mt-0">Education-First</p>
               <p class="mt-2 text-sm leading-relaxed text-zinc-400">You learn the science so you can manage yourself.</p>
             </div>
           </div>
-          <div class="reveal-item grid gap-px bg-zinc-800 sm:grid-cols-2">
+          <div class="consultancy-compare__row reveal-item grid gap-px bg-zinc-800 sm:grid-cols-2">
             <div class="bg-zinc-950 px-6 py-6 sm:px-8 lg:px-10">
-              <p class="font-display text-sm font-semibold text-zinc-300">Fragile Routines</p>
+              <p class="font-display text-xs uppercase tracking-[0.2em] text-zinc-600 sm:hidden">Traditional PT</p>
+              <p class="mt-1 font-display text-sm font-semibold text-zinc-300 sm:mt-0">Fragile Routines</p>
               <p class="mt-2 text-sm leading-relaxed text-zinc-500">If you travel or drop the trainer, the routine breaks.</p>
             </div>
             <div class="bg-zinc-900 px-6 py-6 sm:px-8 lg:px-10">
-              <p class="font-display text-sm font-semibold text-zinc-200">Adaptable Skills</p>
+              <p class="font-display text-xs uppercase tracking-[0.2em] text-cobalt-light/80 sm:hidden">KM Consultancy</p>
+              <p class="mt-1 font-display text-sm font-semibold text-zinc-200 sm:mt-0">Adaptable Skills</p>
               <p class="mt-2 text-sm leading-relaxed text-zinc-400">Learn to modify your workouts anywhere in the world.</p>
             </div>
           </div>
-          <div class="reveal-item grid gap-px bg-zinc-800 sm:grid-cols-2">
+          <div class="consultancy-compare__row reveal-item grid gap-px bg-zinc-800 sm:grid-cols-2">
             <div class="bg-zinc-950 px-6 py-6 sm:px-8 lg:px-10">
-              <p class="font-display text-sm font-semibold text-zinc-300">Life Overtake</p>
+              <p class="font-display text-xs uppercase tracking-[0.2em] text-zinc-600 sm:hidden">Traditional PT</p>
+              <p class="mt-1 font-display text-sm font-semibold text-zinc-300 sm:mt-0">Life Overtake</p>
               <p class="mt-2 text-sm leading-relaxed text-zinc-500">Forces you to reshape your entire life around the gym.</p>
             </div>
             <div class="bg-zinc-900 px-6 py-6 sm:px-8 lg:px-10">
-              <p class="font-display text-sm font-semibold text-zinc-200">Lifestyle Integration</p>
+              <p class="font-display text-xs uppercase tracking-[0.2em] text-cobalt-light/80 sm:hidden">KM Consultancy</p>
+              <p class="mt-1 font-display text-sm font-semibold text-zinc-200 sm:mt-0">Lifestyle Integration</p>
               <p class="mt-2 text-sm leading-relaxed text-zinc-400">We fit fitness into your existing schedule.</p>
             </div>
           </div>
@@ -192,7 +203,7 @@
 
     <!-- Visual break -->
     <section class="reveal-item relative h-64 overflow-hidden border-y border-zinc-800 sm:h-80">
-      <img src="content/images/IMG_9598.jpg" alt="" class="h-full w-full object-cover object-center grayscale-[40%]" />
+      <img src="content/images/IMG_9378.jpg" alt="Hiker on a mountain trail" class="h-full w-full object-cover object-center grayscale-[40%]" />
       <div class="absolute inset-0 bg-zinc-950/70"></div>
     </section>
 

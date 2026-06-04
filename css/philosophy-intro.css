@@ -241,6 +241,27 @@
   color: rgb(113 113 122);
 }
 
+/* Stacked sidebar: brighter 50% stat (mobile or tight desktop) */
+@media (max-width: 1023px) {
+  .philosophy-intro-stat-figure {
+    color: rgb(212 212 216);
+  }
+
+  .philosophy-intro-stat-copy {
+    color: rgb(161 161 170);
+  }
+}
+
+@media (min-width: 1024px) {
+  .philosophy-intro-layout--tight .philosophy-intro-stat-figure {
+    color: rgb(212 212 216);
+  }
+
+  .philosophy-intro-layout--tight .philosophy-intro-stat-copy {
+    color: rgb(161 161 170);
+  }
+}
+
 .philosophy-micro-facts {
   margin: 0;
   padding: 0;
