@@ -364,6 +364,13 @@ html {
   margin-top: 1.5rem;
 }
 
+.basics-content-zone .basics-prose a,
+.basics-content-zone .basics-pillar-list__body a {
+  color: rgb(37 99 235);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .basics-content-zone strong {
   font-weight: 600;
   color: var(--basics-text-strong);

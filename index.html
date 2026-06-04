@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="css/reveal.css" />
   <link rel="stylesheet" href="css/research-cinema.css" />
   <link rel="stylesheet" href="css/research-telemetry-bg.css?v=3" />
+  <link rel="stylesheet" href="css/philosophy-intro.css?v=11" />
   <style>
     .hero-bg {
       filter: grayscale(100%) contrast(1.08);
@@ -83,236 +84,6 @@
         clip-path: none;
       }
     }
-    .philosophy-intro-glow {
-      position: absolute;
-      top: 8%;
-      left: -5%;
-      width: min(42rem, 70vw);
-      height: min(28rem, 50vh);
-      pointer-events: none;
-      background: radial-gradient(ellipse at 25% 40%, rgba(37, 99, 235, 0.08) 0%, transparent 68%);
-      filter: blur(48px);
-    }
-    .philosophy-support-wrap {
-      position: relative;
-      width: 100%;
-      max-width: 26rem;
-    }
-    .philosophy-support-ambient {
-      position: absolute;
-      inset: auto;
-      left: 50%;
-      bottom: -22%;
-      transform: translateX(-50%);
-      width: 75%;
-      height: 48%;
-      pointer-events: none;
-      z-index: 0;
-      background: radial-gradient(
-        ellipse at 50% 100%,
-        rgba(37, 99, 235, 0.12) 0%,
-        rgba(37, 99, 235, 0.04) 45%,
-        transparent 72%
-      );
-      filter: blur(36px);
-      opacity: 0;
-      transition: opacity 500ms cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-    .philosophy-support-wrap:hover .philosophy-support-ambient {
-      opacity: 0.88;
-    }
-    .philosophy-support {
-      position: relative;
-      z-index: 1;
-      overflow: hidden;
-      border-radius: 1.5rem;
-      padding: 1.625rem 1.5rem 1.75rem;
-      background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.04) 0%,
-        rgba(255, 255, 255, 0.015) 100%
-      );
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 20px 44px -14px rgba(0, 0, 0, 0.42),
-        0 0 0 1px rgba(0, 0, 0, 0.18);
-      transition:
-        transform 500ms cubic-bezier(0.215, 0.61, 0.355, 1),
-        border-color 500ms ease,
-        box-shadow 500ms ease;
-    }
-    .philosophy-support-wrap:hover .philosophy-support {
-      transform: translateY(-4px);
-      border-color: rgba(255, 255, 255, 0.12);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        0 28px 56px -16px rgba(0, 0, 0, 0.48),
-        0 0 0 1px rgba(37, 99, 235, 0.1),
-        0 22px 52px -10px rgba(37, 99, 235, 0.16);
-    }
-    .philosophy-support-grid {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.028;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.55) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.55) 1px, transparent 1px);
-      background-size: 22px 22px;
-      mask-image: linear-gradient(180deg, black 0%, transparent 88%);
-      -webkit-mask-image: linear-gradient(180deg, black 0%, transparent 88%);
-    }
-    .philosophy-support-bar {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      z-index: 2;
-      width: 52%;
-      height: 3px;
-      transform: translateX(-50%);
-      border-radius: 999px;
-      pointer-events: none;
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(59, 130, 246, 0.72) 50%,
-        transparent 100%
-      );
-      opacity: 0.95;
-      box-shadow:
-        0 0 8px rgba(37, 99, 235, 0.28),
-        0 0 16px rgba(37, 99, 235, 0.12);
-      transition:
-        opacity 500ms ease,
-        width 500ms cubic-bezier(0.215, 0.61, 0.355, 1),
-        box-shadow 500ms ease,
-        background 500ms ease;
-    }
-    .philosophy-support-wrap:hover .philosophy-support-bar {
-      width: 60%;
-      opacity: 1;
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(147, 197, 253, 0.98) 50%,
-        transparent 100%
-      );
-      box-shadow:
-        0 0 16px rgba(37, 99, 235, 0.72),
-        0 0 40px rgba(37, 99, 235, 0.38),
-        0 6px 48px rgba(37, 99, 235, 0.28);
-    }
-    .philosophy-support-corner {
-      position: absolute;
-      width: 1.375rem;
-      height: 1.375rem;
-      pointer-events: none;
-      opacity: 0.32;
-      transition: opacity 500ms ease;
-    }
-    .philosophy-support-wrap:hover .philosophy-support-corner {
-      opacity: 0.48;
-    }
-    .philosophy-support-corner--tl {
-      top: 1.125rem;
-      left: 1.125rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.11);
-      border-left: 1px solid rgba(255, 255, 255, 0.11);
-    }
-    .philosophy-support-corner--tr {
-      top: 1.125rem;
-      right: 1.125rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.11);
-      border-right: 1px solid rgba(255, 255, 255, 0.11);
-    }
-    .philosophy-support-corner--bl {
-      bottom: 1.125rem;
-      left: 1.125rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.11);
-      border-left: 1px solid rgba(255, 255, 255, 0.11);
-    }
-    .philosophy-support-corner--br {
-      bottom: 1.125rem;
-      right: 1.125rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.11);
-      border-right: 1px solid rgba(255, 255, 255, 0.11);
-    }
-    .philosophy-support-inner {
-      position: relative;
-      z-index: 1;
-    }
-    .philosophy-support-lead {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: 1.0625rem;
-      line-height: 1.62;
-      letter-spacing: -0.012em;
-      color: rgb(212 212 216 / 0.92);
-    }
-    .philosophy-support-body {
-      margin-top: 1.25rem;
-      font-size: 0.9375rem;
-      line-height: 1.82;
-      color: rgb(113 113 122);
-    }
-    .philosophy-support-payoff {
-      margin-top: 1.5rem;
-      padding-top: 1.375rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      font-size: 0.9375rem;
-      line-height: 1.75;
-      letter-spacing: 0.005em;
-      color: rgb(228 228 231 / 0.78);
-    }
-    @media (min-width: 1024px) {
-      .philosophy-support-wrap {
-        max-width: 28rem;
-      }
-      .philosophy-support {
-        padding: 2.125rem 1.875rem 2.25rem;
-        border-radius: 1.625rem;
-      }
-      .philosophy-support-lead {
-        font-size: 1.125rem;
-      }
-      .philosophy-support-body {
-        margin-top: 1.375rem;
-        font-size: 0.96875rem;
-      }
-      .philosophy-support-payoff {
-        margin-top: 1.625rem;
-        padding-top: 1.5rem;
-      }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .philosophy-support,
-      .philosophy-support-ambient,
-      .philosophy-support-bar,
-      .philosophy-support-corner {
-        transition: none;
-      }
-      .philosophy-support-wrap:hover .philosophy-support {
-        transform: none;
-      }
-    }
-    .philosophy-intro-divider {
-      height: 1px;
-      background: linear-gradient(90deg, rgb(39 39 42 / 0.55) 0%, rgb(39 39 42 / 0.15) 55%, transparent 100%);
-      transform: scaleX(0);
-      transform-origin: left center;
-      transition: transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.45s;
-    }
-    .reveal-item.is-visible .philosophy-intro-divider {
-      transform: scaleX(1);
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .philosophy-intro-divider {
-        transform: scaleX(1);
-        transition: none;
-      }
-    }
     .philosophy-manifesto {
       position: relative;
     }
@@ -342,21 +113,6 @@
         width: min(16rem, 52%);
       }
     }
-    .philosophy-flow-line {
-      height: 1px;
-      background: rgb(39 39 42 / 0.4);
-      transform: scaleX(0);
-      transform-origin: left center;
-      transition: transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-    .reveal-item.is-visible .philosophy-flow-line:nth-of-type(1) {
-      transform: scaleX(1);
-      transition-delay: 0.2s;
-    }
-    .reveal-item.is-visible .philosophy-flow-line:nth-of-type(2) {
-      transform: scaleX(1);
-      transition-delay: 0.55s;
-    }
     .pipeline-cta .pipeline-arrow {
       transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1), color 0.3s ease;
     }
@@ -366,10 +122,6 @@
     @media (prefers-reduced-motion: reduce) {
       .philosophy-manifesto::after {
         width: min(12rem, 40%);
-        transition: none;
-      }
-      .philosophy-flow-line {
-        transform: scaleX(1);
         transition: none;
       }
       .pipeline-cta .pipeline-arrow {
@@ -461,53 +213,75 @@
       <!-- Editorial intro — philosophy reveal -->
       <div class="relative grain overflow-hidden">
         <div class="philosophy-intro-glow" aria-hidden="true"></div>
+        <div class="philosophy-intro-vignette" aria-hidden="true"></div>
 
         <div class="relative mx-auto max-w-7xl px-5 pt-12 pb-20 sm:px-8 sm:pt-16 sm:pb-24 lg:px-10 lg:pb-28">
-          <div data-reveal-stagger class="relative z-10 flex flex-col gap-10">
-            <!-- Headline + support card row -->
-            <div class="flex flex-col gap-10 lg:flex-row lg:items-start">
-              <!-- Statement column -->
-              <div class="lg:shrink-0">
-                <p class="reveal-item font-display text-[0.6rem] font-normal uppercase tracking-[0.45em] text-zinc-500 sm:text-[0.65rem]">
-                  The Problem
-                </p>
+          <div data-reveal-stagger class="relative z-10 philosophy-intro">
+            <div class="philosophy-intro-layout" data-dead-space-ratio="0.25" data-split-gap="24">
+              <div class="philosophy-intro-split" aria-hidden="true"></div>
+              <div class="philosophy-intro-primary">
+                <div class="reveal-item philosophy-intro-eyebrow border-l-2 border-cobalt pl-6">
+                  <p class="philosophy-intro-eyebrow-label">The Problem</p>
+                </div>
 
-                <h2
-                  id="philosophy-heading"
-                  class="reveal-item mt-5 w-fit max-w-xl font-display leading-[1.05] tracking-tight sm:mt-6 sm:max-w-2xl"
-                >
-                  <span class="block font-medium text-[1.6rem] text-white/75 sm:text-[2.4rem] lg:text-5xl">Complexity sells.</span>
-                  <span class="mt-2 block font-bold text-[2rem] text-white sm:mt-3 sm:text-5xl lg:text-6xl">Simplicity works.</span>
+                <h2 id="philosophy-heading" class="reveal-item philosophy-headline">
+                  <span class="philosophy-headline--muted">Complexity sells.</span>
+                  <span class="philosophy-headline--accent">Simplicity works.</span>
                 </h2>
-              </div>
 
-              <!-- Supporting copy — premium editorial panel -->
-              <div class="philosophy-support-slot lg:flex lg:flex-1 lg:justify-center lg:items-start">
-                <div class="philosophy-support-wrap reveal-item mx-auto w-full max-w-[26rem] lg:mt-[3.75rem] lg:max-w-[28rem]">
-                  <div class="philosophy-support-ambient" aria-hidden="true"></div>
-                  <div class="philosophy-support">
-                    <div class="philosophy-support-grid" aria-hidden="true"></div>
-                    <div class="philosophy-support-bar" aria-hidden="true"></div>
-                    <div class="philosophy-support-corner philosophy-support-corner--tl" aria-hidden="true"></div>
-                    <div class="philosophy-support-corner philosophy-support-corner--tr" aria-hidden="true"></div>
-                    <div class="philosophy-support-corner philosophy-support-corner--bl" aria-hidden="true"></div>
-                    <div class="philosophy-support-corner philosophy-support-corner--br" aria-hidden="true"></div>
-                    <div class="philosophy-support-inner">
-                      <p class="philosophy-support-lead">The online fitness industry thrives on confusion.</p>
-                      <p class="philosophy-support-body">
-                        The more complicated fitness feels, the longer people keep searching, consuming, and buying.
-                      </p>
-                      <p class="philosophy-support-payoff">
-                        Real progress comes from practicing simple methods consistently.
-                      </p>
-                    </div>
+                <div class="reveal-item philosophy-prose">
+                  <p class="philosophy-prose-lead">The online fitness industry thrives on confusion.</p>
+                  <p class="philosophy-prose-body">
+                    The more complicated fitness feels, the longer people keep searching, consuming, and buying.
+                  </p>
+                  <div class="philosophy-prose-payoff">
+                    <span class="philosophy-prose-payoff-rule" aria-hidden="true"></span>
+                    <p class="philosophy-prose-payoff-text">
+                      Real results come from practicing simple methods consistently.
+                    </p>
                   </div>
                 </div>
               </div>
+
+              <aside class="reveal-item philosophy-intro-sidebar" aria-label="Supporting research and context">
+                <div class="philosophy-intro-stat">
+                  <p class="philosophy-intro-stat-figure" aria-hidden="true">50%</p>
+                  <p class="philosophy-intro-stat-copy">
+                    An estimated half of all fitness information online is either incorrect, misleading or outdated!
+                  </p>
+                </div>
+
+                <ul class="philosophy-micro-facts" role="list">
+                  <li class="philosophy-micro-fact">
+                    <span class="philosophy-micro-fact-label">The Influencer Failure Rate</span>
+                    <p class="philosophy-micro-fact-text">
+                      According to a
+                      <a
+                        class="philosophy-micro-fact-link"
+                        href="https://business.dcu.ie/dcu-and-myfitnesspal-study-on-social-media-health-and-wellness-trends-highlights-urgent-need-for-digital-health-literacy/#:~:text=This%20underscores%20the%20importance%20of%20licensed%20professionals,be%20accurate%20when%20compared%20to%20these%20guidelines."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >DCU &amp; MyFitnessPal study</a>;
+                      Only 2.1% of nutrition advice analysed across tens of thousands of social media videos aligns with public health guidelines.
+                    </p>
+                  </li>
+                  <li class="philosophy-micro-fact">
+                    <span class="philosophy-micro-fact-label">The Resolution Drop-off</span>
+                    <p class="philosophy-micro-fact-text">
+                      Data shows that while millions start complex fitness routines every January, 80% of people abandon them by the second week of February because the protocols are too overwhelming to sustain.
+                    </p>
+                  </li>
+                  <li class="philosophy-micro-fact">
+                    <span class="philosophy-micro-fact-label">The Diet Book Paradox</span>
+                    <p class="philosophy-micro-fact-text">
+                      There are over 40,000 diet books currently in print, yet long-term weight management success rates remain under 10% for restrictive, overly complex programs.
+                    </p>
+                  </li>
+                </ul>
+              </aside>
             </div>
 
-            <!-- Ultra-thin divider -->
-            <div class="reveal-item mt-2 w-full pt-4">
+            <div class="reveal-item w-full pt-2">
               <div class="philosophy-intro-divider" aria-hidden="true"></div>
             </div>
           </div>
@@ -533,7 +307,7 @@
       <div class="relative mx-auto max-w-7xl px-5 pb-12 pt-20 sm:px-8 sm:pb-16 sm:pt-28 lg:px-10 lg:pb-20 lg:pt-32">
 
         <div data-reveal-stagger>
-          <div class="reveal-item mb-12 max-w-2xl lg:mb-16">
+          <div id="philosophy-path" class="reveal-item mb-12 max-w-2xl lg:mb-16 scroll-mt-28">
             <p class="font-display text-[0.65rem] font-bold uppercase tracking-[0.35em] text-cobalt-light">The Path</p>
             <h3 class="mt-4 font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">Foundation → Consistency → Progression</h3>
           </div>
@@ -946,23 +720,23 @@
                 The Consultancy Concept
               </h2>
               <p class="reveal-item mt-6 text-sm leading-relaxed text-zinc-400 sm:text-base">
-                This is not rep-counting coaching. I work as a consultant: auditing your schedule, mapping nutrition against your life, and programming the metrics that matter for sustainable change.
+                Let's be entirely transparent: you do not need a coach or personal trainer to get into the best shape of your life. Everything on this site is free—apply it consistently and you will see incredible results on your own.
               </p>
               <p class="reveal-item mt-4 text-sm leading-relaxed text-zinc-500 sm:text-base">
-                You keep the free blueprints. Consultancy is for bespoke implementation—when complexity is in your calendar, your stress, or your data—not in another generic training plan.
+                Fitness Consultancy is optional: a way to fast-track progress, cut guesswork, and build a system tailored to your career and lifestyle—without weekly lock-ins or blind execution.
               </p>
               <ul class="reveal-item mt-8 space-y-3 border-t border-zinc-800 pt-8 text-sm text-zinc-400">
                 <li class="flex gap-3">
                   <span class="font-display text-cobalt-light">—</span>
-                  Schedule & recovery audit
+                  As-needed support—no rigid subscriptions
                 </li>
                 <li class="flex gap-3">
                   <span class="font-display text-cobalt-light">—</span>
-                  Nutrition mapping to real life
+                  Education-first—built for eventual self-sufficiency
                 </li>
                 <li class="flex gap-3">
                   <span class="font-display text-cobalt-light">—</span>
-                  Metric-driven lifestyle programming
+                  Lifestyle integration—travel, career, and schedule
                 </li>
               </ul>
             </div>
@@ -990,7 +764,7 @@
             Apply for Personal Consultancy
           </a>
           <p class="reveal-item mt-5 text-xs uppercase tracking-widest text-zinc-600">
-            Limited capacity · Application required
+            Flexible support · No contracts · <a href="coaching.html" class="text-cobalt-light hover:underline">Read the full consultancy model</a>
           </p>
         </div>
       </div>
@@ -1040,6 +814,7 @@
   </script>
 
   <script src="js/scroll-reveal.js"></script>
+  <script src="js/philosophy-intro-layout.js?v=2"></script>
   <script src="js/research-telemetry-bg.js?v=4"></script>
   <script src="js/research-cinema.js"></script>
 </body>
