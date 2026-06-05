@@ -39,14 +39,14 @@
     const category = card.querySelector('.card-category');
     const stat = card.querySelector('.card-stat');
     const headline = card.querySelector('.card-headline');
-    const detail = card.querySelector('.research-card-detail p');
+    const details = card.querySelectorAll('.research-card-detail p');
     const link = card.querySelector('.research-card-detail a');
 
     modalContent.innerHTML = [
       category ? `<p class="card-category font-display font-medium uppercase tracking-[0.28em] text-cobalt-light">${category.textContent}</p>` : '',
       stat ? `<p class="card-stat font-display font-black leading-none text-white">${stat.textContent}</p>` : '',
       headline ? `<p class="card-headline text-zinc-300 leading-snug">${headline.textContent}</p>` : '',
-      detail ? `<p class="research-mobile-detail">${detail.textContent}</p>` : '',
+      ...Array.from(details).map((detail) => `<p class="research-mobile-detail">${detail.textContent}</p>`),
       link
         ? `<a href="${link.href}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs uppercase tracking-[0.18em] text-zinc-300 hover:text-cobalt-light hover:underline pointer-events-auto">${link.textContent}</a>`
         : '',
