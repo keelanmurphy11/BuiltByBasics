@@ -30,12 +30,19 @@
 </head>
 <body class="basics-page font-body antialiased">
 
-  <header id="site-header" class="site-header">
+  <header id="site-header" class="site-header site-header--with-sections">
     <nav class="site-header__nav">
       <a href="index.html" class="logo" aria-label="KM Training home">
         <span class="logo-main">KM</span>
         <span class="logo-sub">Training</span>
       </a>
+      <nav class="site-header__sections" aria-label="Basics sections">
+        <a href="#strength" class="basics-subnav__link is-active" data-section="strength">Strength</a>
+        <a href="#cardio" class="basics-subnav__link" data-section="cardio">Cardio</a>
+        <a href="#nutrition" class="basics-subnav__link" data-section="nutrition">Nutrition</a>
+        <a href="#fat-loss" class="basics-subnav__link" data-section="fat-loss">Fat Loss</a>
+        <a href="#start" class="basics-subnav__link" data-section="start"><span class="site-header__sections-label--long">How to Start</span><span class="site-header__sections-label--short" aria-hidden="true">Start</span></a>
+      </nav>
       <div class="site-header__links">
         <a href="basics.html" class="site-nav__link site-nav__link--active">Basics of Training</a>
         <a href="library.html" class="site-nav__link">Library</a>
@@ -44,7 +51,7 @@
     </nav>
   </header>
 
-  <main class="pt-24">
+  <main>
     <!-- Page hero + dashboard (dark) -->
     <section class="basics-hero py-20 sm:py-28">
       <div class="mx-auto max-w-4xl px-5 sm:px-8 lg:px-10">

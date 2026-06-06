@@ -18,6 +18,10 @@ html {
   --basics-callout-remember-bg: #f4f4f5;
 }
 
+.basics-page > main {
+  padding-top: calc(var(--basics-header-offset) + 1.5rem);
+}
+
 /* ── Hero zone (light) ── */
 
 .basics-hero {
@@ -167,7 +171,79 @@ html {
   }
 }
 
+/* ── Inline section links (desktop header) ── */
+
+.site-header__sections {
+  display: none;
+}
+
+.site-header__sections-label--short {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .site-header--with-sections .site-header__nav {
+    gap: 1.5rem;
+  }
+
+  .site-header--with-sections .site-header__sections {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.125rem 0.75rem;
+  }
+
+  .site-header--with-sections .site-header__sections .basics-subnav__link {
+    min-height: auto;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+  }
+
+  .site-header--with-sections .site-header__links {
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .site-header__sections-label--long {
+    display: none;
+  }
+
+  .site-header__sections-label--short {
+    display: inline;
+  }
+}
+
 /* ── Sub-navigation ── */
+
+@media (min-width: 1024px) {
+  .basics-subnav-wrap {
+    display: none;
+  }
+
+  .basics-page {
+    --basics-subnav-height: 0px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .basics-subnav:not(.basics-subnav--fixed) {
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+  }
+
+  .basics-subnav-wrap:not(:has(.basics-subnav--fixed)) {
+    margin-top: 0;
+  }
+}
 
 .basics-subnav-wrap {
   position: relative;

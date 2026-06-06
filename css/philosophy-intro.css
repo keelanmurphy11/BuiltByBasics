@@ -241,7 +241,7 @@
   color: rgb(113 113 122);
 }
 
-/* Stacked sidebar: brighter 50% stat (mobile or tight desktop) */
+/* Stacked sidebar: brighter 50% stat + micro-facts (mobile or tight desktop) */
 @media (max-width: 1023px) {
   .philosophy-intro-stat-figure {
     color: rgb(212 212 216);
@@ -249,6 +249,23 @@
 
   .philosophy-intro-stat-copy {
     color: rgb(161 161 170);
+  }
+
+  .philosophy-micro-fact::before {
+    background: rgba(59, 130, 246, 0.6);
+  }
+
+  .philosophy-micro-fact-label {
+    color: rgb(212 212 216);
+  }
+
+  .philosophy-micro-fact-text {
+    color: rgb(161 161 170);
+  }
+
+  .philosophy-micro-fact-link {
+    color: rgb(148 163 184);
+    text-decoration-color: rgba(148, 163, 184, 0.45);
   }
 }
 
@@ -259,6 +276,23 @@
 
   .philosophy-intro-layout--tight .philosophy-intro-stat-copy {
     color: rgb(161 161 170);
+  }
+
+  .philosophy-intro-layout--tight .philosophy-micro-fact::before {
+    background: rgba(59, 130, 246, 0.6);
+  }
+
+  .philosophy-intro-layout--tight .philosophy-micro-fact-label {
+    color: rgb(212 212 216);
+  }
+
+  .philosophy-intro-layout--tight .philosophy-micro-fact-text {
+    color: rgb(161 161 170);
+  }
+
+  .philosophy-intro-layout--tight .philosophy-micro-fact-link {
+    color: rgb(148 163 184);
+    text-decoration-color: rgba(148, 163, 184, 0.45);
   }
 }
 
