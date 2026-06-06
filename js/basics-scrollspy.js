@@ -68,6 +68,27 @@
     }
   }
 
+  function updateScrollHint() {
+    if (isDesktopNav() || !subnav.classList.contains('basics-subnav--fixed')) {
+      subnav.classList.remove('basics-subnav--overflow', 'basics-subnav--at-start', 'basics-subnav--at-end');
+      return;
+    }
+
+    var overflows = subnav.scrollWidth > subnav.clientWidth + 1;
+    subnav.classList.toggle('basics-subnav--overflow', overflows);
+
+    if (!overflows) {
+      subnav.classList.remove('basics-subnav--at-start', 'basics-subnav--at-end');
+      return;
+    }
+
+    var atStart = subnav.scrollLeft <= 1;
+    var atEnd = subnav.scrollLeft + subnav.clientWidth >= subnav.scrollWidth - 1;
+
+    subnav.classList.toggle('basics-subnav--at-start', atStart);
+    subnav.classList.toggle('basics-subnav--at-end', atEnd);
+  }
+
   function updateFixedSubnav() {
     if (!subnavWrap || isDesktopNav()) {
       if (subnav) {
@@ -76,7 +97,11 @@
       if (placeholder) {
         placeholder.classList.remove('is-active');
       }
+      if (header) {
+        header.classList.remove('site-header--subnav-pinned');
+      }
       syncSubnavHeight();
+      updateScrollHint();
       return;
     }
 
@@ -91,7 +116,11 @@
     if (placeholder) {
       placeholder.classList.toggle('is-active', shouldFix);
     }
+    if (header) {
+      header.classList.toggle('site-header--subnav-pinned', shouldFix);
+    }
     syncSubnavHeight();
+    updateScrollHint();
   }
 
   function onLayoutChange() {
@@ -104,6 +133,7 @@
 
   window.addEventListener('resize', onLayoutChange, { passive: true });
   window.addEventListener('scroll', updateFixedSubnav, { passive: true });
+  subnav.addEventListener('scroll', updateScrollHint, { passive: true });
 
   if (typeof desktopQuery.addEventListener === 'function') {
     desktopQuery.addEventListener('change', onLayoutChange);

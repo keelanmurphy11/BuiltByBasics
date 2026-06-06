@@ -269,6 +269,29 @@
   }
 }
 
+@media (max-width: 767px) {
+  .philosophy-intro-stat-copy {
+    color: rgb(212 212 216);
+  }
+
+  .philosophy-micro-fact::before {
+    background: rgba(96, 165, 250, 0.85);
+  }
+
+  .philosophy-micro-fact-label {
+    color: rgb(244 244 245);
+  }
+
+  .philosophy-micro-fact-text {
+    color: rgb(228 228 231);
+  }
+
+  .philosophy-micro-fact-link {
+    color: rgb(147 197 253);
+    text-decoration-color: rgba(147, 197, 253, 0.65);
+  }
+}
+
 @media (min-width: 1024px) {
   .philosophy-intro-layout--tight .philosophy-intro-stat-figure {
     color: rgb(212 212 216);
