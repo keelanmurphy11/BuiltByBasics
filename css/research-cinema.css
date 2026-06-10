@@ -119,13 +119,11 @@
   word-break: break-word;
 }
 
-/* Mobile 2-col grid: larger stats, full headline text */
+/* Mobile 2-col grid: larger stats, full headline text, centered layout */
 @media (max-width: 639px) {
   .card-collapsed {
-    grid-template-rows:
-      clamp(1.5rem, 6vw, 2rem)
-      clamp(2rem, 10vw, 2.5rem)
-      minmax(0, 1fr);
+    height: auto;
+    grid-template-rows: auto auto auto;
     gap: 0.125rem;
     align-content: center;
     padding-bottom: 0;
@@ -136,6 +134,7 @@
   }
 
   .research-card .card-headline {
+    align-self: center;
     font-size: clamp(0.7rem, 2.8vw, 0.8125rem);
     line-height: 1.35;
     -webkit-line-clamp: 4;
@@ -223,11 +222,12 @@
   @media not ((hover: hover) and (pointer: fine)) {
     .research-card .card-face-front {
       justify-content: center;
-      padding: 1rem 0.75rem 2rem;
+      padding: 1rem 0.75rem 2.25rem;
     }
 
     .research-card .card-face-front .card-collapsed {
-      flex: 0 1 auto;
+      flex: 0 0 auto;
+      height: auto;
     }
   }
 }
