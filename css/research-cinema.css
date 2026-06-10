@@ -119,6 +119,32 @@
   word-break: break-word;
 }
 
+/* Mobile 2-col grid: larger stats, full headline text */
+@media (max-width: 639px) {
+  .research-card .card-face-front {
+    padding: 1rem 0.75rem 1.5rem;
+  }
+
+  .card-collapsed {
+    grid-template-rows:
+      clamp(1.5rem, 6vw, 2rem)
+      clamp(2rem, 10vw, 2.5rem)
+      minmax(0, 1fr);
+    gap: 0.125rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .card-stat {
+    font-size: clamp(1.4rem, 6.5vw, 1.75rem);
+  }
+
+  .research-card .card-headline {
+    font-size: clamp(0.7rem, 2.8vw, 0.8125rem);
+    line-height: 1.35;
+    -webkit-line-clamp: 4;
+  }
+}
+
 /* Per-card interaction hints — overlaid at card bottom */
 .research-card-hint {
   position: absolute;

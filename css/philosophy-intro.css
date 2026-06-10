@@ -38,6 +38,16 @@
   gap: 1.5rem;
 }
 
+@media (max-width: 767px) {
+  .philosophy-intro-panel {
+    min-height: auto;
+  }
+
+  .philosophy-intro {
+    gap: 1.25rem;
+  }
+}
+
 @media (min-width: 1024px) {
   .philosophy-intro {
     gap: 1.75rem;

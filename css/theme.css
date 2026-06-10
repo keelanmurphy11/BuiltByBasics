@@ -243,3 +243,13 @@ body ::selection {
   text-transform: none;
   letter-spacing: normal;
 }
+
+/* ── Heading wrap utilities ── */
+
+.heading-balanced {
+  text-wrap: balance;
+}
+
+.heading-nowrap-tail {
+  white-space: nowrap;
+}
