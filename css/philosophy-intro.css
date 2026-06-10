@@ -1,16 +1,22 @@
-/* Philosophy intro — editorial stack (Complexity sells / Simplicity works) */
+/* Philosophy intro — compact single-viewport problem statement */
+
+.philosophy-intro-panel {
+  position: relative;
+  min-height: 100dvh;
+}
 
 .philosophy-intro-glow {
   position: absolute;
-  top: 0;
-  left: -8%;
-  width: min(52rem, 85vw);
-  height: min(36rem, 75vh);
+  top: -5%;
+  left: 50%;
+  width: min(64rem, 110vw);
+  height: min(40rem, 80vh);
   pointer-events: none;
+  transform: translateX(-50%);
   background:
-    radial-gradient(ellipse at 20% 35%, rgba(37, 99, 235, 0.1) 0%, transparent 55%),
-    radial-gradient(ellipse at 70% 60%, rgba(39, 39, 42, 0.35) 0%, transparent 50%);
-  filter: blur(56px);
+    radial-gradient(ellipse at 50% 30%, rgba(37, 99, 235, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse at 30% 60%, rgba(37, 99, 235, 0.04) 0%, transparent 45%);
+  filter: blur(48px);
 }
 
 .philosophy-intro-vignette {
@@ -18,30 +24,43 @@
   inset: 0;
   pointer-events: none;
   background: linear-gradient(
-    105deg,
+    180deg,
     transparent 0%,
-    transparent 45%,
-    rgba(9, 9, 11, 0.25) 100%
+    transparent 60%,
+    rgba(9, 9, 11, 0.15) 100%
   );
 }
 
 .philosophy-intro {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 @media (min-width: 1024px) {
   .philosophy-intro {
-    gap: 3rem;
+    gap: 1.75rem;
   }
 }
 
-.philosophy-intro-eyebrow {
-  max-width: 42rem;
+/* ── Header & headline ── */
+
+.philosophy-intro-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .philosophy-intro-header {
+    gap: 1.5rem;
+  }
 }
 
 .philosophy-intro-eyebrow-label {
+  margin: 0;
   font-family: "Space Grotesk", system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
@@ -51,25 +70,22 @@
 }
 
 .philosophy-headline {
-  max-width: 52rem;
   font-family: "Space Grotesk", system-ui, sans-serif;
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .philosophy-headline--muted {
   display: block;
-  font-size: clamp(1.75rem, 5vw, 3rem);
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
   font-weight: 500;
   color: rgb(161 161 170);
 }
 
 .philosophy-headline--accent {
-  display: inline-block;
-  width: fit-content;
-  max-width: 100%;
-  margin-top: 0.5rem;
-  font-size: clamp(2rem, 6.5vw, 3.75rem);
+  display: block;
+  margin-top: 0.25rem;
+  font-size: clamp(2.25rem, 7.5vw, 4.25rem);
   font-weight: 700;
   color: rgb(250 250 250);
   text-shadow: 0 0 48px rgba(37, 99, 235, 0.18);
@@ -77,483 +93,85 @@
 
 @media (min-width: 1024px) {
   .philosophy-headline--muted {
-    font-size: 3rem;
+    font-size: 2.75rem;
   }
 
   .philosophy-headline--accent {
-    margin-top: 0.75rem;
-    font-size: 4.5rem;
+    margin-top: 0.375rem;
+    font-size: 4.25rem;
   }
 }
 
-.reveal-item.is-visible .philosophy-headline--accent::after {
-  content: '';
-  display: block;
-  margin-top: 1.25rem;
-  width: min(8rem, 28%);
-  height: 2px;
-  background: linear-gradient(90deg, rgba(37, 99, 235, 0.85), rgba(37, 99, 235, 0.15));
-  border-radius: 999px;
-  transform: scaleX(0);
-  transform-origin: left center;
-  animation: philosophy-accent-line 1s cubic-bezier(0.215, 0.61, 0.355, 1) 0.35s forwards;
-}
-
-@keyframes philosophy-accent-line {
-  to {
-    transform: scaleX(1);
-  }
-}
-
-.philosophy-prose {
-  position: relative;
-  max-width: 34rem;
-  padding: 1.125rem 1.25rem 1.25rem;
-  border-radius: 0.25rem;
-  border: 1px solid rgba(39, 39, 42, 0.45);
-  background: linear-gradient(
-    165deg,
-    rgba(24, 24, 27, 0.35) 0%,
-    rgba(9, 9, 11, 0.2) 100%
-  );
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.02),
-    0 12px 28px -16px rgba(0, 0, 0, 0.35);
-}
-
-@media (min-width: 640px) {
-  .philosophy-prose {
-    padding: 1.25rem 1.375rem 1.375rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .philosophy-prose {
-    max-width: 32rem;
-    margin-top: 0.25rem;
-    margin-left: 0;
-    padding: 1.375rem 1.5rem 1.5rem;
-  }
-}
+/* ── Supporting copy ── */
 
 .philosophy-prose-lead {
-  font-family: "Space Grotesk", system-ui, sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-  color: rgb(161 161 170);
-}
-
-.philosophy-prose-body {
-  margin-top: 0.875rem;
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: rgb(113 113 122);
-}
-
-/* Wide layout: copy left, stat right */
-.philosophy-intro-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  position: relative;
-}
-
-/* Subtle vertical split — desktop only, partial height */
-.philosophy-intro-split {
-  display: none;
-  pointer-events: none;
-}
-
-@media (min-width: 1024px) {
-  .philosophy-intro-split {
-    display: block;
-    position: absolute;
-    top: 8%;
-    height: min(68vh, 72%);
-    width: 1px;
-    transform: translateX(-50%);
-    visibility: hidden;
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(63, 63, 70, 0.12) 8%,
-      rgba(82, 82, 91, 0.22) 45%,
-      rgba(82, 82, 91, 0.22) 55%,
-      rgba(63, 63, 70, 0.12) 92%,
-      transparent 100%
-    );
-    z-index: 0;
-  }
-
-  .philosophy-intro-layout--ready:not(.philosophy-intro-layout--tight) .philosophy-intro-split {
-    left: var(--philosophy-split-left);
-    visibility: visible;
-  }
-}
-
-.philosophy-intro-primary {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  min-width: 0;
-}
-
-/* Quiet sidebar — supportive, not competing with primary column */
-.philosophy-intro-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-  padding: 0;
-  border: none;
-  background: none;
-  box-shadow: none;
-}
-
-.philosophy-intro-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 0;
-  border: none;
-  background: none;
-  box-shadow: none;
-}
-
-.philosophy-intro-stat-figure {
   margin: 0;
+  max-width: 32rem;
   font-family: "Space Grotesk", system-ui, sans-serif;
-  font-size: clamp(2rem, 5vw, 2.75rem);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: rgba(148, 163, 184, 0.55);
-  text-shadow: none;
-}
-
-.philosophy-intro-stat-copy {
-  margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: 0.8125rem;
-  line-height: 1.65;
-  color: rgb(113 113 122);
-}
-
-/* Stacked sidebar: brighter 50% stat + micro-facts (mobile or tight desktop) */
-@media (max-width: 1023px) {
-  .philosophy-intro-stat-figure {
-    color: rgb(212 212 216);
-  }
-
-  .philosophy-intro-stat-copy {
-    color: rgb(161 161 170);
-  }
-
-  .philosophy-micro-fact::before {
-    background: rgba(59, 130, 246, 0.6);
-  }
-
-  .philosophy-micro-fact-label {
-    color: rgb(212 212 216);
-  }
-
-  .philosophy-micro-fact-text {
-    color: rgb(161 161 170);
-  }
-
-  .philosophy-micro-fact-link {
-    color: rgb(148 163 184);
-    text-decoration-color: rgba(148, 163, 184, 0.45);
-  }
-}
-
-@media (max-width: 767px) {
-  .philosophy-intro-stat-copy {
-    color: rgb(212 212 216);
-  }
-
-  .philosophy-micro-fact::before {
-    background: rgba(96, 165, 250, 0.85);
-  }
-
-  .philosophy-micro-fact-label {
-    color: rgb(244 244 245);
-  }
-
-  .philosophy-micro-fact-text {
-    color: rgb(228 228 231);
-  }
-
-  .philosophy-micro-fact-link {
-    color: rgb(147 197 253);
-    text-decoration-color: rgba(147, 197, 253, 0.65);
-  }
-}
-
-@media (min-width: 1024px) {
-  .philosophy-intro-layout--tight .philosophy-intro-stat-figure {
-    color: rgb(212 212 216);
-  }
-
-  .philosophy-intro-layout--tight .philosophy-intro-stat-copy {
-    color: rgb(161 161 170);
-  }
-
-  .philosophy-intro-layout--tight .philosophy-micro-fact::before {
-    background: rgba(59, 130, 246, 0.6);
-  }
-
-  .philosophy-intro-layout--tight .philosophy-micro-fact-label {
-    color: rgb(212 212 216);
-  }
-
-  .philosophy-intro-layout--tight .philosophy-micro-fact-text {
-    color: rgb(161 161 170);
-  }
-
-  .philosophy-intro-layout--tight .philosophy-micro-fact-link {
-    color: rgb(148 163 184);
-    text-decoration-color: rgba(148, 163, 184, 0.45);
-  }
-}
-
-.philosophy-micro-facts {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border-top: 1px solid rgba(39, 39, 42, 0.5);
-}
-
-.philosophy-micro-fact {
-  position: relative;
-  padding: 1rem 0 1rem 0.875rem;
-  border-bottom: 1px solid rgba(39, 39, 42, 0.35);
-}
-
-.philosophy-micro-fact::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 1.125rem;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: rgba(113, 113, 122, 0.45);
-}
-
-.philosophy-micro-fact:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.philosophy-micro-fact-label {
-  display: block;
-  font-family: "Space Grotesk", system-ui, sans-serif;
-  font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(161, 161, 170, 0.55);
-}
-
-.philosophy-micro-fact-text {
-  margin: 0.375rem 0 0;
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: 0.8125rem;
-  line-height: 1.6;
-  color: rgba(161, 161, 170, 0.55);
-}
-
-.philosophy-micro-fact-link {
-  color: rgba(148, 163, 184, 0.65);
-  text-decoration: underline;
-  text-decoration-color: rgba(148, 163, 184, 0.25);
-  text-underline-offset: 2px;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
-}
-
-.philosophy-micro-fact-link:hover {
-  color: rgba(148, 163, 184, 0.85);
-  text-decoration-color: rgba(148, 163, 184, 0.45);
-}
-
-@media (min-width: 1024px) {
-  .philosophy-intro-layout {
-    display: block;
-  }
-
-  .philosophy-intro-primary {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-  }
-
-  .philosophy-intro-sidebar {
-    position: absolute;
-    top: 0;
-    z-index: 1;
-    visibility: hidden;
-    /* Align 50% with first headline line (eyebrow + gap) */
-    padding-top: 3.85rem;
-    gap: 2rem;
-    margin-left: 0;
-    padding-right: 0;
-    align-items: flex-start;
-  }
-
-  .philosophy-intro-layout--ready:not(.philosophy-intro-layout--tight) .philosophy-intro-sidebar {
-    left: var(--philosophy-sidebar-start);
-    right: 0.5rem;
-    width: auto;
-    max-width: none;
-    visibility: visible;
-  }
-
-  .philosophy-intro-stat,
-  .philosophy-micro-facts {
-    width: 100%;
-    max-width: none;
-    margin-inline: 0;
-  }
-
-  .philosophy-intro-stat-figure {
-    font-size: 2.5rem;
-  }
-
-  .philosophy-intro-stat-copy {
-    font-size: 0.8125rem;
-    line-height: 1.65;
-  }
-
-  .philosophy-micro-fact-text {
-    font-size: 0.8125rem;
-  }
-
-  .philosophy-intro-vignette {
-    background: linear-gradient(
-      105deg,
-      transparent 0%,
-      transparent 48%,
-      rgba(9, 9, 11, 0.3) 100%
-    );
-  }
-
-  /* Narrow dead space — stack sidebar below primary */
-  .philosophy-intro-layout--tight {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-  }
-
-  .philosophy-intro-layout--tight .philosophy-intro-sidebar {
-    position: static;
-    width: 100%;
-    max-width: 19rem;
-    padding-top: 0;
-    visibility: visible;
-  }
-
-  .philosophy-intro-layout--tight .philosophy-intro-split {
-    display: none;
-  }
-}
-
-@media (min-width: 1280px) {
-  .philosophy-intro-sidebar {
-    padding-top: 4.1rem;
-  }
-
-  .philosophy-intro-split {
-    top: 10%;
-    height: min(72vh, 75%);
-  }
-}
-
-.philosophy-prose-payoff {
-  display: flex;
-  align-items: center;
-  gap: 0.875rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(39, 39, 42, 0.55);
-}
-
-.philosophy-prose-payoff-rule {
-  flex-shrink: 0;
-  align-self: stretch;
-  width: 2px;
-  min-height: 2rem;
-  background: rgba(37, 99, 235, 0.5);
-  border-radius: 1px;
-}
-
-.philosophy-prose-payoff-text {
-  margin: 0;
-  font-family: "Space Grotesk", system-ui, sans-serif;
-  font-size: 0.9375rem;
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
   font-weight: 500;
   line-height: 1.55;
   letter-spacing: -0.01em;
   color: rgb(212 212 216);
+  text-wrap: balance;
 }
 
 @media (min-width: 1024px) {
-  .philosophy-intro-primary {
-    gap: 2.25rem;
-  }
-
-  .philosophy-headline {
-    margin-bottom: 0.125rem;
-  }
-
   .philosophy-prose-lead {
-    font-size: 1.03125rem;
-  }
-
-  .philosophy-prose-body {
-    margin-top: 0.75rem;
-    font-size: 0.875rem;
-    line-height: 1.65;
-  }
-
-  .philosophy-prose-payoff {
-    margin-top: 1rem;
-    padding-top: 1rem;
-  }
-
-  .philosophy-prose-payoff-text {
-    font-size: 0.9375rem;
+    font-size: 1.125rem;
   }
 }
 
+/* ── Divider ── */
+
+.philosophy-intro-divider-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
 .philosophy-intro-divider {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    rgb(39 39 42 / 0.7) 0%,
-    rgb(39 39 42 / 0.2) 50%,
-    transparent 100%
-  );
+  width: min(6rem, 24%);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.75), transparent);
+  border-radius: 999px;
   transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.45s;
+  transition: transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .reveal-item.is-visible .philosophy-intro-divider {
   transform: scaleX(1);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .reveal-item.is-visible .philosophy-headline--accent::after {
-    animation: none;
-    transform: scaleX(1);
-  }
+/* ── Citation ── */
 
+.philosophy-intro-citation {
+  margin: -0.5rem 0 0;
+  max-width: 28rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: rgb(82 82 91);
+  text-wrap: balance;
+}
+
+.philosophy-intro-citation-link {
+  color: rgb(113 113 122);
+  text-decoration: underline;
+  text-decoration-color: rgba(113, 113, 122, 0.35);
+  text-underline-offset: 2px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.philosophy-intro-citation-link:hover {
+  color: rgb(161 161 170);
+  text-decoration-color: rgba(161, 161, 170, 0.55);
+}
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
   .philosophy-intro-divider {
     transform: scaleX(1);
     transition: none;

@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="css/reveal.css" />
   <link rel="stylesheet" href="css/research-cinema.css" />
   <link rel="stylesheet" href="css/research-telemetry-bg.css?v=3" />
-  <link rel="stylesheet" href="css/philosophy-intro.css?v=12" />
+  <link rel="stylesheet" href="css/philosophy-intro.css?v=15" />
   <style>
     .hero-bg {
       filter: grayscale(100%) contrast(1.08);
@@ -128,6 +128,12 @@
         transition: none;
       }
     }
+    #principles .principles-prose p {
+      text-wrap: pretty;
+    }
+    #principles .principles-just-start p {
+      text-wrap: balance;
+    }
   </style>
 </head>
 <body class="bg-zinc-950 text-white font-body antialiased selection:bg-cobalt selection:text-white">
@@ -211,85 +217,43 @@
     >
 
       <!-- Editorial intro — philosophy reveal -->
-      <div class="relative grain overflow-hidden">
+      <div class="philosophy-intro-panel relative grain overflow-hidden">
         <div class="philosophy-intro-glow" aria-hidden="true"></div>
         <div class="philosophy-intro-vignette" aria-hidden="true"></div>
 
-        <div class="relative mx-auto max-w-7xl px-5 pt-12 pb-20 sm:px-8 sm:pt-16 sm:pb-24 lg:px-10 lg:pb-28">
-          <div data-reveal-stagger class="relative z-10 philosophy-intro">
-            <div class="philosophy-intro-layout" data-dead-space-ratio="0.25" data-split-gap="24">
-              <div class="philosophy-intro-split" aria-hidden="true"></div>
-              <div class="philosophy-intro-primary">
-                <div class="reveal-item philosophy-intro-eyebrow border-l-2 border-cobalt pl-6">
-                  <p class="philosophy-intro-eyebrow-label">The Problem</p>
-                </div>
+        <div class="relative z-10 mx-auto flex min-h-[100dvh] max-w-7xl flex-col justify-center px-5 py-16 sm:px-8 lg:px-10">
+          <div data-reveal-stagger class="philosophy-intro mx-auto w-full max-w-[40rem] text-center">
+            <header class="philosophy-intro-header">
+              <p class="reveal-item philosophy-intro-eyebrow-label">The Problem</p>
+              <h2 id="philosophy-heading" class="reveal-item philosophy-headline">
+                <span class="philosophy-headline--muted">Complexity sells.</span>
+                <span class="philosophy-headline--accent">Simplicity works.</span>
+              </h2>
+            </header>
 
-                <h2 id="philosophy-heading" class="reveal-item philosophy-headline">
-                  <span class="philosophy-headline--muted">Complexity sells.</span>
-                  <span class="philosophy-headline--accent">Simplicity works.</span>
-                </h2>
+            <p class="reveal-item philosophy-prose-lead">
+              The fitness industry profits when people stay confused.
+            </p>
 
-                <div class="reveal-item philosophy-prose">
-                  <p class="philosophy-prose-lead">The online fitness industry thrives on confusion.</p>
-                  <p class="philosophy-prose-body">
-                    The more complicated fitness feels, the longer people keep searching, consuming, and buying.
-                  </p>
-                  <div class="philosophy-prose-payoff">
-                    <span class="philosophy-prose-payoff-rule" aria-hidden="true"></span>
-                    <p class="philosophy-prose-payoff-text">
-                      Real results come from practicing simple methods consistently.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <aside class="reveal-item philosophy-intro-sidebar" aria-label="Supporting research and context">
-                <div class="philosophy-intro-stat">
-                  <p class="philosophy-intro-stat-figure" aria-hidden="true">50%</p>
-                  <p class="philosophy-intro-stat-copy">
-                    An estimated half of all fitness information online is either incorrect, misleading or outdated!
-                  </p>
-                </div>
-
-                <ul class="philosophy-micro-facts" role="list">
-                  <li class="philosophy-micro-fact">
-                    <span class="philosophy-micro-fact-label">The Influencer Failure Rate</span>
-                    <p class="philosophy-micro-fact-text">
-                      According to a
-                      <a
-                        class="philosophy-micro-fact-link"
-                        href="https://business.dcu.ie/dcu-and-myfitnesspal-study-on-social-media-health-and-wellness-trends-highlights-urgent-need-for-digital-health-literacy/#:~:text=This%20underscores%20the%20importance%20of%20licensed%20professionals,be%20accurate%20when%20compared%20to%20these%20guidelines."
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >DCU &amp; MyFitnessPal study</a>;
-                      Only 2.1% of nutrition advice analysed across tens of thousands of social media videos aligns with public health guidelines.
-                    </p>
-                  </li>
-                  <li class="philosophy-micro-fact">
-                    <span class="philosophy-micro-fact-label">The Resolution Drop-off</span>
-                    <p class="philosophy-micro-fact-text">
-                      Data shows that while millions start complex fitness routines every January, 80% of people abandon them by the second week of February because the protocols are too overwhelming to sustain.
-                    </p>
-                  </li>
-                  <li class="philosophy-micro-fact">
-                    <span class="philosophy-micro-fact-label">The Diet Book Paradox</span>
-                    <p class="philosophy-micro-fact-text">
-                      There are over 40,000 diet books currently in print, yet long-term weight management success rates remain under 10% for restrictive, overly complex programs.
-                    </p>
-                  </li>
-                </ul>
-              </aside>
-            </div>
-
-            <div class="reveal-item w-full pt-2">
+            <div class="reveal-item philosophy-intro-divider-wrap">
               <div class="philosophy-intro-divider" aria-hidden="true"></div>
             </div>
+
+            <p class="reveal-item philosophy-intro-citation">
+              Only 2.1% of nutrition advice online aligns with public health guidelines —
+              <a
+                class="philosophy-intro-citation-link"
+                href="https://business.dcu.ie/dcu-and-myfitnesspal-study-on-social-media-health-and-wellness-trends-highlights-urgent-need-for-digital-health-literacy/#:~:text=This%20underscores%20the%20importance%20of%20licensed%20professionals,be%20accurate%20when%20compared%20to%20these%20guidelines."
+                target="_blank"
+                rel="noopener noreferrer"
+              >DCU &amp; MyFitnessPal study</a>
+            </p>
           </div>
         </div>
       </div>
 
       <!-- Layer 3: Mission callout -->
-      <div class="relative mx-auto max-w-7xl sm:mt-8 lg:mt-12">
+      <div class="relative mx-auto max-w-7xl -mt-12 sm:-mt-16 lg:-mt-20">
         <div
           data-reveal-stagger
           class="border-y border-zinc-800/40 px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24"
@@ -344,7 +308,7 @@
             <span class="font-display text-4xl font-bold leading-none text-cobalt/70 sm:text-5xl" aria-hidden="true">02</span>
             <h3 class="mt-4 font-display text-xl font-semibold uppercase tracking-wide text-white sm:text-2xl">Consistency</h3>
             <p class="mt-6 max-w-xs text-base leading-relaxed text-white sm:text-lg lg:mt-8">
-              Small changes compound into massive results down the road.
+              Small consistent progress compounds over time.
             </p>
             <a
               href="basics.html"
@@ -400,8 +364,12 @@
               The Why
             </span>
             <h2 id="why-heading" class="reveal-item mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-              What the research actually says
+              Why bother? 
             </h2>
+            <h3 id="why-subheading" class="reveal-item mt-3 font-display text-xl font-semibold tracking-tight sm:text-2xl lg:text-3xl">
+              Here's what the research says
+            </h3>
+            
             <p class="reveal-item mt-4 text-zinc-400">
               Flip cards to reveal detail.
             </p>
@@ -609,101 +577,97 @@
     <!-- ========== 5. KEY PRINCIPLES GRID ========== -->
     <section
       id="principles"
-      class="relative border-t border-zinc-800 bg-zinc-950 pt-12 pb-12 sm:pt-16 sm:pb-16 lg:pb-20 grain"
+      class="relative border-t border-zinc-800 bg-zinc-950 pt-12 pb-12 sm:pt-16 sm:pb-16 lg:py-10 grain"
+      aria-labelledby="principles-heading"
     >
       <div class="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <div data-reveal-stagger>
-          <div class="mb-14 max-w-2xl border-l-2 border-cobalt pl-6 sm:mb-16">
+          <div class="mb-10 max-w-2xl border-l-2 border-cobalt pl-6 sm:mb-12 lg:mb-6">
             <span class="reveal-item font-display text-xs font-medium uppercase tracking-[0.3em] text-zinc-500">
-              02 — Blueprints
+              02 — Principles
             </span>
-            <h2 class="reveal-item mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-              Summary of Key Principles
+            <h2 id="principles-heading" class="reveal-item mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:mt-1.5 lg:text-2xl lg:leading-tight xl:text-3xl">
+              Key Principles
             </h2>
-            <p class="reveal-item mt-4 text-zinc-400">
-              Four pillars. Simple sentences. Full depth in the education library—no fluff, no fads.
-            </p>
           </div>
 
-          <div class="grid gap-px border border-zinc-800 bg-zinc-800 sm:grid-cols-2">
-          <!-- Card 1 -->
-          <article class="reveal-item card-hover relative bg-zinc-950 p-8 sm:p-10 lg:p-12">
-            <span class="font-display text-[0.65rem] font-medium uppercase tracking-[0.35em] text-cobalt-light">01</span>
-            <h3 class="mt-4 font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">
-              Lift Heavy
-            </h3>
-            <p class="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
-              Lift close to failure, 2+ times a week. Progressive overload — each session train slighlty harder than last time —slow consistent progress lasts!            </p>
-            <a
-              href="basics.html#strength"
-              class="mt-8 inline-flex items-center gap-2 font-display text-xs font-semibold uppercase tracking-widest text-cobalt-light transition-colors hover:text-cobalt-glow"
+          <div
+            class="grid gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-4"
+            role="list"
+          >
+            <article
+              class="reveal-item card-hover border border-zinc-800 p-8 sm:p-10 lg:p-5"
+              role="listitem"
             >
-              Read Full Blueprint
-              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-          </article>
+              <div class="lg:flex lg:items-baseline lg:gap-3">
+                <span class="font-display text-4xl font-bold leading-none text-cobalt/70 sm:text-5xl lg:text-xl" aria-hidden="true">01</span>
+                <h3 class="mt-4 font-display text-xl font-semibold uppercase tracking-wide text-white sm:text-2xl lg:mt-0 lg:text-base">Start Easy</h3>
+              </div>
+              <div class="principles-prose mt-6 space-y-4 text-sm leading-relaxed text-zinc-400 sm:text-base lg:mt-2.5 lg:space-y-1.5 lg:text-[0.8125rem] lg:leading-snug">
+                <p>Write down a simple baseline plan that you can easily stick to, no matter how chaotic or busy your week gets.</p>
+                <p>Set the bar low to guarantee early psychological wins, then focus on overachieving later.</p>
+              </div>
+            </article>
 
-          <!-- Card 2 -->
-          <article class="reveal-item card-hover relative bg-zinc-950 p-8 sm:p-10 lg:p-12">
-            <span class="font-display text-[0.65rem] font-medium uppercase tracking-[0.35em] text-cobalt-light">02</span>
-            <h3 class="mt-4 font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">
-              Strategic Nutrition
-            </h3>
-            <p class="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
-              Prioritize protein, ignore fad diets. Energy balance and adherence beat the latest headline—food as fuel, not ideology.
-            </p>
-            <a
-              href="basics.html#nutrition"
-              class="mt-8 inline-flex items-center gap-2 font-display text-xs font-semibold uppercase tracking-widest text-cobalt-light transition-colors hover:text-cobalt-glow"
+            <article
+              class="reveal-item card-hover border border-zinc-800 p-8 sm:p-10 lg:p-5"
+              role="listitem"
             >
-              Read Full Blueprint
-              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-          </article>
+              <div class="lg:flex lg:items-baseline lg:gap-3">
+                <span class="font-display text-4xl font-bold leading-none text-cobalt/70 sm:text-5xl lg:text-xl" aria-hidden="true">02</span>
+                <h3 class="mt-4 font-display text-xl font-semibold uppercase tracking-wide text-white sm:text-2xl lg:mt-0 lg:text-base">Small Shifts</h3>
+              </div>
+              <div class="principles-prose mt-6 space-y-4 text-sm leading-relaxed text-zinc-400 sm:text-base lg:mt-2.5 lg:space-y-1.5 lg:text-[0.8125rem] lg:leading-snug">
+                <p>Identify a few low-friction areas of your diet and lifestyle where you can make small, meaningful substitutions and start there.</p>
+                <p>Master the simplest changes first, and let those habits compound before trying to progress any further.</p>
+              </div>
+            </article>
 
-          <!-- Card 3 -->
-          <article class="reveal-item card-hover relative bg-zinc-950 p-8 sm:p-10 lg:p-12">
-            <span class="font-display text-[0.65rem] font-medium uppercase tracking-[0.35em] text-cobalt-light">03</span>
-            <h3 class="mt-4 font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">
-              Lifestyle Cardio
-            </h3>
-            <p class="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
-              Find movement you like, protect your lifespan. Cardiorespiratory fitness predicts longevity—enjoyment drives consistency.
-            </p>
-            <a
-              href="basics.html#cardio"
-              class="mt-8 inline-flex items-center gap-2 font-display text-xs font-semibold uppercase tracking-widest text-cobalt-light transition-colors hover:text-cobalt-glow"
+            <article
+              class="reveal-item card-hover border border-zinc-800 p-8 sm:p-10 lg:p-5"
+              role="listitem"
             >
-              Read Full Blueprint
-              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-          </article>
+              <div class="lg:flex lg:items-baseline lg:gap-3">
+                <span class="font-display text-4xl font-bold leading-none text-cobalt/70 sm:text-5xl lg:text-xl" aria-hidden="true">03</span>
+                <h3 class="mt-4 font-display text-xl font-semibold uppercase tracking-wide text-white sm:text-2xl lg:mt-0 lg:text-base">Lifestyle View</h3>
+              </div>
+              <div class="principles-prose mt-6 space-y-4 text-sm leading-relaxed text-zinc-400 sm:text-base lg:mt-2.5 lg:space-y-1.5 lg:text-[0.8125rem] lg:leading-snug">
+                <p>Choose forms of movement you actually look forward to—like hiking, tennis, or sea swims—instead of forcing yourself through routines you hate.</p>
+                <p>Make it social by training with a gym buddy or joining a local club to effortlessly handle your long-term accountability.</p>
+              </div>
+            </article>
 
-          <!-- Card 4 -->
-          <article class="reveal-item card-hover relative bg-zinc-950 p-8 sm:p-10 lg:p-12">
-            <span class="font-display text-[0.65rem] font-medium uppercase tracking-[0.35em] text-cobalt-light">04</span>
-            <h3 class="mt-4 font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">
-              Fat Loss Dynamics
-            </h3>
-            <p class="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
-              Create a gentle calorie deficit, aim for slow trends. Sustainable fat loss is a data curve—not a crash, not a miracle week.
-            </p>
-            <a
-              href="basics.html#fat-loss"
-              class="mt-8 inline-flex items-center gap-2 font-display text-xs font-semibold uppercase tracking-widest text-cobalt-light transition-colors hover:text-cobalt-glow"
+            <article
+              class="reveal-item card-hover border border-zinc-800 p-8 sm:p-10 lg:p-5"
+              role="listitem"
             >
-              Read Full Blueprint
-              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <div class="lg:flex lg:items-baseline lg:gap-3">
+                <span class="font-display text-4xl font-bold leading-none text-cobalt/70 sm:text-5xl lg:text-xl" aria-hidden="true">04</span>
+                <h3 class="mt-4 font-display text-xl font-semibold uppercase tracking-wide text-white sm:text-2xl lg:mt-0 lg:text-base">Understanding = Autonomy</h3>
+              </div>
+              <div class="principles-prose mt-6 space-y-4 text-sm leading-relaxed text-zinc-400 sm:text-base lg:mt-2.5 lg:space-y-1.5 lg:text-[0.8125rem] lg:leading-snug">
+                <p>Learn the fundamental principles behind your training and nutrition so you never have to blindly rely on a trainer.</p>
+                <p>Build the knowledge required to confidently modify your own routines on the fly when traveling or short on time.</p>
+              </div>
+            </article>
+          </div>
+
+          <div
+            class="reveal-item mt-14 border-y border-zinc-800/40 py-14 text-center sm:mt-16 sm:py-16 lg:mt-20 lg:py-20"
+          >
+            <h3 class="font-display text-2xl font-semibold uppercase tracking-wide text-white sm:text-3xl">Just Start</h3>
+            <div class="principles-just-start mx-auto mt-5 max-w-2xl space-y-1 text-lg leading-relaxed text-zinc-400 sm:text-xl">
+              <p>You don't have to be perfect.</p>
+              <p>You don't even have to be good.</p>
+              <p>But just start!</p>
+            </div>
+            <a
+              href="basics.html"
+              class="pipeline-cta group mt-10 inline-flex items-center gap-2.5 font-display text-[0.7rem] font-medium uppercase tracking-[0.22em] text-zinc-500 transition-colors duration-300 hover:text-cobalt-light"
+            >
+              Explore the Basics
+              <span class="pipeline-arrow" aria-hidden="true">→</span>
             </a>
-          </article>
           </div>
         </div>
       </div>
@@ -726,23 +690,25 @@
                 Personal Fitness Consultancy
               </h2>
               <p class="reveal-item mt-6 text-sm leading-relaxed text-zinc-400 sm:text-base">
-                Let's be entirely transparent: you do not need a coach or personal trainer to get into the best shape of your life. Everything on this site is free—apply it consistently and you will see incredible results on your own.
+                Let's be clear: you do not need to hire a coach, and you do not need a personal trainer to get into the best shape of your life.<br>
+                Everything you need to build a healthy, strong and capable body is available right here on this website — completely free.<br>
+                If you take the core Basics of Training principles and apply them consistently, you will achieve incredible results all on your own.
               </p>
               <p class="reveal-item mt-4 text-sm leading-relaxed text-zinc-500 sm:text-base">
-                Fitness Consultancy is optional: a way to fast-track progress, cut guesswork, and build a system tailored to your career and lifestyle—without weekly lock-ins or blind execution.
+                Personal fitness consultancy is optional: a well-rounded approach with an emphasis on education and understanding — so you eventually no longer need anyone else.
               </p>
               <ul class="reveal-item mt-8 space-y-3 border-t border-zinc-800 pt-8 text-sm text-zinc-400">
                 <li class="flex gap-3">
                   <span class="font-display text-cobalt-light">—</span>
-                  As-needed support—no rigid subscriptions
+                  As needed support
                 </li>
                 <li class="flex gap-3">
                   <span class="font-display text-cobalt-light">—</span>
-                  Education-first—built for eventual self-sufficiency
+                  Education first approach — built for eventual self-sufficiency
                 </li>
                 <li class="flex gap-3">
                   <span class="font-display text-cobalt-light">—</span>
-                  Lifestyle integration—travel, career, and schedule
+                  Lifestyle integration — travel, career and schedule
                 </li>
               </ul>
               <a
@@ -827,7 +793,6 @@
   </script>
 
   <script src="js/scroll-reveal.js"></script>
-  <script src="js/philosophy-intro-layout.js?v=2"></script>
   <script src="js/research-telemetry-bg.js?v=4"></script>
   <script src="js/research-cinema.js"></script>
 </body>

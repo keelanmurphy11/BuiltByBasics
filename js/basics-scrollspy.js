@@ -4,9 +4,8 @@
   var subnav = document.getElementById('basics-subnav');
   if (!subnav) return;
 
-  var subnavWrap = subnav.closest('.basics-subnav-wrap');
-  var placeholder = subnavWrap && subnavWrap.querySelector('.basics-subnav-placeholder');
   var header = document.getElementById('site-header');
+  var mainNav = header && header.querySelector('.site-header__nav');
   var sectionIds = ['strength', 'cardio', 'nutrition', 'fat-loss', 'start'];
   var links = {};
   var desktopQuery = window.matchMedia('(min-width: 1024px)');
@@ -40,100 +39,47 @@
 
   function syncHeaderOffset() {
     if (!header) return;
-    var height = header.offsetHeight;
-    document.documentElement.style.setProperty('--basics-header-offset', height + 'px');
+    document.documentElement.style.setProperty('--basics-header-offset', header.offsetHeight + 'px');
   }
 
   function syncSubnavHeight() {
-    if (isDesktopNav() || !subnav) {
+    if (isDesktopNav() || !header) {
       document.documentElement.style.setProperty('--basics-subnav-height', '0px');
-      if (placeholder) {
-        placeholder.style.height = '0px';
-      }
+      subnav.classList.remove('basics-subnav--overflow');
+      syncHeaderOffset();
       return;
     }
 
-    if (!subnav.classList.contains('basics-subnav--fixed')) {
-      document.documentElement.style.setProperty('--basics-subnav-height', '0px');
-      if (placeholder) {
-        placeholder.style.height = '0px';
-      }
-      return;
-    }
-
-    var height = subnav.offsetHeight;
-    document.documentElement.style.setProperty('--basics-subnav-height', height + 'px');
-    if (placeholder) {
-      placeholder.style.height = height + 'px';
-    }
+    var mainNavHeight = mainNav ? mainNav.offsetHeight : header.offsetHeight;
+    var subnavHeight = Math.round(mainNavHeight * 0.5);
+    document.documentElement.style.setProperty('--basics-subnav-height', subnavHeight + 'px');
+    syncHeaderOffset();
+    requestAnimationFrame(function () {
+      updateOverflow();
+      syncHeaderOffset();
+    });
   }
 
-  function updateScrollHint() {
-    if (isDesktopNav() || !subnav.classList.contains('basics-subnav--fixed')) {
-      subnav.classList.remove('basics-subnav--overflow', 'basics-subnav--at-start', 'basics-subnav--at-end');
+  function updateOverflow() {
+    if (isDesktopNav()) {
+      subnav.classList.remove('basics-subnav--overflow');
       return;
     }
 
-    var overflows = subnav.scrollWidth > subnav.clientWidth + 1;
-    subnav.classList.toggle('basics-subnav--overflow', overflows);
-
-    if (!overflows) {
-      subnav.classList.remove('basics-subnav--at-start', 'basics-subnav--at-end');
-      return;
-    }
-
-    var atStart = subnav.scrollLeft <= 1;
-    var atEnd = subnav.scrollLeft + subnav.clientWidth >= subnav.scrollWidth - 1;
-
-    subnav.classList.toggle('basics-subnav--at-start', atStart);
-    subnav.classList.toggle('basics-subnav--at-end', atEnd);
-  }
-
-  function updateFixedSubnav() {
-    if (!subnavWrap || isDesktopNav()) {
-      if (subnav) {
-        subnav.classList.remove('basics-subnav--fixed');
-      }
-      if (placeholder) {
-        placeholder.classList.remove('is-active');
-      }
-      if (header) {
-        header.classList.remove('site-header--subnav-pinned');
-      }
-      syncSubnavHeight();
-      updateScrollHint();
-      return;
-    }
-
-    var headerOffset = parseInt(
-      getComputedStyle(document.documentElement).getPropertyValue('--basics-header-offset'),
-      10
-    ) || 72;
-
-    var shouldFix = subnavWrap.getBoundingClientRect().top <= headerOffset;
-
-    subnav.classList.toggle('basics-subnav--fixed', shouldFix);
-    if (placeholder) {
-      placeholder.classList.toggle('is-active', shouldFix);
-    }
-    if (header) {
-      header.classList.toggle('site-header--subnav-pinned', shouldFix);
-    }
-    syncSubnavHeight();
-    updateScrollHint();
+    subnav.classList.toggle(
+      'basics-subnav--overflow',
+      subnav.scrollWidth > subnav.clientWidth + 1
+    );
   }
 
   function onLayoutChange() {
-    syncHeaderOffset();
-    updateFixedSubnav();
+    syncSubnavHeight();
   }
 
   setActive(sectionIds[0]);
   onLayoutChange();
 
   window.addEventListener('resize', onLayoutChange, { passive: true });
-  window.addEventListener('scroll', updateFixedSubnav, { passive: true });
-  subnav.addEventListener('scroll', updateScrollHint, { passive: true });
 
   if (typeof desktopQuery.addEventListener === 'function') {
     desktopQuery.addEventListener('change', onLayoutChange);
