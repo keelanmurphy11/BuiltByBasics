@@ -46,6 +46,10 @@
   .philosophy-intro {
     gap: 1.25rem;
   }
+
+  .philosophy-mission-callout {
+    padding-block: clamp(5rem, 14vw, 6rem);
+  }
 }
 
 @media (min-width: 1024px) {

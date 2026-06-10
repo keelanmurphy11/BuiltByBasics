@@ -121,17 +121,14 @@
 
 /* Mobile 2-col grid: larger stats, full headline text */
 @media (max-width: 639px) {
-  .research-card .card-face-front {
-    padding: 1rem 0.75rem 1.5rem;
-  }
-
   .card-collapsed {
     grid-template-rows:
       clamp(1.5rem, 6vw, 2rem)
       clamp(2rem, 10vw, 2.5rem)
       minmax(0, 1fr);
     gap: 0.125rem;
-    padding-bottom: 1.25rem;
+    align-content: center;
+    padding-bottom: 0;
   }
 
   .card-stat {
@@ -218,6 +215,20 @@
   .research-mobile-modal.is-open .research-mobile-panel {
     transform: none;
     opacity: 1;
+  }
+}
+
+/* Mobile touch: vertically center card content above tap hint */
+@media (max-width: 639px) {
+  @media not ((hover: hover) and (pointer: fine)) {
+    .research-card .card-face-front {
+      justify-content: center;
+      padding: 1rem 0.75rem 2rem;
+    }
+
+    .research-card .card-face-front .card-collapsed {
+      flex: 0 1 auto;
+    }
   }
 }
 

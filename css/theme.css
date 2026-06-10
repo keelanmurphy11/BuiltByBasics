@@ -253,3 +253,19 @@ body ::selection {
 .heading-nowrap-tail {
   white-space: nowrap;
 }
+
+.heading-split__line {
+  display: inline;
+}
+
+@media (max-width: 1023px) {
+  .heading-split__line {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heading-split__line + .heading-split__line::before {
+    content: " ";
+  }
+}
