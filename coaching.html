@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="css/logo.css" />
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/reveal.css" />
+  <link rel="stylesheet" href="css/coaching-pricing.css" />
   <style>
     .form-select option {
       background-color: #ffffff;
@@ -75,12 +76,12 @@
     <!-- What is consultancy -->
     <section class="border-b border-zinc-200 pt-8 pb-16 sm:pt-10 sm:pb-24">
       <div data-reveal-stagger class="mx-auto max-w-3xl px-5 sm:px-8 lg:px-10">
-        <h2 class="reveal-item heading-split font-display font-semibold uppercase tracking-wide">
-          <span class="heading-split__line">So What Is Personal</span>
-          <span class="heading-split__line">Fitness Consultancy?</span>
+        <h2 class="reveal-item heading-balanced font-display font-semibold uppercase tracking-wide text-[clamp(0.8125rem,3.6vw,1.375rem)] lg:whitespace-nowrap lg:text-3xl">
+          <span class="block whitespace-nowrap lg:inline">So What Is Personal</span>
+          <span class="block whitespace-nowrap lg:inline">Fitness Consultancy?</span>
         </h2>
         <p class="reveal-item mt-6 leading-relaxed text-zinc-600">
-          I promise I'm not just trying to sound fancy. Personal fitness consultancy is a well-rounded approach to your health and fitness with an emphasis on education and understanding.
+          I promise I'm not just trying to sound fancy...<br> Personal fitness consultancy is a well-rounded approach to your health and fitness with an emphasis on education and understanding.
         </p>
         <p class="reveal-item mt-4 leading-relaxed text-zinc-600">
           Together we tailor nutrition and training programs to you, your body, your schedule and your goals. Everything we do has a purpose and my goal is to make sure you actually understand why you are doing what you are doing.
@@ -139,29 +140,204 @@
       </div>
     </section>
 
-    <!-- Choose your speed -->
-    <section class="py-20 sm:py-28">
+    <!-- Services & Pricing -->
+    <section id="services-and-pricing" class="border-t border-zinc-200 py-20 sm:py-28">
       <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-        <h2 class="text-center font-display text-2xl font-semibold uppercase tracking-wide sm:text-3xl">Choose Your Speed</h2>
-        <p class="mx-auto mt-4 max-w-2xl text-center text-zinc-500">Complete individual flexibility. There are no locked-in contracts—you choose exactly how much support you want.</p>
+        <div data-reveal-stagger class="text-center">
+          <p class="reveal-item font-display text-xs uppercase tracking-[0.35em] text-cobalt-light">Services &amp; Pricing</p>
+          <h2 class="reveal-item mt-4 font-display text-2xl font-semibold uppercase tracking-wide sm:text-3xl">Choose Your Level of Support</h2>
+          <p class="reveal-item mx-auto mt-4 max-w-2xl text-zinc-500 leading-relaxed">
+            Complete individual flexibility. There are no locked-in contracts—you choose exactly how much support you want.
+          </p>
+          <nav class="reveal-item pricing-nav mt-8" aria-label="Pricing sections">
+            <a href="#entry">Entry Points</a>
+            <a href="#one-off">One-Off Sessions</a>
+            <a href="#ongoing">On the Go Support</a>
+            <a href="#group">Small Group PT</a>
+          </nav>
+        </div>
 
-        <div data-reveal-stagger class="mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-2">
-          <div class="reveal-item border border-zinc-200 bg-white p-8 sm:p-10">
-            <span class="font-display text-xs uppercase tracking-[0.3em] text-cobalt-light">The Quick Launch</span>
-            <p class="mt-6 leading-relaxed text-zinc-600">
-              Some clients only book one or two consultation sessions. They get the clarity they need, map out their plan, and confidently manage their own training from there.
-            </p>
-          </div>
-          <div class="reveal-item border border-zinc-200 bg-zinc-50 p-8 sm:p-10">
-            <span class="font-display text-xs uppercase tracking-[0.3em] text-cobalt-light">The Accountable Partnership</span>
-            <p class="mt-6 leading-relaxed text-zinc-700">
-              Other clients prefer a more hands-on approach. They want planning handled for them and use regular check-ins to stay motivated, consistent, and on track.
-            </p>
+        <!-- Entry points -->
+        <div id="entry" class="mt-20 scroll-mt-28">
+          <h3 class="pricing-group-heading text-center">Entry Points</h3>
+          <div data-reveal-stagger class="mx-auto mt-8 grid max-w-5xl gap-6 md:grid-cols-2">
+            <div class="reveal-item border border-zinc-200 bg-white p-8 sm:p-10">
+              <span class="font-display text-xs uppercase tracking-[0.3em] text-cobalt-light">Blueprint</span>
+              <h4 class="pricing-card-title mt-4">Initial Program Design</h4>
+              <p class="pricing-price mt-6">€99</p>
+              <ul class="pricing-includes mt-8 border-t border-zinc-200 pt-8">
+                <li><span>—</span><span>Initial screening form</span></li>
+                <li><span>—</span><span>Bespoke program design</span></li>
+                <li><span>—</span><span>In-person or online discussion on program design and nutrition</span></li>
+                <li><span>—</span><span>Optional transition to On the Go Support</span></li>
+              </ul>
+              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
+                <p class="text-sm leading-relaxed text-zinc-500">
+                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
+                  <span class="mt-2 block">Those who already know how to lift but want a change in programming or nutrition—not full hand-holding, just expert direction.</span>
+                </p>
+              </blockquote>
+            </div>
+
+            <div class="reveal-item pricing-card--featured border border-zinc-200 bg-zinc-50 p-8 sm:p-10">
+              <span class="font-display text-xs uppercase tracking-[0.3em] text-cobalt">Recommended starting point</span>
+              <h4 class="pricing-card-title mt-4">The 6-Week Start</h4>
+              <p class="pricing-price mt-6">€375</p>
+              <ul class="pricing-includes mt-8 border-t border-zinc-200 pt-8">
+                <li><span>—</span><span>Initial screening form and program design</span></li>
+                <li><span>—</span><span>In-person or online discussion on plan and program design</span></li>
+                <li><span>—</span><span>In-person gym session — Week 1</span></li>
+                <li><span>—</span><span>In-person gym session — Week 3</span></li>
+                <li><span>—</span><span>In-person gym session — Week 6</span></li>
+                <li><span>—</span><span>Weekly check-in via email or WhatsApp</span></li>
+                <li><span>—</span><span>Optional transition to On the Go Support</span></li>
+              </ul>
+              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
+                <p class="text-sm leading-relaxed text-zinc-600">
+                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
+                  <span class="mt-2 block">New clients or anyone wanting structured onboarding—form coaching, accountability, and a clear runway into ongoing support if you choose it.</span>
+                </p>
+              </blockquote>
+            </div>
           </div>
         </div>
-        <p class="reveal-item mx-auto mt-12 max-w-2xl text-center text-sm leading-relaxed text-zinc-500">
-          Whether you need a one-off blueprint or ongoing guidance, the goal remains identical: small, manageable lifestyle tweaks that compound into massive results over time.
-        </p>
+
+        <!-- One-off sessions -->
+        <div id="one-off" class="mt-20 scroll-mt-28">
+          <h3 class="pricing-group-heading text-center">One-Off Sessions</h3>
+          <div data-reveal-stagger class="mx-auto mt-8 grid max-w-5xl gap-6 md:grid-cols-2">
+            <div class="reveal-item border border-zinc-200 bg-white p-8 sm:p-10">
+              <span class="font-display text-xs uppercase tracking-[0.3em] text-cobalt-light">Option A</span>
+              <h4 class="pricing-card-title mt-4">60 Minute Consultation</h4>
+              <p class="pricing-price mt-6">€60</p>
+              <p class="mt-2 text-sm text-zinc-500">Program updates and nutrition discussion. Coffee included :)</p>
+              <ul class="pricing-includes mt-8 border-t border-zinc-200 pt-8">
+                <li><span>—</span><span>Focused review of your current program</span></li>
+                <li><span>—</span><span>Nutrition discussion and practical adjustments</span></li>
+                <li><span>—</span><span>Clear next steps you can implement immediately</span></li>
+              </ul>
+              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
+                <p class="text-sm leading-relaxed text-zinc-500">
+                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
+                  <span class="mt-2 block">Self-directed trainers or past clients who need a focused tune-up—not a full redesign.</span>
+                </p>
+              </blockquote>
+            </div>
+
+            <div class="reveal-item border border-zinc-200 bg-white p-8 sm:p-10">
+              <span class="font-display text-xs uppercase tracking-[0.3em] text-cobalt-light">Option B</span>
+              <h4 class="pricing-card-title mt-4">60-Minute Gym Session</h4>
+              <p class="pricing-price mt-6">€80</p>
+              <ul class="pricing-includes mt-8 border-t border-zinc-200 pt-8">
+                <li><span>—</span><span>Full in-person coaching session</span></li>
+                <li><span>—</span><span>Exercise technique refinement</span></li>
+                <li><span>—</span><span>Hands-on guidance tailored to your goals</span></li>
+              </ul>
+              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
+                <p class="text-sm leading-relaxed text-zinc-500">
+                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
+                  <span class="mt-2 block">Technique work, confidence with specific lifts, or a single hands-on session without ongoing commitment.</span>
+                </p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+
+        <!-- On the Go Support -->
+        <div id="ongoing" class="mt-20 scroll-mt-28">
+          <h3 class="pricing-group-heading text-center">On the Go Support</h3>
+          <p class="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-zinc-500">
+            Available following Initial Program Design or The 6-Week Start.
+          </p>
+          <div data-reveal-stagger class="mx-auto mt-8 grid max-w-5xl gap-6 md:grid-cols-2">
+            <div class="reveal-item border border-zinc-200 bg-white p-8 sm:p-10">
+              <h4 class="pricing-card-title">On the Go Support</h4>
+              <p class="pricing-card-tier mt-3">Premium</p>
+              <p class="pricing-price mt-6">€150<span class="pricing-price__suffix"> / month</span></p>
+              <ul class="pricing-includes mt-8 border-t border-zinc-200 pt-8">
+                <li><span>—</span><span>Monthly in-person gym session — exercise technique checks, progressions, and progress discussion</span></li>
+                <li><span>—</span><span>Weekly check-ins via email or text</span></li>
+                <li><span>—</span><span>Ask questions anytime</span></li>
+                <li><span>—</span><span>Program updates and progressions</span></li>
+              </ul>
+              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
+                <p class="text-sm leading-relaxed text-zinc-500">
+                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
+                  <span class="mt-2 block">Clients who want regular face-to-face accountability alongside remote support—ideal after completing an entry program.</span>
+                </p>
+              </blockquote>
+            </div>
+
+            <div class="reveal-item border border-zinc-200 bg-zinc-50 p-8 sm:p-10">
+              <h4 class="pricing-card-title">On the Go Support</h4>
+              <p class="pricing-card-tier mt-3">Standard</p>
+              <p class="pricing-price mt-6">€75<span class="pricing-price__suffix"> / month</span></p>
+              <ul class="pricing-includes mt-8 border-t border-zinc-200 pt-8">
+                <li><span>—</span><span>Weekly check-ins via email or text</span></li>
+                <li><span>—</span><span>Ask questions anytime</span></li>
+                <li><span>—</span><span>Monthly program updates and progressions</span></li>
+              </ul>
+              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
+                <p class="text-sm leading-relaxed text-zinc-600">
+                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
+                  <span class="mt-2 block">Motivated self-starters who need expert oversight remotely—not monthly gym time.</span>
+                </p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+
+        <!-- Small Group PT -->
+        <div id="group" class="mt-20 scroll-mt-28">
+          <h3 class="pricing-group-heading text-center">Small Group PT</h3>
+          <div data-reveal-stagger class="mx-auto mt-8 max-w-5xl">
+            <div class="reveal-item border border-zinc-200 bg-white p-8 sm:p-10">
+              <span class="font-display text-xs uppercase tracking-[0.3em] text-cobalt-light">Train together</span>
+              <h4 class="pricing-card-title mt-4">Small Group PT</h4>
+              <p class="mt-3 text-sm font-medium text-zinc-600">Achieve your goals together</p>
+              <p class="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-500">
+                Gather a group of friends and train together. Same educational consultancy approach—shared motivation, lower per-person cost. 
+                <br><br> Your session, your choice: Technique workshops, group training sessions, program design discussions, or a mix of all.
+              </p>
+              <div class="pricing-group-pt__tiers mt-8 border-t border-zinc-200 pt-8">
+                <div class="pricing-group-pt__tier">
+                  <p class="text-xs font-display uppercase tracking-widest text-zinc-500">Group of 2</p>
+                  <p class="pricing-group-pt__tier-price mt-3">€50</p>
+                  <p class="mt-1 text-xs text-zinc-500">per person · 60 min</p>
+                </div>
+                <div class="pricing-group-pt__tier">
+                  <p class="text-xs font-display uppercase tracking-widest text-zinc-500">Group of 3</p>
+                  <p class="pricing-group-pt__tier-price mt-3">€45</p>
+                  <p class="mt-1 text-xs text-zinc-500">per person · 60 min</p>
+                </div>
+                <div class="pricing-group-pt__tier">
+                  <p class="text-xs font-display uppercase tracking-widest text-zinc-500">Group of 4</p>
+                  <p class="pricing-group-pt__tier-price mt-3">€40</p>
+                  <p class="mt-1 text-xs text-zinc-500">per person · 60 min</p>
+                </div>
+              </div>
+              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
+                <p class="text-sm leading-relaxed text-zinc-500">
+                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
+                  <span class="mt-2 block">Friends, couples, or colleagues who want shared motivation and the same hands-on coaching in a social setting.</span>
+                </p>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing CTA -->
+        <div class="reveal-item mt-20 text-center">
+          <p class="mx-auto max-w-xl text-sm leading-relaxed text-zinc-500">
+            Unsure where to start? Get in touch below and we'll chat to see if we're a good fit, and build the right plan for your goals.
+          </p>
+          <a
+            href="#consultancy-application"
+            class="mt-8 inline-block rounded-sm bg-cobalt px-10 py-5 font-display text-sm font-bold uppercase tracking-[0.2em] text-white shadow-2xl shadow-cobalt/30 transition-all duration-300 hover:bg-cobalt-light hover:shadow-cobalt/50 hover:brightness-110 sm:py-6"
+          >
+            Get in Touch
+          </a>
+        </div>
       </div>
     </section>
 
@@ -172,13 +348,19 @@
     </section>
 
     <!-- Consultancy Application -->
-    <section id="consultancy-application" class="border-t border-zinc-200 py-24 sm:py-28">
+    <section id="consultancy-application" class="scroll-mt-28 border-t border-zinc-200 py-24 sm:py-28">
       <div class="mx-auto max-w-3xl px-5 sm:px-8 lg:px-10">
         <div data-reveal-stagger class="text-center">
-          <p class="reveal-item font-display text-xs uppercase tracking-[0.35em] text-cobalt-light">Intake Application</p>
-          <h2 class="reveal-item mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl">Apply for Personal Consultancy</h2>
+          <p class="reveal-item font-display text-xs uppercase tracking-[0.35em] text-cobalt-light">Start Your Journey</p>
+          <h2 class="reveal-item mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl">Get in Touch</h2>
           <p class="reveal-item mx-auto mt-6 max-w-xl text-zinc-600 leading-relaxed">
-            Complete the profile below with honesty and detail—this is the first step toward your strategy consultation. Tell us whether you are leaning toward a Quick Launch or an Accountable Partnership so we can understand what support you want.
+            Tell us a little bit about yourself below so we can get to know you and your goals. Whether you have your eye on a specific plan—like the 6-Week Start or Small Group PT—or you just want some guidance on the best path forward, we'll use this info to see how we can best support you.
+          </p>
+          <p class="reveal-item mx-auto mt-4 max-w-xl text-zinc-600 leading-relaxed">
+            Think of this as a casual introduction—no strings attached!
+          </p>
+          <p class="reveal-item mx-auto mt-4 font-display text-xs uppercase tracking-[0.2em] text-zinc-400">
+            No commitment · No obligation
           </p>
         </div>
 
@@ -204,10 +386,10 @@
           <input type="hidden" name="subject" value="New Consultancy Application — KM Training">
           <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
 
-          <!-- Personal Information -->
+          <!-- About You -->
           <fieldset class="space-y-8">
             <legend class="w-full border-b border-zinc-200 pb-4">
-              <span class="font-display text-xs uppercase tracking-[0.3em] text-zinc-500">Personal Information</span>
+              <span class="font-display text-xs uppercase tracking-[0.3em] text-zinc-500">About You</span>
             </legend>
 
             <div class="grid gap-6 sm:grid-cols-2">
@@ -249,6 +431,29 @@
                   placeholder="you@example.com"
                 />
                 <p class="text-xs text-zinc-400">Required — used for application correspondence only.</p>
+              </div>
+              <div class="space-y-2 sm:col-span-2">
+                <label for="preferred_service" class="block font-display text-xs font-medium uppercase tracking-widest text-zinc-600">Preferred Service</label>
+                <div class="relative">
+                  <select
+                    id="preferred_service"
+                    name="preferred_service"
+                    class="form-select w-full appearance-none rounded-sm border border-zinc-200 bg-white px-4 py-3.5 pr-10 text-zinc-900 transition-colors focus:border-cobalt focus:outline-none focus:ring-2 focus:ring-cobalt/40"
+                  >
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="Initial Program Design">Initial Program Design (€99)</option>
+                    <option value="The 6-Week Start">The 6-Week Start (€375)</option>
+                    <option value="On the Go Support — Premium">On the Go Support — Premium (€150/month)</option>
+                    <option value="On the Go Support — Standard">On the Go Support — Standard (€75/month)</option>
+                    <option value="One-Off — 60 Minute Consultation">One-Off — 60 Minute Consultation (€60)</option>
+                    <option value="One-Off — Gym Session">One-Off — 60-Minute Gym Session (€80)</option>
+                    <option value="Small Group PT">Small Group PT</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                  </select>
+                  <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500" aria-hidden="true">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  </span>
+                </div>
               </div>
               <div class="space-y-2">
                 <label for="sex" class="block font-display text-xs font-medium uppercase tracking-widest text-zinc-600">Sex</label>
@@ -295,7 +500,7 @@
                 name="about_you"
                 rows="7"
                 class="w-full resize-y rounded-sm border border-zinc-200 bg-white px-4 py-4 text-zinc-900 leading-relaxed placeholder-zinc-400 transition-colors focus:border-cobalt focus:outline-none focus:ring-2 focus:ring-cobalt/40"
-                placeholder="Training background, weekly schedule, sleep, nutrition habits, current activity (steps, sessions per week), metrics you track, and whether you prefer a Quick Launch (one or two sessions) or Accountable Partnership (ongoing check-ins)."
+                placeholder="Training background, weekly schedule, sleep, nutrition habits, current activity (steps, sessions per week), metrics you track, and which service interests you—Initial Program Design, The 6-Week Start, On the Go Support, a one-off session, or Small Group PT."
               ></textarea>
             </div>
           </fieldset>
@@ -320,13 +525,33 @@
             </div>
           </fieldset>
 
+          <!-- 03. Additional Notes -->
+          <fieldset class="space-y-6">
+            <div class="border-b border-zinc-200 pb-6">
+              <h3 class="font-display text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl">03. Additional Notes</h3>
+              <p class="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-500">
+                Optional — anything else you'd like us to know.
+              </p>
+            </div>
+            <div class="space-y-2">
+              <label for="additional_notes" class="sr-only">Additional notes</label>
+              <textarea
+                id="additional_notes"
+                name="additional_notes"
+                rows="5"
+                class="w-full resize-y rounded-sm border border-zinc-200 bg-white px-4 py-4 text-zinc-900 leading-relaxed placeholder-zinc-400 transition-colors focus:border-cobalt focus:outline-none focus:ring-2 focus:ring-cobalt/40"
+                placeholder="Anything else you'd like to mention?"
+              ></textarea>
+            </div>
+          </fieldset>
+
           <!-- Submit -->
           <div class="border-t border-zinc-200 pt-12 text-center">
             <button
               type="submit"
               class="w-full max-w-2xl rounded-sm bg-cobalt px-10 py-6 font-display text-sm font-bold uppercase tracking-[0.2em] text-white shadow-2xl shadow-cobalt/30 transition-all duration-300 hover:bg-cobalt-light hover:shadow-cobalt/50 hover:brightness-110 sm:text-base md:text-lg"
             >
-              Submit Consultancy Application
+              Get in Touch
             </button>
             <p class="mt-8 text-xs uppercase tracking-widest text-zinc-400">
               Free education on <a href="basics.html" class="text-cobalt-light hover:underline">Basics of Training</a> · Full archive in the <a href="library.html" class="text-cobalt-light hover:underline">Library</a>
