@@ -205,22 +205,24 @@ html {
     width: 100%;
     height: var(--basics-subnav-height);
     margin: 0;
+    overflow: hidden;
     border-top: 1px solid var(--basics-border);
     background-color: #f4f4f5;
   }
 
   .basics-subnav {
     height: 100%;
+    flex-wrap: nowrap;
     gap: 0.125rem;
     padding: 0 1.25rem;
     border: none;
     background-color: transparent;
-    align-items: stretch;
-    scrollbar-width: thin;
-    scrollbar-color: #a1a1aa #e4e4e7;
-  }
-
-  .basics-subnav:not(.basics-subnav--overflow) {
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: none;
+    touch-action: pan-x;
     scrollbar-width: none;
   }
 
@@ -228,9 +230,14 @@ html {
     display: none;
   }
 
+  .basics-subnav--overflow {
+    scrollbar-width: thin;
+    scrollbar-color: #71717a #e4e4e7;
+  }
+
   .basics-subnav--overflow::-webkit-scrollbar {
     display: block;
-    height: 3px;
+    height: 4px;
   }
 
   .basics-subnav--overflow::-webkit-scrollbar-track {
@@ -238,7 +245,7 @@ html {
   }
 
   .basics-subnav--overflow::-webkit-scrollbar-thumb {
-    background: #a1a1aa;
+    background: #71717a;
     border-radius: 2px;
   }
 
@@ -259,6 +266,7 @@ html {
 .basics-subnav {
   z-index: 40;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0.25rem;
   padding: 0.75rem 0;
@@ -266,6 +274,10 @@ html {
   border-bottom: 1px solid var(--basics-border);
   background-color: var(--basics-light-bg-alt);
   overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: none;
+  touch-action: pan-x;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
@@ -657,7 +669,7 @@ html {
 /* ── Cardio: longevity risk charts ── */
 
 .basics-longevity-graph,
-.basics-fitness-gap {
+.basics-vo2-dose {
   margin-top: 2.5rem;
   padding: 1.75rem 1.5rem;
   border: 1px solid var(--basics-border);
@@ -667,13 +679,13 @@ html {
 
 @media (min-width: 640px) {
   .basics-longevity-graph,
-  .basics-fitness-gap {
+  .basics-vo2-dose {
     padding: 2rem 2.25rem;
   }
 }
 
 .basics-longevity-graph__title,
-.basics-fitness-gap__title {
+.basics-vo2-dose__title {
   margin: 0;
   font-family: "Space Grotesk", system-ui, sans-serif;
   font-size: clamp(1rem, 2.5vw, 1.25rem);
@@ -684,23 +696,21 @@ html {
 }
 
 .basics-longevity-graph__subtitle,
-.basics-fitness-gap__subtitle {
+.basics-vo2-dose__subtitle {
   margin-top: 0.625rem;
   font-size: 0.875rem;
   line-height: 1.55;
   color: var(--basics-text-subtle);
 }
 
-.basics-longevity-graph__axis,
-.basics-fitness-gap__compare {
+.basics-longevity-graph__axis {
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.875rem;
 }
 
-.basics-longevity-graph__row,
-.basics-fitness-gap__pair {
+.basics-longevity-graph__row {
   display: grid;
   grid-template-columns: minmax(7rem, 9.5rem) 1fr minmax(5.5rem, auto);
   align-items: center;
@@ -708,20 +718,17 @@ html {
 }
 
 @media (max-width: 479px) {
-  .basics-longevity-graph__row,
-  .basics-fitness-gap__pair {
+  .basics-longevity-graph__row {
     grid-template-columns: 1fr;
     gap: 0.35rem;
   }
 
-  .basics-longevity-graph__risk,
-  .basics-fitness-gap__risk {
+  .basics-longevity-graph__risk {
     justify-self: start;
   }
 }
 
-.basics-longevity-graph__label,
-.basics-fitness-gap__tier {
+.basics-longevity-graph__label {
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.35;
@@ -732,8 +739,7 @@ html {
   font-weight: 600;
 }
 
-.basics-longevity-graph__bar-wrap,
-.basics-fitness-gap__bar-wrap {
+.basics-longevity-graph__bar-wrap {
   min-width: 0;
   height: 1.375rem;
   border-radius: 2px;
@@ -741,16 +747,14 @@ html {
   overflow: hidden;
 }
 
-.basics-longevity-graph__bar,
-.basics-fitness-gap__bar {
+.basics-longevity-graph__bar {
   height: 100%;
   min-width: 4px;
   border-radius: 2px;
   transition: width 0.4s ease;
 }
 
-.basics-longevity-graph__bar--elite,
-.basics-fitness-gap__bar--above {
+.basics-longevity-graph__bar--elite {
   background: linear-gradient(90deg, rgb(37 99 235), rgb(59 130 246));
 }
 
@@ -762,8 +766,7 @@ html {
   background: linear-gradient(90deg, rgb(37 99 235), rgb(96 165 250));
 }
 
-.basics-longevity-graph__bar--below,
-.basics-fitness-gap__bar--below {
+.basics-longevity-graph__bar--below {
   background: linear-gradient(90deg, rgb(217 119 6), rgb(245 158 11));
 }
 
@@ -775,8 +778,7 @@ html {
   box-shadow: 0 0 0 1px rgba(185, 28, 28, 0.25);
 }
 
-.basics-longevity-graph__risk,
-.basics-fitness-gap__risk {
+.basics-longevity-graph__risk {
   font-family: "Space Grotesk", system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
@@ -790,10 +792,159 @@ html {
   color: rgb(185 28 28);
 }
 
-.basics-fitness-gap {
+.basics-vo2-dose {
   margin-top: 2rem;
-  border-left: 4px solid rgb(37 99 235);
-  background-color: var(--basics-callout-bg);
+}
+
+.basics-longevity-graph__footnote,
+.basics-vo2-dose__footnote {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--basics-text-muted);
+}
+
+.basics-study-link {
+  color: rgb(37 99 235);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.basics-study-link:hover {
+  color: rgb(29 78 216);
+}
+
+/* ── Cardio: VO₂ dose-response line chart ── */
+
+.basics-vo2-dose__chart {
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+
+.basics-vo2-dose__svg {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  margin-inline: auto;
+}
+
+.basics-vo2-dose__axis {
+  stroke: var(--basics-border);
+  stroke-width: 1.5;
+}
+
+.basics-vo2-dose__grid {
+  stroke: var(--basics-border);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+  opacity: 0.6;
+}
+
+.basics-vo2-dose__axis-label {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  fill: var(--basics-text-subtle);
+}
+
+.basics-vo2-dose__tick {
+  font-family: system-ui, sans-serif;
+  font-size: 10px;
+  fill: var(--basics-text-muted);
+  text-anchor: end;
+}
+
+.basics-vo2-dose__tick--x {
+  text-anchor: middle;
+}
+
+.basics-vo2-dose__band {
+  fill: rgb(37 99 235 / 0.06);
+}
+
+.basics-vo2-dose__band--strong {
+  fill: rgb(37 99 235 / 0.12);
+}
+
+.basics-vo2-dose__line {
+  stroke: url(#vo2-line-grad);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.basics-vo2-dose__dot {
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.basics-vo2-dose__dot--low {
+  fill: rgb(239 68 68);
+}
+
+.basics-vo2-dose__dot--below {
+  fill: rgb(245 158 11);
+}
+
+.basics-vo2-dose__dot--above {
+  fill: rgb(59 130 246);
+}
+
+.basics-vo2-dose__dot--high {
+  fill: rgb(37 99 235);
+}
+
+.basics-vo2-dose__dot--elite {
+  fill: rgb(29 78 216);
+}
+
+.basics-vo2-dose__point-label {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  fill: var(--basics-text-strong);
+}
+
+.basics-vo2-dose__point-risk {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  fill: var(--basics-text-subtle);
+}
+
+.basics-vo2-dose__drop-line {
+  stroke: rgb(22 163 74 / 0.35);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.basics-vo2-dose__drop {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  fill: rgb(22 163 74);
+}
+
+.basics-vo2-dose__callout-bg {
+  fill: rgb(239 246 255);
+  stroke: rgb(37 99 235 / 0.25);
+  stroke-width: 1;
+}
+
+.basics-vo2-dose__callout-title {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  fill: rgb(37 99 235);
+}
+
+.basics-vo2-dose__callout-body {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  fill: var(--basics-text-strong);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -805,8 +956,7 @@ html {
     transition: none;
   }
 
-  .basics-longevity-graph__bar,
-  .basics-fitness-gap__bar {
+  .basics-longevity-graph__bar {
     transition: none;
   }
 }

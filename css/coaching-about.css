@@ -1,0 +1,936 @@
+/* Coaching page — About Me expandable section */
+
+.about-me {
+  --about-fade-bg: #ffffff;
+  --about-hero-height: 13.5rem;
+}
+
+.about-me__shell {
+  margin-top: 2.5rem;
+}
+
+.about-me__hero-row {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+  overflow-anchor: auto;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "intro"
+    "media";
+}
+
+.about-me__intro {
+  grid-area: intro;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  min-width: 0;
+}
+
+.about-me__media-col {
+  grid-area: media;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.about-me__eyebrow {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #3b82f6;
+  text-align: center;
+}
+
+.about-me__figure {
+  position: relative;
+  margin: 0;
+  min-height: var(--about-hero-height);
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.about-me__intro-continuation {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  min-width: 0;
+  transition: grid-template-rows 0.45s ease, opacity 0.45s ease 0.05s;
+}
+
+.about-me__intro-continuation > .about-me__intro-continuation-inner {
+  overflow: hidden;
+  min-width: 0;
+}
+
+.about-me__intro-continuation-inner p {
+  margin: 0;
+  line-height: 1.75;
+  color: #52525b;
+}
+
+.about-me__intro-continuation-inner p + p {
+  margin-top: 1rem;
+}
+
+.about-me.is-expanded .about-me__intro-continuation {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.about-me.is-expanded .about-me__intro-continuation-inner > p:first-child {
+  margin-top: 1rem;
+}
+
+.about-me__certs {
+  flex-shrink: 0;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid #e4e4e7;
+  border-radius: 2px;
+  background: #fafafa;
+}
+
+.about-me__media-chips {
+  display: none;
+  width: 100%;
+}
+
+.about-me__media-chips-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 0.85rem;
+  overflow: hidden;
+  min-height: 0;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: 1rem;
+  padding: 0.35rem 0 0.5rem 0.35rem;
+}
+
+.about-me__media-chips .about-me__chip:nth-child(1) {
+  width: 9.25rem;
+  max-width: 56%;
+  flex-shrink: 1;
+  transform: rotate(-2.5deg) translateX(-2px);
+}
+
+.about-me__media-chips .about-me__chip:nth-child(2) {
+  width: 8rem;
+  max-width: 44%;
+  flex-shrink: 1;
+  margin-bottom: 0.35rem;
+  transform: rotate(2.5deg) translateX(3px);
+}
+
+@media (min-width: 768px) {
+  .about-me {
+    --about-hero-height: 14.5rem;
+  }
+
+  .about-me__hero-row {
+    position: relative;
+    grid-template-columns: 1fr;
+    grid-template-areas: "intro";
+    gap: 0;
+    padding-right: calc(41% + 3.5rem);
+    overflow: visible;
+  }
+
+  .about-me__media-col {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 41%;
+    overflow: visible;
+  }
+
+  .about-me__figure {
+    min-height: 11rem;
+  }
+
+  .about-me__media-chips {
+    display: grid;
+    grid-template-rows: 0fr;
+    min-height: 0;
+    opacity: 0;
+    overflow: visible;
+    transition: grid-template-rows 0.45s ease, opacity 0.45s ease 0.05s;
+  }
+
+  .about-me.is-expanded .about-me__media-chips {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .about-me.is-expanded .about-me__media-chips-inner {
+    overflow: visible;
+  }
+
+  .about-me__media-chips .about-me__chip:nth-child(1) {
+    width: 9.75rem;
+  }
+
+  .about-me__media-chips .about-me__chip:nth-child(2) {
+    width: 8.75rem;
+    transform: rotate(2.5deg) translateX(4px);
+  }
+}
+
+.about-me__teaser-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.about-me__teaser {
+  position: relative;
+  max-height: 10.5rem;
+  overflow: hidden;
+  transition: max-height 0.45s ease;
+}
+
+.about-me.is-expanded .about-me__teaser {
+  max-height: none;
+  overflow: visible;
+}
+
+.about-me__teaser p {
+  margin: 0;
+  line-height: 1.7;
+  color: #52525b;
+}
+
+.about-me__teaser p + p {
+  margin-top: 1rem;
+}
+
+.about-me__teaser-greeting {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #27272a;
+  letter-spacing: -0.01em;
+}
+
+.about-me__fade {
+  pointer-events: none;
+}
+
+.about-me__fade--text {
+  position: absolute;
+  inset: auto 0 0;
+  height: 5.5rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 35%,
+    var(--about-fade-bg) 88%
+  );
+  transition: opacity 0.4s ease;
+}
+
+
+.about-me__certs-label {
+  margin: 0 0 0.45rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.about-me__certs-line {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #52525b;
+}
+
+.about-me__certs-detail {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: #71717a;
+}
+
+.about-me__main-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  border-radius: 2px;
+  box-shadow: 0 12px 40px rgba(24, 24, 27, 0.12);
+  image-rendering: auto;
+}
+
+.about-me__fade--image {
+  position: absolute;
+  inset: 50% 0 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 28%,
+    var(--about-fade-bg) 92%
+  );
+  border-radius: 0 0 2px 2px;
+  transition: opacity 0.4s ease;
+}
+
+.about-me.is-expanded .about-me__fade--text,
+.about-me.is-expanded .about-me__fade--image {
+  opacity: 0;
+}
+
+.about-me__toggle {
+  margin-top: 1.25rem;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #2563eb;
+  background: transparent;
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.about-me__toggle:hover {
+  color: #1d4ed8;
+  border-color: rgba(37, 99, 235, 0.55);
+  background-color: rgba(37, 99, 235, 0.04);
+}
+
+.about-me__toggle:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.about-me__toggle-icon {
+  display: inline-block;
+}
+
+.about-me__toggle--top {
+  display: inline-flex;
+}
+
+.about-me__toggle--bottom {
+  display: none;
+  margin-top: 2.5rem;
+}
+
+.about-me.is-expanded .about-me__toggle--top {
+  display: none;
+}
+
+.about-me.is-expanded .about-me__toggle--bottom {
+  display: inline-flex;
+}
+
+.about-me__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s ease;
+  overflow-anchor: none;
+}
+
+.about-me__panel > .about-me__panel-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.about-me.is-expanded .about-me__panel > .about-me__panel-inner {
+  overflow: visible;
+}
+
+.about-me.is-expanded .about-me__panel {
+  grid-template-rows: 1fr;
+}
+
+.about-me__panel-inner {
+  padding-top: 0;
+  opacity: 0;
+  width: 100%;
+  transition: opacity 0.45s ease 0.05s, padding-top 0.45s ease;
+}
+
+.about-me.is-expanded .about-me__panel-inner {
+  padding-top: 2.75rem;
+  opacity: 1;
+}
+
+.about-me__story {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.about-me__section {
+  display: flow-root;
+  width: 100%;
+}
+
+.about-me__section + .about-me__section {
+  padding-top: 0.25rem;
+}
+
+.about-me__section-title {
+  margin: 0 0 1.125rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #2563eb;
+  line-height: 1.4;
+}
+
+.about-me__lead,
+.about-me__flow-text p {
+  margin: 0;
+  line-height: 1.75;
+  color: #52525b;
+}
+
+.about-me__lead {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: #27272a;
+  letter-spacing: -0.01em;
+}
+
+.about-me__flow-text p + p {
+  margin-top: 1rem;
+}
+
+.about-me__points {
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+}
+
+.about-me__point {
+  position: relative;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(37, 99, 235, 0.25);
+}
+
+.about-me__point-title {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #27272a;
+}
+
+.about-me__point-text {
+  margin: 0;
+  line-height: 1.7;
+  color: #52525b;
+}
+
+.about-me__pullquote {
+  margin: 1.5rem 0 0;
+  padding: 1.125rem 1.25rem;
+  border-left: 2px solid #2563eb;
+  background: linear-gradient(
+    90deg,
+    rgba(37, 99, 235, 0.05) 0%,
+    rgba(37, 99, 235, 0) 100%
+  );
+  border-radius: 0 2px 2px 0;
+}
+
+.about-me__pullquote p {
+  margin: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #3f3f46;
+  letter-spacing: -0.01em;
+}
+
+.about-me__closing {
+  margin: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.65;
+  color: #27272a;
+  letter-spacing: -0.01em;
+}
+
+.about-me__flow {
+  display: flow-root;
+  width: 100%;
+}
+
+.about-me__flow-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 7.25rem;
+}
+
+.about-me__flow--right .about-me__flow-photos {
+  float: right;
+  margin: 0.1rem 0 1rem 1.25rem;
+}
+
+.about-me__flow--left .about-me__flow-photos {
+  float: left;
+  margin: 0.1rem 1.25rem 1rem 0;
+}
+
+.about-me__chip {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 2px;
+  border: 2px solid #ffffff;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 6px 20px rgba(24, 24, 27, 0.14);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  image-rendering: auto;
+}
+
+.about-me__chip--sm {
+  width: 78%;
+  align-self: flex-end;
+}
+
+.about-me__chip--lg {
+  width: 92%;
+}
+
+.about-me__chip-frame {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  width: 100%;
+  border-radius: 2px;
+  border: 2px solid #ffffff;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 6px 20px rgba(24, 24, 27, 0.14);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-me__chip-frame--lg {
+  width: 92%;
+}
+
+.about-me__chip-frame .about-me__chip {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  max-width: none;
+  aspect-ratio: auto;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  pointer-events: none;
+  object-fit: cover;
+}
+
+.about-me__chip-frame .about-me__chip--crop-friends {
+  width: 142%;
+  height: 142%;
+  object-position: center 72%;
+  transform: translate(-50%, -50%);
+}
+
+.about-me__chip-frame .about-me__chip--crop-sweat {
+  width: 148%;
+  height: 148%;
+  object-position: 38% 52%;
+  transform: translate(-50%, -50%);
+}
+
+.about-me__flow-photos > .about-me__chip:nth-child(1) {
+  transform: rotate(-4deg) translateX(-2px);
+}
+
+.about-me__flow-photos > .about-me__chip-frame:nth-child(1) {
+  transform: rotate(-4deg) translateX(-2px);
+}
+
+.about-me__flow-photos > .about-me__chip:nth-child(2) {
+  transform: rotate(2.5deg) translateX(4px);
+}
+
+.about-me__flow-photos > .about-me__chip:nth-child(3) {
+  transform: rotate(-1.5deg) translateX(-1px);
+}
+
+.about-me__flow--left .about-me__flow-photos > .about-me__chip:nth-child(1) {
+  transform: rotate(3deg) translateX(3px);
+}
+
+.about-me__flow--left .about-me__flow-photos > .about-me__chip-frame:nth-child(1) {
+  transform: rotate(3deg) translateX(3px);
+}
+
+.about-me__flow--left .about-me__flow-photos > .about-me__chip:nth-child(2) {
+  transform: rotate(-2deg) translateX(-3px);
+}
+
+.about-me__flow--left .about-me__flow-photos > .about-me__chip:nth-child(3) {
+  transform: rotate(1.5deg) translateX(2px);
+}
+
+@media (hover: hover) {
+  .about-me__chip:hover,
+  .about-me__chip-frame:hover {
+    transform: rotate(0deg) scale(1.03) !important;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.8) inset,
+      0 10px 28px rgba(24, 24, 27, 0.18);
+    z-index: 1;
+  }
+
+  .about-me__chip-frame:hover .about-me__chip--crop-friends,
+  .about-me__chip-frame:hover .about-me__chip--crop-sweat {
+    transform: translate(-50%, -50%) !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .about-me__story {
+    max-width: none;
+  }
+
+  .about-me__flow-photos {
+    width: 8.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .about-me__flow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem 2.75rem;
+    align-items: start;
+  }
+
+  .about-me__flow--left {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .about-me__flow-photos {
+    float: none;
+    margin: 0;
+    width: 9.75rem;
+    padding-top: 0.25rem;
+  }
+
+  .about-me__flow--left .about-me__flow-photos {
+    order: -1;
+  }
+
+  .about-me__section-title {
+    font-size: 0.875rem;
+  }
+}
+
+/* ── Narrow screens (<768px): text-first with subtle photo accents ── */
+
+@media (max-width: 767px) {
+  .about-me {
+    --about-hero-height: auto;
+  }
+
+  .about-me__hero-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .about-me__intro,
+  .about-me__media-col {
+    display: contents;
+  }
+
+  .about-me__teaser-wrap {
+    order: 1;
+  }
+
+  .about-me__figure {
+    order: 2;
+    display: block;
+    min-height: 0;
+    max-height: 8.75rem;
+    margin-top: 1.25rem;
+  }
+
+  .about-me__main-img {
+    max-height: 8.75rem;
+    box-shadow: 0 8px 24px rgba(24, 24, 27, 0.08);
+  }
+
+  .about-me__fade--image {
+    height: 3.5rem;
+    inset: auto 0 0;
+  }
+
+  .about-me__intro-continuation {
+    order: 3;
+  }
+
+  .about-me.is-expanded .about-me__intro-continuation-inner > p:first-child {
+    margin-top: 1.25rem;
+  }
+
+  .about-me__certs {
+    order: 4;
+    margin-top: 1.25rem;
+  }
+
+  .about-me:not(.is-expanded) .about-me__certs,
+  .about-me:not(.is-expanded) .about-me__media-chips {
+    display: none;
+  }
+
+  .about-me__media-chips {
+    order: 5;
+    display: flex;
+    margin-top: 0.85rem;
+  }
+
+  .about-me__media-chips-inner {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .about-me__media-chips .about-me__chip:nth-child(1) {
+    width: 4.75rem;
+    max-width: none;
+    transform: rotate(-2deg);
+  }
+
+  .about-me__media-chips .about-me__chip:nth-child(2) {
+    width: 4.25rem;
+    max-width: none;
+    margin-bottom: 0;
+    transform: rotate(2deg);
+  }
+
+  .about-me__media-chips .about-me__chip {
+    box-shadow: 0 2px 10px rgba(24, 24, 27, 0.08);
+    border-width: 1px;
+  }
+
+  .about-me__toggle--top {
+    order: 6;
+    margin-top: 1.25rem;
+  }
+
+  .about-me.is-expanded .about-me__toggle--top {
+    display: none;
+  }
+
+  .about-me.is-expanded .about-me__panel-inner {
+    padding-top: 1.75rem;
+  }
+
+  .about-me__story {
+    gap: 0;
+    max-width: none;
+  }
+
+  .about-me__section + .about-me__section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #f4f4f5;
+  }
+
+  .about-me__section-title {
+    margin-bottom: 0.75rem;
+  }
+
+  /* Side-by-side: narrow photo column beside section copy */
+  .about-me__flow,
+  .about-me__flow--stack,
+  .about-me__flow--quote,
+  .about-me__flow--solo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.65rem 1rem;
+  }
+
+  .about-me__flow-text {
+    flex: 1 1 calc(100% - 5.5rem);
+    min-width: min(100%, 14rem);
+  }
+
+  .about-me__flow-photos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    width: 4.25rem;
+    flex: 0 0 4.25rem;
+    margin: 0;
+    opacity: 0.92;
+  }
+
+  .about-me__flow--right .about-me__flow-text {
+    order: 1;
+  }
+
+  .about-me__flow--right .about-me__flow-photos {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .about-me__flow--left .about-me__flow-photos {
+    order: 1;
+  }
+
+  .about-me__flow--left .about-me__flow-text {
+    order: 2;
+  }
+
+  .about-me__flow--solo {
+    flex-direction: column;
+  }
+
+  .about-me__flow--solo .about-me__flow-text {
+    flex: 1 1 100%;
+    order: 1;
+  }
+
+  .about-me__flow--solo .about-me__flow-photos {
+    order: 2;
+    flex-direction: row;
+    width: auto;
+    flex: 0 0 auto;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+    opacity: 0.88;
+  }
+
+  .about-me__flow-photos > .about-me__chip,
+  .about-me__flow-photos > .about-me__chip-frame {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(24, 24, 27, 0.07);
+    border-width: 1px;
+  }
+
+  .about-me__flow--stack .about-me__flow-photos > .about-me__chip--sm {
+    display: block;
+    width: 3.35rem;
+  }
+
+  .about-me__flow--stack .about-me__flow-photos .about-me__chip-frame,
+  .about-me__flow--stack .about-me__flow-photos .about-me__chip-frame--lg {
+    width: 4.25rem;
+  }
+
+  .about-me__flow--quote .about-me__pullquote {
+    clear: none;
+    margin-top: 1.25rem;
+  }
+
+  .about-me__flow--solo .about-me__flow-photos .about-me__chip-frame {
+    width: 3.75rem;
+  }
+
+  .about-me__chip--sm {
+    width: 3.35rem;
+  }
+
+  .about-me__toggle--bottom {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 399px) {
+  .about-me__figure,
+  .about-me__main-img {
+    max-height: 7.25rem;
+  }
+
+  .about-me__flow-photos {
+    width: 3.65rem;
+    flex: 0 0 3.65rem;
+  }
+
+  .about-me__flow-text {
+    flex: 1 1 calc(100% - 4.75rem);
+    min-width: min(100%, 12rem);
+  }
+
+  .about-me__media-chips .about-me__chip:nth-child(1) {
+    width: 4.25rem;
+  }
+
+  .about-me__media-chips .about-me__chip:nth-child(2) {
+    width: 3.75rem;
+  }
+}
+
+/* Slightly wider narrow windows: keep accents subtle, not desktop overlap */
+@media (min-width: 768px) and (max-width: 991px) {
+  .about-me__hero-row {
+    padding-right: calc(36% + 2rem);
+  }
+
+  .about-me__media-col {
+    width: 36%;
+  }
+
+  .about-me__figure {
+    min-height: 10rem;
+  }
+
+  .about-me__flow-photos {
+    width: 8.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-me__panel,
+  .about-me__panel-inner,
+  .about-me__intro-continuation,
+  .about-me__teaser,
+  .about-me__fade--text,
+  .about-me__fade--image,
+  .about-me__chip,
+  .about-me__media-chips {
+    transition: none;
+  }
+}

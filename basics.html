@@ -178,12 +178,13 @@
             <li class="basics-pillar-list__item">
               <h4 class="basics-pillar-list__title">Frequency</h4>
               <div class="basics-pillar-list__body">
-                <p>Aim to train each muscle group twice a week, This can easily be accomplished by two full body days. Sessions do not have to be long. Two 45-60 minute workouts focussing on compound movements (movements involving multiple muscles) is plenty.</p>
+                <p><strong>Aim to train each muscle group twice a week. </strong><br>This can easily be accomplished by two full body days. Sessions do not have to be long. Two 45-60 minute workouts focussing on compound movements (movements involving multiple muscles) is plenty.</p>
               </div>
             </li>
             <li class="basics-pillar-list__item">
               <h4 class="basics-pillar-list__title">Intensity</h4>
               <div class="basics-pillar-list__body">
+                <p><strong> Train to or close to failure. </strong><br></p>
                 <p>Intensity is the thing that people get wrong most often. Workouts need to be challenging. You must push close to the point of failure (failure = point where you could not possibly do another repetition).</p>
                 <p>Often people overestimate how hard they are working. e.g. they stop at 10 reps thinking that's all they can do when really they could do closer to 15. For this reason, once confident with the exercise technique, I believe you should take a set of each exercise (that you can perform safety) to failure at least once every few sessions so that you know where your point of failure is.</p>
                 <p>You should then train to or close to (within 3 reps of) this point of failure every set. Your body does not want to build muscle it is a costly process and it requires energy (calories) to maintain muscle mass. When we strength train we are essentially showing our bodies that we are incapable of completing this task (lifting the weight) and therefore need to adapt, build more muscle and get stronger. If we do not train hard, we do not stimulate this adaptation.</p>
@@ -192,6 +193,7 @@
             <li class="basics-pillar-list__item">
               <h4 class="basics-pillar-list__title">Progressive Overload</h4>
               <div class="basics-pillar-list__body">
+                <p><strong> Train slightly harder each session. </strong><br></p>
                 <p>Progressive overload links closely with the above point on intensity. Progressive overload essentially means trying to train a little bit harder each session. This can be accomplished by trying to add reps, sets or weight. Progressive overload is key to ensuring intensity remains high, if training is effective what was hard at the start of the training block is likely not hard now.</p>
               </div>
             </li>
@@ -287,24 +289,96 @@
                 <span class="basics-longevity-graph__risk basics-longevity-graph__risk--danger">5.04x Higher Risk 💥</span>
               </div>
             </div>
+            <p class="basics-longevity-graph__footnote">Mandsager et al., 2018 — Cleveland Clinic cohort of 122,007 adults. <a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2707428" target="_blank" rel="noopener noreferrer" class="basics-study-link">View study</a></p>
           </div>
 
-          <div class="reveal-item basics-fitness-gap" role="img" aria-label="Comparison of relative early death risk between Above Average fitness at 1.41x and Below Average fitness at 1.95x, from the same Cleveland Clinic study.">
-            <h3 class="basics-fitness-gap__title">How Much Difference Between Tiers?</h3>
-            <p class="basics-fitness-gap__subtitle">Moving from the lowest fitness category to an above-average category has been shown to cut your risk of early death by roughly 50%. Even moving up one step—from below average to above average—matters.</p>
+          <div class="reveal-item basics-vo2-dose" role="img" aria-label="Line chart of mortality risk versus cardiorespiratory fitness from the Cleveland Clinic study. Each 1 MET increase, equivalent to 3.5 milliliters per kilogram per minute of VO2 max, is associated with a 13 to 15 percent reduction in early death risk. Data points at mean peak MET capacity for each fitness tier: low 6.1 METs at 5.04 times risk, below average 8.2 METs at 2.59 times, above average 9.6 METs at 1.84 times, high 11.4 METs at 1.29 times, elite 13.8 METs at baseline.">
+            <h3 class="basics-vo2-dose__title heading-balanced">Every Step Up<br class="lg:hidden" /> <span class="heading-nowrap-tail">Lowers Your Risk</span></h3>
+            <p class="basics-vo2-dose__subtitle">Large cohort studies show a dose-response relationship: each 1-MET increase in fitness—equivalent to a 3.5 ml/kg/min bump in VO₂ max—reduces all-cause mortality risk by roughly 13–15%, with no observed ceiling.</p>
 
-            <div class="basics-fitness-gap__compare">
-              <div class="basics-fitness-gap__pair">
-                <span class="basics-fitness-gap__tier">Above Average</span>
-                <div class="basics-fitness-gap__bar-wrap"><div class="basics-fitness-gap__bar basics-fitness-gap__bar--above" style="width: 28%" aria-hidden="true"></div></div>
-                <span class="basics-fitness-gap__risk">1.41x Risk</span>
-              </div>
-              <div class="basics-fitness-gap__pair">
-                <span class="basics-fitness-gap__tier">Below Average</span>
-                <div class="basics-fitness-gap__bar-wrap"><div class="basics-fitness-gap__bar basics-fitness-gap__bar--below" style="width: 39%" aria-hidden="true"></div></div>
-                <span class="basics-fitness-gap__risk">1.95x Risk</span>
-              </div>
-            </div>
+            <figure class="basics-vo2-dose__chart">
+              <svg class="basics-vo2-dose__svg" viewBox="0 0 640 360" aria-hidden="true">
+                <defs>
+                  <linearGradient id="vo2-line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="rgb(239, 68, 68)" />
+                    <stop offset="50%" stop-color="rgb(245, 158, 11)" />
+                    <stop offset="100%" stop-color="rgb(37, 99, 235)" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Y-axis (0–5× elite risk) -->
+                <line x1="56" y1="32" x2="56" y2="304" class="basics-vo2-dose__axis" />
+                <text x="12" y="172" class="basics-vo2-dose__axis-label" transform="rotate(-90 12 172)">Mortality risk (× elite)</text>
+                <text x="48" y="308" class="basics-vo2-dose__tick">0</text>
+                <text x="40" y="259" class="basics-vo2-dose__tick">1</text>
+                <text x="40" y="210" class="basics-vo2-dose__tick">2</text>
+                <text x="40" y="161" class="basics-vo2-dose__tick">3</text>
+                <text x="40" y="112" class="basics-vo2-dose__tick">4</text>
+                <text x="40" y="63" class="basics-vo2-dose__tick">5</text>
+
+                <!-- X-axis (6–14 METs, Cleveland study means) -->
+                <line x1="56" y1="304" x2="616" y2="304" class="basics-vo2-dose__axis" />
+                <text x="336" y="340" class="basics-vo2-dose__axis-label" text-anchor="middle">Peak fitness (METs) — 1 MET = 3.5 ml/kg/min VO₂</text>
+                <text x="56" y="322" class="basics-vo2-dose__tick basics-vo2-dose__tick--x">6</text>
+                <text x="196" y="322" class="basics-vo2-dose__tick basics-vo2-dose__tick--x">8</text>
+                <text x="336" y="322" class="basics-vo2-dose__tick basics-vo2-dose__tick--x">10</text>
+                <text x="476" y="322" class="basics-vo2-dose__tick basics-vo2-dose__tick--x">12</text>
+                <text x="616" y="322" class="basics-vo2-dose__tick basics-vo2-dose__tick--x">14</text>
+
+                <!-- Grid -->
+                <line x1="56" y1="255" x2="616" y2="255" class="basics-vo2-dose__grid" />
+                <line x1="56" y1="206" x2="616" y2="206" class="basics-vo2-dose__grid" />
+                <line x1="56" y1="157" x2="616" y2="157" class="basics-vo2-dose__grid" />
+                <line x1="56" y1="108" x2="616" y2="108" class="basics-vo2-dose__grid" />
+                <line x1="56" y1="59" x2="616" y2="59" class="basics-vo2-dose__grid" />
+
+                <!-- 1-MET step bands (70px = 1 MET on scale) -->
+                <rect x="140" y="32" width="70" height="272" class="basics-vo2-dose__band" />
+                <rect x="245" y="32" width="70" height="272" class="basics-vo2-dose__band" />
+                <rect x="350" y="32" width="70" height="272" class="basics-vo2-dose__band" />
+                <rect x="455" y="32" width="70" height="272" class="basics-vo2-dose__band basics-vo2-dose__band--strong" />
+
+                <!-- Cleveland study dose-response (Mandsager et al., 2018) -->
+                <polyline points="63,55 210,176 308,213 434,240 602,255" class="basics-vo2-dose__line" fill="none" />
+
+                <!-- Vertical drop guides between tiers -->
+                <line x1="210" y1="176" x2="210" y2="304" class="basics-vo2-dose__drop-line" />
+                <line x1="308" y1="213" x2="308" y2="304" class="basics-vo2-dose__drop-line" />
+                <line x1="434" y1="240" x2="434" y2="304" class="basics-vo2-dose__drop-line" />
+                <line x1="602" y1="255" x2="602" y2="304" class="basics-vo2-dose__drop-line" />
+
+                <!-- Data points (mean peak METs: 6.1, 8.2, 9.6, 11.4, 13.8) -->
+                <circle cx="63" cy="55" r="5" class="basics-vo2-dose__dot basics-vo2-dose__dot--low" />
+                <circle cx="210" cy="176" r="5" class="basics-vo2-dose__dot basics-vo2-dose__dot--below" />
+                <circle cx="308" cy="213" r="5" class="basics-vo2-dose__dot basics-vo2-dose__dot--above" />
+                <circle cx="434" cy="240" r="5" class="basics-vo2-dose__dot basics-vo2-dose__dot--high" />
+                <circle cx="602" cy="255" r="5" class="basics-vo2-dose__dot basics-vo2-dose__dot--elite" />
+
+                <!-- Point labels -->
+                <text x="63" y="42" class="basics-vo2-dose__point-label" text-anchor="middle">Low</text>
+                <text x="63" y="72" class="basics-vo2-dose__point-risk" text-anchor="middle">5.04×</text>
+                <text x="210" y="163" class="basics-vo2-dose__point-label" text-anchor="middle">Below Avg</text>
+                <text x="210" y="193" class="basics-vo2-dose__point-risk" text-anchor="middle">2.59×</text>
+                <text x="308" y="200" class="basics-vo2-dose__point-label" text-anchor="middle">Above Avg</text>
+                <text x="308" y="230" class="basics-vo2-dose__point-risk" text-anchor="middle">1.84×</text>
+                <text x="434" y="227" class="basics-vo2-dose__point-label" text-anchor="middle">High</text>
+                <text x="434" y="257" class="basics-vo2-dose__point-risk" text-anchor="middle">1.29×</text>
+                <text x="602" y="242" class="basics-vo2-dose__point-label" text-anchor="middle">Elite</text>
+                <text x="602" y="272" class="basics-vo2-dose__point-risk" text-anchor="middle">1.0×</text>
+
+                <!-- Relative risk drop per tier step -->
+                <text x="136" y="108" class="basics-vo2-dose__drop">↓49%</text>
+                <text x="259" y="188" class="basics-vo2-dose__drop">↓29%</text>
+                <text x="371" y="218" class="basics-vo2-dose__drop">↓30%</text>
+                <text x="518" y="242" class="basics-vo2-dose__drop">↓22%</text>
+
+                <!-- 1-MET callout -->
+                <rect x="430" y="8" width="186" height="52" rx="2" class="basics-vo2-dose__callout-bg" />
+                <text x="523" y="28" class="basics-vo2-dose__callout-title" text-anchor="middle">+1 MET ≈ +3.5 ml/kg/min VO₂</text>
+                <text x="523" y="46" class="basics-vo2-dose__callout-body" text-anchor="middle">↓ 13–15% all-cause mortality risk</text>
+              </svg>
+            </figure>
+            <p class="basics-vo2-dose__footnote">Fitness tiers are age- and sex-matched percentiles—what counts as elite varies by demographic. Points plot study-wide mean peak METs and hazard ratios vs. elite (Mandsager et al., 2018). The 13–15% per-MET reduction is corroborated by Kokkinos et al., JACC 2022. <a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2707428" target="_blank" rel="noopener noreferrer" class="basics-study-link">View study</a></p>
           </div>
 
           <h3 class="reveal-item basics-heading">Do I need to test it?</h3>
@@ -347,7 +421,7 @@
 
           <div class="reveal-item basics-callout">
             <p class="basics-callout__label">Keeping it Simple</p>
-            <p class="basics-callout__body">If you want to take your training to an higher level later on, you can design specific protocols for specific adaptations. But for the average person looking to live a long, vibrant life? Master the 80/20 mix, find a type of movement you actually enjoy, and you have already won.</p>
+            <p class="basics-callout__body">If you want to take your training to an higher level later on, you can design specific protocols for specific adaptations. But for the average person looking to live a long, healthy life: Master the 80/20 mix, find a type of movement you actually enjoy, and you have already won.</p>
           </div>
 
           <div class="reveal-item basics-callout basics-callout--highlight">
@@ -367,7 +441,7 @@
           <div class="reveal-item basics-prose">
             <p>Nutrition can seem complicated online. One person says carbs are evil, another says you need a dozen supplements, and someone else insists a single "cheat meal" will ruin your progress.</p>
             <p>For most people, nutrition is much simpler.</p>
-            <p>You do not need a perfect diet. You need a diet that provides enough nutrients, supports your goals, and is realistic to follow consistently.</p>
+            <p>You do not need a perfect diet. You need a diet that provides sufficient nutrients, supports your goals, and is realistic to follow consistently.</p>
           </div>
 
           <div class="reveal-item basics-principles">
@@ -375,10 +449,10 @@
             <ul class="basics-check-list">
               <li class="check-item"><span class="check-icon"></span><span>Prioritize protein at every meal.</span></li>
               <li class="check-item"><span class="check-icon"></span><span>Eat plenty of fruits, vegetables, and high-fiber foods.</span></li>
-              <li class="check-item"><span class="check-icon"></span><span>Aim for most of your diet should come from minimally processed foods.</span></li>
+              <li class="check-item"><span class="check-icon"></span><span>Aim for most of your diet to come from minimally processed foods.</span></li>
               <li class="check-item"><span class="check-icon"></span><span>Stay hydrated.</span></li>
               <li class="check-item"><span class="check-icon"></span><span>Consistency beats perfection.</span></li>
-              <li class="check-item"><span class="check-icon"></span><span>Body weight is primarily determined by long-term calorie balance.</span></li>
+             
             </ul>
           </div>
 
@@ -413,7 +487,7 @@
                   <li class="check-item"><span class="check-icon"></span><span>Whole grains</span></li>
                   <li class="check-item"><span class="check-icon"></span><span>Beans and legumes</span></li>
                 </ul>
-                <p>Carbohydrates do not inherently cause weight gain—excess calories do.</p>
+                <p><br>Carbohydrates are not bad for you, and they do not inherently cause weight gain—excess calories do.</p>
               </div>
             </li>
             <li class="basics-pillar-list__item">
@@ -427,8 +501,8 @@
                   <li class="check-item"><span class="check-icon"></span><span>Avocados</span></li>
                   <li class="check-item"><span class="check-icon"></span><span>Fatty fish</span></li>
                 </ul>
-                <p>While saturated fat is not inherently harmful, most health organizations recommend keeping it below approximately 10% of total calorie intake.</p>
-                <p>Industrial trans fats should be avoided whenever possible due to their well-established association with cardiovascular disease. Link: <a href="https://www.who.int/news-room/fact-sheets/detail/trans-fat/" target="_blank" rel="noopener noreferrer">https://www.who.int/news-room/fact-sheets/detail/trans-fat/</a></p>
+                <p><br>While saturated fat is not inherently harmful, most health organizations recommend keeping it below approximately 10% of total calorie intake.</p>
+                <p>Industrial trans fats should be avoided whenever possible due to their well-established association with cardiovascular disease. <a href="https://www.who.int/news-room/fact-sheets/detail/trans-fat/" target="_blank" rel="noopener noreferrer" class="basics-study-link">WHO Guidelines</a></p>
               </div>
             </li>
           </ol>
@@ -463,8 +537,7 @@
             <li class="basics-pillar-list__item">
               <h4 class="basics-pillar-list__title">Creatine monohydrate (3–5g daily)</h4>
               <div class="basics-pillar-list__body">
-                <p>One of the most extensively researched supplements available. Consistently shown to be safe and effective for improving strength, power output, training performance, and muscle growth. Emerging research also suggests potential benefits for cognitive function and healthy aging, making it one of the few supplements with strong scientific support.</p>
-                <p>Link: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5469049/" target="_blank" rel="noopener noreferrer">https://pmc.ncbi.nlm.nih.gov/articles/PMC5469049/</a></p>
+                <p>One of the most extensively researched supplements available. Consistently shown to be safe and effective for improving strength, power output, training performance, and muscle growth. Emerging research also suggests potential benefits for cognitive function and healthy aging, making it one of the few supplements with strong scientific support. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5469049/" target="_blank" rel="noopener noreferrer" class="basics-study-link">ISSN position on creatine</a></p>
               </div>
             </li>
             <li class="basics-pillar-list__item">
@@ -503,7 +576,7 @@
           <h2 class="reveal-item basics-section-title">Fat Loss Dynamics</h2>
 
           <div class="reveal-item basics-prose">
-            <p>Fat loss is not a moral project—it is physics plus patience. You need a sustained calorie deficit: you consume slightly fewer calories than you burn over time. The mistake most people make is chasing speed; aggressive deficits destroy adherence, muscle, and energy.</p>
+            <p>Fat loss requires patience. You need a sustained calorie deficit: you consume slightly fewer calories than you burn over time. The mistake most people make is chasing speed; aggressive deficits destroy adherence, muscle, and energy.</p>
             <p>Sustainable fat loss looks like a gentle downward trend on the scale and in how clothes fit—not a dramatic drop in week one followed by a rebound. Track trends over weeks, not single days. Daily weight fluctuates with water, salt, sleep, and stress.</p>
           </div>
 
@@ -511,26 +584,53 @@
             <h3 class="basics-principles__title">Essential Principles</h3>
             <ul class="basics-check-list">
               <li class="check-item"><span class="check-icon"></span><span>Create a <strong>gentle calorie deficit</strong>—small enough to sustain for months.</span></li>
-              <li class="check-item"><span class="check-icon"></span><span>Aim for <strong>slow trends</strong> (roughly 0.25–0.75% body weight per week for many people).</span></li>
+              <li class="check-item"><span class="check-icon"></span><span>Aim for <strong>slow trends</strong> (roughly 0.25–1% body weight per week for most people).</span></li>
               <li class="check-item"><span class="check-icon"></span><span>Keep <strong>protein high</strong> and keep lifting—muscle is the asset you are protecting.</span></li>
-              <li class="check-item"><span class="check-icon"></span><span>Use data (scale trend, photos, measurements)—not guilt or miracle weeks.</span></li>
+              <li class="check-item"><span class="check-icon"></span><span>Use your weight as guidance - not a goal!</span></li>
             </ul>
           </div>
+
+          <h3 class="reveal-item basics-heading">Understanding Bodyweight</h3>
+          <div class="reveal-item basics-prose">
+            <p>Tracking your bodyweight can be a useful guide and monitor of progress, but it is not the goal.</p>
+            <p>The goal is fat loss, not weight loss.</p>
+            <p>Be aware of how bodyweight fluctuates—always try to weigh yourself at the same time of day, under the same conditions. Ideally, first thing in the morning after going to the bathroom.</p>
+            <p>Women should be especially aware of how bodyweight shifts throughout your cycle. If you are monitoring weight, compare against your average at this phase of your last cycle.</p>
+          </div>
+
+          <h3 class="reveal-item basics-heading">How to start your fat loss journey</h3>
+          <ul class="reveal-item basics-check-list">
+            <li class="check-item"><span class="check-icon"></span><span><strong>Step 1) Focus on your training</strong> - Try to strength train 2x/week and incorporate some cardio as described above</span></li>
+            <li class="check-item"><span class="check-icon"></span><span><strong>Step 2) Awareness</strong> - become aware of what you are eating; the ingredients and nutrients in them.</span></li>
+            <li class="check-item"><span class="check-icon"></span><span><strong>Step 3) Easy Swaps</strong> - See where you can seemlessly swap in healthier options.</span></li>
+            <li class="check-item"><span class="check-icon"></span><span><strong>Step 4) Progress as needed</strong> - Once you have the basics nailed, you are training consistently, and you are eating healthy, you can start to monitor your body weight and reduce your calorie intake if needed.</span></li>
+          </ul>
 
           <h3 class="reveal-item basics-heading">Building Your Deficit</h3>
           <ul class="reveal-item basics-check-list">
             <li class="check-item"><span class="check-icon"></span><span><strong>Start with food:</strong> Reduce portions slightly, swap calorie-dense extras, or structure meals—don't slash everything at once.</span></li>
-            <li class="check-item"><span class="check-icon"></span><span><strong>Add movement if needed:</strong> Extra steps or cardio can help, but diet does most of the work; don't out-train a poor deficit.</span></li>
-            <li class="check-item"><span class="check-icon"></span><span><strong>Diet breaks &amp; maintenance:</strong> Planned higher-calorie weeks can improve adherence and hormones on long cuts—these can be mapped to your calendar with consultancy support if you want help timing them.</span></li>
+            <li class="check-item"><span class="check-icon"></span><span><strong>Add movement if needed:</strong> Extra steps or cardio can help, but diet does most of the work; you can't out-train a poor diet.</span></li>
+            <li class="check-item"><span class="check-icon"></span><span><strong>Diet breaks &amp; maintenance:</strong> Planned higher-calorie weeks can improve adherence and hormones on long cuts—these can be mapped to your calendar.</span></li>
           </ul>
+
+          <h3 class="reveal-item basics-heading">Spot Reducing Fat Loss</h3>
+          <div class="reveal-item basics-prose">
+            <p>You cannot choose where your body loses fat. Doing endless crunches will not burn belly fat, and leg exercises will not strip fat from your thighs—your body pulls from fat stores systemically based on genetics and hormones, not based on which muscles you train.</p>
+            <p>Training specific areas still matters: it builds muscle in those regions, which improves shape and definition as overall body fat drops. But the fat itself comes off through a sustained calorie deficit—not through targeted exercises, wraps, creams, or gadgets that claim to melt fat in one spot.</p>
+          </div>
 
           <h3 class="reveal-item basics-heading">What to Ignore</h3>
           <ul class="reveal-item basics-check-list">
-            <li class="check-item"><span class="check-icon"></span><span>Detox teas, crash diets, and "metabolism hacks" without evidence.</span></li>
+            <li class="check-item"><span class="check-icon"></span><span>Crash diets and "metabolism hacks".</span></li>
             <li class="check-item"><span class="check-icon"></span><span>Daily weigh-ins as pass/fail—look at rolling averages.</span></li>
-            <li class="check-item"><span class="check-icon"></span><span>Cutting carbs or fats entirely—unnecessary for most people (see Nutrition).</span></li>
+            <li class="check-item"><span class="check-icon"></span><span>Cutting carbs or fats entirely.</span></li>
           </ul>
-        </div>
+
+          <div class="reveal-item basics-callout basics-callout--highlight">
+            <p class="basics-callout__label">Key Point</p>
+            <p class="basics-callout__body">Ignore all fad diets or products claiming to make you lose fat—it's all complete bullshit.</p>
+          </div>
+          </div>
       </section>
 
       <!-- ========== SECTION 05: HOW TO START ========== -->
@@ -575,7 +675,7 @@
 
     <section class="basics-cta">
       <div data-reveal-stagger class="basics-cta__inner">
-        <p class="reveal-item basics-cta__text">The Basics are enough on their own. If you want a system tailored to your schedule and lifestyle, consultancy is optional.</p>
+        <p class="reveal-item basics-cta__text">Nail the basics and you'll make incredible progress on your own. If you want a system tailored to your schedule and lifestyle; get in touch below and we can discuss how we can help.</p>
         <a href="coaching.html" class="reveal-item basics-cta__button">Get in Touch</a>
       </div>
     </section>
@@ -583,8 +683,7 @@
 
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <p class="site-footer__text">KM Training © 2026</p>
-      <p class="site-footer__text site-footer__text--plain">Education free. Consultancy bespoke.</p>
+      <p class="site-footer__text">KM Training</p>
     </div>
   </footer>
 
