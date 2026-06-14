@@ -296,6 +296,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  min-height: 2.75rem;
   padding: 0.625rem 1.25rem;
   font-family: "Space Grotesk", system-ui, sans-serif;
   font-size: 0.6875rem;
