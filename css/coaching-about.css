@@ -10,31 +10,16 @@
 }
 
 .about-me__hero-row {
-  display: grid;
-  gap: 2rem;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   overflow-anchor: auto;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    "intro"
-    "media";
 }
 
-.about-me__intro {
-  grid-area: intro;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+.about-me__narrative {
+  display: flow-root;
+  min-width: 0;
   text-align: left;
-  min-width: 0;
-}
-
-.about-me__media-col {
-  grid-area: media;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  min-width: 0;
 }
 
 .about-me__eyebrow {
@@ -115,7 +100,7 @@
   padding: 0.35rem 0 0.5rem 0.35rem;
 }
 
-.about-me__media-chips .about-me__chip:nth-child(1) {
+.about-me__media-chips .about-me__chip-frame:nth-child(1) {
   width: 9.25rem;
   max-width: 56%;
   flex-shrink: 1;
@@ -135,30 +120,59 @@
     --about-hero-height: 14.5rem;
   }
 
-  .about-me__hero-row {
-    position: relative;
-    grid-template-columns: 1fr;
-    grid-template-areas: "intro";
-    gap: 0;
-    padding-right: calc(41% + 3.5rem);
-    overflow: visible;
+  .about-me__narrative {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 41%;
+    column-gap: 3.5rem;
+    grid-template-areas:
+      "teaser figure"
+      "continuation figure"
+      "continuation certs"
+      "continuation chips";
+    align-items: start;
   }
 
-  .about-me__media-col {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 41%;
-    overflow: visible;
+  .about-me__teaser-wrap {
+    display: contents;
+  }
+
+  .about-me__teaser-greeting,
+  .about-me__teaser-body {
+    grid-area: teaser;
   }
 
   .about-me__figure {
+    grid-area: figure;
+    float: none;
+    width: auto;
+    max-width: none;
+    margin: 0;
     min-height: 11rem;
+    transform: none;
+    shape-outside: none;
+  }
+
+  .about-me__intro-continuation {
+    grid-area: continuation;
+  }
+
+  .about-me__certs {
+    grid-area: certs;
+    float: none;
+    clear: none;
+    max-width: none;
+    margin: 0;
+    transform: none;
   }
 
   .about-me__media-chips {
+    grid-area: chips;
     display: grid;
     grid-template-rows: 0fr;
+    float: none;
+    clear: none;
+    width: 100%;
+    margin: 0;
     min-height: 0;
     opacity: 0;
     overflow: visible;
@@ -174,7 +188,7 @@
     overflow: visible;
   }
 
-  .about-me__media-chips .about-me__chip:nth-child(1) {
+  .about-me__media-chips .about-me__chip-frame:nth-child(1) {
     width: 9.75rem;
   }
 
@@ -189,29 +203,27 @@
   flex-shrink: 0;
 }
 
-.about-me__teaser {
+.about-me__teaser-body {
   position: relative;
   max-height: 10.5rem;
   overflow: hidden;
   transition: max-height 0.45s ease;
 }
 
-.about-me.is-expanded .about-me__teaser {
+.about-me.is-expanded .about-me__teaser-body {
   max-height: none;
   overflow: visible;
 }
 
-.about-me__teaser p {
+.about-me__teaser-body p {
   margin: 0;
   line-height: 1.7;
   color: #52525b;
 }
 
-.about-me__teaser p + p {
-  margin-top: 1rem;
-}
-
 .about-me__teaser-greeting {
+  margin: 0;
+  line-height: 1.7;
   font-family: "Space Grotesk", system-ui, sans-serif;
   font-size: 1.125rem;
   font-weight: 500;
@@ -328,6 +340,7 @@
 
 .about-me__toggle--top {
   display: inline-flex;
+  clear: both;
 }
 
 .about-me__toggle--bottom {
@@ -577,6 +590,13 @@
   transform: translate(-50%, -50%);
 }
 
+.about-me__chip-frame .about-me__chip--crop-fuji {
+  width: 190%;
+  height: 190%;
+  object-position: 54% 76%;
+  transform: translate(-50%, -50%);
+}
+
 .about-me__flow-photos > .about-me__chip:nth-child(1) {
   transform: rotate(-4deg) translateX(-2px);
 }
@@ -620,7 +640,8 @@
   }
 
   .about-me__chip-frame:hover .about-me__chip--crop-friends,
-  .about-me__chip-frame:hover .about-me__chip--crop-sweat {
+  .about-me__chip-frame:hover .about-me__chip--crop-sweat,
+  .about-me__chip-frame:hover .about-me__chip--crop-fuji {
     transform: translate(-50%, -50%) !important;
   }
 }
@@ -658,44 +679,47 @@
     order: -1;
   }
 
+  .about-me__flow--right .about-me__flow-text {
+    order: 1;
+  }
+
+  .about-me__flow--right .about-me__flow-photos {
+    order: 2;
+  }
+
   .about-me__section-title {
     font-size: 0.875rem;
   }
 }
 
-/* ── Narrow screens (<768px): text-first with subtle photo accents ── */
+/* ── Narrow screens (<768px): scrapbook float-wrap layout ── */
 
 @media (max-width: 767px) {
   .about-me {
     --about-hero-height: auto;
   }
 
-  .about-me__hero-row {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .about-me__intro,
-  .about-me__media-col {
+  .about-me__teaser-wrap {
     display: contents;
   }
 
-  .about-me__teaser-wrap {
-    order: 1;
-  }
-
   .about-me__figure {
-    order: 2;
-    display: block;
+    float: right;
+    width: 42%;
+    max-width: 10.5rem;
     min-height: 0;
-    max-height: 8.75rem;
-    margin-top: 1.25rem;
+    max-height: none;
+    margin: 0.1rem 0 0.5rem 0.75rem;
+    transform: rotate(2deg);
+    shape-outside: margin-box;
+    z-index: 1;
   }
 
   .about-me__main-img {
-    max-height: 8.75rem;
-    box-shadow: 0 8px 24px rgba(24, 24, 27, 0.08);
+    max-height: none;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 8px 24px rgba(24, 24, 27, 0.12);
   }
 
   .about-me__fade--image {
@@ -703,17 +727,12 @@
     inset: auto 0 0;
   }
 
-  .about-me__intro-continuation {
-    order: 3;
+  .about-me__teaser-body {
+    margin-top: 0.25rem;
   }
 
   .about-me.is-expanded .about-me__intro-continuation-inner > p:first-child {
-    margin-top: 1.25rem;
-  }
-
-  .about-me__certs {
-    order: 4;
-    margin-top: 1.25rem;
+    margin-top: 1rem;
   }
 
   .about-me:not(.is-expanded) .about-me__certs,
@@ -721,41 +740,49 @@
     display: none;
   }
 
+  .about-me__certs {
+    float: left;
+    clear: left;
+    max-width: 58%;
+    margin: 0.75rem 0.85rem 0.5rem 0;
+    transform: rotate(-1.5deg);
+    z-index: 1;
+  }
+
   .about-me__media-chips {
-    order: 5;
-    display: flex;
-    margin-top: 0.85rem;
+    display: block;
+    float: right;
+    clear: right;
+    width: auto;
+    margin: 0.35rem 0 0.65rem 0.5rem;
+    z-index: 2;
   }
 
   .about-me__media-chips-inner {
     flex-direction: row;
-    justify-content: flex-start;
-    gap: 0.65rem;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 0.5rem;
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: fit-content;
+    max-width: 100%;
   }
 
-  .about-me__media-chips .about-me__chip:nth-child(1) {
+  .about-me__media-chips .about-me__chip-frame:nth-child(1) {
     width: 4.75rem;
     max-width: none;
-    transform: rotate(-2deg);
+    transform: rotate(-2.5deg) translateX(-2px);
   }
 
   .about-me__media-chips .about-me__chip:nth-child(2) {
     width: 4.25rem;
     max-width: none;
-    margin-bottom: 0;
-    transform: rotate(2deg);
-  }
-
-  .about-me__media-chips .about-me__chip {
-    box-shadow: 0 2px 10px rgba(24, 24, 27, 0.08);
-    border-width: 1px;
+    margin-bottom: 0.15rem;
+    transform: rotate(2.5deg) translateX(3px);
   }
 
   .about-me__toggle--top {
-    order: 6;
     margin-top: 1.25rem;
   }
 
@@ -774,91 +801,44 @@
 
   .about-me__section + .about-me__section {
     margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid #f4f4f5;
+    padding-top: 0;
+    border-top: none;
   }
 
   .about-me__section-title {
     margin-bottom: 0.75rem;
   }
 
-  /* Side-by-side: narrow photo column beside section copy */
-  .about-me__flow,
-  .about-me__flow--stack,
-  .about-me__flow--quote,
-  .about-me__flow--solo {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 0.65rem 1rem;
-  }
-
-  .about-me__flow-text {
-    flex: 1 1 calc(100% - 5.5rem);
-    min-width: min(100%, 14rem);
+  .about-me__flow {
+    display: flow-root;
   }
 
   .about-me__flow-photos {
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
-    width: 4.25rem;
-    flex: 0 0 4.25rem;
-    margin: 0;
-    opacity: 0.92;
-  }
-
-  .about-me__flow--right .about-me__flow-text {
-    order: 1;
+    gap: 0.5rem;
+    width: 5.5rem;
+    margin: 0.1rem 0 0.75rem 0.85rem;
+    shape-outside: margin-box;
   }
 
   .about-me__flow--right .about-me__flow-photos {
-    order: 2;
-    margin-left: auto;
+    float: right;
+    margin: 0.1rem 0 0.75rem 0.85rem;
   }
 
   .about-me__flow--left .about-me__flow-photos {
-    order: 1;
-  }
-
-  .about-me__flow--left .about-me__flow-text {
-    order: 2;
-  }
-
-  .about-me__flow--solo {
-    flex-direction: column;
-  }
-
-  .about-me__flow--solo .about-me__flow-text {
-    flex: 1 1 100%;
-    order: 1;
-  }
-
-  .about-me__flow--solo .about-me__flow-photos {
-    order: 2;
-    flex-direction: row;
-    width: auto;
-    flex: 0 0 auto;
-    gap: 0.5rem;
-    margin-top: 0.25rem;
-    opacity: 0.88;
-  }
-
-  .about-me__flow-photos > .about-me__chip,
-  .about-me__flow-photos > .about-me__chip-frame {
-    transform: none;
-    box-shadow: 0 2px 8px rgba(24, 24, 27, 0.07);
-    border-width: 1px;
-  }
-
-  .about-me__flow--stack .about-me__flow-photos > .about-me__chip--sm {
-    display: block;
-    width: 3.35rem;
+    float: left;
+    margin: 0.1rem 0.85rem 0.75rem 0;
   }
 
   .about-me__flow--stack .about-me__flow-photos .about-me__chip-frame,
   .about-me__flow--stack .about-me__flow-photos .about-me__chip-frame--lg {
-    width: 4.25rem;
+    width: 100%;
+  }
+
+  .about-me__flow--stack .about-me__flow-photos > .about-me__chip--sm {
+    width: 78%;
   }
 
   .about-me__flow--quote .about-me__pullquote {
@@ -866,12 +846,14 @@
     margin-top: 1.25rem;
   }
 
-  .about-me__flow--solo .about-me__flow-photos .about-me__chip-frame {
-    width: 3.75rem;
+  .about-me__flow--solo .about-me__flow-photos {
+    float: right;
+    width: 5rem;
+    margin-top: 0.15rem;
   }
 
-  .about-me__chip--sm {
-    width: 3.35rem;
+  .about-me__flow--solo .about-me__flow-photos .about-me__chip-frame {
+    width: 100%;
   }
 
   .about-me__toggle--bottom {
@@ -880,22 +862,20 @@
 }
 
 @media (max-width: 399px) {
-  .about-me__figure,
-  .about-me__main-img {
-    max-height: 7.25rem;
+  .about-me__figure {
+    width: 40%;
+    max-width: 9rem;
   }
 
   .about-me__flow-photos {
-    width: 3.65rem;
-    flex: 0 0 3.65rem;
+    width: 4.75rem;
   }
 
-  .about-me__flow-text {
-    flex: 1 1 calc(100% - 4.75rem);
-    min-width: min(100%, 12rem);
+  .about-me__flow--solo .about-me__flow-photos {
+    width: 4.25rem;
   }
 
-  .about-me__media-chips .about-me__chip:nth-child(1) {
+  .about-me__media-chips .about-me__chip-frame:nth-child(1) {
     width: 4.25rem;
   }
 
@@ -906,12 +886,9 @@
 
 /* Slightly wider narrow windows: keep accents subtle, not desktop overlap */
 @media (min-width: 768px) and (max-width: 991px) {
-  .about-me__hero-row {
-    padding-right: calc(36% + 2rem);
-  }
-
-  .about-me__media-col {
-    width: 36%;
+  .about-me__narrative {
+    grid-template-columns: minmax(0, 1fr) 36%;
+    column-gap: 2rem;
   }
 
   .about-me__figure {
@@ -927,7 +904,7 @@
   .about-me__panel,
   .about-me__panel-inner,
   .about-me__intro-continuation,
-  .about-me__teaser,
+  .about-me__teaser-body,
   .about-me__fade--text,
   .about-me__fade--image,
   .about-me__chip,

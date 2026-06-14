@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/reveal.css" />
   <link rel="stylesheet" href="css/coaching-pricing.css" />
-  <link rel="stylesheet" href="css/coaching-about.css?v=9" />
+  <link rel="stylesheet" href="css/coaching-about.css?v=11" />
   <style>
     .form-select option {
       background-color: #ffffff;
@@ -117,13 +117,27 @@
 
         <div class="reveal-item about-me__shell about-me" data-about-me>
           <div class="about-me__hero-row">
-            <div class="about-me__intro">
+            <div class="about-me__narrative">
               <div class="about-me__teaser-wrap">
-                <div class="about-me__teaser">
-                  <p class="about-me__teaser-greeting">I'm a REPs-certified Personal Trainer, aspiring sports science nerd and someone who genuinely loves helping people discover what they're capable of.</p>
+                <p class="about-me__teaser-greeting">I'm a REPs-certified Personal Trainer, aspiring sports science nerd and someone who genuinely loves helping people discover what they're capable of.</p>
+                <figure class="about-me__figure">
+                  <img
+                    class="about-me__main-img"
+                    src="content/images/hike.jpg"
+                    srcset="content/images/hike.jpg 2057w"
+                    sizes="(min-width: 768px) 42vw, 42vw"
+                    alt="Keelan hiking outdoors"
+                    width="2057"
+                    height="1170"
+                    fetchpriority="high"
+                    decoding="async"
+                  />
+                  <div class="about-me__fade about-me__fade--image" aria-hidden="true"></div>
+                </figure>
+                <div class="about-me__teaser-body">
                   <p>Sport and fitness have shaped almost every part of my life. They've given me confidence, discipline, friendships, challenges, and a sense of purpose. Growing up, I played everything I could get involved in—basketball, rugby, Gaelic football, and hurling. Eventually, I found the gym and became fascinated by the process of getting stronger, building muscle, and learning how the body adapts.</p>
+                  <div class="about-me__fade about-me__fade--text" aria-hidden="true"></div>
                 </div>
-                <div class="about-me__fade about-me__fade--text" aria-hidden="true"></div>
               </div>
 
               <div class="about-me__intro-continuation">
@@ -134,28 +148,6 @@
                 </div>
               </div>
 
-              <button type="button" class="about-me__toggle about-me__toggle--top" data-about-toggle aria-expanded="false" aria-controls="about-me-panel">
-                <span data-about-toggle-label>Read more</span>
-                <span class="about-me__toggle-icon" aria-hidden="true">↓</span>
-              </button>
-            </div>
-
-            <div class="about-me__media-col">
-              <figure class="about-me__figure">
-                <img
-                  class="about-me__main-img"
-                  src="content/images/hike.jpg"
-                  srcset="content/images/hike.jpg 2057w"
-                  sizes="(min-width: 768px) 42vw, 100vw"
-                  alt="Keelan hiking outdoors"
-                  width="2057"
-                  height="1170"
-                  fetchpriority="high"
-                  decoding="async"
-                />
-                <div class="about-me__fade about-me__fade--image" aria-hidden="true"></div>
-              </figure>
-
               <aside class="about-me__certs" aria-labelledby="about-me-certs">
                 <p id="about-me-certs" class="about-me__certs-label">My Certifications</p>
                 <p class="about-me__certs-line">ITEC &amp; REPS Certified Personal Trainer</p>
@@ -164,17 +156,19 @@
 
               <div class="about-me__media-chips">
                 <div class="about-me__media-chips-inner">
-                  <img
-                    class="about-me__chip"
-                    src="content/images/fuji.jpg"
-                    srcset="content/images/fuji.jpg 1170w"
-                    sizes="164px"
-                    alt="Keelan on a mountain trip"
-                    width="1170"
-                    height="1655"
-                    decoding="async"
-                    loading="lazy"
-                  />
+                  <span class="about-me__chip-frame">
+                    <img
+                      class="about-me__chip about-me__chip--crop-fuji"
+                      src="content/images/fuji.jpg"
+                      srcset="content/images/fuji.jpg 1170w"
+                      sizes="164px"
+                      alt="Keelan on a mountain trip"
+                      width="1170"
+                      height="1655"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                  </span>
                   <img
                     class="about-me__chip about-me__chip--sm"
                     src="content/images/tri.JPG"
@@ -189,6 +183,11 @@
                 </div>
               </div>
             </div>
+
+            <button type="button" class="about-me__toggle about-me__toggle--top" data-about-toggle aria-expanded="false" aria-controls="about-me-panel">
+              <span data-about-toggle-label>Read more</span>
+              <span class="about-me__toggle-icon" aria-hidden="true">↓</span>
+            </button>
           </div>
 
           <div id="about-me-panel" class="about-me__panel">
@@ -196,12 +195,6 @@
               <div class="about-me__story">
 
                 <section class="about-me__section about-me__flow about-me__flow--right about-me__flow--stack" aria-labelledby="about-why-train">
-                  <div class="about-me__flow-text">
-                    <h3 id="about-why-train" class="about-me__section-title">Why I Train (And Why I Love It)</h3>
-                    <p>For me, training isn't about chasing a certain look for a single week out of the year. I love it because of what it gives back to my life every single day:</p>
-                    <p>It gives me energy, structure, confidence, and a daily challenge. It helps me manage stress, stay focused, and feel physically capable. Just as importantly, it has introduced me to incredible communities, training partners, and lifelong friends.</p>
-                    <p>Whether someone's goal is completing their first 5k, building strength, losing weight, or preparing for an ultra marathon, the underlying process is the same: show up consistently, make small improvements, and let time do the heavy lifting.</p>
-                  </div>
                   <div class="about-me__flow-photos">
                     <span class="about-me__chip-frame about-me__chip-frame--lg">
                       <img
@@ -216,14 +209,20 @@
                         loading="lazy"
                       />
                     </span>
-                    <img class="about-me__chip about-me__chip--sm" src="content/images/gym.jpg" srcset="content/images/gym.jpg 1170w" sizes="140px" alt="Keelan training in the gym" width="1170" height="2058" decoding="async" loading="lazy" />
+                    <img class="about-me__chip about-me__chip--sm" src="content/images/bike.jpg" srcset="content/images/bike.jpg 1170w" sizes="122px" alt="Keelan cycling" width="1170" height="2055" decoding="async" loading="lazy" />
+                  </div>
+                  <div class="about-me__flow-text">
+                    <h3 id="about-why-train" class="about-me__section-title">Why I Train (And Why I Love It)</h3>
+                    <p>For me, training isn't about chasing a certain look for a single week out of the year. I love it because of what it gives back to my life every single day:</p>
+                    <p>It gives me energy, structure, confidence, and a daily challenge. It helps me manage stress, stay focused, and feel physically capable. Just as importantly, it has introduced me to incredible communities, training partners, and lifelong friends.</p>
+                    <p>Whether someone's goal is completing their first 5k, building strength, losing weight, or preparing for an ultra marathon, the underlying process is the same: show up consistently, make small improvements, and let time do the heavy lifting.</p>
                   </div>
                 </section>
 
                 <section class="about-me__section about-me__flow about-me__flow--left about-me__flow--quote" aria-labelledby="about-why-website">
                   <div class="about-me__flow-photos">
                     <img class="about-me__chip" src="content/images/runHat.jpg" srcset="content/images/runHat.jpg 1170w" sizes="156px" alt="Keelan running outdoors" width="1170" height="2061" decoding="async" loading="lazy" />
-                    <img class="about-me__chip about-me__chip--sm" src="content/images/bike.jpg" srcset="content/images/bike.jpg 1170w" sizes="122px" alt="Keelan cycling" width="1170" height="2055" decoding="async" loading="lazy" />
+                    <img class="about-me__chip about-me__chip--sm" src="content/images/gym.jpg" srcset="content/images/gym.jpg 1170w" sizes="140px" alt="Keelan training in the gym" width="1170" height="2058" decoding="async" loading="lazy" />
                   </div>
                   <div class="about-me__flow-text">
                     <h3 id="about-why-website" class="about-me__section-title">Why I built this website</h3>
@@ -236,12 +235,6 @@
                 </section>
 
                 <section class="about-me__section about-me__flow about-me__flow--right about-me__flow--solo" aria-labelledby="about-mission">
-                  <div class="about-me__flow-text">
-                    <h3 id="about-mission" class="about-me__section-title">My Mission</h3>
-                    <p>I built this platform to help you find your own genuine passion for fitness, without the headache.</p>
-                    <p>My goal is to simplify fitness and show you that by making a few small, low-friction lifestyle adjustments and letting those healthy habits compound over time, everything else naturally falls into place. You don't need a fancy plan or to change your entire life. You just need to aim to be a tiny bit healthier today than you were yesterday.</p>
-                    <p class="about-me__closing">Let's strip away the bullshit and build a strong, capable body on your own terms.</p>
-                  </div>
                   <div class="about-me__flow-photos">
                     <span class="about-me__chip-frame">
                       <img
@@ -256,6 +249,12 @@
                         loading="lazy"
                       />
                     </span>
+                  </div>
+                  <div class="about-me__flow-text">
+                    <h3 id="about-mission" class="about-me__section-title">My Mission</h3>
+                    <p>I built this platform to help you find your own genuine passion for fitness, without the headache.</p>
+                    <p>My goal is to simplify fitness and show you that by making a few small, low-friction lifestyle adjustments and letting those healthy habits compound over time, everything else naturally falls into place. You don't need a fancy plan or to change your entire life. You just need to aim to be a tiny bit healthier today than you were yesterday.</p>
+                    <p class="about-me__closing">Let's strip away the bullshit and build a strong, capable body on your own terms.</p>
                   </div>
                 </section>
 
