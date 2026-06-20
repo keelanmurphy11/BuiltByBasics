@@ -112,7 +112,7 @@ body ::selection {
 .site-header__links {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1.25rem;
 }
 
 @media (min-width: 640px) {
@@ -132,18 +132,26 @@ body ::selection {
   align-items: center;
   min-height: 2.75rem;
   font-family: "Space Grotesk", system-ui, sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--nav-link);
   transition: color 0.2s ease;
 }
 
+@media (min-width: 480px) {
+  .site-nav__link {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+}
+
 @media (min-width: 640px) {
   .site-nav__link {
     font-size: 0.75rem;
+    letter-spacing: 0.14em;
   }
 }
 
@@ -158,12 +166,12 @@ body ::selection {
 .site-nav__cta {
   display: inline-flex;
   align-items: center;
-  min-height: 2.75rem;
+  min-height: 2.25rem;
   border-radius: 9999px;
   background-color: #2563eb;
-  padding: 0.625rem 1.25rem;
+  padding: 0.4rem 0.875rem;
   font-family: "Space Grotesk", system-ui, sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -173,10 +181,19 @@ body ::selection {
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+@media (min-width: 480px) {
+  .site-nav__cta {
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+    min-height: 2.5rem;
+  }
+}
+
 @media (min-width: 640px) {
   .site-nav__cta {
     padding: 0.75rem 1.75rem;
     font-size: 0.875rem;
+    min-height: 2.75rem;
   }
 }
 
