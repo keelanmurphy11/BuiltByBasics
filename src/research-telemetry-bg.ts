@@ -33,7 +33,7 @@ function init(): void {
     canvas.style.height = `${height}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    // Layout can settle after first paint — restart once we have real dimensions.
+    // Layout can settle after first paint - restart once we have real dimensions.
     if (width > 0 && height > 0 && isInView) {
       start();
     }

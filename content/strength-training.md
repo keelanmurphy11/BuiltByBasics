@@ -2,7 +2,7 @@
 
 Studies have shown a significant correlation between muscle mass, strength, and mortality. Whether this is a direct cause or a knock-on effect (e.g., the inability to stay active) is less clear. However, the exact mechanism is less important than the outcome.
 
-It is undeniable that improved muscle mass and strength allow you to stay physically active as you age, reducing overall mortality risk and improving quality of life. Strength training is also key for preventing osteoporosis (loss of bone density), and increased muscle mass aids in weight management by increasing your BMR (Basal Metabolic Rate—the amount of calories your body burns each day at rest).
+It is undeniable that improved muscle mass and strength allow you to stay physically active as you age, reducing overall mortality risk and improving quality of life. Strength training is also key for preventing osteoporosis (loss of bone density), and increased muscle mass aids in weight management by increasing your BMR (Basal Metabolic Rate - the amount of calories your body burns each day at rest).
 
 ## Who Should Be Strength Training?
 

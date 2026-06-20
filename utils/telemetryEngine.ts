@@ -1,4 +1,4 @@
-/** Shared telemetry curve engine — used by canvas renderer and React hook */
+/** Shared telemetry curve engine - used by canvas renderer and React hook */
 
 export const COBALT = { r: 59, g: 130, b: 246 } as const;
 export const COBALT_GLOW = { r: 147, g: 197, b: 253 } as const;
@@ -8,7 +8,7 @@ export function lerp(a: number, b: number, t: number): number {
   return a + (b - a) * t;
 }
 
-/** Layered sine drift with incommensurate periods — avoids obvious loops */
+/** Layered sine drift with incommensurate periods - avoids obvious loops */
 export function drift(time: number, seed: number, scale: number): number {
   const s = seed * 1.618;
   return (
@@ -47,7 +47,7 @@ export interface TelemetryLayer {
   strokeWidth: number;
 }
 
-/** Left-edge origin — arcs sweep outward toward the right */
+/** Left-edge origin - arcs sweep outward toward the right */
 function getFlowOrigin(
   time: number,
   width: number,
@@ -157,7 +157,7 @@ function getArcSegments(line: TelemetryLine, layer: TelemetryLayer): ArcSegment[
   return segments;
 }
 
-/** Pure circular arc geometry — no wobble or drift along the stroke */
+/** Pure circular arc geometry - no wobble or drift along the stroke */
 function getArcGeometry(
   line: TelemetryLine,
   layer: TelemetryLayer,
@@ -332,7 +332,7 @@ function drawAmbientGlow(
   ctx.fillRect(0, 0, width, height);
 }
 
-/** Single-frame render — called each animation tick */
+/** Single-frame render - called each animation tick */
 export function renderTelemetryFrame(
   ctx: CanvasRenderingContext2D,
   time: number,

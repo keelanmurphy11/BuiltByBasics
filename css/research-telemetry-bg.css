@@ -1,4 +1,4 @@
-/* Premium telemetry background — research section */
+/* Premium telemetry background - research section */
 
 .research-telemetry-bg {
   position: absolute;
@@ -41,7 +41,7 @@
   );
 }
 
-/* Soft vertical vignette — keeps cards readable at section edges */
+/* Soft vertical vignette - keeps cards readable at section edges */
 .research-telemetry-vignette {
   position: absolute;
   inset: 0;
@@ -50,7 +50,7 @@
     radial-gradient(ellipse 90% 70% at 82% 50%, transparent 38%, rgba(5, 5, 5, 0.38) 100%);
 }
 
-/* Subtle film grain — matches site aesthetic */
+/* Subtle film grain - matches site aesthetic */
 .research-telemetry-grain {
   position: absolute;
   inset: 0;

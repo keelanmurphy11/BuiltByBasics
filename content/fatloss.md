@@ -15,7 +15,7 @@ Your daily calorie expenditure is made up of:
 
 - **BMR** (Basal Metabolic Rate)
 - **NEAT** (Non-Exercise Activity Thermogenesis, e.g., fidgeting, household chores)
-- **TEF** (Thermic Effect of Food—calories burned digesting food)
+- **TEF** (Thermic Effect of Food - calories burned digesting food)
 - **Exercise**
 
 Your BMR is the amount of calories your body burns at rest. It is heavily influenced by your genetics and body composition, so estimating your exact daily energy needs can be difficult. Online calorie calculators can provide a good starting estimate.
@@ -58,5 +58,5 @@ The rest of your diet should be built entirely around what fits you and your uni
 
 - **Keto / Atkins / Low Carb:** This is one of the most popular approaches, yet there is nothing magical about it. People lose weight on it simply because eliminating an entire food group naturally reduces their calorie intake. If you find it works for you, go ahead; however, for most people, this diet proves too restrictive and unenjoyable over time.
 - **Vegan / Carnivore:** These follow the same mechanism as low-carb diets. By severely eliminating a major food group, your calories will naturally be a lot lower. A vegan diet tends to be lower in calories, allowing you to eat a larger volume of food, but you must be careful to get enough protein. A carnivore diet is high in protein and very satiating, but you risk missing out on vital micronutrients from fruits and vegetables. A balanced diet is vastly healthier and more sustainable in the long run.
-- **Yo-Yo Diets (e.g., Juice Cleanses):** These are classic Hollywood fad diets. You will lose weight extremely fast to begin with because you are eating practically nothing. However, your body will be forced to adapt to this extreme deficit by downregulating your daily energy expenditure. Once your metabolism adjusts to running on extremely low calories, returning to your normal way of eating causes you to put all the lost weight back on—and in most cases, gain even more.
-- **Intermittent Fasting:** This has gained massive popularity over the last decade, but there is absolutely nothing magical about it. By limiting your eating window to 8 or 10 hours, you simply tend to eat less than if you were eating across a typical 16-hour waking period. If it fits your schedule, use it. If it doesn't, skip it—you aren't missing out on any special metabolic benefits.
+- **Yo-Yo Diets (e.g., Juice Cleanses):** These are classic Hollywood fad diets. You will lose weight extremely fast to begin with because you are eating practically nothing. However, your body will be forced to adapt to this extreme deficit by downregulating your daily energy expenditure. Once your metabolism adjusts to running on extremely low calories, returning to your normal way of eating causes you to put all the lost weight back on - and in most cases, gain even more.
+- **Intermittent Fasting:** This has gained massive popularity over the last decade, but there is absolutely nothing magical about it. By limiting your eating window to 8 or 10 hours, you simply tend to eat less than if you were eating across a typical 16-hour waking period. If it fits your schedule, use it. If it doesn't, skip it - you aren't missing out on any special metabolic benefits.

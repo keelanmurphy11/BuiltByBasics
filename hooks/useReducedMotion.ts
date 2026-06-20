@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 /**
- * Respects OS reduced-motion preference — pauses animation loops when true.
+ * Respects OS reduced-motion preference - pauses animation loops when true.
  */
 export function useReducedMotion(): boolean {
   const [reduced, setReduced] = useState(() => {

@@ -5,7 +5,7 @@ import { useTelemetryAnimation } from '../hooks/useTelemetryAnimation';
 export interface ResearchTelemetryBackgroundProps {
   /** Optional className for the outer wrapper */
   className?: string;
-  /** Background base color — defaults to near-black lab aesthetic */
+  /** Background base color - defaults to near-black lab aesthetic */
   baseColor?: string;
 }
 
@@ -19,7 +19,7 @@ export interface ResearchTelemetrySectionProps {
 /**
  * Premium animated telemetry background for research / performance sections.
  *
- * Flowing contour lines, biometric traces, and soft cobalt glow —
+ * Flowing contour lines, biometric traces, and soft cobalt glow  - 
  * anchored to the right with a fade into negative space on the left.
  *
  * @example
@@ -47,7 +47,7 @@ export function ResearchTelemetryBackground({
     >
       <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full opacity-[0.96]" />
 
-      {/* Left fade — keeps heading readable */}
+      {/* Left fade - keeps heading readable */}
       <div
         className="absolute inset-0"
         style={{

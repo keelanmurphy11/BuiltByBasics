@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "npm run build:canvas && npm run build:react",
-    "build:canvas": "node ./node_modules/esbuild/bin/esbuild src/research-telemetry-bg.ts --bundle --outfile=js/research-telemetry-bg.js --format=iife --target=es2020 --minify --banner:js=\"/* Built from src/research-telemetry-bg.ts — edit source and run: npm run build:canvas */\"",
+    "build:canvas": "node ./node_modules/esbuild/bin/esbuild src/research-telemetry-bg.ts --bundle --outfile=js/research-telemetry-bg.js --format=iife --target=es2020 --minify --banner:js=\"/* Built from src/research-telemetry-bg.ts - edit source and run: npm run build:canvas */\"",
     "build:react": "node ./node_modules/vite/bin/vite.js build",
     "dev:canvas": "node ./node_modules/esbuild/bin/esbuild src/research-telemetry-bg.ts --bundle --outfile=js/research-telemetry-bg.js --format=iife --target=es2020 --watch",
     "typecheck": "tsc --noEmit"

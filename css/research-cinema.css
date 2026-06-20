@@ -1,4 +1,4 @@
-/* Research fact cards — flip hover + mobile mini-tab */
+/* Research fact cards - flip hover + mobile mini-tab */
 
 #why {
   overflow: visible;
@@ -18,13 +18,13 @@
   touch-action: auto;
 }
 
-/* —— Card base —— */
+/*  -  -  Card base  -  -  */
 .research-card {
   z-index: 0;
   overflow: hidden;
 }
 
-/* Scroll reveal — initial / visible states */
+/* Scroll reveal - initial / visible states */
 .research-card.reveal-item:not(.is-visible) {
   opacity: 0;
   transform: translate3d(0, 3rem, 0);
@@ -48,7 +48,7 @@
   min-height: 0;
 }
 
-/* Front face — fixed rows so categories, stats, and headlines align across the grid */
+/* Front face - fixed rows so categories, stats, and headlines align across the grid */
 .card-collapsed {
   display: grid;
   grid-template-rows:
@@ -141,7 +141,7 @@
   }
 }
 
-/* Per-card interaction hints — overlaid at card bottom */
+/* Per-card interaction hints - overlaid at card bottom */
 .research-card-hint {
   position: absolute;
   bottom: 0.5rem;
@@ -311,7 +311,7 @@
   }
 }
 
-/* —— Mobile mini-tab modal —— */
+/*  -  -  Mobile mini-tab modal  -  -  */
 .research-mobile-modal {
   position: fixed;
   inset: 0;
