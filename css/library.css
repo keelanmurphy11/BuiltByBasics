@@ -101,6 +101,24 @@
   color: var(--page-text-subtle);
 }
 
+.library-hero__notice {
+  margin-top: 1rem;
+  max-width: 32rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--page-text-muted, #71717a);
+}
+
+.library-hero__notice a {
+  color: #3b82f6;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.library-hero__notice a:hover {
+  color: #2563eb;
+}
+
 .library-basics-banner {
   display: block;
   width: 100%;
