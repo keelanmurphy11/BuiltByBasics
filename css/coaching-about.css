@@ -143,7 +143,7 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding-top: calc(var(--about-hero-height) + 1rem);
+    padding-top: calc(var(--about-hero-height) + 1rem + 5.75rem);
   }
 
   .about-me__teaser-wrap {
@@ -184,6 +184,10 @@
     max-width: none;
     margin: 0;
     transform: none;
+    position: absolute;
+    top: calc(var(--about-hero-height) + 1rem);
+    right: 0;
+    width: var(--about-sidebar-width);
   }
 
   .about-me__media-chips {
@@ -740,6 +744,39 @@
     display: contents;
   }
 
+  .about-me__certs {
+    float: none;
+    clear: none;
+    width: auto;
+    max-width: 14rem;
+    margin: 0.35rem 0 0.5rem;
+    padding: 0.35rem 0.5rem;
+    transform: none;
+    background: transparent;
+    border: none;
+    border-left: 2px solid rgba(37, 99, 235, 0.3);
+    border-radius: 0;
+    z-index: auto;
+  }
+
+  .about-me__certs-label {
+    margin-bottom: 0.2rem;
+    font-size: 0.5625rem;
+    letter-spacing: 0.12em;
+  }
+
+  .about-me__certs-line {
+    font-size: 0.6875rem;
+    line-height: 1.4;
+  }
+
+  .about-me__certs-detail {
+    margin-top: 0.15rem;
+    font-size: 0.625rem;
+    line-height: 1.45;
+    color: #a1a1aa;
+  }
+
   .about-me__figure {
     float: right;
     width: 42%;
@@ -772,18 +809,8 @@
     margin-top: 0.5rem;
   }
 
-  .about-me:not(.is-expanded) .about-me__certs,
   .about-me:not(.is-expanded) .about-me__media-chips {
     display: none;
-  }
-
-  .about-me__certs {
-    float: left;
-    clear: left;
-    max-width: 58%;
-    margin: 0.75rem 0.85rem 0.5rem 0;
-    transform: rotate(-1.5deg);
-    z-index: 1;
   }
 
   .about-me__media-chips {
