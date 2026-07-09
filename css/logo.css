@@ -1,17 +1,19 @@
-/* KM Training - pure CSS logo component */
+/* builtbybasics - pure CSS logo component */
 
 .logo {
-  --logo-scale: clamp(0.8125rem, 1.6vw, 1rem);
-  --logo-main-tracking: 0.035em;
-  --logo-sub-tracking: 0.06em;
+  --logo-scale: clamp(0.75rem, 1.5vw, 0.9375rem);
+  --logo-main-tracking: 0.02em;
+  --logo-sub-scale: 0.82;
+  --logo-line-gap: 0.04em;
   --logo-dot-gap: 0.34em;
   --logo-dot-size: 0.28em;
   --logo-dot-offset-y: 0.14em;
   --logo-dot-color: #3b82f6;
 
   display: inline-flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: stretch;
+  gap: var(--logo-line-gap);
   width: fit-content;
   line-height: 1;
   font-size: var(--logo-scale);
@@ -21,8 +23,7 @@
 
 .logo-main {
   position: relative;
-  display: inline-block;
-  align-self: flex-start;
+  display: block;
   padding-right: var(--logo-dot-gap);
   font-family: 'Montserrat', system-ui, sans-serif;
   font-weight: 900;
@@ -46,25 +47,18 @@
 }
 
 .logo-sub {
-  display: block;
-  width: calc(100% - var(--logo-dot-gap));
-  margin-top: 0.1em;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   font-family: 'Montserrat', system-ui, sans-serif;
-  font-weight: 500;
-  font-size: 0.36em;
-  letter-spacing: var(--logo-sub-tracking);
+  font-weight: 900;
+  font-size: calc(var(--logo-sub-scale) * 1em);
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  text-align: justify;
-  text-align-last: justify;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: geometricPrecision;
-}
-
-.logo-sub::after {
-  content: '';
-  display: inline-block;
-  width: 100%;
+  font-synthesis: none;
 }
 
 .logo--lg {

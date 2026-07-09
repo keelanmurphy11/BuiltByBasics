@@ -50,6 +50,11 @@
   .philosophy-mission-callout {
     padding-block: clamp(5rem, 14vw, 6rem);
   }
+
+  .philosophy-purpose {
+    padding-top: clamp(3rem, 10vw, 3.5rem);
+    padding-bottom: clamp(3.5rem, 12vw, 4rem);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -181,6 +186,19 @@
 .philosophy-intro-citation-link:hover {
   color: rgb(161 161 170);
   text-decoration-color: rgba(161, 161, 170, 0.55);
+}
+
+/* ── Purpose ── */
+
+.philosophy-purpose h3 {
+  text-wrap: balance;
+}
+
+.philosophy-purpose p:last-child {
+  margin: 0;
+  max-width: 36rem;
+  margin-inline: auto;
+  text-wrap: balance;
 }
 
 /* ── Reduced motion ── */

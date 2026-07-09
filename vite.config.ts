@@ -15,7 +15,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'components/index.ts'),
-      name: 'KMTrainingTelemetry',
+      name: 'BuiltByBasicsTelemetry',
       formats: ['es'],
       fileName: 'telemetry-react',
     },
