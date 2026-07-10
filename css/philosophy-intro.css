@@ -190,15 +190,15 @@
 
 /* ── Purpose ── */
 
-.philosophy-purpose h3 {
+.philosophy-purpose h3,
+.philosophy-purpose p:not(:first-child) {
+  max-width: 52rem;
+  margin-inline: auto;
   text-wrap: balance;
 }
 
 .philosophy-purpose p:last-child {
-  margin: 0;
-  max-width: 36rem;
-  margin-inline: auto;
-  text-wrap: balance;
+  margin-bottom: 0;
 }
 
 /* ── Reduced motion ── */

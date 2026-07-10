@@ -5,6 +5,7 @@
   --logo-main-tracking: 0.02em;
   --logo-sub-scale: 0.82;
   --logo-line-gap: 0.04em;
+  --logo-sub-gap: 0.22em;
   --logo-dot-gap: 0.34em;
   --logo-dot-size: 0.28em;
   --logo-dot-offset-y: 0.14em;
@@ -12,7 +13,7 @@
 
   display: inline-flex;
   flex-direction: column-reverse;
-  align-items: stretch;
+  align-items: flex-start;
   gap: var(--logo-line-gap);
   width: fit-content;
   line-height: 1;
@@ -48,8 +49,9 @@
 
 .logo-sub {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: flex-start;
+  gap: var(--logo-sub-gap);
+  width: fit-content;
   font-family: 'Montserrat', system-ui, sans-serif;
   font-weight: 900;
   font-size: calc(var(--logo-sub-scale) * 1em);
