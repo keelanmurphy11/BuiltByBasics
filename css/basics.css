@@ -202,6 +202,8 @@ html {
 
   .basics-subnav-wrap {
     position: relative;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: var(--basics-subnav-height);
     margin: 0;
@@ -211,7 +213,8 @@ html {
   }
 
   .basics-subnav {
-    height: 100%;
+    flex: 1;
+    min-height: 0;
     flex-wrap: nowrap;
     gap: 0.125rem;
     padding: 0 1.25rem;
@@ -226,27 +229,72 @@ html {
     scrollbar-width: none;
   }
 
-  .basics-subnav:not(.basics-subnav--overflow)::-webkit-scrollbar {
+  .basics-subnav::-webkit-scrollbar {
     display: none;
   }
 
-  .basics-subnav--overflow {
-    scrollbar-width: thin;
-    scrollbar-color: #71717a #e4e4e7;
+  .basics-subnav-scrollbar {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    height: 0;
+    padding: 0 1.25rem;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
   }
 
-  .basics-subnav--overflow::-webkit-scrollbar {
-    display: block;
-    height: 4px;
+  .basics-subnav-wrap--overflow .basics-subnav-scrollbar {
+    height: 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    opacity: 0.35;
+    pointer-events: auto;
   }
 
-  .basics-subnav--overflow::-webkit-scrollbar-track {
-    background: #e4e4e7;
+  .basics-subnav-wrap--overflow:hover .basics-subnav-scrollbar,
+  .basics-subnav-wrap--overflow.is-scrolling .basics-subnav-scrollbar,
+  .basics-subnav-wrap--overflow:has(.basics-subnav-scrollbar__thumb.is-dragging) .basics-subnav-scrollbar {
+    opacity: 0.65;
   }
 
-  .basics-subnav--overflow::-webkit-scrollbar-thumb {
-    background: #71717a;
-    border-radius: 2px;
+  .basics-subnav-scrollbar__track {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(228 228 231 / 0.45);
+    cursor: pointer;
+  }
+
+  .basics-subnav-scrollbar__thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    min-width: 16px;
+    width: var(--subnav-thumb-size, 16px);
+    border-radius: 1px;
+    background-color: rgb(161 161 170 / 0.55);
+    cursor: grab;
+    transform: translateX(var(--subnav-thumb-offset, 0px));
+    transition: transform 0.12s ease-out, background-color 0.2s ease;
+    touch-action: none;
+  }
+
+  .basics-subnav-scrollbar__thumb.is-dragging {
+    cursor: grabbing;
+    background-color: rgb(161 161 170 / 0.8);
+    transition: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .basics-subnav-scrollbar {
+      transition: none;
+    }
+
+    .basics-subnav-scrollbar__thumb {
+      transition: none;
+    }
   }
 
   .basics-subnav__link {
@@ -652,21 +700,101 @@ html {
   color: var(--basics-text-strong);
 }
 
-.basics-content-zone .basics-blueprint-steps {
-  margin: 0;
+#blueprint h3.basics-heading {
+  margin-top: 6.75rem;
+}
+
+#blueprint h3.basics-heading:first-of-type {
+  margin-top: 3.75rem;
+}
+
+#blueprint .basics-blueprint-recs {
+  margin-bottom: 0.75rem;
+}
+
+#blueprint .basics-step-guide {
+  margin-bottom: 0.75rem;
+}
+
+.basics-content-zone .basics-blueprint-recs {
+  margin-top: 1.5rem;
+}
+
+.basics-content-zone .basics-blueprint-recs .basics-pillar-list__title {
+  padding-left: 0.75rem;
+  border-left: 3px solid rgb(37 99 235);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--basics-text-strong);
+}
+
+.basics-content-zone .basics-blueprint-recs .basics-blueprint-recs__list {
+  margin-top: 1rem;
   padding: 0;
   list-style: none;
-  display: grid;
-  gap: 0.875rem;
 }
 
-.basics-content-zone .basics-blueprint-steps__item {
+.basics-content-zone .basics-blueprint-recs .basics-blueprint-recs__list > li {
+  padding-left: 2rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--basics-text);
+}
+
+.basics-content-zone .basics-blueprint-recs .basics-blueprint-recs__list > li + li {
+  margin-top: 0.875rem;
+}
+
+.basics-content-zone .basics-week-plan__tiers {
+  margin-top: 1.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid rgb(37 99 235 / 0.15);
+}
+
+@media (min-width: 640px) {
+  .basics-content-zone .basics-week-plan__tiers {
+    padding-left: 1.5rem;
+  }
+}
+
+/* ── How to Start: step-by-step guide ── */
+
+.basics-content-zone .basics-step-guide {
+  margin-top: 2rem;
+  display: grid;
+  gap: 0;
+}
+
+.basics-content-zone .basics-step-guide__step {
+  position: relative;
+  padding: 0 0 2rem 2.75rem;
+}
+
+.basics-content-zone .basics-step-guide__step::before {
+  content: "";
+  position: absolute;
+  left: 0.6875rem;
+  top: 2.25rem;
+  bottom: 0;
+  width: 2px;
+  background-color: rgb(37 99 235 / 0.2);
+}
+
+.basics-content-zone .basics-step-guide__step--last::before {
+  display: none;
+}
+
+.basics-content-zone .basics-step-guide__header {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
-.basics-content-zone .basics-blueprint-steps__index {
+.basics-content-zone .basics-step-guide__index {
+  position: absolute;
+  left: 0;
+  top: 0.125rem;
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
@@ -682,9 +810,70 @@ html {
   color: #fff;
 }
 
-.basics-content-zone .basics-blueprint-steps__text {
-  padding-top: 0.125rem;
+.basics-content-zone .basics-step-guide__title {
+  margin: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--basics-text-strong);
+}
+
+.basics-content-zone .basics-step-guide__lead {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
   line-height: 1.55;
+  color: var(--basics-text-subtle);
+}
+
+.basics-content-zone .basics-step-guide__goals {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .basics-content-zone .basics-step-guide__goals {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.875rem;
+  }
+}
+
+.basics-content-zone .basics-step-guide__goal {
+  padding: 1rem 1.125rem;
+  border: 1px solid var(--basics-border);
+  border-radius: 2px;
+  background-color: var(--basics-light-bg);
+}
+
+.basics-content-zone .basics-step-guide__goal-label {
+  display: block;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(37 99 235);
+}
+
+.basics-content-zone .basics-step-guide__goal-text {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--basics-text-strong);
+}
+
+.basics-content-zone .basics-step-guide__loop {
+  margin: 1.25rem 0 0;
+  padding: 0.875rem 1rem;
+  border: 1px dashed rgb(37 99 235 / 0.45);
+  border-radius: 2px;
+  background-color: rgb(239 246 255 / 0.6);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--basics-text-strong);
 }
 
 /* ── Speech bubble (Q&A) ── */

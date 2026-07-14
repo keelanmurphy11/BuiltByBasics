@@ -243,6 +243,37 @@
   opacity: 0.88;
 }
 
+.library-card--available {
+  text-decoration: none;
+  color: inherit;
+  border-left: 3px solid #2563eb;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.library-card--available:hover {
+  background-color: rgba(37, 99, 235, 0.06);
+  border-left-color: #3b82f6;
+}
+
+.library-card--available .library-card__title {
+  color: var(--page-text-strong);
+}
+
+.library-card__badge--available {
+  color: #3b82f6;
+}
+
+.library-card__arrow {
+  width: 1rem;
+  height: 1rem;
+  color: #3b82f6;
+  transition: transform 0.2s ease;
+}
+
+.library-card--available:hover .library-card__arrow {
+  transform: translateX(2px);
+}
+
 .library-card__header {
   display: flex;
   align-items: flex-start;
