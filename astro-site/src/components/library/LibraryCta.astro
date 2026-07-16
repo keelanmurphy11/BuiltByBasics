@@ -4,6 +4,9 @@ interface Props {
 }
 
 const { inline = false } = Astro.props;
+
+/** Form URL from Beehiiv → Get embed code (iframe src), e.g. https://subscribe-forms.beehiiv.com/<id> */
+const beehiivEmbedUrl = (import.meta.env.PUBLIC_BEEHIIV_EMBED_URL as string | undefined)?.trim() || '';
 ---
 
 <section class:list={['lib-cta', { 'lib-cta--inline': inline }]}>
@@ -21,16 +24,28 @@ const { inline = false } = Astro.props;
           </svg>
         </a>
       </div>
-      <form class="lib-cta__form" action="#" method="post" onsubmit="return false;">
-        <input
-          type="email"
-          class="lib-cta__input"
-          placeholder="you@example.com"
-          aria-label="Email address for newsletter"
-          required
-        />
-        <button type="submit" class="lib-cta__btn">Subscribe</button>
-      </form>
+
+      {beehiivEmbedUrl ? (
+        <div class="lib-cta__form lib-cta__beehiiv">
+          <iframe
+            src={beehiivEmbedUrl}
+            class="beehiiv-embed lib-cta__beehiiv-frame"
+            data-test-id="beehiiv-embed"
+            frameborder="0"
+            scrolling="no"
+            title="Subscribe to the Built By Basics newsletter"
+            loading="lazy"
+          ></iframe>
+          <script is:inline async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+        </div>
+      ) : (
+        <div class="lib-cta__form lib-cta__form--unconfigured" role="status">
+          <p class="lib-cta__setup-note">
+            Set <code>PUBLIC_BEEHIIV_EMBED_URL</code> in <code>astro-site/.env</code> to your Beehiiv
+            Slim Inline form URL (see <code>.env.example</code>).
+          </p>
+        </div>
+      )}
     </div>
   </div>
 </section>
