@@ -2,6 +2,7 @@ node_modules/
 dist/
 *.log
 .DS_Store
+.tmp-shot/
 studio/node_modules/
 astro-site/node_modules/
 .env

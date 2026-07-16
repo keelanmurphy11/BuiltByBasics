@@ -1,5 +1,5 @@
 /**
- * Seeds movement patterns and programs from js/programs-data.js into Sanity.
+ * Seeds movement patterns and programs from studio/data/programs-data.js into Sanity.
  *
  * Usage:
  *   1. Copy .env.example to .env and fill in project ID + write token
@@ -42,8 +42,8 @@ const client = createClient({
   useCdn: false,
 });
 
-// Load programs-data.js from repo root (const declarations, no exports)
-const dataPath = join(__dirname, '..', '..', 'js', 'programs-data.js');
+// Load programs-data.js from studio/data/ (const declarations, no exports)
+const dataPath = join(__dirname, '..', 'data', 'programs-data.js');
 const dataSource = readFileSync(dataPath, 'utf8');
 const loadData = new Function(
   `${dataSource}\nreturn { MOVEMENT_PATTERNS, PROGRAM_COLLECTIONS, PROGRAMS_BY_COLLECTION };`

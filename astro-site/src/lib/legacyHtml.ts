@@ -1,8 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-// Repo root is one level above astro-site/ (where dev/build commands run).
-const repoRoot = join(process.cwd(), '..');
+// Legacy HTML sources live in astro-site/legacy/ (cwd is astro-site during dev/build).
+const legacyDir = join(process.cwd(), 'legacy');
 
 const BASE_STYLES = new Set(['css/logo.css', 'css/theme.css', 'css/reveal.css']);
 
@@ -67,7 +67,7 @@ export interface LegacyPageContent {
 }
 
 export function loadLegacyHtml(filename: string): LegacyPageContent {
-  const html = readFileSync(join(repoRoot, filename), 'utf8');
+  const html = readFileSync(join(legacyDir, filename), 'utf8');
 
   const title = html.match(/<title>([^<]*)<\/title>/)?.[1]?.trim() ?? 'builtbybasics';
   const description =

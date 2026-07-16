@@ -1,5 +1,5 @@
 /**
- * Seeds articles from content/*.md into Sanity.
+ * Seeds articles from studio/data/articles/*.md into Sanity.
  *
  * Usage: npm run seed:articles
  */
@@ -173,7 +173,7 @@ function markdownToBlocks(markdown: string) {
 }
 
 async function seedArticles() {
-  const contentDir = join(__dirname, '..', '..', 'content');
+  const contentDir = join(__dirname, '..', 'data', 'articles');
   const files = readdirSync(contentDir).filter((file) => file.endsWith('.md'));
 
   console.log('Seeding articles...');

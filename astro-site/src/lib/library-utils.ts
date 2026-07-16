@@ -84,7 +84,7 @@ export function formatShortDate(dateStr?: string): string {
   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
 
-const DEFAULT_FEATURED_IMAGE = '/content/images/gym.jpg';
+const DEFAULT_FEATURED_IMAGE = '/content/images/default_cover_image.jpg';
 
 export function getResourceImageUrl(resource?: LibraryResource | null): string {
   return resource?.coverImageUrl || DEFAULT_FEATURED_IMAGE;

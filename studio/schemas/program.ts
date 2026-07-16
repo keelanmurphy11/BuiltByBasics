@@ -71,6 +71,15 @@ export default defineType({
       description: 'e.g. Full Body, Upper / Lower',
     }),
     defineField({
+      name: 'coverImage',
+      title: 'Cover image',
+      type: 'image',
+      group: 'content',
+      description:
+        'Shown on the library featured card and resource listings. Falls back to the site default if empty.',
+      options: { hotspot: true },
+    }),
+    defineField({
       name: 'overviewImage',
       title: 'Overview image',
       type: 'image',
@@ -199,11 +208,13 @@ export default defineType({
       title: 'title',
       status: 'status',
       frequency: 'frequency',
+      media: 'coverImage',
     },
-    prepare({ title, status, frequency }) {
+    prepare({ title, status, frequency, media }) {
       return {
         title,
         subtitle: [status, frequency].filter(Boolean).join(' · '),
+        media,
       };
     },
   },

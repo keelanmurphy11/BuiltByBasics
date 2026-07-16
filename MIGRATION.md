@@ -1,35 +1,36 @@
 # builtbybasics CMS Migration
 
-This repo is migrating from hand-edited static HTML to **Sanity CMS + Astro**.
-
-Phase 1 adds the foundation without removing the legacy site at the repo root.
+This repo has migrated from hand-edited static HTML to **Sanity CMS + Astro**.
 
 ## Project layout
 
 ```
 BuiltByBasics/
-├── studio/          Sanity Studio (content editing)
-├── astro-site/      New Astro site (public build)
-├── index.html       Legacy static pages (unchanged in Phase 1)
-├── programs.html
-└── js/programs-data.js
+├── studio/              Sanity Studio (content editing + seed data)
+│   └── data/            Seed sources (programs-data.js, articles/*.md)
+├── astro-site/          Public Astro site
+│   ├── legacy/          HTML sources still loaded for home/basics/coaching/thank-you
+│   └── public/          CSS, JS, images, assets
+├── netlify.toml
+└── package.json         Workspace scripts (dev:site, dev:studio, build:site)
 ```
 
 ## Phase 1 checklist
 
 - [x] Sanity Studio scaffolded with article, program, and movement pattern schemas
-- [x] Seed script for `js/programs-data.js`
+- [x] Seed script for `studio/data/programs-data.js`
 - [x] Astro site scaffolded with shared layout
 - [x] `/programs` index page wired to Sanity
 - [x] `/programs/[slug]` detail page wired to Sanity
 
 ## Phase 2 checklist
 
-- [x] Articles seeded from `content/*.md` (`npm run seed:articles`)
+- [x] Articles seeded from `studio/data/articles/*.md` (`npm run seed:articles`)
 - [x] `/library` lists programs + published articles from Sanity
 - [x] `/articles/[slug]` renders article body from Sanity
 - [x] `index`, `basics`, `coaching`, `thank-you` ported via legacy HTML loader
 - [x] Redirects configured (`netlify.toml`, `astro-site/vercel.json`)
+- [x] Legacy static site removed from repo root (assets live under `astro-site/`)
 - [ ] Deploy Astro site to Netlify/Cloudflare (you)
 - [ ] Sanity webhook → rebuild on publish (you)
 
@@ -71,16 +72,16 @@ From `studio/`:
 
 ```bash
 npm run seed           # programs + movement patterns
-npm run seed:articles  # articles from content/*.md
+npm run seed:articles  # articles from studio/data/articles/*.md
 # or
 npm run seed:all
 ```
 
 This upserts:
 
-- **16 movement patterns** from `MOVEMENT_PATTERNS` in `js/programs-data.js`
+- **16 movement patterns** from `MOVEMENT_PATTERNS` in `studio/data/programs-data.js`
 - **2 programs** (`full-body-2x`, `upper-lower-4x`) with all workout days
-- **3 articles** from `content/strength-training.md`, `content/cardiofitness.md`, `content/fatloss.md`
+- **3 articles** from `studio/data/articles/` (`strength-training.md`, `cardiofitness.md`, `fatloss.md`)
 
 ### 4. Start dev servers
 
@@ -105,8 +106,6 @@ Or from each folder: `npm run dev`
 | `http://localhost:4321/basics` | Basics of Training |
 | `http://localhost:4321/coaching` | Coaching page |
 
-Legacy files at repo root remain as fallback until you switch production deploy.
-
 ## Deploy the Astro site
 
 ### Netlify
@@ -122,8 +121,6 @@ In [sanity.io/manage](https://www.sanity.io/manage) → API → Webhooks:
 
 - URL: your host's deploy hook URL
 - Trigger on create/update/delete for `article`, `program`, `movementPattern`
-
-## Phase 3 (later)
 
 ## Data mapping (`programs-data.js` → Sanity)
 
@@ -152,6 +149,7 @@ Hosts Studio at `https://<your-studio>.sanity.studio`.
 
 - Stripe Checkout for paid programs
 - Optional user accounts for "My Programs"
+- Rewrite remaining legacy HTML pages into native Astro components
 
 ## Manual steps only you can do
 
