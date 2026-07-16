@@ -11,6 +11,13 @@ import type { LibraryResourceRaw } from '../../lib/types';
 const rawResources = (await fetchSanity<LibraryResourceRaw[]>(libraryResourcesQuery)) ?? [];
 const resources = sortResources(normalizeResources(rawResources), 'newest');
 
+const formatParam = Astro.url.searchParams.get('format');
+const topicParam = Astro.url.searchParams.get('topic');
+const activeChipSlug =
+  formatParam === 'programs' || formatParam === 'articles'
+    ? formatParam
+    : topicParam || 'all';
+
 const indexData = resources.map((r) => ({
   id: r.id,
   type: r.type,
@@ -62,7 +69,7 @@ const indexData = resources.map((r) => ({
           />
         </form>
 
-        <CategoryChips />
+        <CategoryChips activeSlug={activeChipSlug} />
       </div>
     </section>
 

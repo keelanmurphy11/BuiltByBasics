@@ -70,12 +70,14 @@ export interface LibraryCategoryChip {
   label: string;
   href?: string;
   available: boolean;
+  /** Shown before “View all filters”; omit for secondary topic chips. */
+  primary?: boolean;
 }
 
 export const LIBRARY_CATEGORY_CHIPS: LibraryCategoryChip[] = [
-  { slug: 'all', label: 'All', href: '/library/search', available: true },
-  { slug: 'programs', label: 'Programs', href: '/library/search?format=programs', available: true },
-  { slug: 'articles', label: 'Articles', href: '/library/search?format=articles', available: true },
+  { slug: 'all', label: 'All', href: '/library/search', available: true, primary: true },
+  { slug: 'programs', label: 'Programs', href: '/library/search?format=programs', available: true, primary: true },
+  { slug: 'articles', label: 'Articles', href: '/library/search?format=articles', available: true, primary: true },
   { slug: 'videos', label: 'Videos', available: false },
   { slug: 'nutrition', label: 'Nutrition', href: '/library/search?topic=nutrition', available: true },
   { slug: 'strength', label: 'Strength', href: '/library/search?topic=strength', available: true },

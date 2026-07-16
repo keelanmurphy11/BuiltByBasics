@@ -103,6 +103,19 @@ if (!indexEl || !feedEl) {
       if (isActive) chip.setAttribute('aria-current', 'page');
       else chip.removeAttribute('aria-current');
     });
+
+    // Keep topic chips visible when a secondary filter is active
+    const activeChip = chipsNav.querySelector(`[data-chip-slug="${activeSlug}"]`);
+    const more = chipsNav.querySelector<HTMLElement>('[data-chips-more]');
+    const toggle = chipsNav.querySelector<HTMLButtonElement>('[data-chips-toggle]');
+    const label = chipsNav.querySelector<HTMLElement>('[data-chips-toggle-label]');
+    if (activeChip && more?.contains(activeChip) && !chipsNav.classList.contains('lib-chips--expanded')) {
+      chipsNav.classList.add('lib-chips--expanded');
+      chipsNav.setAttribute('data-chips-expanded', 'true');
+      more.hidden = false;
+      toggle?.setAttribute('aria-expanded', 'true');
+      if (label) label.textContent = 'Show fewer';
+    }
   }
 
   function getActiveFilterCount() {

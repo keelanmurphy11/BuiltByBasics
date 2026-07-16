@@ -1475,8 +1475,17 @@ body.lib-filter-open {
 .lib-chips {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
+}
+
+.lib-chips__more {
+  display: contents;
+}
+
+.lib-chips__more[hidden] {
+  display: none;
 }
 
 .lib-chip {
@@ -1507,6 +1516,26 @@ body.lib-filter-open {
 .lib-chip--disabled {
   opacity: 0.45;
   cursor: default;
+}
+
+.lib-chip--toggle {
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-style: dashed;
+  background: transparent;
+  color: var(--page-text-subtle);
+}
+
+.lib-chip--toggle:hover {
+  border-color: rgba(59, 130, 246, 0.45);
+  color: var(--page-text-strong);
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.lib-chips--expanded .lib-chip--toggle {
+  border-style: solid;
 }
 
 /* Start Here */

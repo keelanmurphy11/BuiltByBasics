@@ -6,11 +6,19 @@ interface Props {
 }
 
 const { activeSlug = 'all' } = Astro.props;
+
+const primaryChips = LIBRARY_CATEGORY_CHIPS.filter((chip) => chip.primary);
+const moreChips = LIBRARY_CATEGORY_CHIPS.filter((chip) => !chip.primary);
+const startExpanded = moreChips.some((chip) => chip.slug === activeSlug);
 ---
 
-<nav class="lib-chips" aria-label="Browse library categories">
+<nav
+  class:list={['lib-chips', { 'lib-chips--expanded': startExpanded }]}
+  aria-label="Browse library categories"
+  data-chips-expanded={startExpanded ? 'true' : 'false'}
+>
   {
-    LIBRARY_CATEGORY_CHIPS.map((chip) => {
+    primaryChips.map((chip) => {
       const isActive = activeSlug === chip.slug;
 
       if (!chip.available) {
@@ -33,4 +41,71 @@ const { activeSlug = 'all' } = Astro.props;
       );
     })
   }
+
+  <div
+    id="lib-chips-more"
+    class="lib-chips__more"
+    data-chips-more
+    hidden={!startExpanded}
+  >
+    {
+      moreChips.map((chip) => {
+        const isActive = activeSlug === chip.slug;
+
+        if (!chip.available) {
+          return (
+            <span class="lib-chip lib-chip--disabled" aria-disabled="true">
+              {chip.label}
+            </span>
+          );
+        }
+
+        return (
+          <a
+            href={chip.href}
+            class:list={['lib-chip', { 'lib-chip--active': isActive }]}
+            data-chip-slug={chip.slug}
+            aria-current={isActive ? 'page' : undefined}
+          >
+            {chip.label}
+          </a>
+        );
+      })
+    }
+  </div>
+
+  <button
+    type="button"
+    class="lib-chip lib-chip--toggle"
+    data-chips-toggle
+    aria-expanded={startExpanded ? 'true' : 'false'}
+    aria-controls="lib-chips-more"
+  >
+    <span data-chips-toggle-label>{startExpanded ? 'Show fewer' : 'View all filters'}</span>
+  </button>
 </nav>
+
+<script>
+  function initCategoryChips(root: ParentNode = document) {
+    root.querySelectorAll<HTMLElement>('.lib-chips').forEach((nav) => {
+      if (nav.dataset.chipsInit === 'true') return;
+      nav.dataset.chipsInit = 'true';
+
+      const toggle = nav.querySelector<HTMLButtonElement>('[data-chips-toggle]');
+      const more = nav.querySelector<HTMLElement>('[data-chips-more]');
+      const label = nav.querySelector<HTMLElement>('[data-chips-toggle-label]');
+      if (!toggle || !more || !label) return;
+
+      toggle.addEventListener('click', () => {
+        const expanded = nav.classList.toggle('lib-chips--expanded');
+        nav.dataset.chipsExpanded = expanded ? 'true' : 'false';
+        more.hidden = !expanded;
+        toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        label.textContent = expanded ? 'Show fewer' : 'View all filters';
+      });
+    });
+  }
+
+  initCategoryChips();
+  document.addEventListener('astro:page-load', () => initCategoryChips());
+</script>
