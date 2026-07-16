@@ -1149,19 +1149,20 @@ body.lib-filter-open {
 
 .lib-cta__beehiiv {
   width: 100%;
-  min-height: 52px;
+  min-height: 56px;
 }
 
-.lib-cta__beehiiv-frame {
-  display: block;
+.lib-cta__beehiiv > div {
   width: 100%;
+}
+
+.lib-cta__beehiiv iframe {
+  display: block;
+  width: 100% !important;
   max-width: 100%;
-  height: 52px;
-  margin: 0;
+  margin: 0 !important;
   border: none;
-  border-radius: 0;
   background: transparent;
-  overflow: hidden;
 }
 
 .lib-cta__form--unconfigured {
