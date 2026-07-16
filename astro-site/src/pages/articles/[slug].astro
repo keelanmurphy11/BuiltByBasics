@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleBody from '../../components/ArticleBody.astro';
+import ArticleMeta from '../../components/ArticleMeta.astro';
+import ArticleTakeaways from '../../components/ArticleTakeaways.astro';
+import ArticleToc from '../../components/ArticleToc.astro';
+import ArticleSources from '../../components/ArticleSources.astro';
+import RelatedResources from '../../components/RelatedResources.astro';
+import ContinueLearning from '../../components/ContinueLearning.astro';
+import { fetchSanity } from '../../lib/sanity';
+import { articleBySlugQuery, articleSlugsQuery, libraryResourcesQuery } from '../../lib/queries';
+import {
+  estimateReadingTime,
+  extractTocHeadings,
+  normalizeResource,
+  normalizeResources,
+  sortResources,
+} from '../../lib/library-utils';
+import type { ArticleDetail, LibraryResourceRaw } from '../../lib/types';
+
+export async function getStaticPaths() {
+  const slugs = (await fetchSanity<Array<{ slug: string }>>(articleSlugsQuery)) ?? [];
+  return slugs.map(({ slug }) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const article = await fetchSanity<ArticleDetail>(articleBySlugQuery, { slug });
+
+if (!article) {
+  return Astro.redirect('/articles');
+}
+
+const readingTime = estimateReadingTime(article.body ?? []);
+const headings = extractTocHeadings(article.body ?? []);
+
+const rawResources = (await fetchSanity<LibraryResourceRaw[]>(libraryResourcesQuery)) ?? [];
+const allResources = normalizeResources(rawResources);
+const continueResource =
+  sortResources(
+    allResources.filter(
+      (r) =>
+        r.slug !== slug &&
+        r.topics.some((t) => (article.topics ?? []).includes(t))
+    ),
+    'newest'
+  )[0] ?? sortResources(allResources.filter((r) => r.slug !== slug), 'newest')[0] ?? null;
+---
+
+<BaseLayout
+  title={`${article.title} - builtbybasics`}
+  description={article.summary || article.title}
+  extraCss={['/css/library.css', '/css/article.css']}
+  bodyClass="article-page"
+  theme="light"
+  activeNav="library"
+>
+  <main>
+    <section class="article-hero">
+      <div class="article-hero__container">
+        <nav class="article-breadcrumb" aria-label="Breadcrumb">
+          <a href="/library">Library</a>
+          <span class="article-breadcrumb__sep" aria-hidden="true">/</span>
+          <a href="/articles">Articles</a>
+          <span class="article-breadcrumb__sep" aria-hidden="true">/</span>
+          <span>{article.title}</span>
+        </nav>
+
+        <p class="article-hero__eyebrow">Article</p>
+        <h1 class="article-hero__title">{article.title}</h1>
+        {article.summary && <p class="article-hero__summary">{article.summary}</p>}
+
+        <ArticleMeta
+          readingTime={readingTime}
+          difficulty={article.difficulty}
+          publishedAt={article.publishedAt}
+          updatedAt={article._updatedAt}
+          evidenceLevel={article.evidenceLevel}
+        />
+      </div>
+    </section>
+
+    <div class="article-layout">
+      <ArticleToc headings={headings} />
+
+      <div class="article-layout__content">
+        <ArticleTakeaways takeaways={article.keyTakeaways ?? []} />
+        <ArticleBody body={article.body ?? []} />
+        <ArticleSources sources={article.sources ?? []} />
+        <RelatedResources resources={article.relatedResources ?? []} />
+        <ContinueLearning resource={continueResource} />
+      </div>
+    </div>
+  </main>
+
+  <Fragment slot="scripts">
+    <script src="/js/article-toc.js" is:inline></script>
+  </Fragment>
+</BaseLayout>

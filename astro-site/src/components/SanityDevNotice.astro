@@ -1,0 +1,17 @@
+---
+import { getSanityConfig } from '../lib/sanity';
+
+const config = getSanityConfig();
+---
+
+{!config.isConfigured && (
+  <div
+    style="margin:1rem auto;max-width:72rem;padding:1rem 1.25rem;border:1px solid #f59e0b;background:#fffbeb;color:#92400e;border-radius:0.5rem;font-size:0.9rem;line-height:1.5;"
+    role="status"
+  >
+    <strong>Sanity is not configured.</strong> Copy <code>astro-site/.env.example</code> to{' '}
+    <code>astro-site/.env</code>, set <code>PUBLIC_SANITY_PROJECT_ID</code> and{' '}
+    <code>SANITY_API_READ_TOKEN</code>, then run <code>npm run seed</code> in <code>studio/</code>{' '}
+    to load programs from <code>js/programs-data.js</code>.
+  </div>
+)}

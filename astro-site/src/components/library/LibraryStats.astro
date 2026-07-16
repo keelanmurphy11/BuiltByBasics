@@ -1,0 +1,13 @@
+---
+interface Props {
+  articleCount: number;
+  programCount: number;
+  totalCount: number;
+}
+
+const { articleCount, programCount, totalCount } = Astro.props;
+---
+
+<p class="lib-stats-inline">
+  {totalCount} resource{totalCount === 1 ? '' : 's'} · {articleCount} article{articleCount === 1 ? '' : 's'} · {programCount} program{programCount === 1 ? '' : 's'}
+</p>

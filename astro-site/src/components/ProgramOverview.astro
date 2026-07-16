@@ -1,0 +1,47 @@
+---
+import type { ProgramDetail } from '../lib/types';
+import { formatExperienceLevel } from '../lib/library-utils';
+
+interface Props {
+  program: ProgramDetail;
+}
+
+const { program } = Astro.props;
+
+const pills: Array<{ label: string; value?: string | number }> = [
+  { label: 'Frequency', value: program.frequency },
+  { label: 'Split', value: program.split },
+  { label: 'Experience', value: formatExperienceLevel(program.experienceLevel) },
+];
+
+const visiblePills = pills.filter((p) => p.value);
+const equipment = program.equipment ?? [];
+---
+
+{
+  (visiblePills.length > 0 || equipment.length > 0) && (
+    <section class="program-overview">
+      <h2 class="program-overview__title">Program Overview</h2>
+      {visiblePills.length > 0 && (
+        <div class="program-overview__pills">
+          {visiblePills.map((pill) => (
+            <span class="program-overview__pill">
+              <span class="program-overview__pill-label">{pill.label}</span>
+              <span class="program-overview__pill-value">{pill.value}</span>
+            </span>
+          ))}
+        </div>
+      )}
+      {equipment.length > 0 && (
+        <div class="program-overview__equipment">
+          <span class="program-overview__equipment-label">Equipment</span>
+          <div class="program-overview__equipment-list">
+            {equipment.map((item) => (
+              <span class="program-overview__equipment-item">{item}</span>
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
+  )
+}

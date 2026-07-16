@@ -1,0 +1,16 @@
+---
+interface Props {
+  takeaways: string[];
+}
+
+const { takeaways } = Astro.props;
+
+if (!takeaways?.length) return null;
+---
+
+<aside class="article-takeaways" aria-label="Key takeaways">
+  <h2 class="article-takeaways__title">Key Takeaways</h2>
+  <ul class="article-takeaways__list">
+    {takeaways.map((item) => <li>{item}</li>)}
+  </ul>
+</aside>

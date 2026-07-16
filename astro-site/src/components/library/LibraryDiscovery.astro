@@ -1,0 +1,51 @@
+---
+import FeaturedResourceSpotlight from './FeaturedResourceSpotlight.astro';
+import LatestResourceCard from './LatestResourceCard.astro';
+import type { LibraryResource } from '../../lib/types';
+
+interface Props {
+  featured: LibraryResource | null;
+  latest: LibraryResource[];
+}
+
+const { featured, latest } = Astro.props;
+const latestItems = latest.slice(0, 5);
+---
+
+<section class="lib-discovery" id="latest-resources">
+  <div class="library-container">
+    <div class="lib-discovery__grid">
+      <div class="lib-discovery__featured">
+        <h2 class="lib-landing-heading">Featured Resource</h2>
+        <FeaturedResourceSpotlight resource={featured} />
+      </div>
+
+      <div class="lib-discovery__latest">
+        <div class="lib-section-header">
+          <h2 class="lib-section-header__title">Latest Resources</h2>
+          <a href="/articles" class="lib-section-header__link">
+            View all latest
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+        <div class="lib-latest-list" data-library-latest>
+          {
+            latestItems.length ? (
+              latestItems.map((resource) => <LatestResourceCard resource={resource} />)
+            ) : (
+              <p class="lib-feed__empty">New resources will appear here as they are published.</p>
+            )
+          }
+        </div>
+        <a href="/articles" class="lib-latest-list__footer">
+          View all resources
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

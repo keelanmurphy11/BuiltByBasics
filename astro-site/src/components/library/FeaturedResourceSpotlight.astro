@@ -1,0 +1,115 @@
+---
+import type { LibraryResource } from '../../lib/types';
+import {
+  formatDate,
+  formatReadingTime,
+  getResourceImageUrl,
+  getResourceLevelLabel,
+} from '../../lib/library-utils';
+
+interface Props {
+  resource: LibraryResource | null;
+}
+
+const { resource } = Astro.props;
+
+const fallback = {
+  href: '/basics',
+  title: 'How to Build Your First Strength Program',
+  summary:
+    'A complete guide explaining exercise selection, volume, progression and recovery.',
+  resourceType: 'Guide',
+  readingTime: 15,
+  levelLabel: 'Beginner',
+  actionLabel: 'Read Guide',
+  imageUrl: '/content/images/gym.jpg',
+};
+
+const display = resource
+  ? {
+      href: resource.href,
+      title: resource.title,
+      summary: resource.summary ?? fallback.summary,
+      readingTime: resource.readingTime,
+      duration: resource.duration,
+      levelLabel: getResourceLevelLabel(resource),
+      resourceType: resource.resourceType,
+      updatedAt:
+        resource.type === 'article' ? resource.updatedAt || resource.publishedAt : undefined,
+      actionLabel: resource.type === 'article' ? 'Read Guide' : resource.actionLabel,
+      imageUrl: getResourceImageUrl(resource),
+    }
+  : fallback;
+---
+
+<article class="lib-featured-spotlight">
+  <div class="lib-featured-spotlight__card">
+    <div class="lib-featured-spotlight__media">
+      <img
+        src={display.imageUrl}
+        alt=""
+        class="lib-featured-spotlight__image"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <div class="lib-featured-spotlight__content">
+      <p class="lib-featured-spotlight__eyebrow">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+        Featured Guide
+      </p>
+      <h3 class="lib-featured-spotlight__title">{display.title}</h3>
+      {display.summary && <p class="lib-featured-spotlight__summary">{display.summary}</p>}
+      <div class="lib-featured-spotlight__meta">
+        {
+          display.readingTime && (
+            <span class="lib-featured-spotlight__meta-item">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {formatReadingTime(display.readingTime)}
+            </span>
+          )
+        }
+        {
+          display.duration && (
+            <span class="lib-featured-spotlight__meta-item">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {display.duration}
+            </span>
+          )
+        }
+        {
+          display.levelLabel && (
+            <span class="lib-featured-spotlight__meta-item">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+              {display.levelLabel}
+            </span>
+          )
+        }
+        {
+          display.updatedAt && (
+            <span class="lib-featured-spotlight__meta-item">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Updated {formatDate(display.updatedAt)}
+            </span>
+          )
+        }
+      </div>
+      <a href={display.href} class="lib-featured-spotlight__btn">
+        {display.actionLabel}
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</article>

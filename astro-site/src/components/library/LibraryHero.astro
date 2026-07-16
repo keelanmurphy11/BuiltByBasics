@@ -1,0 +1,25 @@
+---
+import LibraryStats from './LibraryStats.astro';
+
+interface Props {
+  articleCount: number;
+  programCount: number;
+  totalCount: number;
+}
+
+const { articleCount, programCount, totalCount } = Astro.props;
+---
+
+<section class="lib-hero">
+  <div class="library-container">
+    <p class="lib-hero__eyebrow">Knowledge Hub</p>
+    <h1 class="lib-hero__title">Library</h1>
+    <p class="lib-hero__desc">
+      A collection of evidence-based programs, articles, and guides.
+      <a href="/basics" class="lib-hero__link">Start with the Basics of Training</a>
+      — everything here builds on those foundations.
+    </p>
+
+    <LibraryStats articleCount={articleCount} programCount={programCount} totalCount={totalCount} />
+  </div>
+</section>

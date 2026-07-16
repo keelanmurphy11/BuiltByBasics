@@ -1,0 +1,63 @@
+---
+import { LIBRARY_TOPICS, RESOURCE_TYPES } from '../../lib/library-config';
+import type { TopicCount, LibraryResource } from '../../lib/types';
+
+interface Props {
+  topicCounts: TopicCount[];
+  resources: LibraryResource[];
+}
+
+const { topicCounts, resources } = Astro.props;
+
+function getTopicCount(slug: string): number {
+  return topicCounts.find((t) => t.slug === slug)?.count ?? 0;
+}
+
+function getTypeCount(slug: string): number {
+  const type = RESOURCE_TYPES.find((t) => t.slug === slug);
+  if (!type?.cmsType) return 0;
+  return resources.filter((r) => r.type === type.cmsType).length;
+}
+---
+
+<nav class="lib-browse" aria-label="Browse library">
+  <div class="lib-browse-pills">
+    {
+      LIBRARY_TOPICS.map((topic) => {
+        const count = getTopicCount(topic.slug);
+        return (
+          <a href={`/library/topic/${topic.slug}`} class="lib-browse-pill">
+            {topic.title}
+            <span class="lib-browse-pill__count">{count}</span>
+          </a>
+        );
+      })
+    }
+  </div>
+
+  <div class="lib-browse-formats">
+    {
+      RESOURCE_TYPES.map((type, i) => {
+        const count = getTypeCount(type.slug);
+        const label = type.available
+          ? count > 0
+            ? `${type.title} (${count})`
+            : type.title
+          : `${type.title} — soon`;
+
+        return (
+          <>
+            {i > 0 && <span class="lib-browse-formats__sep" aria-hidden="true">·</span>}
+            {type.available ? (
+              <a href={`/library/type/${type.slug}`} class="lib-browse-formats__link">
+                {label}
+              </a>
+            ) : (
+              <span class="lib-browse-formats__link lib-browse-formats__link--locked">{label}</span>
+            )}
+          </>
+        );
+      })
+    }
+  </div>
+</nav>

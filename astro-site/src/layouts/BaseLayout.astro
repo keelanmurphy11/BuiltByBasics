@@ -1,0 +1,112 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  extraCss?: string[];
+  bodyClass?: string;
+  theme?: string;
+  activeNav?: 'basics' | 'library' | 'coaching';
+}
+
+const {
+  title,
+  description,
+  extraCss = [],
+  bodyClass = '',
+  theme = 'light',
+  activeNav,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme={theme}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+    <script is:inline>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cobalt: { DEFAULT: '#2563eb', light: '#3b82f6', dark: '#1d4ed8', glow: '#60a5fa' },
+            },
+            fontFamily: {
+              display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+              body: ['"Inter"', 'system-ui', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/logo.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/reveal.css" />
+    {extraCss.map((href) => <link rel="stylesheet" href={href} />)}
+  </head>
+  <body class:list={[bodyClass, 'font-body antialiased']}>
+    <header id="site-header" class="site-header">
+      <nav class="site-header__nav">
+        <a href="/" class="logo" aria-label="builtbybasics home">
+          <span class="logo-main">basics</span>
+          <span class="logo-sub"><span>built</span><span>by</span></span>
+        </a>
+        <div class="site-header__links">
+          <a
+            href="/basics"
+            class:list={['site-nav__link', activeNav === 'basics' && 'site-nav__link--active']}
+            >Basics of Training</a
+          >
+          <a
+            href="/library"
+            class:list={['site-nav__link', activeNav === 'library' && 'site-nav__link--active']}
+            >Library</a
+          >
+          <a href="/coaching" class="site-nav__cta">Coaching</a>
+        </div>
+      </nav>
+    </header>
+
+    <slot />
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p class="site-footer__text">builtbybasics</p>
+        <nav class="site-footer__nav" aria-label="Footer navigation">
+          <a href="/basics" class="site-footer__nav-link">Basics of Training</a>
+          <a href="/library" class="site-footer__nav-link">Library</a>
+          <a href="/coaching" class="site-footer__nav-link">Coaching</a>
+        </nav>
+        <a
+          href="https://www.instagram.com/keelanmurphy.pt/"
+          class="site-footer__instagram instagram-link"
+          target="_blank"
+          rel="noopener noreferrer">@keelanmurphy.pt</a
+        >
+      </div>
+    </footer>
+
+    <script is:inline>
+      const header = document.getElementById('site-header');
+      if (header) {
+        window.addEventListener(
+          'scroll',
+          () => {
+            header.classList.toggle('nav-scrolled', window.scrollY > 40);
+          },
+          { passive: true }
+        );
+      }
+    </script>
+    <slot name="scripts" />
+  </body>
+</html>

@@ -1,0 +1,36 @@
+---
+import { LIBRARY_CATEGORY_CHIPS } from '../../lib/library-config';
+
+interface Props {
+  activeSlug?: string;
+}
+
+const { activeSlug = 'all' } = Astro.props;
+---
+
+<nav class="lib-chips" aria-label="Browse library categories">
+  {
+    LIBRARY_CATEGORY_CHIPS.map((chip) => {
+      const isActive = activeSlug === chip.slug;
+
+      if (!chip.available) {
+        return (
+          <span class="lib-chip lib-chip--disabled" aria-disabled="true">
+            {chip.label}
+          </span>
+        );
+      }
+
+      return (
+        <a
+          href={chip.href}
+          class:list={['lib-chip', { 'lib-chip--active': isActive }]}
+          data-chip-slug={chip.slug}
+          aria-current={isActive ? 'page' : undefined}
+        >
+          {chip.label}
+        </a>
+      );
+    })
+  }
+</nav>

@@ -1,0 +1,494 @@
+/* Research fact cards - flip hover + mobile mini-tab */
+
+#why {
+  overflow: visible;
+}
+
+#research-grid,
+#research-grid .research-card {
+  position: relative;
+  z-index: 2;
+}
+
+#research-grid,
+#why .research-section-content,
+.card-face-back,
+.research-mobile-content {
+  overscroll-behavior: auto;
+  touch-action: auto;
+}
+
+/*  -  -  Card base  -  -  */
+.research-card {
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Scroll reveal - initial / visible states */
+.research-card.reveal-item:not(.is-visible) {
+  opacity: 0;
+  transform: translate3d(0, 3rem, 0);
+}
+
+.research-card.reveal-item.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.research-card.reveal-item {
+  transition-property: opacity, transform, border-color, box-shadow;
+  transition-duration: 1000ms;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.card-flip {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Front face - fixed rows so categories, stats, and headlines align across the grid */
+.card-collapsed {
+  display: grid;
+  grid-template-rows:
+    clamp(2rem, 8vw, 2.75rem)
+    clamp(2.5rem, 14vw, 4.25rem)
+    minmax(clamp(2.75rem, 16vw, 4.25rem), 1fr);
+  width: 100%;
+  height: 100%;
+  justify-items: center;
+  align-content: start;
+  gap: clamp(0.125rem, 0.8vw, 0.375rem);
+  padding-bottom: 1.75rem;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.card-category {
+  grid-row: 1;
+  align-self: start;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.28em;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.card-stat {
+  grid-row: 2;
+  align-self: center;
+  justify-self: center;
+  margin: 0;
+  text-align: center;
+  font-size: clamp(0.85rem, 4.2vw, 3rem);
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+}
+
+.card-headline {
+  grid-row: 3;
+  align-self: start;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: clamp(0.75rem, 2.35vw, 1.125rem);
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.research-card-detail {
+  gap: 0.625rem;
+}
+
+.research-card-detail p {
+  margin: 0;
+  font-size: clamp(0.7rem, 1.8vw, 0.875rem);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Mobile 2-col grid: larger stats, full headline text, centered layout */
+@media (max-width: 639px) {
+  .card-collapsed {
+    height: auto;
+    grid-template-rows: auto auto auto;
+    gap: 0.125rem;
+    align-content: center;
+    padding-bottom: 0;
+  }
+
+  .card-stat {
+    font-size: clamp(1.4rem, 6.5vw, 1.75rem);
+  }
+
+  .research-card .card-headline {
+    align-self: center;
+    font-size: clamp(0.7rem, 2.8vw, 0.8125rem);
+    line-height: 1.35;
+    -webkit-line-clamp: 4;
+  }
+}
+
+/* Per-card interaction hints - overlaid at card bottom */
+.research-card-hint {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  margin: 0;
+  padding: 0.35rem 0.5rem 0.15rem;
+  display: none;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgb(113, 113, 122);
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .research-card-hint--hover {
+    display: block;
+  }
+}
+
+@media not ((hover: hover) and (pointer: fine)) {
+  .research-card-hint--tap {
+    display: block;
+  }
+}
+
+/* Touch-only: front face only, modal for detail */
+@media not ((hover: hover) and (pointer: fine)) {
+  .research-card .card-face-back,
+  .research-card .research-card-detail {
+    display: none !important;
+  }
+
+  .research-card .card-face-front {
+    position: relative;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    text-align: center;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    padding-bottom: clamp(1.75rem, 5vw, 2.25rem);
+    overflow: hidden;
+  }
+
+  .research-card .card-face-front .card-collapsed {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .research-mobile-backdrop {
+    transition: none;
+  }
+
+  .research-mobile-modal.is-open .research-mobile-backdrop {
+    opacity: 1;
+  }
+
+  .research-mobile-panel {
+    transform: none;
+    will-change: auto;
+    transition: opacity 160ms ease;
+  }
+
+  .research-mobile-modal.is-open .research-mobile-panel {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Mobile touch: vertically center card content above tap hint */
+@media (max-width: 639px) {
+  @media not ((hover: hover) and (pointer: fine)) {
+    .research-card .card-face-front {
+      justify-content: center;
+      padding: 1rem 0.75rem 2.25rem;
+    }
+
+    .research-card .card-face-front .card-collapsed {
+      flex: 0 0 auto;
+      height: auto;
+    }
+  }
+}
+
+/* Fine pointer: 3D flip on hover / focus at any viewport width */
+@media (hover: hover) and (pointer: fine) {
+  .research-card {
+    perspective: 900px;
+  }
+
+  .card-flip {
+    transform-style: preserve-3d;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .research-card:hover .card-flip {
+    transform: rotateY(180deg);
+  }
+
+  .research-card:hover {
+    z-index: 10;
+    border-color: rgb(63, 63, 70);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(37, 99, 235, 0.12);
+  }
+
+  .research-card:hover .card-flip {
+    will-change: transform;
+  }
+
+  .research-card:hover .research-card-hint--hover {
+    opacity: 0;
+  }
+
+  .card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    text-align: center;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    padding-bottom: clamp(1.75rem, 5vw, 2.25rem);
+    overflow: hidden;
+    border-radius: inherit;
+  }
+
+  .card-face-front .card-collapsed {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .card-face-back {
+    transform: rotateY(180deg);
+    overflow-y: auto;
+    justify-content: center;
+    justify-content: safe center;
+    align-items: stretch;
+    padding-top: clamp(1.5rem, 4vw, 2rem);
+    gap: 0.625rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .card-face-back::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  .research-card-detail {
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+  }
+
+  .research-mobile-modal {
+    display: none !important;
+  }
+}
+
+/*  -  -  Mobile mini-tab modal  -  -  */
+.research-mobile-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 500ms cubic-bezier(0.25, 1, 0.5, 1),
+    visibility 500ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.research-mobile-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.research-mobile-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 9, 11, 0.78);
+  opacity: 0;
+  transition: opacity 500ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.research-mobile-modal.is-open .research-mobile-backdrop {
+  opacity: 1;
+}
+
+.research-mobile-panel {
+  position: relative;
+  z-index: 1;
+  width: min(90vw, 22rem);
+  max-height: min(85vh, 32rem);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(63, 63, 70);
+  background: rgb(24, 24, 27);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.72);
+  transform: scale(0.94) translateZ(0);
+  opacity: 0;
+  transition: transform 500ms cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 500ms cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, opacity;
+}
+
+.research-mobile-modal.is-open .research-mobile-panel {
+  transform: scale(1) translateZ(0);
+  opacity: 1;
+}
+
+.research-mobile-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  display: flex;
+  height: 2.25rem;
+  width: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgb(63, 63, 70);
+  background: rgba(9, 9, 11, 0.85);
+  color: rgb(212, 212, 216);
+  transition: color 200ms ease, border-color 200ms ease, background-color 200ms ease;
+}
+
+.research-mobile-close:hover {
+  border-color: rgb(59, 130, 246);
+  color: rgb(255, 255, 255);
+  background: rgba(37, 99, 235, 0.15);
+}
+
+.research-mobile-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 2.75rem 1.25rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.research-mobile-content .card-category {
+  font-size: 0.6rem;
+}
+
+.research-mobile-content .card-stat {
+  font-size: clamp(1.5rem, 10vw, 3rem);
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.research-mobile-content .card-headline {
+  font-size: clamp(0.875rem, 4vw, 1.0625rem);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.research-mobile-content .research-mobile-detail {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgb(161, 161, 170);
+  overflow-wrap: anywhere;
+}
+
+body.research-modal-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .research-card.reveal-item {
+    transition-duration: 160ms !important;
+  }
+
+  .card-flip {
+    transition-duration: 160ms !important;
+  }
+
+  .research-mobile-modal,
+  .research-mobile-panel,
+  .research-mobile-backdrop {
+    transition-duration: 160ms !important;
+  }
+
+  .research-mobile-panel {
+    transform: none !important;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .research-card:hover .card-flip {
+      transform: none;
+    }
+
+    .research-card:hover .card-face-front {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .research-card:hover .card-face-back {
+      transform: none;
+    }
+
+    .card-face-front,
+    .card-face-back {
+      transition: opacity 160ms ease;
+    }
+
+    .research-card:not(:hover) .card-face-front {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .research-card:not(:hover) .card-face-back {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .research-card:hover .card-face-back {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

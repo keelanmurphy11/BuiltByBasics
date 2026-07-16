@@ -1,0 +1,35 @@
+---
+import type { RelatedResourceRef } from '../lib/types';
+
+interface Props {
+  resources: RelatedResourceRef[];
+  title?: string;
+}
+
+const { resources, title = 'Related Resources' } = Astro.props;
+
+if (!resources?.length) return null;
+
+function getHref(ref: RelatedResourceRef): string {
+  return ref._type === 'article' ? `/articles/${ref.slug}` : `/programs/${ref.slug}`;
+}
+
+function getTypeLabel(ref: RelatedResourceRef): string {
+  return ref._type === 'article' ? 'Article' : 'Program';
+}
+---
+
+<section class="article-related">
+  <h2 class="article-related__title">{title}</h2>
+  <div class="article-related__grid">
+    {
+      resources.map((ref) => (
+        <a href={getHref(ref)} class="article-related__card">
+          <span class="article-related__badge">{getTypeLabel(ref)}</span>
+          <h3 class="article-related__card-title">{ref.title}</h3>
+          {ref.summary && <p class="article-related__card-summary">{ref.summary}</p>}
+        </a>
+      ))
+    }
+  </div>
+</section>

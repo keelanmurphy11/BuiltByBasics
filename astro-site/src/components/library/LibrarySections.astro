@@ -1,0 +1,60 @@
+---
+import { LIBRARY_SECTIONS } from '../../lib/library-config';
+
+interface Props {
+  programCount: number;
+  articleCount: number;
+}
+
+const { programCount, articleCount } = Astro.props;
+
+function getCount(countKey?: 'program' | 'article'): number | null {
+  if (countKey === 'program') return programCount;
+  if (countKey === 'article') return articleCount;
+  return null;
+}
+---
+
+<section class="lib-sections" aria-label="Library sections">
+  <div class="library-container">
+    <div class="lib-sections__grid">
+      {
+        LIBRARY_SECTIONS.map((section) => {
+          const count = getCount(section.countKey);
+          const countLabel =
+            count !== null && count > 0
+              ? `${count} ${section.countKey === 'program' ? 'program' : 'article'}${count === 1 ? '' : 's'}`
+              : null;
+
+          if (section.available && section.href) {
+            return (
+              <a href={section.href} class="lib-section-card lib-section-card--active">
+                <div class="lib-section-card__header">
+                  <h2 class="lib-section-card__title">{section.title}</h2>
+                  {countLabel && <span class="lib-section-card__count">{countLabel}</span>}
+                </div>
+                <p class="lib-section-card__desc">{section.description}</p>
+                <span class="lib-section-card__action">
+                  Explore
+                  <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </a>
+            );
+          }
+
+          return (
+            <div class="lib-section-card lib-section-card--soon" aria-disabled="true">
+              <div class="lib-section-card__header">
+                <h2 class="lib-section-card__title">{section.title}</h2>
+                <span class="lib-section-card__badge">Coming soon</span>
+              </div>
+              <p class="lib-section-card__desc">{section.description}</p>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

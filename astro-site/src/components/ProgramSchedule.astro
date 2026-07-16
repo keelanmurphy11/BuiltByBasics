@@ -1,0 +1,30 @@
+---
+import type { ProgramDay } from '../lib/types';
+
+interface Props {
+  days: ProgramDay[];
+}
+
+const { days } = Astro.props;
+
+if (!days?.length) return null;
+---
+
+<section class="program-schedule">
+  <h2 class="program-schedule__title">Weekly Schedule</h2>
+  <div class="program-schedule__grid">
+    {
+      days.map((day) => (
+        <div class="program-schedule__day">
+          <h3 class="program-schedule__day-title">{day.title}</h3>
+          <p class="program-schedule__day-meta">
+            {day.slots?.length ?? 0} main slot{(day.slots?.length ?? 0) === 1 ? '' : 's'}
+            {(day.accessories?.length ?? 0) > 0 &&
+              ` · ${day.accessories!.length} accessor${day.accessories!.length === 1 ? 'y' : 'ies'}`}
+          </p>
+          {day.intro && <p class="program-schedule__day-intro">{day.intro}</p>}
+        </div>
+      ))
+    }
+  </div>
+</section>

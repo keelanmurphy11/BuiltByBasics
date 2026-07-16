@@ -1,0 +1,44 @@
+[build]
+  base = "astro-site"
+  command = "npm run build"
+  publish = "astro-site/dist"
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/basics.html"
+  to = "/basics"
+  status = 301
+
+[[redirects]]
+  from = "/library.html"
+  to = "/library"
+  status = 301
+
+[[redirects]]
+  from = "/coaching.html"
+  to = "/coaching"
+  status = 301
+
+[[redirects]]
+  from = "/programs.html"
+  to = "/programs"
+  status = 301
+
+[[redirects]]
+  from = "/thank-you.html"
+  to = "/thank-you"
+  status = 301
+
+[[redirects]]
+  from = "/program-2x-full-body.html"
+  to = "/programs/full-body-2x"
+  status = 301
+
+[[redirects]]
+  from = "/program-4x-upper-lower.html"
+  to = "/programs/upper-lower-4x"
+  status = 301

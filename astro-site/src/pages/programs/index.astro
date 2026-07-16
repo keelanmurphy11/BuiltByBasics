@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProgramCard from '../../components/ProgramCard.astro';
+import PatternLibrary from '../../components/PatternLibrary.astro';
+import SanityDevNotice from '../../components/SanityDevNotice.astro';
+import { fetchSanity } from '../../lib/sanity';
+import { movementPatternsQuery, programsQuery } from '../../lib/queries';
+import type { MovementPattern, ProgramSummary } from '../../lib/types';
+
+const programs = (await fetchSanity<ProgramSummary[]>(programsQuery)) ?? [];
+const movementPatterns =
+  (await fetchSanity<MovementPattern[]>(movementPatternsQuery)) ?? [];
+---
+
+<BaseLayout
+  title="Programs - builtbybasics"
+  description="Free training programs from builtbybasics. Structured plans built on Basics of Training."
+  extraCss={['/css/library.css', '/css/programs.css']}
+  bodyClass="library-page"
+  activeNav="library"
+>
+  <main class="library-main">
+    <section class="lib-index-hero">
+      <div class="library-container">
+        <SanityDevNotice />
+        <a href="/library" class="lib-index-hero__back">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          Back to Library
+        </a>
+        <h1 class="lib-index-hero__title">Programs</h1>
+        <p class="lib-index-hero__desc">
+          Ready-to-follow training templates built on the movement-pattern approach from
+          <a href="/basics" style="color: #3b82f6; text-decoration: none;">Basics of Training</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="lib-section">
+      <div class="library-container">
+        <div class="lib-index-grid">
+          {
+            programs.length ? (
+              programs.map((program) => <ProgramCard program={program} />)
+            ) : (
+              <p class="lib-feed__empty">
+                No programs found in Sanity yet. Seed content with <code>npm run seed</code> in{' '}
+                <code>studio/</code>.
+              </p>
+            )
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="movement-patterns" class="pattern-library-section lib-section">
+      <div class="library-container">
+        {
+          movementPatterns.length ? (
+            <PatternLibrary patterns={movementPatterns} />
+          ) : (
+            <div class="pattern-library">
+              <div class="pattern-library__header">
+                <h2 class="pattern-library__title">Movement Pattern Library</h2>
+                <p class="pattern-library__intro">
+                  Movement patterns will appear here once seeded in Sanity.
+                </p>
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </section>
+  </main>
+</BaseLayout>

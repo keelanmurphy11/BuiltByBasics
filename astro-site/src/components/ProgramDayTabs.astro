@@ -1,0 +1,90 @@
+---
+import type { ProgramDay } from '../lib/types';
+import WorkoutSheet from './WorkoutSheet.astro';
+
+interface Props {
+  days: ProgramDay[];
+}
+
+const { days } = Astro.props;
+---
+
+<div class="program-viewer" data-reveal-stagger>
+  <div class="program-day-tabs" role="tablist" data-program-tabs>
+    {
+      days.map((day, index) => {
+        const panelId = `day-${day._key}`;
+        const tabId = `tab-${day._key}`;
+        return (
+          <button
+            type="button"
+            class:list={[
+              'program-day-tabs__tab',
+              index === 0 && 'program-day-tabs__tab--active',
+            ]}
+            role="tab"
+            aria-selected={index === 0 ? 'true' : 'false'}
+            aria-controls={panelId}
+            id={tabId}
+            data-program-tab
+            data-target={panelId}
+          >
+            {day.title}
+          </button>
+        );
+      })
+    }
+  </div>
+  <div class="program-viewer__sheets">
+    {
+      days.map((day, index) => {
+        const panelId = `day-${day._key}`;
+        const tabId = `tab-${day._key}`;
+        return (
+          <WorkoutSheet
+            day={day}
+            panelId={panelId}
+            tabId={tabId}
+            isActive={index === 0}
+          />
+        );
+      })
+    }
+  </div>
+</div>
+
+<script>
+  const tablists = document.querySelectorAll('[data-program-tabs]');
+
+  tablists.forEach((tablist) => {
+    const tabs = tablist.querySelectorAll('[data-program-tab]');
+    const viewer = tablist.parentElement;
+    const sheets = viewer?.querySelectorAll('[data-workout-sheet]');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-target');
+        if (!targetId) return;
+
+        tabs.forEach((btn) => {
+          btn.classList.remove('program-day-tabs__tab--active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+
+        sheets?.forEach((sheet) => {
+          if (sheet instanceof HTMLElement) {
+            sheet.hidden = true;
+          }
+        });
+
+        tab.classList.add('program-day-tabs__tab--active');
+        tab.setAttribute('aria-selected', 'true');
+
+        const activeSheet = viewer?.querySelector(`#${targetId}`);
+        if (activeSheet instanceof HTMLElement) {
+          activeSheet.hidden = false;
+        }
+      });
+    });
+  });
+</script>

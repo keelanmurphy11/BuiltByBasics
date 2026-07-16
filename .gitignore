@@ -2,3 +2,11 @@ node_modules/
 dist/
 *.log
 .DS_Store
+studio/node_modules/
+astro-site/node_modules/
+.env
+studio/.env
+astro-site/.env
+astro-site/dist/
+studio/dist/
+.sanity/

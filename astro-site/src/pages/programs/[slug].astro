@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProgramDayTabs from '../../components/ProgramDayTabs.astro';
+import ProgramOverview from '../../components/ProgramOverview.astro';
+import ProgramOverviewImage from '../../components/ProgramOverviewImage.astro';
+import ProgramDownload from '../../components/ProgramDownload.astro';
+import ProgramFaq from '../../components/ProgramFaq.astro';
+import RelatedResources from '../../components/RelatedResources.astro';
+import ContinueLearning from '../../components/ContinueLearning.astro';
+import SanityDevNotice from '../../components/SanityDevNotice.astro';
+import { fetchSanity } from '../../lib/sanity';
+import { libraryResourcesQuery, programBySlugQuery, programSlugsQuery } from '../../lib/queries';
+import { normalizeResources, sortResources } from '../../lib/library-utils';
+import type { LibraryResourceRaw, ProgramDetail } from '../../lib/types';
+
+export async function getStaticPaths() {
+  const slugs = (await fetchSanity<Array<{ slug: string }>>(programSlugsQuery)) ?? [];
+
+  if (!slugs.length) {
+    return [
+      { params: { slug: 'full-body-2x' } },
+      { params: { slug: 'upper-lower-4x' } },
+    ];
+  }
+
+  return slugs.map(({ slug }) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const program = await fetchSanity<ProgramDetail>(programBySlugQuery, { slug });
+
+if (!program) {
+  return Astro.redirect('/programs');
+}
+
+const rawResources = (await fetchSanity<LibraryResourceRaw[]>(libraryResourcesQuery)) ?? [];
+const allResources = normalizeResources(rawResources);
+const continueResource =
+  sortResources(
+    allResources.filter(
+      (r) =>
+        r.slug !== slug &&
+        r.type === 'article' &&
+        r.topics.some((t) => (program.topics ?? []).includes(t))
+    ),
+    'newest'
+  )[0] ?? sortResources(allResources.filter((r) => r.slug !== slug && r.type === 'article'), 'newest')[0] ?? null;
+
+const pdfUrl = program.pdfFile?.asset?.url;
+const overviewImage = program.overviewImage;
+---
+
+<BaseLayout
+  title={`${program.title} - builtbybasics`}
+  description={program.summary || `${program.title} from builtbybasics.`}
+  extraCss={['/css/programs.css', '/css/program-detail.css', '/css/article.css']}
+  bodyClass="program-detail-page"
+  activeNav="library"
+>
+  <main>
+    <section class="program-detail-hero">
+      <div class="program-detail-hero__container">
+        <SanityDevNotice />
+        <nav class="program-detail-breadcrumb" aria-label="Breadcrumb">
+          <a href="/library">Library</a>
+          <span class="program-detail-breadcrumb__sep" aria-hidden="true">/</span>
+          <a href="/programs">Programs</a>
+          <span class="program-detail-breadcrumb__sep" aria-hidden="true">/</span>
+          <span>{program.title}</span>
+        </nav>
+
+        <p class="program-detail-hero__eyebrow">Program</p>
+        <h1 class="program-detail-hero__title">{program.title}</h1>
+        {program.summary && <p class="program-detail-hero__summary">{program.summary}</p>}
+      </div>
+    </section>
+
+    <div class="program-detail-content">
+      <ProgramOverview program={program} />
+      <ProgramOverviewImage
+        url={overviewImage?.url}
+        alt={overviewImage?.alt}
+        caption={overviewImage?.caption}
+      />
+      <ProgramDownload url={pdfUrl} />
+      <ProgramFaq faq={program.faq ?? []} />
+
+      <section class="program-workouts">
+        <h2 class="program-workouts__title">Workouts</h2>
+        {
+          program.days?.length ? (
+            <ProgramDayTabs days={program.days} />
+          ) : (
+            <p>No workout days found for this program in Sanity.</p>
+          )
+        }
+      </section>
+
+      <RelatedResources resources={program.relatedResources ?? []} />
+      <ContinueLearning resource={continueResource} />
+    </div>
+  </main>
+</BaseLayout>

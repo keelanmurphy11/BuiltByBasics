@@ -1,0 +1,22 @@
+---
+interface Props {
+  url?: string;
+  alt?: string;
+  caption?: string;
+}
+
+const { url, alt, caption } = Astro.props;
+
+if (!url) return null;
+---
+
+<figure class="program-overview-image">
+  <img
+    class="program-overview-image__img"
+    src={url}
+    alt={alt || 'Program workout split overview'}
+    loading="lazy"
+    decoding="async"
+  />
+  {caption && <figcaption class="program-overview-image__caption">{caption}</figcaption>}
+</figure>

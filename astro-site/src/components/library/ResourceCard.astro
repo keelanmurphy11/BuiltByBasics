@@ -1,0 +1,66 @@
+---
+import type { LibraryResource } from '../../lib/types';
+import {
+  formatDate,
+  formatReadingTime,
+  getEvidenceLabel,
+  getResourceLevelLabel,
+} from '../../lib/library-utils';
+
+interface Props {
+  resource: LibraryResource;
+  class?: string;
+  locked?: boolean;
+  featuredLabel?: string;
+}
+
+const { resource, class: className, locked = false, featuredLabel } = Astro.props;
+const Tag = locked ? 'article' : 'a';
+const evidenceLabel = getEvidenceLabel(resource.evidenceLevel);
+const levelLabel = getResourceLevelLabel(resource);
+---
+
+<Tag
+  href={locked ? undefined : resource.href}
+  class:list={['resource-card', locked && 'resource-card--static', className]}
+>
+  <div class="resource-card__header">
+    {featuredLabel && (
+      <span class="resource-card__badge resource-card__badge--featured">{featuredLabel}</span>
+    )}
+    <span class="resource-card__badge">{resource.resourceType}</span>
+    {evidenceLabel && <span class="resource-card__evidence">{evidenceLabel}</span>}
+  </div>
+  <h3 class="resource-card__title">{resource.title}</h3>
+  {resource.summary && <p class="resource-card__summary">{resource.summary}</p>}
+  <div class="resource-card__meta">
+    {
+      resource.readingTime && (
+        <span class="resource-card__meta-item">{formatReadingTime(resource.readingTime)}</span>
+      )
+    }
+    {
+      resource.duration && (
+        <span class="resource-card__meta-item">{resource.duration}</span>
+      )
+    }
+    {
+      levelLabel && (
+        <span class="resource-card__meta-item">{levelLabel}</span>
+      )
+    }
+    {
+      resource.type === 'article' && (resource.updatedAt || resource.publishedAt) && (
+        <span class="resource-card__meta-item">
+          Updated {formatDate(resource.updatedAt || resource.publishedAt)}
+        </span>
+      )
+    }
+  </div>
+  <span class="resource-card__action">
+    {resource.actionLabel}
+    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+    </svg>
+  </span>
+</Tag>

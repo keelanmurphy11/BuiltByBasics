@@ -1,0 +1,25 @@
+---
+import LatestResourceCard from './LatestResourceCard.astro';
+import type { LibraryResource } from '../../lib/types';
+
+interface Props {
+  resources: LibraryResource[];
+}
+
+const { resources } = Astro.props;
+---
+
+<section class="lib-latest" id="latest-resources">
+  <div class="library-container">
+    <h2 class="lib-landing-heading">Latest Resources</h2>
+    <div class="lib-latest__grid" data-library-latest>
+      {
+        resources.length ? (
+          resources.map((resource) => <LatestResourceCard resource={resource} />)
+        ) : (
+          <p class="lib-feed__empty">New resources will appear here as they are published.</p>
+        )
+      }
+    </div>
+  </div>
+</section>

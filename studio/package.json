@@ -1,0 +1,33 @@
+{
+  "name": "builtbybasics-studio",
+  "private": true,
+  "version": "1.0.0",
+  "main": "package.json",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "seed": "tsx scripts/seed-from-programs-data.ts",
+    "seed:articles": "tsx scripts/seed-articles-from-markdown.ts",
+    "seed:all": "npm run seed && npm run seed:articles"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/client": "^7.6.0",
+    "@sanity/vision": "^3.80.0",
+    "dotenv": "^17.4.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "sanity": "^3.80.0",
+    "styled-components": "^6.1.18"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

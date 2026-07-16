@@ -1,0 +1,23 @@
+---
+import { toHTML } from '@portabletext/to-html';
+import { extractTocHeadings, slugifyHeading } from '../lib/library-utils';
+
+interface Props {
+  body: unknown[];
+}
+
+const { body } = Astro.props;
+const headings = extractTocHeadings(body ?? []);
+
+let html = body?.length ? toHTML(body) : '';
+
+if (html && headings.length) {
+  let idx = 0;
+  html = html.replace(/<h([23])>/g, () => {
+    const h = headings[idx++];
+    return h ? `<h${h.level} id="${h.id}">` : '<h2>';
+  });
+}
+---
+
+{html ? <div class="article-body" set:html={html} /> : null}

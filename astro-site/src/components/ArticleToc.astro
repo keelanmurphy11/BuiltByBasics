@@ -1,0 +1,44 @@
+---
+import type { TocHeading } from '../lib/types';
+
+interface Props {
+  headings: TocHeading[];
+}
+
+const { headings } = Astro.props;
+
+if (!headings.length) return null;
+---
+
+<aside class="article-toc" aria-label="Table of contents">
+  <p class="article-toc__label">On this page</p>
+  <nav>
+    <ul class="article-toc__list">
+      {
+        headings.map((h) => (
+          <li class:list={['article-toc__item', h.level === 3 && 'article-toc__item--nested']}>
+            <a href={`#${h.id}`} class="article-toc__link" data-toc-link={h.id}>
+              {h.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</aside>
+
+<!-- Mobile jump list -->
+<details class="article-toc-mobile">
+  <summary class="article-toc-mobile__summary">On this page</summary>
+  <nav>
+    <ul class="article-toc-mobile__list">
+      {
+        headings.map((h) => (
+          <li>
+            <a href={`#${h.id}`} class="article-toc-mobile__link">{h.text}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</details>

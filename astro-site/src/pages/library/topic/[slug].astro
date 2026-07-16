@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ResourceFeed from '../../../components/library/ResourceFeed.astro';
+import LibraryCta from '../../../components/library/LibraryCta.astro';
+import { LIBRARY_TOPICS } from '../../../lib/library-config';
+import { fetchSanity } from '../../../lib/sanity';
+import { libraryResourcesQuery } from '../../../lib/queries';
+import { filterResources, normalizeResources } from '../../../lib/library-utils';
+import type { LibraryResourceRaw } from '../../../lib/types';
+
+export function getStaticPaths() {
+  return LIBRARY_TOPICS.map((topic) => ({
+    params: { slug: topic.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const topic = LIBRARY_TOPICS.find((t) => t.slug === slug);
+
+if (!topic) {
+  return Astro.redirect('/library');
+}
+
+const rawResources = (await fetchSanity<LibraryResourceRaw[]>(libraryResourcesQuery)) ?? [];
+const allResources = normalizeResources(rawResources);
+const resources = filterResources(allResources, { topic: slug, sort: 'newest' });
+
+const indexData = allResources.map((r) => ({
+  id: r.id,
+  type: r.type,
+  resourceType: r.resourceType,
+  title: r.title,
+  slug: r.slug,
+  summary: r.summary,
+  href: r.href,
+  actionLabel: r.actionLabel,
+  topics: r.topics,
+  difficulty: r.difficulty,
+  experienceLevel: r.experienceLevel,
+  popularityScore: r.popularityScore,
+  publishedAt: r.publishedAt,
+  updatedAt: r.updatedAt,
+  readingTime: r.readingTime,
+  duration: r.duration,
+  evidenceLevel: r.evidenceLevel,
+}));
+---
+
+<BaseLayout
+  title={`${topic.title} - Library - builtbybasics`}
+  description={topic.description}
+  extraCss={['/css/library.css']}
+  bodyClass="library-page"
+  activeNav="library"
+>
+  <main class="library-main">
+    <section class="lib-collection-hero">
+      <div class="library-container">
+        <a href="/library" class="lib-collection-hero__back">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          Back to Library
+        </a>
+        <p class="lib-hero__eyebrow">Topic</p>
+        <h1 class="lib-collection-hero__title">{topic.title}</h1>
+        <p class="lib-collection-hero__desc">{topic.description}</p>
+      </div>
+    </section>
+
+    <section class="lib-section">
+      <div class="library-container">
+        <ResourceFeed
+          resources={resources}
+          activeTopic={slug}
+          showTopicFilter={false}
+          enableHub={true}
+        />
+      </div>
+    </section>
+
+    <LibraryCta />
+  </main>
+
+  <script id="library-index" type="application/json" set:html={JSON.stringify(indexData)} />
+  <script id="library-init" type="application/json" set:html={JSON.stringify({ topic: slug })} />
+</BaseLayout>

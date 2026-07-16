@@ -1,0 +1,51 @@
+---
+import { loadLegacyHtml } from '../lib/legacyHtml';
+
+interface Props {
+  filename: string;
+}
+
+const { filename } = Astro.props;
+const page = loadLegacyHtml(filename);
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme={page.theme}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={page.description} />
+    <title>{page.title}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+    <script is:inline>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cobalt: { DEFAULT: '#2563eb', light: '#3b82f6', dark: '#1d4ed8', glow: '#60a5fa' },
+            },
+            fontFamily: {
+              display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+              body: ['"Inter"', 'system-ui', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/logo.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <link rel="stylesheet" href="/css/reveal.css" />
+    {page.extraCss.map((href) => <link rel="stylesheet" href={href} />)}
+    {page.inlineStyles.map((css) => <style set:html={css} />)}
+  </head>
+  <body class:list={[page.bodyClass, 'font-body antialiased']}>
+    <Fragment set:html={page.bodyHtml} />
+  </body>
+</html>

@@ -1,0 +1,29 @@
+---
+import {
+  formatDate,
+  formatDifficulty,
+  formatReadingTime,
+  getEvidenceLabel,
+} from '../lib/library-utils';
+
+interface Props {
+  readingTime: number;
+  difficulty?: string;
+  publishedAt?: string;
+  updatedAt?: string;
+  evidenceLevel?: string;
+}
+
+const { readingTime, difficulty, publishedAt, updatedAt, evidenceLevel } = Astro.props;
+const evidenceLabel = getEvidenceLabel(evidenceLevel);
+const completionMin = Math.max(1, Math.ceil(readingTime * 1.1));
+---
+
+<div class="article-meta">
+  <span class="article-meta__pill">{formatReadingTime(readingTime)}</span>
+  {difficulty && <span class="article-meta__pill">{formatDifficulty(difficulty)}</span>}
+  {publishedAt && <span class="article-meta__pill">Published {formatDate(publishedAt)}</span>}
+  {updatedAt && <span class="article-meta__pill">Updated {formatDate(updatedAt)}</span>}
+  <span class="article-meta__pill">~{completionMin} min to complete</span>
+  {evidenceLabel && <span class="article-meta__pill article-meta__pill--evidence">{evidenceLabel}</span>}
+</div>

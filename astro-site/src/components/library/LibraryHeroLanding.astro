@@ -1,0 +1,28 @@
+---
+import LibrarySearch from './LibrarySearch.astro';
+import CategoryChips from './CategoryChips.astro';
+import StartHereCard from './StartHereCard.astro';
+---
+
+<section class="lib-hero-landing">
+  <div class="library-container">
+    <h1 class="lib-hero-landing__title">The Library</h1>
+    <p class="lib-hero-landing__desc">
+      Articles, programs, guides and practical tools designed to help you understand and apply the
+      principles behind effective training.
+    </p>
+
+    <form class="lib-hero-landing__search" action="/library/search" method="get" role="search">
+      <LibrarySearch
+        variant="hero"
+        searchId="library-landing-search"
+        inputName="q"
+        showSubmit
+      />
+    </form>
+
+    <CategoryChips activeSlug="all" />
+
+    <StartHereCard />
+  </div>
+</section>

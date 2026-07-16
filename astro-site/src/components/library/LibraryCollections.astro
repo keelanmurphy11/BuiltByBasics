@@ -1,0 +1,117 @@
+---
+import { LIBRARY_SECTIONS } from '../../lib/library-config';
+import SectionHeader from './SectionHeader.astro';
+import CollectionIcon from './CollectionIcon.astro';
+import type { LibraryResource } from '../../lib/types';
+
+interface Props {
+  programs: LibraryResource[];
+  articles: LibraryResource[];
+}
+
+const { programs, articles } = Astro.props;
+const PREVIEW_LIMIT = 3;
+
+function getPreviewItems(sectionSlug: string): LibraryResource[] {
+  if (sectionSlug === 'programs') return programs.slice(0, PREVIEW_LIMIT);
+  if (sectionSlug === 'articles') return articles.slice(0, PREVIEW_LIMIT);
+  return [];
+}
+
+function getCount(sectionSlug: string, count: number): string | null {
+  const section = LIBRARY_SECTIONS.find((s) => s.slug === sectionSlug);
+  if (!section?.countLabel || count === 0) return null;
+  return `${count} ${section.countLabel}`;
+}
+---
+
+<section class="lib-collections" id="resource-categories" aria-label="Resource categories">
+  <div class="library-container">
+    <SectionHeader
+      title="Resource Categories"
+      href="#resource-categories"
+      linkLabel="View all categories"
+    />
+    <div class="lib-collections__grid">
+      {
+        LIBRARY_SECTIONS.map((section) => {
+          const count =
+            section.countKey === 'program'
+              ? programs.length
+              : section.countKey === 'article'
+                ? articles.length
+                : 0;
+          const countLabel = getCount(section.slug, count);
+          const previews = getPreviewItems(section.slug);
+
+          if (section.available && section.href && section.icon) {
+            return (
+              <article class="lib-collection-card">
+                <a href={section.href} class="lib-collection-card__main">
+                  <div class:list={['lib-collection-card__icon-wrap', section.iconTone && `lib-collection-card__icon-wrap--${section.iconTone}`]}>
+                    <CollectionIcon icon={section.icon} tone={section.iconTone} />
+                  </div>
+                  <div class="lib-collection-card__body">
+                    <div class="lib-collection-card__header">
+                      <h3 class="lib-collection-card__title">{section.title}</h3>
+                      {countLabel && <span class="lib-collection-card__badge">{countLabel}</span>}
+                    </div>
+                    <p class="lib-collection-card__desc">{section.description}</p>
+                    <span class="lib-collection-card__cta">
+                      {section.exploreLabel ?? 'Explore all'}
+                      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </span>
+                  </div>
+                </a>
+                {
+                  previews.length > 0 && (
+                    <div class="lib-collection-card__rows">
+                      {previews.map((item) => (
+                        <a href={item.href} class="lib-collection-card__row">
+                          <span class="lib-collection-card__row-type">{item.resourceType}</span>
+                          <span class="lib-collection-card__row-title">{item.title}</span>
+                          <svg class="lib-collection-card__row-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </a>
+                      ))}
+                    </div>
+                  )
+                }
+              </article>
+            );
+          }
+
+          return (
+            <article class="lib-collection-card lib-collection-card--soon" aria-disabled="true">
+              <div class:list={['lib-collection-card__icon-wrap', section.iconTone && `lib-collection-card__icon-wrap--${section.iconTone}`]}>
+                {section.icon && <CollectionIcon icon={section.icon} tone={section.iconTone} />}
+              </div>
+              <div class="lib-collection-card__body">
+                <div class="lib-collection-card__header">
+                  <h3 class="lib-collection-card__title">{section.title}</h3>
+                  <span class="lib-collection-card__badge lib-collection-card__badge--soon">Coming soon</span>
+                </div>
+                <p class="lib-collection-card__desc">{section.description}</p>
+                <div class="lib-collection-card__placeholder">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  <p>New videos are in production. Check back soon!</p>
+                </div>
+                <span class="lib-collection-card__cta lib-collection-card__cta--disabled">
+                  {section.exploreLabel ?? 'Learn more'}
+                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

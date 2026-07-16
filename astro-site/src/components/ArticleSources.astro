@@ -1,0 +1,27 @@
+---
+import type { ResearchSource } from '../lib/types';
+
+interface Props {
+  sources: ResearchSource[];
+}
+
+const { sources } = Astro.props;
+
+if (!sources?.length) return null;
+---
+
+<section class="article-sources">
+  <h2 class="article-sources__title">Research Sources</h2>
+  <ol class="article-sources__list">
+    {
+      sources.map((source) => (
+        <li class="article-sources__item">
+          <a href={source.url} target="_blank" rel="noopener noreferrer" class="article-sources__link">
+            {source.title}
+          </a>
+          {source.citation && <span class="article-sources__citation">{source.citation}</span>}
+        </li>
+      ))
+    }
+  </ol>
+</section>

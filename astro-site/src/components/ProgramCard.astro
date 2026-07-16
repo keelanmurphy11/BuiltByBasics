@@ -1,0 +1,30 @@
+---
+import type { ProgramSummary } from '../lib/types';
+import ResourceCard from './library/ResourceCard.astro';
+import { normalizeResource } from '../lib/library-utils';
+
+interface Props {
+  program: ProgramSummary;
+}
+
+const { program } = Astro.props;
+const isAvailable = program.status === 'available';
+
+const resource = normalizeResource({
+  _id: program._id,
+  _type: 'program',
+  title: program.title,
+  slug: program.slug,
+  summary: program.summary,
+  status: program.status,
+  frequency: program.frequency,
+  sessions: program.sessions,
+  split: program.split,
+  topics: program.topics,
+  experienceLevel: program.experienceLevel,
+  popularityScore: program.popularityScore,
+  _updatedAt: program._updatedAt,
+});
+---
+
+<ResourceCard resource={resource} locked={!isAvailable} />

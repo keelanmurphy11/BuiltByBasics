@@ -1,0 +1,38 @@
+---
+import { LIBRARY_TOPICS } from '../../lib/library-config';
+import type { TopicCount } from '../../lib/types';
+
+interface Props {
+  topicCounts: TopicCount[];
+  linkBase?: string;
+  activeTopic?: string;
+}
+
+const { topicCounts, linkBase = '/articles/topic', activeTopic } = Astro.props;
+
+function getTopicCount(slug: string): number {
+  return topicCounts.find((t) => t.slug === slug)?.count ?? 0;
+}
+---
+
+<div class="lib-topic-browse">
+  <h2 class="lib-topic-browse__title">Browse by topic</h2>
+  <nav class="lib-browse-pills" aria-label="Browse articles by topic">
+    {
+      LIBRARY_TOPICS.map((topic) => {
+        const count = getTopicCount(topic.slug);
+        const isActive = activeTopic === topic.slug;
+        return (
+          <a
+            href={`${linkBase}/${topic.slug}`}
+            class:list={['lib-browse-pill', { 'lib-browse-pill--active': isActive }]}
+            aria-current={isActive ? 'page' : undefined}
+          >
+            {topic.title}
+            <span class="lib-browse-pill__count">{count}</span>
+          </a>
+        );
+      })
+    }
+  </nav>
+</div>

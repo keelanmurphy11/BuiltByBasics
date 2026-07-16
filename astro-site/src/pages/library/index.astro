@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LibraryHeroLanding from '../../components/library/LibraryHeroLanding.astro';
+import LibraryCollections from '../../components/library/LibraryCollections.astro';
+import LibraryDiscovery from '../../components/library/LibraryDiscovery.astro';
+import LibraryCta from '../../components/library/LibraryCta.astro';
+import { fetchSanity } from '../../lib/sanity';
+import { libraryResourcesQuery } from '../../lib/queries';
+import {
+  getLatestResources,
+  getPrimaryFeaturedResource,
+  normalizeResources,
+  sortResources,
+} from '../../lib/library-utils';
+import type { LibraryResourceRaw } from '../../lib/types';
+
+const rawResources = (await fetchSanity<LibraryResourceRaw[]>(libraryResourcesQuery)) ?? [];
+const resources = normalizeResources(rawResources);
+const programs = sortResources(
+  resources.filter((r) => r.type === 'program'),
+  'newest'
+);
+const articles = sortResources(
+  resources.filter((r) => r.type === 'article'),
+  'newest'
+);
+const featuredResource = getPrimaryFeaturedResource(resources);
+const latestResources = getLatestResources(resources, 6);
+---
+
+<BaseLayout
+  title="Library - builtbybasics"
+  description="Evidence-based guides, programs and practical tools designed to help you understand effective training."
+  extraCss={['/css/library.css']}
+  bodyClass="library-page"
+  activeNav="library"
+>
+  <main class="library-main">
+    <LibraryHeroLanding />
+
+    <LibraryCollections programs={programs} articles={articles} />
+
+    <LibraryDiscovery featured={featuredResource} latest={latestResources} />
+
+    <LibraryCta inline />
+  </main>
+</BaseLayout>

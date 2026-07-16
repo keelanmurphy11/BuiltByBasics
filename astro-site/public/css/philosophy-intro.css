@@ -1,0 +1,211 @@
+/* Philosophy intro - compact single-viewport problem statement */
+
+.philosophy-intro-panel {
+  position: relative;
+  min-height: 100dvh;
+}
+
+.philosophy-intro-glow {
+  position: absolute;
+  top: -5%;
+  left: 50%;
+  width: min(64rem, 110vw);
+  height: min(40rem, 80vh);
+  pointer-events: none;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(37, 99, 235, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse at 30% 60%, rgba(37, 99, 235, 0.04) 0%, transparent 45%);
+  filter: blur(48px);
+}
+
+.philosophy-intro-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 60%,
+    rgba(9, 9, 11, 0.15) 100%
+  );
+}
+
+.philosophy-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .philosophy-intro-panel {
+    min-height: auto;
+  }
+
+  .philosophy-intro {
+    gap: 1.25rem;
+  }
+
+  .philosophy-mission-callout {
+    padding-block: clamp(5rem, 14vw, 6rem);
+  }
+
+  .philosophy-purpose {
+    padding-top: clamp(3rem, 10vw, 3.5rem);
+    padding-bottom: clamp(3.5rem, 12vw, 4rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .philosophy-intro {
+    gap: 1.75rem;
+  }
+}
+
+/* ── Header & headline ── */
+
+.philosophy-intro-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .philosophy-intro-header {
+    gap: 1.5rem;
+  }
+}
+
+.philosophy-intro-eyebrow-label {
+  margin: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgb(113 113 122);
+}
+
+.philosophy-headline {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.philosophy-headline--muted {
+  display: block;
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  font-weight: 500;
+  color: rgb(161 161 170);
+}
+
+.philosophy-headline--accent {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: clamp(2.25rem, 7.5vw, 4.25rem);
+  font-weight: 700;
+  color: rgb(250 250 250);
+  text-shadow: 0 0 48px rgba(37, 99, 235, 0.18);
+}
+
+@media (min-width: 1024px) {
+  .philosophy-headline--muted {
+    font-size: 2.75rem;
+  }
+
+  .philosophy-headline--accent {
+    margin-top: 0.375rem;
+    font-size: 4.25rem;
+  }
+}
+
+/* ── Supporting copy ── */
+
+.philosophy-prose-lead {
+  margin: 0;
+  max-width: 32rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  color: rgb(212 212 216);
+  text-wrap: balance;
+}
+
+@media (min-width: 1024px) {
+  .philosophy-prose-lead {
+    font-size: 1.125rem;
+  }
+}
+
+/* ── Divider ── */
+
+.philosophy-intro-divider-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.philosophy-intro-divider {
+  width: min(6rem, 24%);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.75), transparent);
+  border-radius: 999px;
+  transform: scaleX(0);
+  transition: transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.reveal-item.is-visible .philosophy-intro-divider {
+  transform: scaleX(1);
+}
+
+/* ── Citation ── */
+
+.philosophy-intro-citation {
+  margin: -0.5rem 0 0;
+  max-width: 28rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: rgb(82 82 91);
+  text-wrap: balance;
+}
+
+.philosophy-intro-citation-link {
+  color: rgb(113 113 122);
+  text-decoration: underline;
+  text-decoration-color: rgba(113, 113, 122, 0.35);
+  text-underline-offset: 2px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.philosophy-intro-citation-link:hover {
+  color: rgb(161 161 170);
+  text-decoration-color: rgba(161, 161, 170, 0.55);
+}
+
+/* ── Purpose ── */
+
+.philosophy-purpose h3,
+.philosophy-purpose p:not(:first-child) {
+  max-width: 52rem;
+  margin-inline: auto;
+  text-wrap: balance;
+}
+
+.philosophy-purpose p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .philosophy-intro-divider {
+    transform: scaleX(1);
+    transition: none;
+  }
+}

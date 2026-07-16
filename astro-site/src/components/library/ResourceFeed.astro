@@ -1,0 +1,68 @@
+---
+import ResourceCard from './ResourceCard.astro';
+import FilterBar from './FilterBar.astro';
+import LibrarySearch from './LibrarySearch.astro';
+import type { LibraryResource } from '../../lib/types';
+
+interface Props {
+  resources: LibraryResource[];
+  activeTopic?: string;
+  activeFormat?: string;
+  activeDifficulty?: string;
+  activeSort?: string;
+  showTopicFilter?: boolean;
+  showFormatFilter?: boolean;
+  showSearch?: boolean;
+  sectionIntro?: string;
+  feedId?: string;
+  enableHub?: boolean;
+}
+
+const {
+  resources,
+  activeTopic = '',
+  activeFormat = '',
+  activeDifficulty = '',
+  activeSort = 'newest',
+  showTopicFilter = true,
+  showFormatFilter = true,
+  showSearch = true,
+  sectionIntro,
+  feedId = 'library-feed',
+  enableHub = false,
+} = Astro.props;
+---
+
+<div class="lib-feed-wrap">
+  {sectionIntro && <p class="lib-feed__intro">{sectionIntro}</p>}
+
+  {showSearch && <LibrarySearch />}
+
+  <FilterBar
+    activeTopic={activeTopic}
+    activeFormat={activeFormat}
+    activeDifficulty={activeDifficulty}
+    activeSort={activeSort}
+    showTopicFilter={showTopicFilter}
+    showFormatFilter={showFormatFilter}
+    initialCount={resources.length}
+  />
+
+  <div class="lib-feed" id={feedId} data-library-feed>
+    {
+      resources.length > 0 ? (
+        resources.map((resource) => (
+          <ResourceCard resource={resource} data-resource-card data-resource-id={resource.id} />
+        ))
+      ) : (
+        <p class="lib-feed__empty">No resources match your filters. Try adjusting your search.</p>
+      )
+    }
+  </div>
+</div>
+
+{enableHub && (
+  <script>
+    import '../../scripts/library-hub.ts';
+  </script>
+)}

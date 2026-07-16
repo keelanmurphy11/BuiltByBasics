@@ -1,0 +1,38 @@
+---
+import type { WorkoutSlot as WorkoutSlotType } from '../lib/types';
+
+interface Props {
+  slot: WorkoutSlotType;
+  index: number;
+}
+
+const { slot, index } = Astro.props;
+
+function formatExamples(examples: string[] = []) {
+  return examples.join(' · ');
+}
+---
+
+<li class:list={['workout-slot', slot.slotType === 'choice' && 'workout-slot--choice']}>
+  <span class="workout-slot__number">{index + 1}</span>
+  <div class="workout-slot__body">
+    {
+      slot.slotType === 'choice' && slot.choices?.length ? (
+        <>
+          <p class="workout-slot__pattern">{slot.choiceLabel || 'Choose one'}</p>
+          <p class="workout-slot__options-label">Options</p>
+          <div class="workout-slot__options">
+            {slot.choices.map((choice) => (
+              <p class="workout-slot__option">{choice.title}</p>
+            ))}
+          </div>
+        </>
+      ) : slot.pattern ? (
+        <>
+          <p class="workout-slot__pattern">{slot.pattern.title}</p>
+          <p class="workout-slot__examples">{formatExamples(slot.pattern.examples)}</p>
+        </>
+      ) : null
+    }
+  </div>
+</li>

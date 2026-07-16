@@ -1,0 +1,52 @@
+---
+import type { LibraryResource } from '../lib/types';
+import {
+  formatDate,
+  formatReadingTime,
+  getResourceLevelLabel,
+} from '../lib/library-utils';
+
+interface Props {
+  resource: LibraryResource | null;
+  title?: string;
+}
+
+const { resource, title = 'Continue Learning' } = Astro.props;
+
+if (!resource) return null;
+
+const meta: string[] = [];
+if (resource.readingTime) meta.push(formatReadingTime(resource.readingTime));
+if (resource.duration) meta.push(resource.duration);
+const levelLabel = getResourceLevelLabel(resource);
+if (levelLabel) meta.push(levelLabel);
+if (resource.type === 'article' && (resource.updatedAt || resource.publishedAt)) {
+  meta.push(`Updated ${formatDate(resource.updatedAt || resource.publishedAt)}`);
+}
+---
+
+<section class="article-continue">
+  <h2 class="article-continue__title">{title}</h2>
+  <a href={resource.href} class="continue-card">
+    <div class="continue-card__header">
+      <span class="continue-card__badge">{resource.resourceType}</span>
+    </div>
+    <h3 class="continue-card__title">{resource.title}</h3>
+    {resource.summary && <p class="continue-card__summary">{resource.summary}</p>}
+    {
+      meta.length > 0 && (
+        <div class="continue-card__meta">
+          {meta.map((item) => (
+            <span class="continue-card__meta-item">{item}</span>
+          ))}
+        </div>
+      )
+    }
+    <span class="continue-card__action">
+      {resource.actionLabel}
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </span>
+  </a>
+</section>

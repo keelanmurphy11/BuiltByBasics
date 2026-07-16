@@ -1,0 +1,46 @@
+---
+import type { ProgramDay } from '../lib/types';
+import WorkoutSlot from './WorkoutSlot.astro';
+
+interface Props {
+  day: ProgramDay;
+  panelId: string;
+  tabId: string;
+  isActive: boolean;
+}
+
+const { day, panelId, tabId, isActive } = Astro.props;
+---
+
+<article
+  class="workout-sheet"
+  id={panelId}
+  role="tabpanel"
+  aria-labelledby={tabId}
+  hidden={!isActive}
+  data-workout-sheet
+>
+  {day.intro && <p class="workout-sheet__intro">{day.intro}</p>}
+  {day.guidance && <p class="workout-sheet__guidance">{day.guidance}</p>}
+  {
+    day.slots?.length ? (
+      <ol class="workout-sheet__slots">
+        {day.slots.map((slot, index) => (
+          <WorkoutSlot slot={slot} index={index} />
+        ))}
+      </ol>
+    ) : null
+  }
+  {
+    day.accessories?.length ? (
+      <div class="workout-sheet__accessories">
+        <h3 class="workout-sheet__accessories-label">Accessories</h3>
+        <ul class="workout-sheet__accessories-list">
+          {day.accessories.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    ) : null
+  }
+</article>

@@ -1,0 +1,31 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/basics.html", "destination": "/basics", "permanent": true },
+    { "source": "/library.html", "destination": "/library", "permanent": true },
+    { "source": "/coaching.html", "destination": "/coaching", "permanent": true },
+    { "source": "/programs.html", "destination": "/programs", "permanent": true },
+    { "source": "/thank-you.html", "destination": "/thank-you", "permanent": true },
+    {
+      "source": "/program-2x-full-body.html",
+      "destination": "/programs/full-body-2x",
+      "permanent": true
+    },
+    {
+      "source": "/program-4x-upper-lower.html",
+      "destination": "/programs/upper-lower-4x",
+      "permanent": true
+    }
+  ]
+}
