@@ -121,7 +121,7 @@ async function seedPrograms() {
         title: day.title,
         intro: day.intro,
         guidance: day.guidance,
-        accessories: day.accessories,
+        accessories: day.accessories ?? [],
         slots: (day.slots || []).map((slot, index) => {
           if (slot.choice?.length) {
             return {

@@ -55,6 +55,18 @@ const MOVEMENT_PATTERNS = {
     label: 'Bicep Curl',
     examples: ['Dumbbell Curl', 'Barbell Curl', 'Cable Curl'],
   },
+  'rear-delt-fly': {
+    label: 'Rear Delt Fly',
+    examples: ['Dumbbell Rear Delt Fly', 'Cable Reverse Fly', 'Machine Rear Delt Fly'],
+  },
+  'chest-fly': {
+    label: 'Chest Fly',
+    examples: ['Dumbbell Chest Fly', 'Cable Fly', 'Pec Deck'],
+  },
+  'lateral-raise': {
+    label: 'Lateral Raise',
+    examples: ['Dumbbell Lateral Raise', 'Cable Lateral Raise', 'Machine Lateral Raise'],
+  },
   abduction: {
     label: 'Abduction',
     examples: ['Cable Hip Abduction', 'Machine Hip Abduction', 'Banded Lateral Walk'],
@@ -134,8 +146,11 @@ const PROGRAMS_BY_COLLECTION = {
         { patternId: 'horizontal-pull-upper-back' },
         { patternId: 'vertical-press' },
         { patternId: 'vertical-pull' },
+        {
+          choice: ['rear-delt-fly', 'chest-fly', 'bicep-curl'],
+          choiceLabel: 'Choice of Accessories',
+        },
       ],
-      accessories: ['Rear delt fly', 'Chest fly', 'Bicep Curl'],
     },
     {
       id: 'upper-b',
@@ -147,8 +162,11 @@ const PROGRAMS_BY_COLLECTION = {
         { patternId: 'vertical-pull' },
         { patternId: 'horizontal-press' },
         { patternId: 'horizontal-pull' },
+        {
+          choice: ['lateral-raise', 'tricep-extension'],
+          choiceLabel: 'Choice of Accessories',
+        },
       ],
-      accessories: ['Lateral Raise', 'Tricep Extension'],
     },
     {
       id: 'lower-a',
