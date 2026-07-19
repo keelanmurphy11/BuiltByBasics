@@ -5,17 +5,13 @@
       <stop offset="70%" stop-color="#2563eb" stop-opacity="0.06"/>
       <stop offset="100%" stop-color="#09090b" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="topFace" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.28"/>
-      <stop offset="100%" stop-color="#2563eb" stop-opacity="0.12"/>
+    <linearGradient id="plateFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0.08"/>
     </linearGradient>
-    <linearGradient id="leftFace" x1="1" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.32"/>
-    </linearGradient>
-    <linearGradient id="rightFace" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.14"/>
-      <stop offset="100%" stop-color="#1e40af" stop-opacity="0.28"/>
+    <linearGradient id="barFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#1e40af" stop-opacity="0.3"/>
     </linearGradient>
   </defs>
 
@@ -31,35 +27,43 @@
     <path d="M28 27.5h-2.5M27.5 28v-2.5"/>
   </g>
 
-  <!-- Soft face fills for volume -->
-  <path d="M16 6 L7 10.8 L16 15.6 L25 10.8 Z" fill="url(#topFace)"/>
-  <path d="M7 10.8 L16 15.6 L16 25.2 L7 20.4 Z" fill="url(#leftFace)"/>
-  <path d="M25 10.8 L16 15.6 L16 25.2 L25 20.4 Z" fill="url(#rightFace)"/>
+  <!-- Side-view plate dumbbell (like sketch) -->
+  <g transform="rotate(-22 16 16)">
+    <!-- Soft fills -->
+    <g fill="url(#plateFill)">
+      <!-- Left tip + plates -->
+      <rect x="2.4" y="13.6" width="1.5" height="4.8" rx="0.55"/>
+      <rect x="4.0" y="11.4" width="2.3" height="9.2" rx="0.9"/>
+      <rect x="6.4" y="9.6" width="3.2" height="12.8" rx="1.1"/>
+      <!-- Right tip + plates -->
+      <rect x="22.4" y="9.6" width="3.2" height="12.8" rx="1.1"/>
+      <rect x="25.7" y="11.4" width="2.3" height="9.2" rx="0.9"/>
+      <rect x="28.1" y="13.6" width="1.5" height="4.8" rx="0.55"/>
+    </g>
+    <rect x="9.8" y="14.35" width="12.4" height="3.3" rx="1.0" fill="url(#barFill)"/>
 
-  <!-- Wireframe etching -->
-  <g
-    fill="none"
-    stroke="#60a5fa"
-    stroke-width="1.85"
-    stroke-linejoin="round"
-    stroke-linecap="round"
-  >
-    <path d="M16 6 L7 10.8 L16 15.6 L25 10.8 Z"/>
-    <path d="M7 10.8 V20.4"/>
-    <path d="M16 15.6 V25.2"/>
-    <path d="M25 10.8 V20.4"/>
-    <path d="M7 20.4 L16 25.2 L25 20.4"/>
-  </g>
+    <!-- Line drawing -->
+    <g
+      fill="none"
+      stroke="#60a5fa"
+      stroke-width="1.15"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+    >
+      <!-- Left stack: tip → outer → inner -->
+      <rect x="2.4" y="13.6" width="1.5" height="4.8" rx="0.55"/>
+      <rect x="4.0" y="11.4" width="2.3" height="9.2" rx="0.9"/>
+      <rect x="6.4" y="9.6" width="3.2" height="12.8" rx="1.1"/>
 
-  <!-- Brighter outer silhouette pass for punch -->
-  <g
-    fill="none"
-    stroke="#93c5fd"
-    stroke-opacity="0.45"
-    stroke-width="0.7"
-    stroke-linejoin="round"
-    stroke-linecap="round"
-  >
-    <path d="M16 6 L7 10.8 L7 20.4 L16 25.2 L25 20.4 L25 10.8 Z"/>
+      <!-- Handle -->
+      <rect x="9.8" y="14.35" width="12.4" height="3.3" rx="1.0"/>
+      <!-- Light knurl (kept sparse for favicon) -->
+      <path d="M12.4 15v2M14.6 15v2M16.8 15v2M19 15v2"/>
+
+      <!-- Right stack: inner → outer → tip -->
+      <rect x="22.4" y="9.6" width="3.2" height="12.8" rx="1.1"/>
+      <rect x="25.7" y="11.4" width="2.3" height="9.2" rx="0.9"/>
+      <rect x="28.1" y="13.6" width="1.5" height="4.8" rx="0.55"/>
+    </g>
   </g>
 </svg>
