@@ -536,6 +536,10 @@
 }
 
 .about-me__connect {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
   margin: 1.75rem 0 0;
   text-align: center;
 }

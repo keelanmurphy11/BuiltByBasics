@@ -155,8 +155,8 @@
   }
 }
 
-/* Desktop step connector line between cards */
-@media (min-width: 1024px) {
+/* Desktop step connector line between cards (5-col row) */
+@media (min-width: 1280px) {
   .roadmap-list {
     position: relative;
   }
@@ -165,8 +165,8 @@
     content: '';
     position: absolute;
     top: 2.25rem;
-    left: calc(33.333% + 0.5rem);
-    right: calc(33.333% + 0.5rem);
+    left: calc(10% + 0.5rem);
+    right: calc(10% + 0.5rem);
     height: 1px;
     background: linear-gradient(
       to right,
