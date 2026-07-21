@@ -126,7 +126,7 @@
             <ul class="basics-summary__list">
               <li>Start simple. Slow, sustainable results compound over time.</li>
               <li>Muscle mass is your best friend for long-term weight management.</li>
-              <li>Ignore fad diets - they're all complete bullshit!</li>
+              <li>Ignore fad diets!</li>
             </ul>
             <a href="#fat-loss" class="basics-summary__cta">Learn More ↓</a>
           </article>
@@ -149,6 +149,33 @@
         <div data-reveal-stagger class="basics-section__inner">
           <span class="reveal-item basics-section-number">01</span>
           <h2 class="reveal-item basics-section-title">Strength Training &amp; Muscle Mass</h2>
+
+          <figure class="reveal-item basics-video" data-youtube-id="Sz7yPOtNORM">
+            <figcaption class="basics-video__caption">Watch: Everything you NEED to know about Strength Training</figcaption>
+            <div class="basics-video__media">
+              <button
+                type="button"
+                class="basics-video__facade"
+                aria-label="Play video: Everything you NEED to know about Strength Training"
+              >
+                <img
+                  class="basics-video__thumb"
+                  src="https://i.ytimg.com/vi/Sz7yPOtNORM/hqdefault.jpg"
+                  alt=""
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="basics-video__play" aria-hidden="true">
+                  <svg viewBox="0 0 68 48" width="48" height="34" focusable="false">
+                    <path class="basics-video__play-bg" d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55C3.97 2.33 2.27 4.81 1.48 7.74.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" />
+                    <path class="basics-video__play-icon" d="M45 24 27 14v20" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </figure>
 
           <h3 class="reveal-item basics-heading">The Importance of Muscle Mass</h3>
           <div class="reveal-item basics-prose">
@@ -1080,6 +1107,28 @@
     window.addEventListener('scroll', () => {
       header.classList.toggle('nav-scrolled', window.scrollY > 40);
     }, { passive: true });
+
+    document.querySelectorAll('.basics-video[data-youtube-id]').forEach((figure) => {
+      const facade = figure.querySelector('.basics-video__facade');
+      const videoId = figure.getAttribute('data-youtube-id');
+      if (!facade || !videoId) return;
+
+      facade.addEventListener('click', () => {
+        const title = facade.getAttribute('aria-label')?.replace(/^Play video:\s*/i, '')
+          || 'YouTube video';
+        const player = document.createElement('div');
+        player.className = 'basics-video__player';
+        player.innerHTML =
+          '<iframe' +
+          ' src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(videoId) + '?autoplay=1&playsinline=1"' +
+          ' title="' + title.replace(/"/g, '&quot;') + '"' +
+          ' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"' +
+          ' allowfullscreen' +
+          ' loading="lazy"' +
+          '></iframe>';
+        facade.replaceWith(player);
+      });
+    });
   </script>
   <script src="js/scroll-reveal.js"></script>
   <script src="js/basics-scrollspy.js"></script>
