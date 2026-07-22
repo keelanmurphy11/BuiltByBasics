@@ -3,6 +3,9 @@
   command = "npm run build"
   publish = "astro-site/dist"
 
+# @astrojs/netlify serves SSR routes (article preview, draft-mode APIs)
+# alongside the static publish directory.
+
 [[redirects]]
   from = "/index.html"
   to = "/"

@@ -7,24 +7,29 @@ import ArticleToc from '../../components/ArticleToc.astro';
 import ArticleSources from '../../components/ArticleSources.astro';
 import RelatedResources from '../../components/RelatedResources.astro';
 import ContinueLearning from '../../components/ContinueLearning.astro';
-import { fetchSanity } from '../../lib/sanity';
-import { articleBySlugQuery, articleSlugsQuery, libraryResourcesQuery } from '../../lib/queries';
+import { loadQuery } from '../../lib/sanity';
+import { getDraftModeProps, isDraftMode } from '../../lib/draft-mode';
+import { articleBySlugQuery, libraryResourcesQuery } from '../../lib/queries';
 import {
   estimateReadingTime,
   extractTocHeadings,
-  normalizeResource,
   normalizeResources,
   sortResources,
 } from '../../lib/library-utils';
 import type { ArticleDetail, LibraryResourceRaw } from '../../lib/types';
 
-export async function getStaticPaths() {
-  const slugs = (await fetchSanity<Array<{ slug: string }>>(articleSlugsQuery)) ?? [];
-  return slugs.map(({ slug }) => ({ params: { slug } }));
-}
+// SSR so draft / unpublished articles resolve by slug in Presentation preview
+export const prerender = false;
 
 const { slug } = Astro.params;
-const article = await fetchSanity<ArticleDetail>(articleBySlugQuery, { slug });
+const draftProps = getDraftModeProps(Astro.cookies);
+const draftMode = isDraftMode(Astro.cookies);
+
+const article = await loadQuery<ArticleDetail>({
+  query: articleBySlugQuery,
+  params: { slug },
+  ...draftProps,
+});
 
 if (!article) {
   return Astro.redirect('/articles');
@@ -33,7 +38,11 @@ if (!article) {
 const readingTime = estimateReadingTime(article.body ?? []);
 const headings = extractTocHeadings(article.body ?? []);
 
-const rawResources = (await fetchSanity<LibraryResourceRaw[]>(libraryResourcesQuery)) ?? [];
+const rawResources =
+  (await loadQuery<LibraryResourceRaw[]>({
+    query: libraryResourcesQuery,
+    ...draftProps,
+  })) ?? [];
 const allResources = normalizeResources(rawResources);
 const continueResource =
   sortResources(
@@ -53,6 +62,7 @@ const continueResource =
   bodyClass="article-page"
   theme="light"
   activeNav="library"
+  draftMode={draftMode}
 >
   <main>
     <section class="article-hero">

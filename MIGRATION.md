@@ -44,11 +44,12 @@ BuiltByBasics/
 SANITY_STUDIO_PROJECT_ID=your_project_id
 SANITY_STUDIO_DATASET=production
 SANITY_API_WRITE_TOKEN=your_write_token
+SANITY_STUDIO_PREVIEW_URL=http://localhost:4321
 ```
 
 Get tokens at [sanity.io/manage](https://www.sanity.io/manage) → your project → API → Tokens.
 
-- **Viewer** token → use as `SANITY_API_READ_TOKEN` in Astro (read-only)
+- **Viewer** token → use as `SANITY_API_READ_TOKEN` in Astro (read-only; required for Presentation draft preview)
 - **Editor** token → use as `SANITY_API_WRITE_TOKEN` in Studio (for seeding)
 
 **Astro** — copy `astro-site/.env.example` to `astro-site/.env`:
@@ -57,7 +58,10 @@ Get tokens at [sanity.io/manage](https://www.sanity.io/manage) → your project 
 PUBLIC_SANITY_PROJECT_ID=your_project_id
 PUBLIC_SANITY_DATASET=production
 SANITY_API_READ_TOKEN=your_viewer_token
+PUBLIC_SANITY_STUDIO_URL=http://localhost:3333
 ```
+
+**CORS (one-time, for live preview):** In [sanity.io/manage](https://www.sanity.io/manage) → API → CORS origins, add `http://localhost:4321` with **Allow credentials** checked (or run `npx sanity cors add http://localhost:4321 --credentials` from `studio/`).
 
 ### 2. Install dependencies (if needed)
 
@@ -99,12 +103,19 @@ Or from each folder: `npm run dev`
 | URL | Expected |
 |---|---|
 | `http://localhost:3333` | Sanity Studio |
+| `http://localhost:3333` → **Presentation** | Article live preview iframe (needs both servers + CORS) |
 | `http://localhost:4321/` | Home page |
 | `http://localhost:4321/library` | Programs card + article cards |
 | `http://localhost:4321/articles/strength-training` | Article from CMS |
 | `http://localhost:4321/programs` | Program cards + movement patterns |
 | `http://localhost:4321/basics` | Basics of Training |
 | `http://localhost:4321/coaching` | Coaching page |
+
+### Live preview (Presentation)
+
+1. Start both `dev:studio` and `dev:site`
+2. Ensure CORS credentials origin `http://localhost:4321` is set (see above)
+3. In Studio, open **Presentation**, select an article — the site loads in an iframe and refreshes as you edit
 
 ## Deploy the Astro site
 

@@ -1,4 +1,7 @@
 ---
+import SanityVisualEditing from '../components/SanityVisualEditing';
+import DisableDraftMode from '../components/DisableDraftMode';
+
 interface Props {
   title: string;
   description: string;
@@ -6,6 +9,8 @@ interface Props {
   bodyClass?: string;
   theme?: string;
   activeNav?: 'basics' | 'library' | 'coaching';
+  /** Set true on SSR pages when Presentation draft mode is active */
+  draftMode?: boolean;
 }
 
 const {
@@ -15,6 +20,7 @@ const {
   bodyClass = '',
   theme = 'light',
   activeNav,
+  draftMode = false,
 } = Astro.props;
 ---
 
@@ -122,5 +128,13 @@ const {
       }
     </script>
     <slot name="scripts" />
+    {
+      draftMode && (
+        <>
+          <SanityVisualEditing client:only="react" />
+          <DisableDraftMode client:only="react" />
+        </>
+      )
+    }
   </body>
 </html>
