@@ -92,6 +92,7 @@ export default defineType({
             },
           ],
         },
+        { type: 'keyPoint' },
       ],
     }),
     defineField({

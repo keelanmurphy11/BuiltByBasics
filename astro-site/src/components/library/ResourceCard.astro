@@ -12,25 +12,38 @@ interface Props {
   class?: string;
   locked?: boolean;
   featuredLabel?: string;
+  /** When false, hides the Article/Program type badge (e.g. on articles-only listings). */
+  showType?: boolean;
 }
 
-const { resource, class: className, locked = false, featuredLabel } = Astro.props;
+const {
+  resource,
+  class: className,
+  locked = false,
+  featuredLabel,
+  showType = true,
+} = Astro.props;
 const Tag = locked ? 'article' : 'a';
 const evidenceLabel = getEvidenceLabel(resource.evidenceLevel);
 const levelLabel = getResourceLevelLabel(resource);
+const showHeader = Boolean(featuredLabel || showType || evidenceLabel);
 ---
 
 <Tag
   href={locked ? undefined : resource.href}
   class:list={['resource-card', locked && 'resource-card--static', className]}
 >
-  <div class="resource-card__header">
-    {featuredLabel && (
-      <span class="resource-card__badge resource-card__badge--featured">{featuredLabel}</span>
-    )}
-    <span class="resource-card__badge">{resource.resourceType}</span>
-    {evidenceLabel && <span class="resource-card__evidence">{evidenceLabel}</span>}
-  </div>
+  {
+    showHeader && (
+      <div class="resource-card__header">
+        {featuredLabel && (
+          <span class="resource-card__badge resource-card__badge--featured">{featuredLabel}</span>
+        )}
+        {showType && <span class="resource-card__badge">{resource.resourceType}</span>}
+        {evidenceLabel && <span class="resource-card__evidence">{evidenceLabel}</span>}
+      </div>
+    )
+  }
   <h3 class="resource-card__title">{resource.title}</h3>
   {resource.summary && <p class="resource-card__summary">{resource.summary}</p>}
   <div class="resource-card__meta">

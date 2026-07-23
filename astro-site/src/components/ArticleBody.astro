@@ -14,6 +14,11 @@ interface BodyImage {
   dimensions?: { width?: number; height?: number };
 }
 
+interface BodyKeyPoint {
+  _type: 'keyPoint';
+  text?: string;
+}
+
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
@@ -41,6 +46,10 @@ let html = body?.length
               ? `<figcaption class="article-body__caption">${escapeHtml(value.caption)}</figcaption>`
               : '';
             return `<figure class="article-body__figure">${img}${caption}</figure>`;
+          },
+          keyPoint: ({ value }: { value: BodyKeyPoint }) => {
+            if (!value?.text?.trim()) return '';
+            return `<aside class="article-key-point" aria-label="Key point"><span class="article-key-point__pill">Key point</span><p class="article-key-point__text">${escapeHtml(value.text.trim())}</p></aside>`;
           },
         },
       },

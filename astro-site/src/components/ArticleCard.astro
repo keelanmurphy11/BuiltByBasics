@@ -5,9 +5,11 @@ import { normalizeResource } from '../lib/library-utils';
 
 interface Props {
   article: ArticleSummary;
+  class?: string;
+  featuredLabel?: string;
 }
 
-const { article } = Astro.props;
+const { article, class: className, featuredLabel } = Astro.props;
 const resource = normalizeResource({
   _id: article._id,
   _type: 'article',
@@ -24,4 +26,9 @@ const resource = normalizeResource({
 });
 ---
 
-<ResourceCard resource={resource} />
+<ResourceCard
+  resource={resource}
+  class={className}
+  featuredLabel={featuredLabel}
+  showType={false}
+/>

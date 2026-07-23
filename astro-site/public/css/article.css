@@ -347,6 +347,40 @@
   text-align: center;
 }
 
+.article-key-point {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  margin: 1.75rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(59, 130, 246, 0.22);
+  border-left: 3px solid #2563eb;
+  border-radius: 12px;
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.article-key-point__pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(37, 99, 235, 0.12);
+  color: #2563eb;
+}
+
+.article-key-point__text {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.55;
+  color: #18181b;
+}
+
 /* ── Sources ── */
 
 .article-sources {

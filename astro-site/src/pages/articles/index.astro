@@ -9,14 +9,18 @@ import { aggregateTopicCounts, normalizeResources } from '../../lib/library-util
 import type { ArticleSummary, LibraryResourceRaw } from '../../lib/types';
 
 const articles = (await fetchSanity<ArticleSummary[]>(articlesQuery)) ?? [];
+const [leadArticle, ...restArticles] = articles;
 
 const rawResources = (await fetchSanity<LibraryResourceRaw[]>(libraryResourcesQuery)) ?? [];
 const articleResources = normalizeResources(rawResources).filter((r) => r.type === 'article');
 const topicCounts = aggregateTopicCounts(articleResources);
+
+const countLabel =
+  articles.length === 1 ? '1 article' : `${articles.length} articles`;
 ---
 
 <BaseLayout
-  title="Expand Your Knowledge - builtbybasics"
+  title="Articles / Blog - builtbybasics"
   description="Evidence-based articles on training, nutrition, and lifestyle from builtbybasics."
   extraCss={['/css/library.css']}
   bodyClass="library-page"
@@ -32,10 +36,17 @@ const topicCounts = aggregateTopicCounts(articleResources);
           </svg>
           Back to Library
         </a>
-        <h1 class="lib-index-hero__title">Expand Your Knowledge</h1>
+        <p class="lib-index-hero__eyebrow">Library</p>
+        <h1 class="lib-index-hero__title">Articles / Blog</h1>
         <p class="lib-index-hero__desc">
-          In-depth reads on training, nutrition, and lifestyle. Building on the <a href="/basics" style="color: #3b82f6; text-decoration: none;">Basics of Training</a>.
+          In-depth reads on training, nutrition, and lifestyle. Building on the{' '}
+          <a href="/basics" class="lib-index-hero__inline-link">Basics of Training</a>.
         </p>
+        {
+          articles.length > 0 && (
+            <p class="lib-index-hero__meta">{countLabel}</p>
+          )
+        }
       </div>
     </section>
 
@@ -47,10 +58,24 @@ const topicCounts = aggregateTopicCounts(articleResources);
 
     <section class="lib-section">
       <div class="library-container">
-        <div class="lib-index-grid">
+        <div class="lib-section-header">
+          <h2 class="lib-section-header__title">All articles</h2>
+        </div>
+        <div class="lib-index-grid lib-index-grid--articles">
           {
             articles.length ? (
-              articles.map((article) => <ArticleCard article={article} />)
+              <>
+                {leadArticle && (
+                  <ArticleCard
+                    article={leadArticle}
+                    class="resource-card--lead"
+                    featuredLabel="Latest"
+                  />
+                )}
+                {restArticles.map((article) => (
+                  <ArticleCard article={article} />
+                ))}
+              </>
             ) : (
               <p class="lib-feed__empty">
                 No articles published yet. Add articles in Sanity Studio or run{' '}

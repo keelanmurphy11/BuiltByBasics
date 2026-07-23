@@ -44,7 +44,7 @@ export const LIBRARY_SECTIONS: LibrarySection[] = [
   },
   {
     slug: 'articles',
-    title: 'Articles',
+    title: 'Articles / Blog',
     description: 'In-depth explanations of training, nutrition and recovery.',
     href: '/articles',
     available: true,
@@ -52,7 +52,7 @@ export const LIBRARY_SECTIONS: LibrarySection[] = [
     icon: 'articles',
     iconTone: 'green',
     countLabel: 'articles',
-    exploreLabel: 'Explore all articles',
+    exploreLabel: 'See all articles',
   },
   {
     slug: 'videos',
@@ -166,7 +166,7 @@ export const LIBRARY_TOPICS: LibraryTopic[] = [
 export const RESOURCE_TYPES: ResourceTypeConfig[] = [
   {
     slug: 'articles',
-    title: 'Articles',
+    title: 'Articles / Blog',
     description: 'Evidence-based long-form guides and explainers.',
     available: true,
     cmsType: 'article',
