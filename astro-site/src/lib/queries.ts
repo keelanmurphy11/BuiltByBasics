@@ -155,7 +155,14 @@ export const articleBySlugQuery = `
     status,
     publishedAt,
     _updatedAt,
-    body,
+    body[]{
+      ...,
+      _type == "image" => {
+        ...,
+        "url": asset->url,
+        "dimensions": asset->metadata.dimensions
+      }
+    },
     coverImage,
     topics,
     difficulty,

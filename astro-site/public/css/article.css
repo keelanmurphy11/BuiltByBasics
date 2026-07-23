@@ -327,6 +327,26 @@
   font-style: italic;
 }
 
+.article-body__figure {
+  margin: 2rem 0;
+}
+
+.article-body__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  background: #f4f4f5;
+}
+
+.article-body__caption {
+  margin-top: 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #71717a;
+  text-align: center;
+}
+
 /* ── Sources ── */
 
 .article-sources {

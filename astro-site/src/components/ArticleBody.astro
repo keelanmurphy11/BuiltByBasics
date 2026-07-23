@@ -1,15 +1,51 @@
 ---
 import { toHTML } from '@portabletext/to-html';
-import { extractTocHeadings, slugifyHeading } from '../lib/library-utils';
+import { extractTocHeadings } from '../lib/library-utils';
 
 interface Props {
   body: unknown[];
 }
 
+interface BodyImage {
+  _type: 'image';
+  url?: string;
+  alt?: string;
+  caption?: string;
+  dimensions?: { width?: number; height?: number };
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 const { body } = Astro.props;
 const headings = extractTocHeadings(body ?? []);
 
-let html = body?.length ? toHTML(body) : '';
+let html = body?.length
+  ? toHTML(body, {
+      components: {
+        types: {
+          image: ({ value }: { value: BodyImage }) => {
+            if (!value?.url) return '';
+            const alt = escapeHtml(value.alt || '');
+            const width = value.dimensions?.width;
+            const height = value.dimensions?.height;
+            const sizeAttrs =
+              width && height ? ` width="${width}" height="${height}"` : '';
+            const img = `<img class="article-body__img" src="${escapeHtml(value.url)}" alt="${alt}" loading="lazy" decoding="async"${sizeAttrs} />`;
+            const caption = value.caption
+              ? `<figcaption class="article-body__caption">${escapeHtml(value.caption)}</figcaption>`
+              : '';
+            return `<figure class="article-body__figure">${img}${caption}</figure>`;
+          },
+        },
+      },
+    })
+  : '';
 
 if (html && headings.length) {
   let idx = 0;
