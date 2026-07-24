@@ -8,4 +8,8 @@ export default defineCliConfig({
     projectId,
     dataset,
   },
+  studioHost: 'builtbybasics',
+  deployment: {
+    appId: 't9r8xvou6hddyczqcrfx0wop',
+  },
 });

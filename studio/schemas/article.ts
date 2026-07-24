@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 import {
   DIFFICULTY_OPTIONS,
   EVIDENCE_LEVEL_OPTIONS,
@@ -73,26 +73,9 @@ export default defineType({
       type: 'array',
       group: 'content',
       of: [
-        { type: 'block' },
-        {
-          type: 'image',
-          options: { hotspot: true },
-          fields: [
-            {
-              name: 'alt',
-              type: 'string',
-              title: 'Alt text',
-              description: 'Describe the image for accessibility and SEO.',
-              validation: (rule) => rule.required(),
-            },
-            {
-              name: 'caption',
-              type: 'string',
-              title: 'Caption',
-            },
-          ],
-        },
-        { type: 'keyPoint' },
+        defineArrayMember({ type: 'block' }),
+        defineArrayMember({ type: 'bodyImage' }),
+        defineArrayMember({ type: 'keyPoint' }),
       ],
     }),
     defineField({

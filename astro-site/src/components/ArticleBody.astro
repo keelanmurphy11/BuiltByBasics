@@ -7,11 +7,12 @@ interface Props {
 }
 
 interface BodyImage {
-  _type: 'image';
+  _type: 'image' | 'bodyImage';
   url?: string;
   alt?: string;
   caption?: string;
   dimensions?: { width?: number; height?: number };
+  asset?: { _ref?: string };
 }
 
 interface BodyKeyPoint {
@@ -27,6 +28,38 @@ function escapeHtml(value: string): string {
     .replace(/"/g, '&quot;');
 }
 
+/** Resolve CDN URL from projected `url` or raw asset reference. */
+function resolveImageUrl(value: BodyImage): string | undefined {
+  if (value?.url) return value.url;
+
+  const ref = value?.asset?._ref;
+  if (!ref) return undefined;
+
+  const match = /^image-([a-f0-9]+)-(\d+x\d+)-([a-z0-9]+)$/i.exec(ref);
+  if (!match) return undefined;
+
+  const [, id, dims, format] = match;
+  const projectId = import.meta.env.PUBLIC_SANITY_PROJECT_ID;
+  const dataset = import.meta.env.PUBLIC_SANITY_DATASET || 'production';
+  if (!projectId) return undefined;
+
+  return `https://cdn.sanity.io/images/${projectId}/${dataset}/${id}-${dims}.${format}`;
+}
+
+function renderBodyImage(value: BodyImage): string {
+  const url = resolveImageUrl(value);
+  if (!url) return '';
+  const alt = escapeHtml(value.alt || '');
+  const width = value.dimensions?.width;
+  const height = value.dimensions?.height;
+  const sizeAttrs = width && height ? ` width="${width}" height="${height}"` : '';
+  const img = `<img class="article-body__img" src="${escapeHtml(url)}" alt="${alt}" loading="lazy" decoding="async"${sizeAttrs} />`;
+  const caption = value.caption
+    ? `<figcaption class="article-body__caption">${escapeHtml(value.caption)}</figcaption>`
+    : '';
+  return `<figure class="article-body__figure">${img}${caption}</figure>`;
+}
+
 const { body } = Astro.props;
 const headings = extractTocHeadings(body ?? []);
 
@@ -34,19 +67,8 @@ let html = body?.length
   ? toHTML(body, {
       components: {
         types: {
-          image: ({ value }: { value: BodyImage }) => {
-            if (!value?.url) return '';
-            const alt = escapeHtml(value.alt || '');
-            const width = value.dimensions?.width;
-            const height = value.dimensions?.height;
-            const sizeAttrs =
-              width && height ? ` width="${width}" height="${height}"` : '';
-            const img = `<img class="article-body__img" src="${escapeHtml(value.url)}" alt="${alt}" loading="lazy" decoding="async"${sizeAttrs} />`;
-            const caption = value.caption
-              ? `<figcaption class="article-body__caption">${escapeHtml(value.caption)}</figcaption>`
-              : '';
-            return `<figure class="article-body__figure">${img}${caption}</figure>`;
-          },
+          image: ({ value }: { value: BodyImage }) => renderBodyImage(value),
+          bodyImage: ({ value }: { value: BodyImage }) => renderBodyImage(value),
           keyPoint: ({ value }: { value: BodyKeyPoint }) => {
             if (!value?.text?.trim()) return '';
             return `<aside class="article-key-point" aria-label="Key point"><span class="article-key-point__pill">Key point</span><p class="article-key-point__text">${escapeHtml(value.text.trim())}</p></aside>`;

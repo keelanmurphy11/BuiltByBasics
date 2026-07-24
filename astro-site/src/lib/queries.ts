@@ -157,7 +157,7 @@ export const articleBySlugQuery = `
     _updatedAt,
     body[]{
       ...,
-      _type == "image" => {
+      _type in ["image", "bodyImage"] => {
         ...,
         "url": asset->url,
         "dimensions": asset->metadata.dimensions
