@@ -1,2 +1,336 @@
-/* Research telemetry canvas background (bundled for public/js). */
-"use strict";(()=>{var g={r:59,g:130,b:246},m={r:147,g:197,b:253},z={r:245,g:248,b:255};function C(e,n,r){return e+(n-e)*r}function E(e,n,r){let t=n*1.618;return Math.sin(e*r*9e-5+t)*.42+Math.sin(e*r*61e-6+t*2.1)*.28+Math.sin(e*r*37e-6+t*.7)*.18+Math.sin(e*r*23e-6+t*3.3)*.12}function F(e){return .88+Math.sin(e*15e-5)*.07+Math.sin(e*7e-5+1.2)*.05}function M(e,n,r){return Math.min(Math.max(e,n),r)}function w(e){return e==="left"?"left":"right"}function x(e,n,r,t){let i=E(e,1.1,.15)*n*.012,a=r*.5+E(e,2.8,.12)*r*.035;return t==="right"?{x:n*-.04+i,y:a}:{x:n*1.04-i,y:a}}function A(e,n){let r=Math.sin(e*11e-5+n*1.7)*.5+.5,t=Math.max(0,Math.sin(e*32e-6+n*4.2))**2;return .5+r*.28+t*.42}function L(e){let n=[];for(let r=0;r<e.lineCount;r++)n.push({seed:e.seedBase+r*17.31,radiusNorm:(r+1)/(e.lineCount+1),angleBias:(r-(e.lineCount-1)/2)/(e.lineCount+1),phase:r*2.399,opacity:e.opacity*(.72+r%4*.12),accent:r%e.accentEvery===0,speed:e.speed*(.8+r%7*.06)});return{id:e.id,lines:n,parallax:e.parallax,blur:e.blur,strokeWidth:e.strokeWidth}}function I(){return[L({id:"deep",lineCount:10,seedBase:1.3,opacity:.3,accentEvery:99,speed:.55,parallax:.35,blur:0,strokeWidth:1}),L({id:"mid",lineCount:14,seedBase:4.7,opacity:.48,accentEvery:4,speed:.75,parallax:.65,blur:6,strokeWidth:1.15}),L({id:"front",lineCount:9,seedBase:9.2,opacity:.64,accentEvery:3,speed:1,parallax:1,blur:10,strokeWidth:1.35})]}function G(e,n){let r=n.id==="mid"?3:2,t=1/r,i=t*.28,a=[];for(let o=0;o<r;o++){let l=(Math.sin(e.seed+o*2.17)*.5+.5)*t*.12,u=M(o*t+i*.5+l,0,1),s=M((o+1)*t-i*.5+l,0,1);s-u>.06&&a.push({start:u,end:s})}return a}function N(e,n,r,t,i,a){let o=x(r,t,i,a),c=Math.max(t,i)*C(.2,1.05,e.radiusNorm)*(.58+n.parallax*.42);return{origin:o,radius:c,sweep:Math.PI*.72,timeSweep:r*e.speed*96e-6+e.phase,angleSpread:Math.PI*.52}}function k(e,n,r,t,i,a){let o=-r*.5+n*r+t+e.angleBias*i;return a==="left"?Math.PI-o:o}function q(e,n,r,t,i,a,o,l,u){let{origin:s,radius:c,sweep:p,timeSweep:h,angleSpread:f}=N(n,r,t,i,a,o),b=k(n,l,p,h,f,o),y=k(n,u,p,h,f,o);if(b>y){let v=b;b=y,y=v}e.beginPath(),e.arc(s.x,s.y,c,b,y),e.stroke()}function H(e,n,r,t,i){let a=A(t,n.seed),o=M(n.opacity*i*(.88+a*.18),0,.82),l=n.accent?m:z,u=n.accent?.65+a*.2:.18+a*.12;e.strokeStyle=`rgba(${C(l.r,g.r,u)}, ${C(l.g,g.g,u)}, ${C(l.b,g.b,u)}, ${o})`,e.lineWidth=r.strokeWidth,e.lineCap="round",e.lineJoin="round";let s=r.blur>0?n.accent?r.blur:r.blur*.45:0;s>0?(e.shadowBlur=s*(.55+a*.85),e.shadowColor=`rgba(${m.r}, ${m.g}, ${m.b}, ${o*(.35+a*.45)})`):a>.78?(e.shadowBlur=5*a,e.shadowColor=`rgba(${m.r}, ${m.g}, ${m.b}, ${o*.35})`):e.shadowBlur=0}function _(e,n,r,t,i,a,o,l){H(e,n,r,t,o),G(n,r).forEach(u=>{q(e,n,r,t,i,a,l,u.start,u.end)}),e.shadowBlur=0}function R(e,n,r,t,i,a){let o=-e*.5+n*Math.PI*.22+r+i*t;return a==="left"?Math.PI-o:o}function J(e,n,r,t,i,a){let l=x(n,r,t,a),u=Math.max(r,t);for(let s=0;s<6;s++){let c=s*5.17+2.4,p=(s+1)/7,h=u*C(.28,.92,p),f=(s-5/2)/7,b=Math.PI*.38,y=n*7e-5*(s+1),v=b*.55,d=s===1||s===3,T=A(n,c);e.strokeStyle=d?`rgba(${m.r}, ${m.g}, ${m.b}, ${(.42+T*.18)*i})`:`rgba(235, 240, 255, ${(.28+T*.12)*i})`,e.lineWidth=d?1.2:.95,e.lineCap="round",e.shadowBlur=(d?10:4)*(.6+T*.7),e.shadowColor=`rgba(${m.r}, ${m.g}, ${m.b}, ${.22+T*.28})`;let O=[{start:.08,end:.38},{start:.58,end:.88}];for(let B of O){let S=R(b,f,y,v,B.start,a),$=R(b,f,y,v,B.end,a);if(S>$){let D=S;S=$,$=D}e.beginPath(),e.arc(l.x,l.y,h,S,$),e.stroke()}e.shadowBlur=0}}function Q(e,n,r,t,i,a){let o=x(n,r,t,a),l=Math.max(r,t)*.95,u=A(n,.9),s=e.createRadialGradient(o.x,o.y,0,o.x,o.y,l);s.addColorStop(0,`rgba(${m.r}, ${m.g}, ${m.b}, ${(.1+u*.05)*i})`),s.addColorStop(.35,`rgba(${g.r}, ${g.g}, ${g.b}, ${(.045+u*.025)*i})`),s.addColorStop(.7,`rgba(${g.r}, ${g.g}, ${g.b}, ${(.015+u*.01)*i})`),s.addColorStop(1,"rgba(5, 5, 5, 0)"),e.fillStyle=s,e.fillRect(0,0,r,t)}function P(e,n,r,t,i,a="right"){if(r===0||t===0)return;let o=w(a);e.clearRect(0,0,r,t);let l=F(n);Q(e,n,r,t,l,o),i.forEach(u=>{u.lines.forEach(s=>{_(e,s,u,n,r,t,l,o)})}),J(e,n,r,t,l,o)}var V=2;function X(e){let n=e.querySelector("canvas");if(!n)return;let r=window.matchMedia("(prefers-reduced-motion: reduce)"),t=r.matches,i=I(),a=w(e.dataset.telemetrySide),o=n.getContext("2d",{alpha:!0});if(!o)return;let l=0,u=0,s=0,c=!0,p=0,h=()=>{let d=Math.min(window.devicePixelRatio||1,V);l=e.clientWidth,u=e.clientHeight,n.width=Math.floor(l*d),n.height=Math.floor(u*d),n.style.width=`${l}px`,n.style.height=`${u}px`,o.setTransform(d,0,0,d,0,0),l>0&&u>0&&c&&b()},f=d=>{if(!c&&!t)return;t&&p===0&&(p=d);let T=t?p:d;l>0&&u>0&&P(o,T,l,u,i,a),!t&&c&&(s=requestAnimationFrame(f))},b=()=>{if(cancelAnimationFrame(s),t){p=performance.now(),f(p);return}document.visibilityState==="visible"&&c&&(s=requestAnimationFrame(f))};h();let y=typeof ResizeObserver<"u"?new ResizeObserver(h):null;y?y.observe(e):window.addEventListener("resize",h,{passive:!0});let v=typeof IntersectionObserver<"u"?new IntersectionObserver(d=>{c=d[0]?.isIntersecting??!0,c?b():cancelAnimationFrame(s)},{rootMargin:"160px"}):null;v&&v.observe(e),b(),document.addEventListener("visibilitychange",b),r.addEventListener("change",d=>{t=d.matches,p=performance.now(),b()})}function W(){document.querySelectorAll("[data-research-telemetry-bg]").forEach(X)}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",W):W();})();
+/* Research telemetry canvas background.
+ *
+ * Draws slowly sweeping arcs behind the "Why bother?" research cards.
+ * Performance notes:
+ * - No canvas shadowBlur: it blurs every stroke separately and was the main
+ *   cause of lag. Glow is drawn on a small canvas and scaled up instead.
+ * - Redraws at ~30fps and caps the pixel ratio; the motion is slow and soft,
+ *   so neither is visible.
+ * - Pauses when the section is off screen or the tab is hidden.
+ */
+'use strict';
+(() => {
+  const BLUE = { r: 59, g: 130, b: 246 };
+  const ACCENT = { r: 147, g: 197, b: 253 };
+  const WHITE = { r: 245, g: 248, b: 255 };
+
+  const MAX_PIXEL_RATIO = 1.5;
+  const FRAME_INTERVAL = 1000 / 30;
+  const GLOW_SCALE = 0.25;
+  const GLOW_STRENGTH = 0.35;
+  const HIGHLIGHT_SEGMENTS = [
+    { start: 0.08, end: 0.38 },
+    { start: 0.58, end: 0.88 },
+  ];
+
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+  const rgba = (c, a) => `rgba(${c.r}, ${c.g}, ${c.b}, ${a})`;
+  const mix = (from, to, t) => ({
+    r: lerp(from.r, to.r, t),
+    g: lerp(from.g, to.g, t),
+    b: lerp(from.b, to.b, t),
+  });
+
+  function wave(time, seed, rate) {
+    const phase = seed * 1.618;
+    return (
+      Math.sin(time * rate * 9e-5 + phase) * 0.42 +
+      Math.sin(time * rate * 61e-6 + phase * 2.1) * 0.28 +
+      Math.sin(time * rate * 37e-6 + phase * 0.7) * 0.18 +
+      Math.sin(time * rate * 23e-6 + phase * 3.3) * 0.12
+    );
+  }
+
+  function breathe(time) {
+    return 0.88 + Math.sin(time * 15e-5) * 0.07 + Math.sin(time * 7e-5 + 1.2) * 0.05;
+  }
+
+  function pulse(time, seed) {
+    const slow = Math.sin(time * 11e-5 + seed * 1.7) * 0.5 + 0.5;
+    const flare = Math.max(0, Math.sin(time * 32e-6 + seed * 4.2)) ** 2;
+    return 0.5 + slow * 0.28 + flare * 0.42;
+  }
+
+  function normalizeSide(side) {
+    return side === 'left' ? 'left' : 'right';
+  }
+
+  function originAt(time, width, height, side) {
+    const drift = wave(time, 1.1, 0.15) * width * 0.012;
+    const y = height * 0.5 + wave(time, 2.8, 0.12) * height * 0.035;
+    return side === 'right'
+      ? { x: width * -0.04 + drift, y }
+      : { x: width * 1.04 - drift, y };
+  }
+
+  // Splits a line into 2–3 arc segments with small gaps. Fixed per line,
+  // so it is worked out once instead of every frame.
+  function segmentsFor(line, layerId) {
+    const count = layerId === 'mid' ? 3 : 2;
+    const span = 1 / count;
+    const gap = span * 0.28;
+    const segments = [];
+    for (let i = 0; i < count; i++) {
+      const jitter = (Math.sin(line.seed + i * 2.17) * 0.5 + 0.5) * span * 0.12;
+      const start = clamp(i * span + gap * 0.5 + jitter, 0, 1);
+      const end = clamp((i + 1) * span - gap * 0.5 + jitter, 0, 1);
+      if (end - start > 0.06) segments.push({ start, end });
+    }
+    return segments;
+  }
+
+  function makeLayer(config) {
+    const lines = [];
+    for (let i = 0; i < config.lineCount; i++) {
+      const line = {
+        seed: config.seedBase + i * 17.31,
+        radiusNorm: (i + 1) / (config.lineCount + 1),
+        angleBias: (i - (config.lineCount - 1) / 2) / (config.lineCount + 1),
+        phase: i * 2.399,
+        opacity: config.opacity * (0.72 + (i % 4) * 0.12),
+        accent: i % config.accentEvery === 0,
+        speed: config.speed * (0.8 + (i % 7) * 0.06),
+      };
+      line.segments = segmentsFor(line, config.id);
+      lines.push(line);
+    }
+    return {
+      id: config.id,
+      lines,
+      parallax: config.parallax,
+      glow: config.glow,
+      strokeWidth: config.strokeWidth,
+    };
+  }
+
+  function createLayers() {
+    return [
+      makeLayer({ id: 'deep', lineCount: 10, seedBase: 1.3, opacity: 0.3, accentEvery: 99, speed: 0.55, parallax: 0.35, glow: 0, strokeWidth: 1 }),
+      makeLayer({ id: 'mid', lineCount: 14, seedBase: 4.7, opacity: 0.48, accentEvery: 4, speed: 0.75, parallax: 0.65, glow: 6, strokeWidth: 1.15 }),
+      makeLayer({ id: 'front', lineCount: 9, seedBase: 9.2, opacity: 0.64, accentEvery: 3, speed: 1, parallax: 1, glow: 10, strokeWidth: 1.35 }),
+    ];
+  }
+
+  function arcAngles(start, end, toAngle, side) {
+    let a = toAngle(start);
+    let b = toAngle(end);
+    if (side === 'left') {
+      a = Math.PI - a;
+      b = Math.PI - b;
+    }
+    return a > b ? [b, a] : [a, b];
+  }
+
+  // Each line is queued as { path, width, color, glowSize, glowAlpha } and
+  // drawn in two passes by drawFrame.
+  function arcPath(origin, radius, segments, toAngle, side) {
+    const path = new Path2D();
+    for (const segment of segments) {
+      const [a, b] = arcAngles(segment.start, segment.end, toAngle, side);
+      path.moveTo(origin.x + radius * Math.cos(a), origin.y + radius * Math.sin(a));
+      path.arc(origin.x, origin.y, radius, a, b);
+    }
+    return path;
+  }
+
+  function queueLine(strokes, line, layer, time, width, height, breath, side, origin) {
+    const glint = pulse(time, line.seed);
+    const alpha = clamp(line.opacity * breath * (0.88 + glint * 0.18), 0, 0.82);
+    const base = line.accent ? ACCENT : WHITE;
+    const tint = line.accent ? 0.65 + glint * 0.2 : 0.18 + glint * 0.12;
+
+    let glowSize = 0;
+    let glowAlpha = 0;
+    if (layer.glow > 0) {
+      const size = line.accent ? layer.glow : layer.glow * 0.45;
+      glowSize = size * (0.55 + glint * 0.85);
+      glowAlpha = alpha * (0.35 + glint * 0.45);
+    } else if (glint > 0.78) {
+      glowSize = 5 * glint;
+      glowAlpha = alpha * 0.35;
+    }
+
+    const radius = Math.max(width, height) * lerp(0.2, 1.05, line.radiusNorm) * (0.58 + layer.parallax * 0.42);
+    const sweep = Math.PI * 0.72;
+    const timeSweep = time * line.speed * 96e-6 + line.phase;
+    const spread = Math.PI * 0.52;
+    const toAngle = (frac) => -sweep * 0.5 + frac * sweep + timeSweep + line.angleBias * spread;
+
+    strokes.push({
+      path: arcPath(origin, radius, line.segments, toAngle, side),
+      width: layer.strokeWidth,
+      color: rgba(mix(base, BLUE, tint), alpha),
+      glowSize,
+      glowAlpha,
+    });
+  }
+
+  // Six brighter arcs drawn on top of the layers.
+  function queueHighlights(strokes, time, width, height, breath, side, origin) {
+    const size = Math.max(width, height);
+    for (let i = 0; i < 6; i++) {
+      const seed = i * 5.17 + 2.4;
+      const radius = size * lerp(0.28, 0.92, (i + 1) / 7);
+      const bias = (i - 5 / 2) / 7;
+      const sweep = Math.PI * 0.38;
+      const timeSweep = time * 7e-5 * (i + 1);
+      const spread = sweep * 0.55;
+      const accent = i === 1 || i === 3;
+      const glint = pulse(time, seed);
+      const toAngle = (frac) => -sweep * 0.5 + bias * Math.PI * 0.22 + timeSweep + frac * spread;
+
+      strokes.push({
+        path: arcPath(origin, radius, HIGHLIGHT_SEGMENTS, toAngle, side),
+        width: accent ? 1.2 : 0.95,
+        color: accent
+          ? rgba(ACCENT, (0.42 + glint * 0.18) * breath)
+          : `rgba(235, 240, 255, ${(0.28 + glint * 0.12) * breath})`,
+        glowSize: (accent ? 10 : 4) * (0.6 + glint * 0.7),
+        glowAlpha: 0.22 + glint * 0.28,
+      });
+    }
+  }
+
+  function drawAmbientGlow(ctx, time, width, height, breath, origin) {
+    const glint = pulse(time, 0.9);
+    const gradient = ctx.createRadialGradient(origin.x, origin.y, 0, origin.x, origin.y, Math.max(width, height) * 0.95);
+    gradient.addColorStop(0, rgba(ACCENT, (0.1 + glint * 0.05) * breath));
+    gradient.addColorStop(0.35, rgba(BLUE, (0.045 + glint * 0.025) * breath));
+    gradient.addColorStop(0.7, rgba(BLUE, (0.015 + glint * 0.01) * breath));
+    gradient.addColorStop(1, 'rgba(5, 5, 5, 0)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
+  }
+
+  // Glow and ambient light go on a small canvas (GLOW_SCALE of the size) that
+  // is stretched over the main one; the upscale softens it like a blur, at a
+  // fraction of shadowBlur's cost. Only the thin core lines are full size.
+  function drawFrame(ctx, glowCtx, time, width, height, layers, side) {
+    if (width === 0 || height === 0) return;
+    const breath = breathe(time);
+    const origin = originAt(time, width, height, side);
+    const strokes = [];
+    for (const layer of layers) {
+      for (const line of layer.lines) {
+        queueLine(strokes, line, layer, time, width, height, breath, side, origin);
+      }
+    }
+    queueHighlights(strokes, time, width, height, breath, side, origin);
+
+    glowCtx.clearRect(0, 0, width, height);
+    drawAmbientGlow(glowCtx, time, width, height, breath, origin);
+    glowCtx.lineCap = 'round';
+    for (const stroke of strokes) {
+      if (stroke.glowSize <= 0 || stroke.glowAlpha <= 0) continue;
+      glowCtx.strokeStyle = rgba(ACCENT, stroke.glowAlpha * GLOW_STRENGTH);
+      glowCtx.lineWidth = stroke.width + stroke.glowSize;
+      glowCtx.stroke(stroke.path);
+    }
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.drawImage(glowCtx.canvas, 0, 0, width, height);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    for (const stroke of strokes) {
+      ctx.strokeStyle = stroke.color;
+      ctx.lineWidth = stroke.width;
+      ctx.stroke(stroke.path);
+    }
+  }
+
+  function initBackground(root) {
+    const canvas = root.querySelector('canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d', { alpha: true });
+    const glowCtx = document.createElement('canvas').getContext('2d', { alpha: true });
+    if (!ctx || !glowCtx) return;
+
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let reducedMotion = motionQuery.matches;
+    const layers = createLayers();
+    const side = normalizeSide(root.dataset.telemetrySide);
+
+    let width = 0;
+    let height = 0;
+    let frameId = 0;
+    let lastDraw = 0;
+    let staticTime = 0;
+    let inView = true;
+
+    const tick = (now) => {
+      frameId = 0;
+      if (!inView) return;
+      if (now - lastDraw >= FRAME_INTERVAL - 2) {
+        lastDraw = now;
+        drawFrame(ctx, glowCtx, now, width, height, layers, side);
+      }
+      frameId = requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      cancelAnimationFrame(frameId);
+      frameId = 0;
+      if (reducedMotion) {
+        if (!staticTime) staticTime = performance.now();
+        drawFrame(ctx, glowCtx, staticTime, width, height, layers, side);
+        return;
+      }
+      if (document.visibilityState === 'visible' && inView) {
+        lastDraw = 0;
+        frameId = requestAnimationFrame(tick);
+      }
+    };
+
+    const resize = () => {
+      const ratio = Math.min(window.devicePixelRatio || 1, MAX_PIXEL_RATIO);
+      width = root.clientWidth;
+      height = root.clientHeight;
+      canvas.width = Math.floor(width * ratio);
+      canvas.height = Math.floor(height * ratio);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      glowCtx.canvas.width = Math.max(1, Math.ceil(width * GLOW_SCALE));
+      glowCtx.canvas.height = Math.max(1, Math.ceil(height * GLOW_SCALE));
+      glowCtx.setTransform(GLOW_SCALE, 0, 0, GLOW_SCALE, 0, 0);
+      if (width > 0 && height > 0 && inView) start();
+    };
+
+    resize();
+    if (typeof ResizeObserver !== 'undefined') {
+      new ResizeObserver(resize).observe(root);
+    } else {
+      window.addEventListener('resize', resize, { passive: true });
+    }
+
+    if (typeof IntersectionObserver !== 'undefined') {
+      new IntersectionObserver(
+        (entries) => {
+          inView = entries[0]?.isIntersecting ?? true;
+          if (inView) start();
+          else cancelAnimationFrame(frameId);
+        },
+        { rootMargin: '160px' },
+      ).observe(root);
+    }
+
+    start();
+    document.addEventListener('visibilitychange', start);
+    motionQuery.addEventListener('change', (event) => {
+      reducedMotion = event.matches;
+      staticTime = performance.now();
+      start();
+    });
+  }
+
+  function init() {
+    document.querySelectorAll('[data-research-telemetry-bg]').forEach(initBackground);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
