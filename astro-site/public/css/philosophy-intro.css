@@ -27,8 +27,16 @@
     180deg,
     transparent 0%,
     transparent 60%,
-    rgba(9, 9, 11, 0.15) 100%
+    rgba(0, 0, 0, 0.6) 88%,
+    #000 100%
   );
+}
+
+/* Fade the grain out at the bottom so the panel blends into the black
+   mission callout below instead of ending on a hard edge. */
+.philosophy-intro-panel.grain::after {
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
 }
 
 .philosophy-intro {
