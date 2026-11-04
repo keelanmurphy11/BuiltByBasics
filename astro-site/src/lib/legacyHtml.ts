@@ -63,6 +63,7 @@ export interface LegacyPageContent {
   bodyClass: string;
   extraCss: string[];
   inlineStyles: string[];
+  preloads: string[];
   bodyHtml: string;
 }
 
@@ -88,6 +89,9 @@ export function loadLegacyHtml(filename: string): LegacyPageContent {
     (match) => match[1].trim()
   );
 
+  // Preload hints (e.g. the hero image) are copied into <head> as written.
+  const preloads = [...html.matchAll(/<link\s+rel="preload"[^>]*>/g)].map((match) => match[0]);
+
   const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
   const bodyHtml = rewriteHtml(bodyMatch?.[1]?.trim() ?? '');
 
@@ -98,6 +102,7 @@ export function loadLegacyHtml(filename: string): LegacyPageContent {
     bodyClass,
     extraCss,
     inlineStyles,
+    preloads,
     bodyHtml,
   };
 }
