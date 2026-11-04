@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="css/logo.css" />
   <link rel="stylesheet" href="css/theme.css" />
   <link rel="stylesheet" href="css/reveal.css" />
-  <link rel="stylesheet" href="css/coaching-pricing.css" />
+  <link rel="stylesheet" href="css/coaching-pricing.css?v=3" />
   <link rel="stylesheet" href="css/coaching-about.css?v=20" />
   <style>
     .form-select option {
@@ -331,207 +331,177 @@ As you progress, you won't just follow a routine, you’ll learn the core logic 
 
     <!-- Services & Pricing -->
     <section id="services-and-pricing" class="border-t border-zinc-200 py-20 sm:py-28">
-      <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+      <div class="mx-auto max-w-5xl px-5 sm:px-8 lg:px-10">
         <div data-reveal-stagger class="text-center">
           <p class="reveal-item font-display text-xs uppercase tracking-[0.35em] text-cobalt-light">Services &amp; Pricing</p>
-          <h2 class="reveal-item mt-4 font-display text-2xl font-semibold uppercase tracking-wide sm:text-3xl">Choose Your Level of Support</h2>
+          <h2 class="reveal-item mt-4 font-display text-2xl font-semibold uppercase tracking-wide sm:text-3xl">Simple, Honest Pricing</h2>
           <p class="reveal-item mx-auto mt-4 max-w-2xl text-zinc-500 leading-relaxed">
-            Complete individual flexibility. There are no locked-in contracts - you choose exactly how much support you want.
+            No contracts and no hidden fees. Most people start with a one-off program, then add monthly support only if it's useful to them.
           </p>
-          <nav class="reveal-item pricing-nav mt-8" aria-label="Pricing sections">
-            <a href="#entry">Entry Points</a>
-            <a href="#one-off">One-Off Sessions</a>
-            <a href="#ongoing">On the Go Support</a>
-            <a href="#group">Small Group PT</a>
-          </nav>
         </div>
 
-        <!-- Entry points -->
-        <div id="entry" class="mt-20 scroll-mt-28">
-          <h3 class="pricing-group-heading text-center">Entry Points</h3>
-          <div data-reveal-stagger class="mx-auto mt-8 grid max-w-5xl gap-6 md:grid-cols-2">
-            <div class="reveal-item border border-zinc-200 bg-white p-8 sm:p-10">
-              <span class="font-display text-xs uppercase tracking-[0.3em] text-cobalt-light">Blueprint</span>
-              <h4 class="pricing-card-title mt-4">Initial Program Design</h4>
-              <p class="pricing-price mt-6">€99</p>
-              <ul class="pricing-includes mt-8 border-t border-zinc-200 pt-8">
-                <li><span>-</span><span>Initial screening form</span></li>
-                <li><span>-</span><span>Bespoke program design</span></li>
-                <li><span>-</span><span>In-person or online discussion on program design and nutrition (30m)</span></li>
-                <li><span>-</span><span>Optional transition to On the Go Support</span></li>
-              </ul>
-              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
-                <p class="text-sm leading-relaxed text-zinc-500">
-                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
-                  <span class="mt-2 block">Those who already know how to lift but want a change in programming or nutrition - not full hand-holding, just direction.</span>
-                </p>
-              </blockquote>
-            </div>
-
-            <div class="reveal-item pricing-card--featured border border-zinc-200 bg-zinc-50 p-8 sm:p-10">
-              <div class="flex items-center gap-3">
-                <span class="font-display text-xs uppercase tracking-[0.3em] text-cobalt">Starting point</span>
-                <span class="pricing-badge">Recommended</span>
+        <!-- Main path: start, then optional ongoing support -->
+        <ol class="pricing-path mt-16">
+          <li class="pricing-step">
+            <div class="pricing-step__head">
+              <span class="pricing-step__num">1</span>
+              <div>
+                <h3 class="pricing-step__title">Get started</h3>
+                <p class="pricing-step__sub">One-off payment · pick one</p>
               </div>
-              <h4 class="pricing-card-title mt-4">The 6-Week Start</h4>
-              <p class="pricing-price mt-6">€375</p>
-              <ul class="pricing-includes mt-8 border-t border-zinc-200 pt-8">
-                <li><span>-</span><span>Initial screening form and program design</span></li>
-                <li><span>-</span><span>In-person or online discussion on plan and program design (30m)</span></li>
-                <li><span>-</span><span>In-person gym session - Week 1 (60m)</span></li>
-                <li><span>-</span><span>In-person gym session - Week 3 (60m)</span></li>
-                <li><span>-</span><span>In-person gym session - Week 6 (60m)</span></li>
-                <li><span>-</span><span>Weekly check-in via email or WhatsApp</span></li>
-                <li><span>-</span><span>Optional transition to On the Go Support</span></li>
-              </ul>
-              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
-                <p class="text-sm leading-relaxed text-zinc-600">
-                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
-                  <span class="mt-2 block">New clients or anyone wanting structured onboarding - form coaching, accountability, and a clear runway into ongoing support if you choose it.</span>
-                </p>
-              </blockquote>
-            </div>
-          </div>
-        </div>
-
-        <!-- One-off sessions -->
-        <div id="one-off" class="mt-20 scroll-mt-28">
-          <h3 class="pricing-group-heading text-center">One-Off Sessions</h3>
-          <div data-reveal-stagger class="mx-auto mt-8 grid max-w-5xl gap-6 md:grid-cols-2">
-            <div class="reveal-item border border-zinc-200 bg-white p-8 sm:p-10">
-              <span class="font-display text-xs uppercase tracking-[0.3em] text-cobalt-light">Option A</span>
-              <h4 class="pricing-card-title mt-4">60 Minute Consultation</h4>
-              <p class="pricing-price mt-6">€60</p>
-              <p class="mt-2 text-sm text-zinc-500">Program updates and nutrition discussion. Coffee included :)</p>
-              <ul class="pricing-includes mt-8 border-t border-zinc-200 pt-8">
-                <li><span>-</span><span>Focused review of your current program</span></li>
-                <li><span>-</span><span>Nutrition discussion and practical adjustments</span></li>
-                <li><span>-</span><span>Clear next steps you can implement immediately</span></li>
-              </ul>
-              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
-                <p class="text-sm leading-relaxed text-zinc-500">
-                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
-                  <span class="mt-2 block">Self-directed trainers or past clients who need a focused tune-up - not a full redesign.</span>
-                </p>
-              </blockquote>
             </div>
 
-            <div class="reveal-item border border-zinc-200 bg-white p-8 sm:p-10">
-              <span class="font-display text-xs uppercase tracking-[0.3em] text-cobalt-light">Option B</span>
-              <h4 class="pricing-card-title mt-4">60-Minute Gym Session</h4>
-              <p class="pricing-price mt-6">€80</p>
-              <ul class="pricing-includes mt-8 border-t border-zinc-200 pt-8">
-                <li><span>-</span><span>Full in-person coaching session</span></li>
-                <li><span>-</span><span>Exercise technique refinement</span></li>
-                <li><span>-</span><span>Hands-on guidance tailored to your goals</span></li>
-              </ul>
-              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
-                <p class="text-sm leading-relaxed text-zinc-500">
-                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
-                  <span class="mt-2 block">Technique work, confidence with specific lifts, or a single hands-on session without ongoing commitment.</span>
-                </p>
-              </blockquote>
-            </div>
-          </div>
-        </div>
+            <div data-reveal-stagger class="pricing-step__cards pricing-step__cards--start">
+              <article class="reveal-item pricing-card pricing-card--featured">
+                <div class="flex flex-wrap items-center gap-3">
+                  <span class="pricing-badge">Recommended</span>
+                </div>
+                <h4 class="pricing-card-title mt-4">The 6-Week Start</h4>
+                <p class="pricing-card-fit">For anyone new to training, or who wants hands-on coaching on form and a structured start.</p>
+                <p class="pricing-price mt-6">€375</p>
+                <ul class="pricing-includes mt-6">
+                  <li>Screening form and bespoke program design</li>
+                  <li>30-minute plan and program discussion (in person or online)</li>
+                  <li>Three 60-minute gym sessions, in weeks 1, 3 and 6</li>
+                  <li>Weekly check-ins via email or WhatsApp</li>
+                </ul>
+                <a href="#coaching-application" class="pricing-cta pricing-cta--primary" data-service="The 6-Week Start">Enquire about the 6-Week Start</a>
+              </article>
 
-        <!-- On the Go Support -->
-        <div id="ongoing" class="mt-20 scroll-mt-28">
-          <h3 class="pricing-group-heading text-center">On the Go Support</h3>
-          <p class="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-zinc-500">
-            Available following Initial Program Design or The 6-Week Start.
-          </p>
-          <div data-reveal-stagger class="mx-auto mt-8 grid max-w-5xl gap-6 md:grid-cols-2">
-            <div class="reveal-item border border-zinc-200 bg-white p-8 sm:p-10">
-              <h4 class="pricing-card-title">On the Go Support</h4>
-              <p class="pricing-card-tier mt-3">Premium</p>
-              <p class="pricing-price mt-6">€190<span class="pricing-price__suffix"> / month</span></p>
-              <ul class="pricing-includes mt-8 border-t border-zinc-200 pt-8">
-                <li><span>-</span><span>Monthly 60m in-person gym session - exercise technique checks, progressions etc.</span></li>
-                <li><span>-</span><span>Custom monthly program updates and progressions (30m Call)</span></li>
-                <li><span>-</span><span>Brief weekly progress check ins (via email or WhatsApp)</span></li>
-                <li><span>-</span><span>Direct messaging support (48h)</span></li>
-              </ul>
-              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
-                <p class="text-sm leading-relaxed text-zinc-500">
-                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
-                  <span class="mt-2 block">Clients who want regular face-to-face accountability alongside remote support - ideal after completing an entry program.</span>
-                </p>
-              </blockquote>
+              <article class="reveal-item pricing-card">
+                <span class="pricing-card-eyebrow">Blueprint</span>
+                <h4 class="pricing-card-title mt-4">Initial Program Design</h4>
+                <p class="pricing-card-fit">For people who already know how to lift and want direction on programming or nutrition, not hand-holding.</p>
+                <p class="pricing-price mt-6">€99</p>
+                <ul class="pricing-includes mt-6">
+                  <li>Screening form</li>
+                  <li>Bespoke program design</li>
+                  <li>30-minute program and nutrition discussion (in person or online)</li>
+                </ul>
+                <a href="#coaching-application" class="pricing-cta" data-service="Initial Program Design">Enquire about the Blueprint</a>
+              </article>
+            </div>
+          </li>
+
+          <li class="pricing-step">
+            <div class="pricing-step__head">
+              <span class="pricing-step__num">2</span>
+              <div>
+                <h3 class="pricing-step__title">Keep going <span class="pricing-step__optional">(optional)</span></h3>
+                <p class="pricing-step__sub">On the Go Support · monthly · stop whenever you like</p>
+              </div>
             </div>
 
-            <div class="reveal-item border border-zinc-200 bg-zinc-50 p-8 sm:p-10">
-              <h4 class="pricing-card-title">On the Go Support</h4>
-              <p class="pricing-card-tier mt-3">Standard</p>
-              <p class="pricing-price mt-6">€120<span class="pricing-price__suffix"> / month</span></p>
-              <ul class="pricing-includes mt-8 border-t border-zinc-200 pt-8">
-                <li><span>-</span><span>Custom monthly program updates and progressions (30m Call)</span></li>
-                <li><span>-</span><span>Brief weekly progress check ins (via email or WhatsApp)</span></li>
-                <li><span>-</span><span>Direct messaging support (48h)</span></li>
-              </ul>
-              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
-                <p class="text-sm leading-relaxed text-zinc-600">
-                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
-                  <span class="mt-2 block">Motivated self-starters who need expert oversight remotely - not monthly gym time.</span>
-                </p>
-              </blockquote>
+            <div data-reveal-stagger class="pricing-step__cards">
+              <article class="reveal-item pricing-card">
+                <p class="pricing-card-tier">Standard</p>
+                <p class="pricing-price mt-3">€120<span class="pricing-price__suffix"> / month</span></p>
+                <p class="pricing-card-fit">Remote coaching for motivated self-starters.</p>
+                <ul class="pricing-includes mt-6">
+                  <li>Monthly program updates and progressions (30-minute call)</li>
+                  <li>Brief weekly progress check-ins (email or WhatsApp)</li>
+                  <li>Direct messaging support (replies within 48h)</li>
+                </ul>
+                <a href="#coaching-application" class="pricing-cta" data-service="On the Go Support - Standard">Enquire about Standard</a>
+              </article>
+
+              <article class="reveal-item pricing-card">
+                <p class="pricing-card-tier">Premium</p>
+                <p class="pricing-price mt-3">€190<span class="pricing-price__suffix"> / month</span></p>
+                <p class="pricing-card-fit">Remote support plus regular face-to-face accountability.</p>
+                <ul class="pricing-includes mt-6">
+                  <li><strong>Everything in Standard</strong></li>
+                  <li>A 60-minute gym session every month for technique checks and progressions</li>
+                </ul>
+                <a href="#coaching-application" class="pricing-cta" data-service="On the Go Support - Premium">Enquire about Premium</a>
+              </article>
             </div>
-          </div>
-        </div>
+
+            <p class="pricing-step__note">
+              Available after either starting option. The aim is that, eventually, you won't need either.
+            </p>
+          </li>
+        </ol>
 
         <!-- Small Group PT -->
-        <div id="group" class="mt-20 scroll-mt-28">
-          <h3 class="pricing-group-heading text-center">Small Group PT</h3>
-          <div data-reveal-stagger class="mx-auto mt-8 max-w-5xl">
-            <div class="reveal-item border border-zinc-200 bg-white p-8 sm:p-10">
-              <span class="font-display text-xs uppercase tracking-[0.3em] text-cobalt-light">Train together</span>
-              <h4 class="pricing-card-title mt-4">Small Group PT</h4>
-              <p class="mt-3 text-sm font-medium text-zinc-600">Achieve your goals together</p>
-              <p class="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-500">
-                Gather a group of friends and train together. Same educational coaching approach - shared motivation, lower per-person cost. 
-                <br><br> Your session, your choice: Technique workshops, group training sessions, program design discussions, or a mix of all.
-              </p>
-              <div class="pricing-group-pt__tiers mt-8 border-t border-zinc-200 pt-8">
-                <div class="pricing-group-pt__tier">
-                  <p class="text-xs font-display uppercase tracking-widest text-zinc-500">Group of 2</p>
-                  <p class="pricing-group-pt__tier-price mt-3">€55</p>
-                  <p class="mt-1 text-xs text-zinc-500">per person · 60 min</p>
-                </div>
-                <div class="pricing-group-pt__tier">
-                  <p class="text-xs font-display uppercase tracking-widest text-zinc-500">Group of 3</p>
-                  <p class="pricing-group-pt__tier-price mt-3">€50</p>
-                  <p class="mt-1 text-xs text-zinc-500">per person · 60 min</p>
-                </div>
-                <div class="pricing-group-pt__tier">
-                  <p class="text-xs font-display uppercase tracking-widest text-zinc-500">Group of 4</p>
-                  <p class="pricing-group-pt__tier-price mt-3">€45</p>
-                  <p class="mt-1 text-xs text-zinc-500">per person · 60 min</p>
-                </div>
-              </div>
-              <blockquote class="mt-8 border-l-2 border-cobalt pl-6">
-                <p class="text-sm leading-relaxed text-zinc-500">
-                  <span class="font-display text-xs font-medium uppercase tracking-[0.12em] text-cobalt">Suited for</span>
-                  <span class="mt-2 block">Friends, couples, or colleagues who want shared motivation and the same hands-on coaching in a social setting.</span>
-                </p>
-              </blockquote>
-            </div>
+        <article class="reveal-item pricing-group mt-20 sm:mt-24">
+          <div class="pricing-group__intro">
+            <span class="pricing-badge">Train together</span>
+            <h3 class="pricing-card-title mt-4">Small Group PT</h3>
+            <p class="pricing-card-fit">
+              Bring 1–3 friends, a partner or colleagues. Same coaching approach, with shared motivation and a lower cost each.
+            </p>
+            <p class="pricing-card-fit">
+              Your session, your choice: technique workshops, group training sessions, program design discussions, or a mix of all.
+            </p>
+            <a href="#coaching-application" class="pricing-cta pricing-cta--primary" data-service="Small Group PT">Enquire about group sessions</a>
           </div>
+
+          <ul class="pricing-group__tiers" aria-label="Small Group PT prices">
+            <li class="pricing-group__tier">
+              <span class="pricing-group__size">Group of 2</span>
+              <span class="pricing-group__price">€55</span>
+              <span class="pricing-group__unit">per person · 60 min</span>
+            </li>
+            <li class="pricing-group__tier">
+              <span class="pricing-group__size">Group of 3</span>
+              <span class="pricing-group__price">€50</span>
+              <span class="pricing-group__unit">per person · 60 min</span>
+            </li>
+            <li class="pricing-group__tier pricing-group__tier--best">
+              <span class="pricing-group__size">Group of 4</span>
+              <span class="pricing-group__price">€45</span>
+              <span class="pricing-group__unit">per person · 60 min</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- One-off sessions -->
+        <div class="mt-20 sm:mt-24">
+          <div class="text-center">
+            <h3 class="pricing-group-heading">One-off sessions</h3>
+            <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-zinc-500">Book one at a time, with no ongoing commitment.</p>
+          </div>
+
+          <ul data-reveal-stagger class="pricing-extras mt-10">
+            <li class="reveal-item pricing-extra">
+              <div class="pricing-extra__main">
+                <h4 class="pricing-extra__title">60-Minute Consultation</h4>
+                <p class="pricing-extra__desc">A focused review of your current program and nutrition, with clear next steps you can use straight away. Coffee included :)</p>
+              </div>
+              <div class="pricing-extra__side">
+                <p class="pricing-extra__price">€60</p>
+                <a href="#coaching-application" class="pricing-extra__link" data-service="One-Off - 60 Minute Consultation">Enquire</a>
+              </div>
+            </li>
+
+            <li class="reveal-item pricing-extra">
+              <div class="pricing-extra__main">
+                <h4 class="pricing-extra__title">60-Minute Gym Session</h4>
+                <p class="pricing-extra__desc">Hands-on, in-person coaching on technique or specific lifts, without signing up to anything ongoing.</p>
+              </div>
+              <div class="pricing-extra__side">
+                <p class="pricing-extra__price">€80</p>
+                <a href="#coaching-application" class="pricing-extra__link" data-service="One-Off - Gym Session">Enquire</a>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <!-- Pricing CTA -->
-        <div class="reveal-item mt-20 text-center">
-          <p class="mx-auto max-w-xl text-sm leading-relaxed text-zinc-500">
-            All in-person appointments are based in Dublin 14.
-          </p>
-          <p class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-zinc-500">
-            Unsure where to start? Get in touch below and we'll chat to see if we're a good fit, and build the right plan for your goals.
+        <div class="reveal-item pricing-help mt-20">
+          <h3 class="pricing-help__title">Not sure which fits?</h3>
+          <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-zinc-500">
+            Tell me a bit about yourself and your goals, and I'll suggest the right option. We'll chat to see if we're a good fit first.
           </p>
           <a
             href="#coaching-application"
+            data-service="Not sure yet"
             class="mt-8 inline-block rounded-sm bg-cobalt px-10 py-5 font-display text-sm font-bold uppercase tracking-[0.2em] text-white shadow-2xl shadow-cobalt/30 transition-all duration-300 hover:bg-cobalt-light hover:shadow-cobalt/50 hover:brightness-110 sm:py-6"
           >
             Get in Touch
           </a>
+          <p class="mt-6 text-xs text-zinc-400">All in-person appointments are based in Dublin 14.</p>
         </div>
       </div>
     </section>
@@ -819,6 +789,17 @@ As you progress, you won't just follow a routine, you’ll learn the core logic 
     window.addEventListener('scroll', () => {
       header.classList.toggle('nav-scrolled', window.scrollY > 40);
     }, { passive: true });
+
+    // "Enquire" links preselect their service in the form.
+    (function () {
+      const serviceSelect = document.getElementById('preferred_service');
+      if (!serviceSelect) return;
+      document.querySelectorAll('a[data-service]').forEach((link) => {
+        link.addEventListener('click', () => {
+          serviceSelect.value = link.dataset.service;
+        });
+      });
+    })();
 
     (function () {
       const form = document.querySelector('form[action="https://api.web3forms.com/submit"]');
